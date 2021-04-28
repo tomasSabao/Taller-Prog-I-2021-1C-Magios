@@ -1,6 +1,6 @@
-# tp_taller
+# Taller-Prog_1-2021-1C-Magios
 
-Equipo Magios//
+Equipo Magios
 
 #integrantes:
 Yussef Omar Mejia Cordoba
