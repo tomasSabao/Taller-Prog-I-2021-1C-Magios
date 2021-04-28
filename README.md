@@ -1,8 +1,8 @@
 # tp_taller
 
-Equipo Magios
+Equipo Magios//
 
 #integrantes:
-Yussef Omar Mejia Cordoba\n
+Yussef Omar Mejia Cordoba
 Sabao Tomas
 Marco
