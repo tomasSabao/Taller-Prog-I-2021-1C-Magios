@@ -3,6 +3,7 @@
 Equipo Magios
 
 #integrantes:
-Yussef Omar Mejia Cordoba
-Sabao Tomas
-Marco
+Yussef Omar Mejia Cordoba,
+Sabao Tomas,
+Marco,
+Vazquez Lareu Román
