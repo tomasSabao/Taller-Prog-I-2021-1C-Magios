@@ -3,6 +3,6 @@
 Equipo Magios
 
 #integrantes:
-Yussef Omar Mejia Cordoba
+Yussef Omar Mejia Cordoba\n
 Sabao Tomas
 Marco
