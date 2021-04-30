@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="tpppp" />
+		<Option execution_dir="." />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/tpppp" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-std=gnu++11" />
+					<Add option="-std=c++11" />
+					<Add option="-g" />
+					<Add directory="./include" />
+					<Add directory=".include" />
+					<Add directory="src" />
+					<Add directory="Modelo" />
+					<Add directory="View" />
+				</Compiler>
+				<Linker>
+					<Add option="-lSDL2" />
+					<Add option="-lSDL2_image" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/tpppp" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add directory="./include" />
+					<Add directory=".include" />
+					<Add directory="src" />
+					<Add directory="Modelo" />
+					<Add directory="View" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="Modelo/LTexture.cpp" />
+		<Unit filename="Modelo/LTexture.h" />
+		<Unit filename="Modelo/Modelo.cpp" />
+		<Unit filename="Modelo/Modelo.h" />
+		<Unit filename="Modelo/Modelo_Jugador.cpp" />
+		<Unit filename="Modelo/Modelo_Jugador.h" />
+		<Unit filename="View/Vista.cpp" />
+		<Unit filename="View/Vista.h" />
+		<Unit filename="View/Vista_Jugador.cpp" />
+		<Unit filename="View/Vista_Jugador.h" />
+		<Unit filename="src/main.cpp" />
+		<Extensions />
+	</Project>
+</CodeBlocks_project_file>
