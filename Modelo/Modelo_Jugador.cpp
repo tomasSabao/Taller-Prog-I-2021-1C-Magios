@@ -20,12 +20,15 @@ int Modelo_Jugador::getFrame()
 
 void Modelo_Jugador::caminar()
 {
+/*
     if(  this->frames / 4 >= WALKING_ANIMATION_FRAMES )
         {
             this->frames = 0;
         }
      this->frames+= 1;
-
+*/
+    this->frames++;
+    this->frames=this->frames%WALKING_ANIMATION_FRAMES;
 }
 
 

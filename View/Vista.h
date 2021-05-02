@@ -15,15 +15,31 @@ class Vista
         Vista(Modelo* modelo);
         virtual ~Vista();
         bool init(  );
+
         void render();
          //Loads media
         bool loadMedia();
         void close();
+
+        //
+        SDL_Window* getWindow(){
+            return this->gWindow;
+        }
+        SDL_Renderer* getRenderer(){
+            return this->gRenderer;
+        }
+
+        Vista_Jugador* getVistaJugador(){
+        return this->vista_jugador;}
     protected:
 
+
     private:
-    SDL_Window* gWindow ;
-    SDL_Renderer*  gRenderer  ;
+    bool iniciar_sdl_video();
+    void cerrar_sdl_video();
+
+    SDL_Window* gWindow=NULL ;
+    SDL_Renderer*  gRenderer =NULL ;
      const int SCREEN_WIDTH = 640;
     const int SCREEN_HEIGHT = 480;
     Vista_Jugador* vista_jugador;

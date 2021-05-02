@@ -18,6 +18,7 @@ Vista_Jugador::~Vista_Jugador()
 
 bool Vista_Jugador::loadMedia(SDL_Renderer*  grendered)
 {
+    printf("scope: Vista_jugador::load_media\n");
 	//Loading success flag
 	bool success = true;
 

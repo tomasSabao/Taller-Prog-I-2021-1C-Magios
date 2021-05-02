@@ -4,83 +4,42 @@
 #include <string>
 #include "../View/Vista.h"
 #include "../Modelo/Modelo.h"
+#include "../include/Controlador.h"
+#include "../Modelo/LTexture.h"
 
 
 
-
+SDL_Texture* loadTexture( std::string path ,SDL_Renderer* gRenderer);
+bool loadMedia(SDL_Texture* gTexture,SDL_Renderer* gRenderer);
 
 
 int main( int argc, char* args[] )
 {
-  //  Modelo_Jugador* jug= new Modelo_Jugador();
-    //jug->caminar();
-   // jug->caminar();
-   // printf("%d\n",jug->getFrame());
+    Modelo* modelo=new Modelo();
+    Modelo_Jugador* jugador=modelo->getModeloJugador();
+    Controlador controlador(modelo->getModeloJugador());
+    Vista vista(modelo);
+    vista.init();
 
-  Modelo* modelo=new Modelo();
-    Modelo_Jugador* jug2=modelo->getModeloJugador();
-    jug2->caminar();
-    jug2->caminar();
-    jug2->caminar();
-   printf("%d\n",jug2->getFrame());
-
-
-
-    //Modelo  modelo ;
-    Vista  vista(modelo);
-
-
-
-
-	if( !vista.init( ))
-	{
-		printf( "Failed to initialize!\n" );
-	}
-	//else
-	//{
-
-		//Load media
-
-	//	if( !vista.loadMedia( ))
-	//	{
-	//		printf( "Failed to load media!\n" );
-	//	}
-	//	else
-	//	{
-			//Main loop flag
-		//	bool quit = false;
-
-			//Event handler
-		//	SDL_Event e;
-
-
-			//While application is running
-		//	while( !quit )
-		//	{
-				//Handle events on queue
-			//	while( SDL_PollEvent( &e ) != 0 )
-			//	{
-					//User requests quit
-			//		if( e.type == SDL_QUIT )
-			//		{
-			//			quit = true;
-			//		}
-
-            //    modelo.getModeloJugador()->caminar();
-
-           //     vista.render();
-
-			//	}
-
-
-
-           // SDL_Delay(1000);
-			//}
-		//}
-	//}
-
-	//Free resources and close SDL
-	 vista.close();
+    //creo una textura
+    LTexture* textura=new LTexture();
+    //consigo la ventana y el render de vista
+    SDL_Window* ventana=vista.getWindow();
+    SDL_Renderer* renderer=vista.getRenderer();
+    //trato de visualizar
+    textura->loadFromFile("foo.png",renderer);
+    int quit=0;
+    //SDL_Event e;
+    while(quit!=1){
+        while(controlador.desencolar_evento()!=0){
+            quit= controlador.descifrar_evento();
+            SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
+            SDL_RenderClear( renderer );
+            textura->render(0,0,NULL,renderer);
+            SDL_RenderPresent(renderer);
+            jugador->caminar();
+         }
+    }
 
 	return 0;
 }

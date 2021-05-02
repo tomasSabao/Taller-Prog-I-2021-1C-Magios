@@ -17,21 +17,28 @@ Vista::~Vista()
 
 bool Vista::init(   )
 {
+    printf("Scope: vista::init\n");
     SDL_Window* auxGWindow=NULL;
     SDL_Renderer*  auxGgRenderer=NULL;
     //Initialization flag
 	bool success = true;
 
 	//Initialize SDL
+	/*printf("vista::init iniciacion de sdl_video");
 	if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
 	{
 		printf( "SDL could not initialize! SDL Error: %s\n", SDL_GetError() );
 		success = false;
 
-	}
+	}*/
+
+	if(this->iniciar_sdl_video()==false){
+	printf("fallo detectado. Saliendo de Vista::init()\n");
+    return false;
+    }
+
 	else
 	{
-         printf("SDL could")   ;
 		//Set texture filtering to linear
 		if( !SDL_SetHint( SDL_HINT_RENDER_SCALE_QUALITY, "1" ) )
 		{
@@ -76,6 +83,20 @@ bool Vista::init(   )
 
 }
 
+bool Vista::iniciar_sdl_video(){
+   if( SDL_Init(SDL_INIT_VIDEO) < 0){
+    printf("no se pudo iniciar sdl video\n");
+    return false;
+   }
+   printf("se pudo iniciar SDL_video\n");
+   return true;
+
+}
+
+void Vista::cerrar_sdl_video(){
+    SDL_Quit();
+}
+
 bool  Vista::loadMedia()
 {
     return this->vista_jugador->loadMedia(this->gRenderer);
@@ -85,7 +106,8 @@ bool  Vista::loadMedia()
 
  void Vista::render(   )
  {
-    SDL_SetRenderDrawColor( this->gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
+
+    SDL_SetRenderDrawColor( this->gRenderer, 0xFF, 0xFF, 0, 0xFF );
 	SDL_RenderClear( this->gRenderer );
 
     this->vista_jugador->render(  SCREEN_WIDTH  ,   SCREEN_HEIGHT ,gRenderer);
