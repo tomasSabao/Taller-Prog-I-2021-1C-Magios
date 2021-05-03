@@ -2,44 +2,44 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="View/Vista.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="View/Vista_Jugador.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2343" topLine="74" />
+			<Cursor1 position="1655" topLine="54" />
 		</Cursor>
 	</File>
-	<File name="Modelo/LTexture.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Modelo/Modelo_Jugador.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="334" topLine="33" />
+			<Cursor1 position="487" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="View/Vista.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="View/Vista_Jugador.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="638" topLine="31" />
+			<Cursor1 position="143" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="include/Controlador.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Modelo/LTexture.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="244" topLine="2" />
+			<Cursor1 position="923" topLine="20" />
 		</Cursor>
 	</File>
-	<File name="Modelo/Modelo_Jugador.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="View/Vista.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="195" topLine="12" />
+			<Cursor1 position="2343" topLine="86" />
 		</Cursor>
 	</File>
-	<File name="Modelo/Modelo.cpp" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Modelo/LTexture.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="120" topLine="0" />
+			<Cursor1 position="1172" topLine="21" />
 		</Cursor>
 	</File>
-	<File name="Modelo/LTexture.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src/main.cpp" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="923" topLine="8" />
+			<Cursor1 position="1400" topLine="13" />
 		</Cursor>
 	</File>
-	<File name="src/main.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="View/Vista.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1239" topLine="19" />
+			<Cursor1 position="638" topLine="12" />
 		</Cursor>
 	</File>
 	<File name="Modelo/Modelo.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -47,24 +47,24 @@
 			<Cursor1 position="79" topLine="9" />
 		</Cursor>
 	</File>
-	<File name="View/Vista_Jugador.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Modelo/Modelo_Jugador.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="548" topLine="6" />
+			<Cursor1 position="195" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="View/Vista_Jugador.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include/Controlador.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1597" topLine="39" />
+			<Cursor1 position="266" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="Controlador/Controlador.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Modelo/Modelo.cpp" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1108" topLine="21" />
+			<Cursor1 position="120" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="Modelo/Modelo_Jugador.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Controlador/Controlador.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="413" topLine="0" />
+			<Cursor1 position="1261" topLine="7" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

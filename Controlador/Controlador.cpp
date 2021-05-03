@@ -37,15 +37,18 @@ int Controlador::descifrar_evento(){
             printf("El controlador detecto tecla: izq \n");
            // this->enviar_mensaje("TeclaIzquierda");
                 this->jugador->caminar();
+                printf("El valor DE CORREr es %d.\n",this->jugador->getFrame());
                 break;
             case SDLK_RIGHT:
             printf("El controlador detecto tecla: der\n");
            // this->enviar_mensaje("TeclaDerecha");
                 this->jugador->caminar();
+                printf("El valor DE CORREr es %d.\n",this->jugador->getFrame());
                 break;
             default:
             printf("El controlador detecto tecla: alguna\n");
                 this->jugador->caminar();
+                 printf("El valor DE CORREr es %d.\n",this->jugador->getFrame());
                 break;
                 //pasar al siguiente nivel
         }

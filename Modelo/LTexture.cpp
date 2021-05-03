@@ -55,7 +55,7 @@ bool LTexture::loadFromFile( std::string path , SDL_Renderer * gRenderer)
 
 	//Return success
 	mTexture = newTexture;
-	return mTexture;
+	return mTexture != NULL;
 }
 
 void LTexture::free()
