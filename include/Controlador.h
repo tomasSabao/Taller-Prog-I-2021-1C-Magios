@@ -7,8 +7,8 @@ class Controlador
 {
     public:
         Controlador(Modelo_Jugador* modelo_jugador);
-        int desencolar_evento();
-        int descifrar_evento();
+        int desencolarEvento();
+        int descifrarEvento();
 
         void enviar_mensaje(std::string tecla_apretada);
 
@@ -19,6 +19,7 @@ class Controlador
     private:
     Modelo_Jugador* jugador;
     SDL_Event e;
+    const Uint8* current_key_states;
 
 };
 

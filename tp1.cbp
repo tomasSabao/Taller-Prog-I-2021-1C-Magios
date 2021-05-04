@@ -65,6 +65,10 @@
 		<Unit filename="View/Vista_Jugador.cpp" />
 		<Unit filename="View/Vista_Jugador.h" />
 		<Unit filename="include/Controlador.h" />
+		<Unit filename="src/Mario.cpp" />
+		<Unit filename="src/Mario.h" />
+		<Unit filename="src/Test.cpp" />
+		<Unit filename="src/Test.h" />
 		<Unit filename="src/main.cpp" />
 		<Extensions>
 			<code_completion />

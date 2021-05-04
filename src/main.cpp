@@ -7,6 +7,7 @@
 #include "../include/Controlador.h"
 #include "../Modelo/LTexture.h"
 #include "../View/Vista_Jugador.h"
+#include "Test.h"
 
 const int WALKING_ANIMATION_FRAMES = 4;
 SDL_Rect gSpriteClips[ WALKING_ANIMATION_FRAMES ];
@@ -66,7 +67,7 @@ bool loadMediaFondo( )
 }
 
 int main( int argc, char* args[] )
-{
+{/*
     Modelo* modelo=new Modelo();
     Modelo_Jugador* jugador=modelo->getModeloJugador();
     Controlador controlador(modelo->getModeloJugador());
@@ -91,8 +92,8 @@ int main( int argc, char* args[] )
     int quit=0;
     //SDL_Event e;
     while(quit!=1){
-        while(controlador.desencolar_evento()!=0){
-            quit= controlador.descifrar_evento();
+        while(controlador.desencolarEvento()!=0){
+            quit= controlador.descifrarEvento();
 
          }
 
@@ -110,6 +111,8 @@ int main( int argc, char* args[] )
             jugador->caminar();
             //vistaJugador->setGSpriteActual();
     }
-
+*/
+    Test test;
+    test.testearMovimiento();
 	return 0;
 }
