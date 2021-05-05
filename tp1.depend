@@ -108,38 +108,40 @@
 	"Modelo_Jugador.h"
 	<SDL2/SDL.h>
 
-1620049051 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Controlador/Controlador.cpp
+1620220503 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Controlador/Controlador.cpp
 	"Controlador.h"
+	"../Modelo/Modelo.h"
 
-1620048086 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/include/Controlador.h
-	"Modelo_Jugador.h"
+1620220526 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/include/Controlador.h
+	"Modelo.h"
 	<SDL2/SDL.h>
 
-1620047970 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo_Jugador.h
+1620225722 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo_Jugador.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 	"../Modelo/LTexture.h"
 
-1620047970 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/LTexture.h
+1620177836 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/LTexture.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 	<iostream>
 	<stdlib.h>
 	<stdio.h>
 
-1620049822 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/LTexture.cpp
+1620177942 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/LTexture.cpp
 	"LTexture.h"
 
-1620047970 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo.cpp
+1620231260 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo.cpp
 	"Modelo.h"
 
-1620047970 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo.h
+1620225523 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo.h
 	"../Modelo/Modelo_Jugador.h"
+	"../Modelo/Mono.h"
 
 1620049159 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo_Jugador.cpp
 	"../Modelo/Modelo_Jugador.h"
 
-1620058867 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/src/main.cpp
+1620232479 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/src/main.cpp
 	<stdio.h>
 	<string>
 	"../View/Vista.h"
@@ -147,8 +149,10 @@
 	"../include/Controlador.h"
 	"../Modelo/LTexture.h"
 	"../View/Vista_Jugador.h"
+	"../View/VistaMono.h"
+	"Test.h"
 
-1620048086 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/View/Vista.h
+1620231256 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/View/Vista.h
 	<stdio.h>
 	<string>
 	<SDL2/SDL.h>
@@ -156,16 +160,18 @@
 	"../View/Vista_Jugador.h"
 	"../Modelo/Modelo.h"
 
-1620047970 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/View/Vista_Jugador.h
+1620225690 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/View/Vista_Jugador.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 	"../Modelo/Modelo_Jugador.h"
 
-1620048086 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/View/Vista.cpp
+1620232921 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/View/Vista.cpp
 	"Vista.h"
+	"../View/VistaMono.h"
 
-1620048086 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/View/Vista_Jugador.cpp
+1620232896 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/View/Vista_Jugador.cpp
 	"../View/Vista_Jugador.h"
+	"../View/VistaMono.h"
 
 1620163119 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/src/Mario.cpp
 	"Mario.h"
@@ -183,4 +189,42 @@
 	"../Modelo/Modelo.h"
 	"../include/Controlador.h"
 	"../Modelo/LTexture.h"
+
+1620176027 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/src/Test.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_image.h>
+	"../Modelo/Modelo.h"
+	"../include/Controlador.h"
+	"../Modelo/LTexture.h"
+
+1620176027 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/src/Mario.cpp
+	"Mario.h"
+	<stdio.h>
+
+1620176027 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/src/Mario.h
+
+1620220575 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/src/Test.cpp
+	"Test.h"
+	"Mario.h"
+
+1620219718 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/src/main2.cpp
+	<stdio.h>
+	<string>
+	"../View/Vista.h"
+	"../Modelo/Modelo.h"
+	"../include/Controlador.h"
+	"../Modelo/LTexture.h"
+	"../View/Vista_Jugador.h"
+	"Test.h"
+
+1620231010 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Mono.h
+	<Modelo_Jugador.h>
+
+1620231010 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Mono.cpp
+	"Mono.h"
+
+1620232659 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/View/VistaMono.h
+	<Vista_Jugador.h>
+
+1620233223 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/View/VistaMono.cpp
 

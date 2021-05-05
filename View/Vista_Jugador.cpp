@@ -1,12 +1,12 @@
 #include "../View/Vista_Jugador.h"
-
+#include "../View/VistaMono.h"
 Vista_Jugador::Vista_Jugador(Modelo_Jugador* jugadore)
 
 {
    this->jugador=jugadore;
    this->x=0;
    this->y=0;
-   LTexture*  gSpriteSheetTextureJugador=NULL;
+   this->gSpriteSheetTextureJugador= new LTexture();
    this->setGSpriteActual();
 }
 
@@ -23,9 +23,9 @@ bool Vista_Jugador::loadMedia(SDL_Renderer*  grendered)
 	bool success = true;
 
 
-    LTexture  newTexture ;
+    //LTexture  newTexture ;
 	//Load sprite sheet texture
-	if( !newTexture.loadFromFile( "foo.png", grendered) )
+	if( !gSpriteSheetTextureJugador->loadFromFile( "foo.png", grendered) )
 	{
 		printf( "Failed to load walking animation texture!\n" );
 		success = false;
@@ -54,7 +54,7 @@ bool Vista_Jugador::loadMedia(SDL_Renderer*  grendered)
 		gSpriteClips[ 3 ].h = 205;
 	}
 
-    this->gSpriteSheetTextureJugador= &newTexture;
+    //this->gSpriteSheetTextureJugador= &newTexture;
 	return success;
 }
 
@@ -62,7 +62,7 @@ void Vista_Jugador::setGSpriteActual()
 {
 
 
-    this->gSpriteActual=&gSpriteClips[ this->jugador->getFrame() ];
+    this->gSpriteActual=&gSpriteClips[ this->jugador->getFrame()/4 ];
 
 }
 
@@ -79,7 +79,8 @@ LTexture* Vista_Jugador::getTextureJugador()
 
 void Vista_Jugador::render( int posx, int posy ,SDL_Renderer* grendered)
 {
-    this->gSpriteSheetTextureJugador->render( 25 , 30,this->getGSpriteActual() ,grendered);
+    this->setGSpriteActual();
+    this->gSpriteSheetTextureJugador->render( posx , posy,this->getGSpriteActual() ,grendered);
 }
 
 

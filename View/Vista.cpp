@@ -1,4 +1,5 @@
 #include "Vista.h"
+#include "../View/VistaMono.h"
 
 Vista::Vista(Modelo* modelo)
 {
@@ -6,7 +7,8 @@ Vista::Vista(Modelo* modelo)
     this->modelo=modelo;
     this->gWindow=NULL;
     this->gRenderer=NULL;
-    this->vista_jugador=new Vista_Jugador(modelo->getModeloJugador());
+    this->vista_jugador=new Vista_Jugador(this->modelo->getModeloJugador());
+    //this->mono=new VistaMono( modelo->getMono() );
 }
 
 Vista::~Vista()
@@ -110,7 +112,8 @@ bool  Vista::loadMedia()
     SDL_SetRenderDrawColor( this->gRenderer, 0xFF, 0xFF, 0, 0xFF );
 	SDL_RenderClear( this->gRenderer );
 
-    this->vista_jugador->render(  SCREEN_WIDTH  ,   SCREEN_HEIGHT ,gRenderer);
+    this->vista_jugador->render(  0 ,   0 ,this->getRenderer());
+   // this->mono->render(  SCREEN_WIDTH  ,   SCREEN_HEIGHT ,this->getRenderer());
     //Update screen
 	SDL_RenderPresent( this->gRenderer );
  }

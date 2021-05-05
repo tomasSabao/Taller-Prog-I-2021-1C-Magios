@@ -6,6 +6,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include "../View/Vista_Jugador.h"
+//#include "../View/VistaMono.h"
 
 #include "../Modelo/Modelo.h"
 
@@ -43,6 +44,7 @@ class Vista
      const int SCREEN_WIDTH = 640;
     const int SCREEN_HEIGHT = 480;
     Vista_Jugador* vista_jugador;
+    Vista_Jugador* mono;
     Modelo* modelo;
 };
 

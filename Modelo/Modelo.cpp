@@ -2,6 +2,7 @@
 
 Modelo::Modelo()
 {   this->jugador= new Modelo_Jugador();
+//    this->mono=new Mono();
 
 }
 
@@ -22,5 +23,9 @@ Modelo_Jugador* Modelo::getModeloJugador()
 
 
 
+Mono* Modelo::getMono()
+{
+    return  this->mono;
 
+}
 

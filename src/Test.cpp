@@ -17,7 +17,7 @@ void Test::testearMovimiento(){
 
 
 	Modelo* modelo= new Modelo();
-	Controlador controlador(modelo->getModeloJugador());
+ 	Controlador controlador(modelo );
 	LTexture* textura=new LTexture();
 
 	textura->loadFromFile("jumpman.png",renderer);

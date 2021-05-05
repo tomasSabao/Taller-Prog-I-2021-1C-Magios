@@ -19,7 +19,7 @@ class Modelo_Jugador
 
 
 
-    private:
+    protected:
 
 
     int frames;

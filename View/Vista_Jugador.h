@@ -18,7 +18,7 @@ class Vista_Jugador
         void close();
 
 
-    private:
+    protected:
         Modelo_Jugador* jugador;
         int x;
         int y;

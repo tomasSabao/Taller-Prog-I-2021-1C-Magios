@@ -1,12 +1,12 @@
 #include "Controlador.h"
+#include "../Modelo/Modelo.h"
 
 
 
 
-
-Controlador::Controlador(Modelo_Jugador* modelo_jugador)
+Controlador::Controlador(Modelo * modelo )
 {
-    this->jugador=modelo_jugador;
+    this->jugador=modelo->getModeloJugador();
     this->current_key_states=SDL_GetKeyboardState(NULL);
     //ctor
 }
@@ -22,7 +22,7 @@ int Controlador::desencolarEvento(){
 int Controlador::descifrarEvento(){
     if(e.type==SDL_QUIT){
         return 1;
-    }       
+    }
     if(this->e.type==SDL_KEYDOWN && this->e.key.repeat == 0){
 
             switch(e.key.keysym.sym){
