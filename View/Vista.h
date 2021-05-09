@@ -6,10 +6,11 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include "../View/Vista_Jugador.h"
-//#include "../View/VistaMono.h"
+#include "../View/VistaMono.h"
 
 #include "../Modelo/Modelo.h"
-
+ #include <vector>
+ using namespace std;
 class Vista
 {
     public:
@@ -30,8 +31,8 @@ class Vista
             return this->gRenderer;
         }
 
-        Vista_Jugador* getVistaJugador(){
-        return this->vista_jugador;}
+        Vista_Jugador* getVistaJugador(int num){
+        return this->vista_jugador[num];}
     protected:
 
 
@@ -43,8 +44,9 @@ class Vista
     SDL_Renderer*  gRenderer =NULL ;
      const int SCREEN_WIDTH = 640;
     const int SCREEN_HEIGHT = 480;
-    Vista_Jugador* vista_jugador;
-    Vista_Jugador* mono;
+    Vista_Jugador* vista_jugador[1];
+     std::vector<Vista_Jugador*> personajes;
+    //VistaMono* Vistamono;
     Modelo* modelo;
 };
 

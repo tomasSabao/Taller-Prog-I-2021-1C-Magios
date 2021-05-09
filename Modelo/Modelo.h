@@ -2,6 +2,10 @@
 #define MODELO_H
 #include "../Modelo/Modelo_Jugador.h"
 #include "../Modelo/Mono.h"
+#include "../Modelo/Fondo.h"
+#include <vector>
+ using namespace std;
+
 
 class Modelo
 {
@@ -15,15 +19,17 @@ class Modelo
 
         //Frees media and shuts down SDL
 
-        Modelo_Jugador* getModeloJugador();
+        Modelo_Jugador* getModeloJugador(int posicion);
         Mono*  getMono();
+        void acciones();
 
 
     private:
 
 
     Modelo_Jugador * jugador;
-    Mono* mono;
+    std::vector<Modelo_Jugador*> modelosPersonajes;
+
     //Screen dimension constants
 
 

@@ -8,6 +8,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+
+
 //dimension del nivel
 #define ANCHO_NIVEL 2048
 #define ALTO_NIVEL 1318
@@ -42,7 +44,7 @@ public:
     void setAlpha( Uint8 alpha );
 
     //Renders texture at given point
-    void render( int x, int y, SDL_Rect* clip = NULL ,SDL_Renderer *gRenderer=NULL );
+    void render( int x, int y, SDL_Rect* clip = NULL ,SDL_Renderer *gRenderer=NULL , int anchoProporcion=0, int altoProporcion=0);
 
     //Gets image dimensions
     int getWidth();

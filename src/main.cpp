@@ -41,9 +41,10 @@ int main( int argc, char* args[] )
 
 
              vista->render();
-            modelo->getModeloJugador()->caminar();
+            //modelo->getModeloJugador(0)->caminar();
+            modelo->acciones();
             //modelo->getMono()->caminar();
-            printf("Evento numero: %d\n",modelo->getModeloJugador()->getFrame());
+            printf("Evento numero: %d\n",modelo->getModeloJugador(0)->getFrame());
 
 
     }

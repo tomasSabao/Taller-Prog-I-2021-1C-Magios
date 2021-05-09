@@ -1,6 +1,6 @@
 #include "LTexture.h"
 
-
+#include "../View/Vista_Jugador.h"
 
 
 LTexture::LTexture()
@@ -88,7 +88,7 @@ void LTexture::setAlpha( Uint8 alpha )
 	SDL_SetTextureAlphaMod( mTexture, alpha );
 }
 
-void LTexture::render( int x, int y, SDL_Rect* clip ,SDL_Renderer*  gRenderer)
+void LTexture::render( int x, int y, SDL_Rect* clip ,SDL_Renderer*  gRenderer,  int anchoProporcion, int altoProporcion)
 {
 	//Set rendering space and render to screen
 	SDL_Rect renderQuad = { x, y, mWidth, mHeight };
@@ -96,12 +96,15 @@ void LTexture::render( int x, int y, SDL_Rect* clip ,SDL_Renderer*  gRenderer)
 	//Set clip rendering dimensions
 	if( clip != NULL )
 	{
-		renderQuad.w = clip->w;
-		renderQuad.h = clip->h;
+		renderQuad.w = clip->w + anchoProporcion;
+		renderQuad.h = clip->h +altoProporcion;
 	}
+
 
 	//Render to screen
 	SDL_RenderCopy( gRenderer, mTexture, clip, &renderQuad );
+
+
 }
 
 int LTexture::getWidth()

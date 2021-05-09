@@ -6,7 +6,7 @@
 
 Controlador::Controlador(Modelo * modelo )
 {
-    this->jugador=modelo->getModeloJugador();
+    this->jugador=modelo->getModeloJugador(0);
     this->current_key_states=SDL_GetKeyboardState(NULL);
     //ctor
 }

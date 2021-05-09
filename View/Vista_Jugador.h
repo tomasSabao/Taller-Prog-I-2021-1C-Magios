@@ -9,7 +9,7 @@ class Vista_Jugador
     public:
         Vista_Jugador(Modelo_Jugador* jugador);
         virtual ~Vista_Jugador();
-        bool loadMedia(SDL_Renderer*  grendered);
+        virtual bool loadMedia(SDL_Renderer*  grendered);
         LTexture* getTextureJugador();
         void setGSpriteActual();
         SDL_Rect* getGSpriteActual();
@@ -27,6 +27,12 @@ class Vista_Jugador
 
         SDL_Rect gSpriteClips[ 4 ];
         SDL_Rect* gSpriteActual ;
+
+
+        int   anchoProporcion;
+        int altoProporcion;
+
+
 };
 
 #endif // VISTA_JUGADOR_H

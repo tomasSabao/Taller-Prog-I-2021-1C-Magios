@@ -1,6 +1,6 @@
 #include "Mono.h"
 
-Mono::Mono()
+Mono::Mono() :Modelo_Jugador()
 {
     //ctor
 }

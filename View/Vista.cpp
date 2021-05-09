@@ -1,5 +1,6 @@
 #include "Vista.h"
 #include "../View/VistaMono.h"
+#include "../View/VistaFondo.h"
 
 Vista::Vista(Modelo* modelo)
 {
@@ -7,8 +8,16 @@ Vista::Vista(Modelo* modelo)
     this->modelo=modelo;
     this->gWindow=NULL;
     this->gRenderer=NULL;
-    this->vista_jugador=new Vista_Jugador(this->modelo->getModeloJugador());
-    //this->mono=new VistaMono( modelo->getMono() );
+    //this->vista_jugador=new Vista_Jugador(this->modelo->getModeloJugador());
+    //this->Vistamono=new VistaMono( this->modelo->getModeloJugador() );
+    //this->vista_jugador[0]=new Vista_Jugador(this->modelo->getModeloJugador());
+    //this->vista_jugador[1]=new VistaMono( this->modelo->getModeloJugador() );
+     this->personajes=std::vector<Vista_Jugador*>();
+    personajes.push_back(new Vista_Jugador(this->modelo->getModeloJugador(0)));
+    personajes.push_back(new Vista_Jugador( this->modelo->getModeloJugador(1) ));
+     personajes.push_back(new VistaMono( this->modelo->getModeloJugador(2) ));
+     personajes.push_back(new VistaFondo( this->modelo->getModeloJugador(3) ));
+
 }
 
 Vista::~Vista()
@@ -101,7 +110,24 @@ void Vista::cerrar_sdl_video(){
 
 bool  Vista::loadMedia()
 {
-    return this->vista_jugador->loadMedia(this->gRenderer);
+    bool success= true;
+  for (int i = 0; i < personajes.size(); i++) {
+    success=personajes[i]->loadMedia(this->gRenderer);
+    if( success== false)
+    {
+       return success;
+       }
+  }
+
+  /*for (auto* s : personajes)
+  {
+    s->loadMedia(this->gRenderer);
+  }
+*/
+
+
+    return success;
+    //return this->vista_jugador->loadMedia(this->gRenderer);
 
 }
 
@@ -112,22 +138,33 @@ bool  Vista::loadMedia()
     SDL_SetRenderDrawColor( this->gRenderer, 0xFF, 0xFF, 0, 0xFF );
 	SDL_RenderClear( this->gRenderer );
 
-    this->vista_jugador->render(  0 ,   0 ,this->getRenderer());
-   // this->mono->render(  SCREEN_WIDTH  ,   SCREEN_HEIGHT ,this->getRenderer());
-    //Update screen
+
+     personajes[3]->render( 0 , 0,this->getRenderer());
+   personajes[0]->render(  80 ,   90 ,this->getRenderer());
+    personajes[1]->render(  0 ,   0 ,this->getRenderer());
+     personajes[2]->render(  100 ,   0 ,this->getRenderer());
+
+
 	SDL_RenderPresent( this->gRenderer );
  }
 
  void Vista::close()
- {   this->vista_jugador->close();
-    //Destroy window
-	SDL_DestroyRenderer( this->gRenderer );
-	SDL_DestroyWindow( this->gWindow );
-	gWindow = NULL;
-	gRenderer = NULL;
 
-	//Quit SDL subsystems
-	IMG_Quit();
-	SDL_Quit();
+ {
+
+   for (int i = 0; i < personajes.size(); i++) {
+    personajes[i]->close();
+
+  }
+        //Destroy window
+        SDL_DestroyRenderer( this->gRenderer );
+        SDL_DestroyWindow( this->gWindow );
+        gWindow = NULL;
+        gRenderer = NULL;
+
+        //Quit SDL subsystems
+        IMG_Quit();
+        SDL_Quit();
+
 
  }

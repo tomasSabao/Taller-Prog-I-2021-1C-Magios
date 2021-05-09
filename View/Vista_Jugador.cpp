@@ -8,7 +8,10 @@ Vista_Jugador::Vista_Jugador(Modelo_Jugador* jugadore)
    this->y=0;
    this->gSpriteSheetTextureJugador= new LTexture();
    this->setGSpriteActual();
-}
+   this->anchoProporcion=0;
+   this->altoProporcion =0;
+
+ }
 
 Vista_Jugador::~Vista_Jugador()
 {
@@ -80,7 +83,7 @@ LTexture* Vista_Jugador::getTextureJugador()
 void Vista_Jugador::render( int posx, int posy ,SDL_Renderer* grendered)
 {
     this->setGSpriteActual();
-    this->gSpriteSheetTextureJugador->render( posx , posy,this->getGSpriteActual() ,grendered);
+    this->gSpriteSheetTextureJugador->render( posx , posy,this->getGSpriteActual() ,grendered,this->anchoProporcion,this->altoProporcion );
 }
 
 

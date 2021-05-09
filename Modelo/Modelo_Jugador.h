@@ -13,7 +13,7 @@ class Modelo_Jugador
         virtual ~Modelo_Jugador();
 
 
-        void caminar();
+        virtual void caminar();
 
         int getFrame();
 
