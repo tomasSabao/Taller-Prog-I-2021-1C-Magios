@@ -54,6 +54,12 @@
 			<Add option="-lSDL2 -lSDL2_image" />
 		</Linker>
 		<Unit filename="Controlador/Controlador.cpp" />
+		<Unit filename="Modelo/Fondo.cpp" />
+		<Unit filename="Modelo/Fondo.h" />
+		<Unit filename="Modelo/FuegoPiso.cpp" />
+		<Unit filename="Modelo/FuegoPiso.h" />
+		<Unit filename="Modelo/Fueguito.cpp" />
+		<Unit filename="Modelo/Fueguito.h" />
 		<Unit filename="Modelo/LTexture.cpp" />
 		<Unit filename="Modelo/LTexture.h" />
 		<Unit filename="Modelo/Modelo.cpp" />
@@ -64,6 +70,12 @@
 		<Unit filename="Modelo/Mono.h" />
 		<Unit filename="View/Vista.cpp" />
 		<Unit filename="View/Vista.h" />
+		<Unit filename="View/VistaFondo.cpp" />
+		<Unit filename="View/VistaFondo.h" />
+		<Unit filename="View/VistaFuegoPiso.cpp" />
+		<Unit filename="View/VistaFuegoPiso.h" />
+		<Unit filename="View/VistaFueguito.cpp" />
+		<Unit filename="View/VistaFueguito.h" />
 		<Unit filename="View/VistaMono.cpp" />
 		<Unit filename="View/VistaMono.h" />
 		<Unit filename="View/Vista_Jugador.cpp" />
@@ -74,6 +86,9 @@
 		<Unit filename="src/Test.cpp" />
 		<Unit filename="src/Test.h" />
 		<Unit filename="src/main.cpp" />
-		<Extensions />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

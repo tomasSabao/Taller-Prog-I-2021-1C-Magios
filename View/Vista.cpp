@@ -1,6 +1,8 @@
 #include "Vista.h"
 #include "../View/VistaMono.h"
 #include "../View/VistaFondo.h"
+#include "../View/VistaFueguito.h"
+#include "../View/VistaFuegoPiso.h"
 
 Vista::Vista(Modelo* modelo)
 {
@@ -17,6 +19,9 @@ Vista::Vista(Modelo* modelo)
     personajes.push_back(new Vista_Jugador( this->modelo->getModeloJugador(1) ));
      personajes.push_back(new VistaMono( this->modelo->getModeloJugador(2) ));
      personajes.push_back(new VistaFondo( this->modelo->getModeloJugador(3) ));
+     personajes.push_back(new VistaFueguito(this->modelo->getModeloJugador(4)));
+     personajes.push_back(new VistaFueguito(this->modelo->getModeloJugador(5)));
+    personajes.push_back(new VistaFuegoPiso(this->modelo->getModeloJugador(6)));
 
 }
 
@@ -143,6 +148,10 @@ bool  Vista::loadMedia()
    personajes[0]->render(  80 ,   90 ,this->getRenderer());
     personajes[1]->render(  0 ,   0 ,this->getRenderer());
      personajes[2]->render(  100 ,   0 ,this->getRenderer());
+     personajes[4]->render(280, 220,this->getRenderer());
+     personajes[5]->render(480, 200,this->getRenderer());
+      personajes[6]->render(350, 510,this->getRenderer());
+
 
 
 	SDL_RenderPresent( this->gRenderer );

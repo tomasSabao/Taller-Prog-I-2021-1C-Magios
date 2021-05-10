@@ -3,6 +3,8 @@
 #include "../Modelo/Modelo_Jugador.h"
 #include "../Modelo/Mono.h"
 #include "../Modelo/Fondo.h"
+#include "../Modelo/Fueguito.h"
+#include "../Modelo/FuegoPiso.h"
 #include <vector>
  using namespace std;
 

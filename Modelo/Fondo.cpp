@@ -20,3 +20,4 @@ void Fondo::caminar()
 
 
 }
+
