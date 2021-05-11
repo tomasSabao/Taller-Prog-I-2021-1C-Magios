@@ -57,7 +57,7 @@ void Modelo::acciones()
 
 
         this->modelosPersonajes[mario]->fijarAnimacionMovimiento();
-        this->modelosPersonajes[mario]->aplicarGravedad();
+
 
 }
 

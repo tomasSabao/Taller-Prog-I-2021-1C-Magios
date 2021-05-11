@@ -48,6 +48,8 @@ int main( int argc, char* args[] )
             vista->render();
 
          }
+            mario->aplicarGravedad();
+            mario->mover();
             modelo->acciones();
              vista->render();
             //modelo->getModeloJugador(0)->caminar();
