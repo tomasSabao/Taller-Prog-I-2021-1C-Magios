@@ -11,6 +11,7 @@ public:
 	virtual ~Test();
 
 	void testearMovimiento();
+	void testearCreacionVistaMario();
 
 private:
 };

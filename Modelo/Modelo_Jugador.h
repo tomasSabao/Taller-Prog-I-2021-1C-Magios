@@ -23,8 +23,13 @@ class Modelo_Jugador
 		void setPosicionX(int pos_x);
 		void setPosicionY(int pos_y);
 		void setGravedad(int num);
-        virtual void caminar();
 
+		//solo tiene que usarse para el mario, porque necesita el valor de las teclas
+		void fijarAnimacionMovimiento();
+		
+        virtual void caminar();
+        //solo debug para ver todas las animaciones
+        void caminar2();
         int getFrame();
 
 	private:
@@ -35,7 +40,7 @@ class Modelo_Jugador
 
 
 
-		int velocidad_horizontal=5;
+		int velocidad_horizontal=10;
 
 	//solo para el mario:con velocidad_vertical=20 el pico del salto es de 50
 		int velocidad_vertical=20;
@@ -45,6 +50,8 @@ class Modelo_Jugador
 		int velocidad_y=0;
 		int posicion_x=0;
 		int posicion_y=0;
+
+		bool ultima_animacion_quieta=false;
 
     protected:
 

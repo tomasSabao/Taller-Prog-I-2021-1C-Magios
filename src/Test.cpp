@@ -1,6 +1,6 @@
 #include "Test.h"
 #include "Mario.h"
-
+#include <VistaMario.h>
 Test::Test(){
 	//ctor
 }
@@ -60,8 +60,55 @@ void Test::testearMovimiento(){
 		SDL_RenderPresent(renderer);
 
 	}
+}
 
+void Test::testearCreacionVistaMario(){
+	SDL_Init(SDL_INIT_VIDEO);
+	SDL_Window* ventana=SDL_CreateWindow( "SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,640   , 480, SDL_WINDOW_SHOWN );
+	SDL_Renderer* renderer=SDL_CreateRenderer( ventana, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC );
 
+	Modelo* modelo=new Modelo();
+	Mario* mario=new Mario();
+	VistaMario* vista_mario=new VistaMario(mario);
+	vista_mario->loadMedia(renderer);
+	Controlador controlador(modelo);
+	LTexture* textura=vista_mario->getTextureJugador();
 
+	SDL_Rect unRect;
+	unRect.x=0;
+	unRect.y=0;
+	unRect.w=0.03*640;
+	unRect.h=0.03*480;
+
+	int boton_apretado=0;
+	int contador=0;
+
+	while(boton_apretado!=1){
+		while(controlador.desencolarEvento()!=0){
+			printf("Evento numero: %d\n",contador);
+			contador++;
+			SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
+			SDL_RenderClear( renderer );
+			boton_apretado=controlador.descifrarEvento();
+			printf("valor descifrado: %d\n",boton_apretado);
+			mario->traducirTecla(boton_apretado);
+			mario->mover();
+			mario->imprimirPosicion();
+			mario->imprimirVelocidad();
+			textura->render(mario->getPosicionX(),420-mario->getPosicionY(),&unRect,renderer);
+			SDL_RenderPresent(renderer);
+		}
+		printf("Evento numero: %d\n",contador);
+			contador++;
+			SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
+			SDL_RenderClear( renderer );
+			boton_apretado=controlador.descifrarEvento();
+			mario->traducirTecla(boton_apretado);
+			mario->mover();
+			mario->imprimirPosicion();
+			mario->imprimirVelocidad();
+			textura->render(mario->getPosicionX(),420-mario->getPosicionY(),&unRect,renderer);
+			SDL_RenderPresent(renderer);
+	}
 
 }

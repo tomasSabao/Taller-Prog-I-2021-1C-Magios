@@ -140,4 +140,39 @@ void Modelo_Jugador::caminar()
 
 
 
+void Modelo_Jugador::fijarAnimacionMovimiento(){
+	//esto significa que mario se mueve para la derecha
+	if(this->velocidad_x >0){
+		this->frames=3;
+	}
+	else{
+		this->frames=2;
+	}
+	/*//esto significa que mario se mueve para la izquierda
+	if(this->velocidad_x <0){
+		if(this->ultima_animacion_quieta==true){
+			this->frames=1;
+			this->ultima_animacion_quieta=false;
+			return;
+		}
+		else{
+			this->frames=2;
+			this->ultima_animacion_quieta=true;
+			return;
+		}
+	}*/
+	printf("Frame: %d\n",this->frames);
+}
 
+void Modelo_Jugador::caminar2()
+{
+
+    if(  this->frames / 6 >= WALKING_ANIMATION_FRAMES )
+        {
+            this->frames = 0;
+        }
+     this->frames+= 1;
+
+   // this->frames++;
+    //this->frames=this->frames%WALKING_ANIMATION_FRAMES;
+}

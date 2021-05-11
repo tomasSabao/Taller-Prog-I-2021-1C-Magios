@@ -6,9 +6,11 @@
 #define fueguito1 4
 #define fueguito2 5
 #define fuegoPiso 6
+#define mario 7
 
 
 #include "../Modelo/Modelo.h"
+#include "../Modelo/Mario.h"
 
 Modelo::Modelo()
 {   this->jugador= new Modelo_Jugador();
@@ -21,6 +23,7 @@ this->modelosPersonajes.push_back( new Fondo());
 this->modelosPersonajes.push_back( new Fueguito());
 this->modelosPersonajes.push_back( new Fueguito());
 this->modelosPersonajes.push_back( new FuegoPiso());
+this->modelosPersonajes.push_back( new Mario());
 
 
 
@@ -53,7 +56,11 @@ void Modelo::acciones()
         this->modelosPersonajes[fuegoPiso]->caminar();
 
 
+        this->modelosPersonajes[mario]->fijarAnimacionMovimiento();
+        this->modelosPersonajes[mario]->aplicarGravedad();
+
 }
+
 
 
 

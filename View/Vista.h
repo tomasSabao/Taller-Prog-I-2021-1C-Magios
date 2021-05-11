@@ -33,6 +33,8 @@ class Vista
 
         Vista_Jugador* getVistaJugador(int num){
         return this->vista_jugador[num];}
+
+
     protected:
 
 

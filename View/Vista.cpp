@@ -3,6 +3,8 @@
 #include "../View/VistaFondo.h"
 #include "../View/VistaFueguito.h"
 #include "../View/VistaFuegoPiso.h"
+#include "../View/VistaMario.h"
+
 
 Vista::Vista(Modelo* modelo)
 {
@@ -22,6 +24,7 @@ Vista::Vista(Modelo* modelo)
      personajes.push_back(new VistaFueguito(this->modelo->getModeloJugador(4)));
      personajes.push_back(new VistaFueguito(this->modelo->getModeloJugador(5)));
     personajes.push_back(new VistaFuegoPiso(this->modelo->getModeloJugador(6)));
+    personajes.push_back(new VistaMario(this->modelo->getModeloJugador(7)));
 
 }
 
@@ -151,6 +154,8 @@ bool  Vista::loadMedia()
      personajes[4]->render(280, 220,this->getRenderer());
      personajes[5]->render(480, 200,this->getRenderer());
       personajes[6]->render(350, 510,this->getRenderer());
+      personajes[7]->render(personajes[7]->getModeloJugador()->getPosicionX(),\
+        500-personajes[7]->getModeloJugador()->getPosicionY(),this->getRenderer());
 
 
 
@@ -177,3 +182,4 @@ bool  Vista::loadMedia()
 
 
  }
+

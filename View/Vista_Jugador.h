@@ -17,6 +17,8 @@ class Vista_Jugador
 		void render( int posx, int posy, SDL_Renderer*  grendered );
         void close();
 
+        //Tomas: Esta va a ser la conexion entre la vista y el modelo
+        Modelo_Jugador* getModeloJugador();
 
     protected:
         Modelo_Jugador* jugador;
@@ -25,7 +27,8 @@ class Vista_Jugador
         LTexture*  gSpriteSheetTextureJugador;
         //Walking animation
 
-        SDL_Rect gSpriteClips[ 4 ];
+        //Nota tomas: cambie el numero de elementos de gSpriteClips de 4 a 6
+        SDL_Rect gSpriteClips[ 6 ];
         SDL_Rect* gSpriteActual ;
 
 

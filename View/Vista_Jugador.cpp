@@ -93,3 +93,8 @@ void Vista_Jugador::close()
 {
     this->gSpriteSheetTextureJugador->free();
 }
+
+
+Modelo_Jugador* Vista_Jugador::getModeloJugador(){
+	return this->jugador;
+}

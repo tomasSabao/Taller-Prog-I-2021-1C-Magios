@@ -26,6 +26,7 @@ class Modelo
         void acciones();
 
 
+
     private:
 
 
