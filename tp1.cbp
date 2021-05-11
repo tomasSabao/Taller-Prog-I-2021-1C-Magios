@@ -81,14 +81,13 @@
 		<Unit filename="View/Vista_Jugador.cpp" />
 		<Unit filename="View/Vista_Jugador.h" />
 		<Unit filename="include/Controlador.h" />
+		<Unit filename="lib/Logger.cpp" />
+		<Unit filename="lib/Logger.h" />
 		<Unit filename="src/Mario.cpp" />
 		<Unit filename="src/Mario.h" />
 		<Unit filename="src/Test.cpp" />
 		<Unit filename="src/Test.h" />
 		<Unit filename="src/main.cpp" />
-		<Extensions>
-			<code_completion />
-			<debugger />
-		</Extensions>
+		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

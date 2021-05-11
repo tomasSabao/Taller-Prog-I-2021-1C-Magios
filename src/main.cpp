@@ -10,12 +10,13 @@
 #include "../View/Vista_Jugador.h"
 #include "../View/VistaMono.h"
 #include "Test.h"
+#include "../lib/Logger.h"
 
-
-
+Logger logger = Logger();
 
 int main( int argc, char* args[] )
 {
+     logger.log("info","inicia programa");
      Modelo* modelo=new Modelo();
      //Modelo_Jugador* jugador=modelo->getModeloJugador();
      //VistaMono *vistaMono = new vistaMono(jugador);
