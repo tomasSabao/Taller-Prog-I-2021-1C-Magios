@@ -141,33 +141,70 @@ void Modelo_Jugador::caminar()
 
 
 void Modelo_Jugador::fijarAnimacionMovimiento(){
-	//esto significa que mario se mueve para la derecha
-	if(this->velocidad_x >0){
-		this->frames=3;
+
+	//caso en el que el jugador esta en el piso
+	//
+	if(this->estaParadoEnPiso()){
+		if(this->velocidad_x >0){
+		if(this->ultima_animacion==1){
+			this->frames=5;
+			this->ultima_animacion=2;
+			this->ultima_direccion=1;
+			return;
+		}
+		else{
+			this->frames=3;
+			this->ultima_animacion=1;
+			this->ultima_direccion=1;
+			return;
+		}
 	}
-	else{
-		this->frames=2;
-	}
-	/*//esto significa que mario se mueve para la izquierda
-	if(this->velocidad_x <0){
-		if(this->ultima_animacion_quieta==true){
-			this->frames=1;
-			this->ultima_animacion_quieta=false;
+	if(this->velocidad_x<0){
+		if(this->ultima_animacion==1){
+			this->frames=4;
+			this->ultima_animacion=2;
+			this->ultima_direccion=2;
 			return;
 		}
 		else{
 			this->frames=2;
-			this->ultima_animacion_quieta=true;
+			this->ultima_animacion=1;
+			this->ultima_direccion=2;
 			return;
 		}
-	}*/
-	printf("Frame: %d\n",this->frames);
+	}
+	if(this->velocidad_x ==0){
+		if(this->ultima_direccion==1){
+			this->frames=1;
+			this->ultima_animacion=2;
+			return;
+		}
+		else{
+			this->frames=0;
+			this->ultima_animacion=2;
+			return;
+		}
+	}
+	}
+	//en este caso mario esta saltando
+	else{
+		if(this->ultima_direccion==1){
+			this->frames=7;
+			return;
+		}
+		else{
+			this->frames=6;
+		}
+	}
+	
 }
-
+bool Modelo_Jugador::estaParadoEnPiso(){
+	return this->posicion_y==0;
+}
 void Modelo_Jugador::caminar2()
 {
 
-    if(  this->frames / 6 >= WALKING_ANIMATION_FRAMES )
+    if(  this->frames / 8 >= WALKING_ANIMATION_FRAMES )
         {
             this->frames = 0;
         }

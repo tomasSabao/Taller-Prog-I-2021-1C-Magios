@@ -32,6 +32,8 @@ class Modelo_Jugador
         void caminar2();
         int getFrame();
 
+        bool estaParadoEnPiso();
+
 	private:
 		void aumentarVelocidadX();
 		void reducirVelocidadX();
@@ -51,13 +53,15 @@ class Modelo_Jugador
 		int posicion_x=0;
 		int posicion_y=0;
 
-		bool ultima_animacion_quieta=false;
-
     protected:
 
 
     int frames;
-
+    //esto es solo para el numero de la ultima animacion corriendo
+    //en el mario
+    int ultima_animacion=2;
+    //esto es para la ultima direccion. 1 es izquierda, 2 es derecha
+    int ultima_direccion=2;
     };
 
 #endif // MODELO_JUGADOR_H

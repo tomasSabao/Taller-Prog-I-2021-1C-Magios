@@ -32,7 +32,6 @@ int main( int argc, char* args[] )
     //
     Modelo_Jugador* mario=modelo->getModeloJugador(7);
     //
-
     int quit=0;
 
     //SDL_Event e;
@@ -56,7 +55,7 @@ int main( int argc, char* args[] )
 
 
             //modelo->getMono()->caminar();
-            printf("Evento numero: %d\n",modelo->getModeloJugador(0)->getFrame());
+            //printf("Evento numero: %d\n",modelo->getModeloJugador(7)->getFrame());
 
 
     }

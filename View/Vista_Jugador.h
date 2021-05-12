@@ -16,7 +16,6 @@ class Vista_Jugador
         //Renders texture at given point
 		void render( int posx, int posy, SDL_Renderer*  grendered );
         void close();
-
         //Tomas: Esta va a ser la conexion entre la vista y el modelo
         Modelo_Jugador* getModeloJugador();
 
@@ -27,8 +26,8 @@ class Vista_Jugador
         LTexture*  gSpriteSheetTextureJugador;
         //Walking animation
 
-        //Nota tomas: cambie el numero de elementos de gSpriteClips de 4 a 6
-        SDL_Rect gSpriteClips[ 6 ];
+        //Nota tomas: cambie el numero de elementos de gSpriteClips de 4 a 8
+        SDL_Rect gSpriteClips[ 8 ];
         SDL_Rect* gSpriteActual ;
 
 
@@ -36,6 +35,11 @@ class Vista_Jugador
         int altoProporcion;
 
 
+        int numero_maximo_frames=4;
+
+        //esto es solo para el numero de la ultima animacion corriendo
+        //en el mario
+        int ultima_animacion=2;
 };
 
 #endif // VISTA_JUGADOR_H

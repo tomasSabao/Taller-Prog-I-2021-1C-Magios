@@ -4,6 +4,7 @@ VistaMario::VistaMario(Modelo_Jugador* jugadore): Vista_Jugador( jugadore)
 {
    this->anchoProporcion=30;
    this->altoProporcion =30;
+   this->numero_maximo_frames=1;
 }
 
 VistaMario::~VistaMario()
@@ -29,40 +30,53 @@ printf("scope: Vista_jugador::load_media\n");
 	}
 	else
 	{
-		//Mario salta izquierda 
-		gSpriteClips[ 0 ].x = 38;
+		//Mario mira izquierda 
+		gSpriteClips[ 0 ].x = 0;
 		gSpriteClips[ 0 ].y = 0;
-		gSpriteClips[ 0 ].w =  16;
-		gSpriteClips[ 0 ].h = 16;
+		gSpriteClips[ 0 ].w =  14;
+		gSpriteClips[ 0 ].h = 18;
 
-		//mario camina izquieda
-		gSpriteClips[ 1 ].x =  80;
+		//mario mira derecha
+		gSpriteClips[ 1 ].x =  14;
 		gSpriteClips[ 1 ].y =   0;
-		gSpriteClips[ 1 ].w =  16;
-		gSpriteClips[ 1].h = 16;
+		gSpriteClips[ 1 ].w =  12;
+		gSpriteClips[ 1].h = 18;
 
 
-		//mario mira izquierda quieto
-		gSpriteClips[ 2 ].x =   122;
+		//mario camina izquierda[1]
+		gSpriteClips[ 2 ].x =   29;
 		gSpriteClips[ 2 ].y =   0;
-		gSpriteClips[ 2 ].w =  16;
-		gSpriteClips[ 2].h = 16;
+		gSpriteClips[ 2 ].w =  15;
+		gSpriteClips[ 2].h = 18;
 
-		//mario mira derecha quieto
-		gSpriteClips[ 3 ].x =   162;
+		//mario camina derecha[1]
+		gSpriteClips[ 3 ].x =   48;
 		gSpriteClips[ 3 ].y =   0;
-		gSpriteClips[ 3 ].w =  16;
-		gSpriteClips[ 3].h = 16;
-		//mario camina derecha
-		gSpriteClips[ 4 ].x =   200;
+		gSpriteClips[ 3 ].w =  15;
+		gSpriteClips[ 3].h = 18;
+		//mario camina izquierda[2]
+		gSpriteClips[ 4 ].x =   67;
 		gSpriteClips[ 4 ].y =   0;
-		gSpriteClips[ 4 ].w =  16;
-		gSpriteClips[ 4 ].h = 16;
-		//mario salta derecha
-		gSpriteClips[ 5 ].x =   240;
+		gSpriteClips[ 4 ].w =  15;
+		gSpriteClips[ 4 ].h = 18;
+		//mario camina derecha [2]
+		gSpriteClips[ 5 ].x =   86;
 		gSpriteClips[ 5 ].y =   0;
-		gSpriteClips[ 5 ].w =  16;
-		gSpriteClips[ 5 ].h = 16;
+		gSpriteClips[ 5 ].w =  15;
+		gSpriteClips[ 5 ].h = 18;
+
+		//Mario salta izquierda 
+		gSpriteClips[ 6 ].x = 106;
+		gSpriteClips[ 6 ].y = 0;
+		gSpriteClips[ 6 ].w =  15;
+		gSpriteClips[ 6 ].h = 18;
+
+		//Mario salta derecha
+		gSpriteClips[ 7 ].x = 124;
+		gSpriteClips[ 7 ].y = 0;
+		gSpriteClips[ 7 ].w =  15;
+		gSpriteClips[ 7 ].h = 18;
+		
          }
          return success;
 

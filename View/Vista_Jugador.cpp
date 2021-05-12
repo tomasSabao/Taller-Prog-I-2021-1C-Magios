@@ -64,8 +64,7 @@ bool Vista_Jugador::loadMedia(SDL_Renderer*  grendered)
 void Vista_Jugador::setGSpriteActual()
 {
 
-
-    this->gSpriteActual=&gSpriteClips[ this->jugador->getFrame()/4 ];
+    this->gSpriteActual=&gSpriteClips[ this->jugador->getFrame()/this->numero_maximo_frames ];
 
 }
 
@@ -82,11 +81,9 @@ LTexture* Vista_Jugador::getTextureJugador()
 
 void Vista_Jugador::render( int posx, int posy ,SDL_Renderer* grendered)
 {
-    this->setGSpriteActual();
+	this->setGSpriteActual();
     this->gSpriteSheetTextureJugador->render( posx , posy,this->getGSpriteActual() ,grendered,this->anchoProporcion,this->altoProporcion );
 }
-
-
 
 
 void Vista_Jugador::close()
@@ -98,3 +95,4 @@ void Vista_Jugador::close()
 Modelo_Jugador* Vista_Jugador::getModeloJugador(){
 	return this->jugador;
 }
+
