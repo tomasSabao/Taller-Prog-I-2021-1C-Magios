@@ -1,10 +1,11 @@
 #include "Mono.h"
 
-Mono::Mono() :Modelo_Jugador()
+Mono::Mono(int posicion_x,int posicion_y):Modelo_Jugador(posicion_x,posicion_y)
 {
-    //ctor
+    this->nombre="mono";
+    this->posicion_x=posicion_x;
+     this->posicion_y=posicion_y;
 }
-
 Mono::~Mono()
 {
     //dtor

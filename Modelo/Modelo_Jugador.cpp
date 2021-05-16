@@ -1,8 +1,11 @@
 #include "../Modelo/Modelo_Jugador.h"
 #define WALKING_ANIMATION_FRAMES 4
-Modelo_Jugador::Modelo_Jugador()
+Modelo_Jugador::Modelo_Jugador(int posicion_x,int posicion_y)
 {
      this->frames=0;
+     this->nombre="jugador";
+     this->posicion_x=posicion_x;
+     this->posicion_y=posicion_y;
 
 
 }
@@ -18,14 +21,17 @@ int Modelo_Jugador::getFrame()
  return this->frames;
 }
 
-
+std::string Modelo_Jugador::getNombre()
+{
+ return this->nombre;
+}
 
 void Modelo_Jugador::traducirTecla(int tecla_apretada){
 	//aprete tecla derecha
 	if(tecla_apretada ==5){
 		this->aumentarVelocidadX();
 	}
-	//solte tecla derecha 
+	//solte tecla derecha
 	if(tecla_apretada==51){
 		this->reducirVelocidadX();
 		/*if(this->posicion_y > 0){
@@ -53,7 +59,7 @@ void Modelo_Jugador::traducirTecla(int tecla_apretada){
 			this->aplicarGravedad();
 		}
 	}
-	
+
 }
 
 
@@ -196,7 +202,7 @@ void Modelo_Jugador::fijarAnimacionMovimiento(){
 			this->frames=6;
 		}
 	}
-	
+
 }
 bool Modelo_Jugador::estaParadoEnPiso(){
 	return this->posicion_y==0;

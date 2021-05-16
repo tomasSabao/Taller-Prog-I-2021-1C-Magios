@@ -7,7 +7,7 @@
 class Mono : public Modelo_Jugador
 {
     public:
-        Mono();
+        Mono(int posicion_x=0,int posicion_y=0);
         virtual ~Mono();
 
     protected:

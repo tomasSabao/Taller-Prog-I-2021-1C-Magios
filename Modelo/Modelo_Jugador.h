@@ -9,7 +9,7 @@
 class Modelo_Jugador
 {
     public:
-        Modelo_Jugador();
+        Modelo_Jugador(int posicion_x=0,int posicion_y=0);
         virtual ~Modelo_Jugador();
 
 
@@ -26,13 +26,14 @@ class Modelo_Jugador
 
 		//solo tiene que usarse para el mario, porque necesita el valor de las teclas
 		void fijarAnimacionMovimiento();
-		
+
         virtual void caminar();
         //solo debug para ver todas las animaciones
         void caminar2();
         int getFrame();
 
         bool estaParadoEnPiso();
+        std::string  getNombre();
 
 	private:
 		void aumentarVelocidadX();
@@ -50,12 +51,12 @@ class Modelo_Jugador
 
 		int velocidad_x=0;
 		int velocidad_y=0;
-		int posicion_x=0;
-		int posicion_y=0;
+
 
     protected:
-
-
+    int posicion_x=0;
+		int posicion_y=0;
+    std::string nombre;
     int frames;
     //esto es solo para el numero de la ultima animacion corriendo
     //en el mario

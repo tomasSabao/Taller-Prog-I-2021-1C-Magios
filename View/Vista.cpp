@@ -5,6 +5,7 @@
 #include "../View/VistaFuegoPiso.h"
 #include "../View/VistaMario.h"
 
+#include "../View/FactoryVistaPersonaje.h"
 
 Vista::Vista(Modelo* modelo)
 {
@@ -17,15 +18,26 @@ Vista::Vista(Modelo* modelo)
     //this->vista_jugador[0]=new Vista_Jugador(this->modelo->getModeloJugador());
     //this->vista_jugador[1]=new VistaMono( this->modelo->getModeloJugador() );
      this->personajes=std::vector<Vista_Jugador*>();
-    personajes.push_back(new Vista_Jugador(this->modelo->getModeloJugador(0)));
+ /*   personajes.push_back(new Vista_Jugador(this->modelo->getModeloJugador(0)));
     personajes.push_back(new Vista_Jugador( this->modelo->getModeloJugador(1) ));
      personajes.push_back(new VistaMono( this->modelo->getModeloJugador(2) ));
      personajes.push_back(new VistaFondo( this->modelo->getModeloJugador(3) ));
      personajes.push_back(new VistaFueguito(this->modelo->getModeloJugador(4)));
      personajes.push_back(new VistaFueguito(this->modelo->getModeloJugador(5)));
     personajes.push_back(new VistaFuegoPiso(this->modelo->getModeloJugador(6)));
-    personajes.push_back(new VistaMario(this->modelo->getModeloJugador(7)));
+    personajes.push_back(new VistaMario(this->modelo->getModeloJugador(7)));*/
+      //printf("%d\n",this->modelo->getCantJugadores());
 
+
+     for (int i = 0; i <this->modelo->getCantJugadores(); i++) {
+     Modelo_Jugador* jugador=  this->modelo->getModeloJugador(i);
+        printf("%s\n",jugador->getNombre().c_str());
+
+     personajes.push_back(  ( new FactoryVistaPersonaje( jugador ) )->getVistaPersonaje(jugador->getNombre() ));
+     printf("%s\n","exito de init");
+        }
+
+         printf("%d\n",personajes.size());
 }
 
 Vista::~Vista()
@@ -119,7 +131,7 @@ void Vista::cerrar_sdl_video(){
 bool  Vista::loadMedia()
 {
     bool success= true;
-  for (int i = 0; i < personajes.size(); i++) {
+  for (int i = 0; i <  personajes.size(); i++) {
     success=personajes[i]->loadMedia(this->gRenderer);
     if( success== false)
     {
@@ -146,18 +158,38 @@ bool  Vista::loadMedia()
     SDL_SetRenderDrawColor( this->gRenderer, 0xFF, 0xFF, 0, 0xFF );
 	SDL_RenderClear( this->gRenderer );
 
-
-     personajes[3]->render( 0 , 0,this->getRenderer());
-   personajes[0]->render(  80 ,   90 ,this->getRenderer());
-    personajes[1]->render(  0 ,   0 ,this->getRenderer());
-     personajes[2]->render(  100 ,   0 ,this->getRenderer());
-     personajes[4]->render(280, 220,this->getRenderer());
-     personajes[5]->render(480, 200,this->getRenderer());
-      personajes[6]->render(350, 510,this->getRenderer());
-      personajes[7]->render(personajes[7]->getModeloJugador()->getPosicionX(),\
-        500-personajes[7]->getModeloJugador()->getPosicionY(),this->getRenderer());
+    for (int i = 0; i < personajes.size(); i++) {
+     //printf("%d\n",personajes.size());
 
 
+
+    // personajes[3]->render( 0 , 0,this->getRenderer());
+
+
+    //personajes[1]->render(  0 ,   0 ,this->getRenderer());
+    // personajes[2]->render(  100 ,   0 ,this->getRenderer());
+    // personajes[4]->render(280, 220,this->getRenderer());
+   //  personajes[5]->render(480, 200,this->getRenderer());
+    //  personajes[6]->render(350, 510,this->getRenderer());
+       if(personajes[i]->getModeloJugador()->getNombre()=="mario")
+       {
+      personajes[i]->render(personajes[i]->getModeloJugador()->getPosicionX(),\
+        500-personajes[i]->getModeloJugador()->getPosicionY(),this->getRenderer());
+
+        }else
+        {
+            personajes[i]->render( personajes[i]->getModeloJugador()->getPosicionX(),\
+         personajes[i]->getModeloJugador()->getPosicionY(),this->getRenderer());
+        }
+          //mono posicionado al azar
+    //if(personajes[i]->getModeloJugador()->getNombre()=="mono")
+    //{
+     //   printf("%s\n", "hola mono");
+    // personajes[i]->render(   i*i +20, i*i +20,this->getRenderer());
+
+   // }
+
+    }
 
 	SDL_RenderPresent( this->gRenderer );
  }

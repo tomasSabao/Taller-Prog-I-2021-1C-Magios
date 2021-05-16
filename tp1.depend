@@ -135,7 +135,7 @@
 	"Modelo.h"
 	<SDL2/SDL.h>
 
-1620768278 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo_Jugador.h
+1621200475 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo_Jugador.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 	"../Modelo/LTexture.h"
@@ -151,12 +151,13 @@
 	"LTexture.h"
 	"../View/Vista_Jugador.h"
 
-1620768278 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo.cpp
+1621202835 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo.cpp
 	"Modelo.h"
 	"../Modelo/Modelo.h"
 	"../Modelo/Mario.h"
+	"../Modelo/FactoryPersonaje.h"
 
-1620768278 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo.h
+1621198709 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo.h
 	"../Modelo/Modelo_Jugador.h"
 	"../Modelo/Mono.h"
 	"../Modelo/Fondo.h"
@@ -164,10 +165,10 @@
 	"../Modelo/FuegoPiso.h"
 	<vector>
 
-1620768278 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo_Jugador.cpp
+1621200542 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo_Jugador.cpp
 	"../Modelo/Modelo_Jugador.h"
 
-1620768278 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/src/main.cpp
+1620854729 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/src/main.cpp
 	<stdio.h>
 	<string>
 	"../View/Vista.h"
@@ -189,20 +190,21 @@
 	"../Modelo/Modelo.h"
 	<vector>
 
-1620768278 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/View/Vista_Jugador.h
+1620854729 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/View/Vista_Jugador.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 	"../Modelo/Modelo_Jugador.h"
 
-1620768278 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/View/Vista.cpp
+1621202638 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/View/Vista.cpp
 	"Vista.h"
 	"../View/VistaMono.h"
 	"../View/VistaFondo.h"
 	"../View/VistaFueguito.h"
 	"../View/VistaFuegoPiso.h"
 	"../View/VistaMario.h"
+	"../View/FactoryVistaPersonaje.h"
 
-1620768278 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/View/Vista_Jugador.cpp
+1620854729 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/View/Vista_Jugador.cpp
 	"../View/Vista_Jugador.h"
 	"../View/VistaMono.h"
 
@@ -253,10 +255,10 @@
 	"../View/Vista_Jugador.h"
 	"Test.h"
 
-1620231010 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Mono.h
+1621201958 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Mono.h
 	<Modelo_Jugador.h>
 
-1620570573 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Mono.cpp
+1621201958 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Mono.cpp
 	"Mono.h"
 
 1620579518 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/View/VistaMono.h
@@ -273,10 +275,10 @@
 1620589636 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/View/VistaFondo.cpp
 	"VistaFondo.h"
 
-1620586412 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Fondo.h
+1621202023 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Fondo.h
 	<Modelo_Jugador.h>
 
-1620761739 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Fondo.cpp
+1621202023 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Fondo.cpp
 	"Fondo.h"
 
 1620660371 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Controlador/Controlador.cpp
@@ -506,10 +508,10 @@
 1620752510 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/Mario.cpp
 	"Mario.h"
 
-1620761739 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Fueguito.h
+1621201958 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Fueguito.h
 	<Modelo_Jugador.h>
 
-1620761739 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/FuegoPiso.h
+1621201811 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/FuegoPiso.h
 	<Modelo_Jugador.h>
 
 1620761739 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/lib/Logger.cpp
@@ -531,13 +533,13 @@
 	<iostream>
 	<fstream>
 
-1620761739 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/FuegoPiso.cpp
+1621201806 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/FuegoPiso.cpp
 	"FuegoPiso.h"
 
-1620761739 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Fueguito.cpp
+1621201876 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Fueguito.cpp
 	"Fueguito.h"
 
-1620768278 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Mario.h
+1621201545 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Mario.h
 	<Modelo_Jugador.h>
 
 1620768278 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/View/VistaMario.h
@@ -554,4 +556,60 @@
 
 1620761739 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/View/VistaFueguito.cpp
 	"VistaFueguito.h"
+
+1620854729 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/View/VistaMario.cpp
+	"VistaMario.h"
+
+1620868017 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/NivelUno.cpp
+	"NivelUno.h"
+
+1620868017 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/NivelUno.h
+	<Nivel.h>
+
+1620867959 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Nivel.h
+
+1620867959 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/src/Nivel.cpp
+	"Nivel.h"
+
+1620874936 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Nivel.cpp
+	"Nivel.h"
+
+1621201512 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Mario.cpp
+	"Mario.h"
+
+1620868062 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/NivelDos.cpp
+	"NivelDos.h"
+
+1620869918 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/NivelDos.h
+	<Nivel.h>
+	"../Modelo/Nivel.h"
+
+1621203952 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/FactoryPersonaje.cpp
+	"FactoryPersonaje.h"
+	"../Modelo/Mario.h"
+	"../Modelo/Mono.h"
+	"../Modelo/FuegoPiso.h"
+	"../Modelo/Barril.h"
+	"../Modelo/Modelo_Jugador.h"
+
+1621200829 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/FactoryPersonaje.h
+	"../Modelo/Modelo.h"
+
+1620879142 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/View/FactoryVistaPersonaje.cpp
+	"FactoryVistaPersonaje.h"
+	"../View/VistaFondo.h"
+	"../View/VistaMario.h"
+	"../View/VistaMono.h"
+	"../View/VistaFueguito.h"
+	"../View/VistaFuegoPiso.h"
+	"../View/Vista_Jugador.h"
+
+1620874029 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/View/FactoryVistaPersonaje.h
+	"../View/Vista.h"
+
+1621203858 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Barril.cpp
+	"Barril.h"
+
+1621203858 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Barril.h
+	<Modelo_Jugador.h>
 

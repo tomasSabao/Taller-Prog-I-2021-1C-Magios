@@ -7,7 +7,7 @@
 class Fondo : public Modelo_Jugador
 {
     public:
-        Fondo();
+        Fondo(int posicion_x=0,int posicion_y=0);
         virtual ~Fondo();
         void  caminar();
 

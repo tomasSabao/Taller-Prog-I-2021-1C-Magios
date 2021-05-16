@@ -7,7 +7,7 @@
 class FuegoPiso : public Modelo_Jugador
 {
     public:
-        FuegoPiso();
+        FuegoPiso(int posicion_x,int posicion_y);
         virtual ~FuegoPiso();
 
     protected:
