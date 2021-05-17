@@ -290,7 +290,7 @@
 	"Modelo.h"
 	<SDL2/SDL.h>
 
-1621260005 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo.h
+1621277490 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo.h
 	"../Modelo/Modelo_Jugador.h"
 	"../Modelo/Mono.h"
 	"../Modelo/Fondo.h"
@@ -405,7 +405,7 @@
 1621260005 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaFueguito.h
 	<Vista_Jugador.h>
 
-1621270635 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo.cpp
+1621277685 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo.cpp
 	"Modelo.h"
 	<random>
 	<iostream>

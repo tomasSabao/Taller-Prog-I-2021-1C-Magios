@@ -33,7 +33,7 @@ class Modelo
 
     Modelo_Jugador * jugador;
     std::vector<Modelo_Jugador*> modelosPersonajes;
-
+    int contador = 0;
     //Screen dimension constants
 
 

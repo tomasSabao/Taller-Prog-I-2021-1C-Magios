@@ -39,7 +39,7 @@ this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("bar
 
 
 
-int cantidad_fueguitos = 130;
+int cantidad_fueguitos = 5;
 int posiciones_x[cantidad_fueguitos]={};
 int posiciones_y[cantidad_fueguitos]={};
 //esto es para la aleatoriedad
@@ -120,13 +120,23 @@ void Modelo::acciones()
         }else
         {
         this->modelosPersonajes[i]->caminar() ;
+
+        if(this->modelosPersonajes[i]->getNombre()=="fueguito"){
+            if(this->contador<300){
+            this->modelosPersonajes[i]->setPosicionX(this->modelosPersonajes[i]->getPosicionX()+1);
         }
+        else{
+            this->modelosPersonajes[i]->setPosicionX(this->modelosPersonajes[i]->getPosicionX()-1);
+        }
+            if (this->contador>600){
+                this->contador = 0;
+            }
 
         }
+        this->contador = this->contador+1;
+    }
+
 
 }
 
-
-
-
-
+}
