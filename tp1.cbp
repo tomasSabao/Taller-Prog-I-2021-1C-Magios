@@ -54,6 +54,8 @@
 			<Add option="-lSDL2 -lSDL2_image" />
 		</Linker>
 		<Unit filename="Controlador/Controlador.cpp" />
+		<Unit filename="Modelo/Barril.cpp" />
+		<Unit filename="Modelo/Barril.h" />
 		<Unit filename="Modelo/FactoryPersonaje.cpp" />
 		<Unit filename="Modelo/FactoryPersonaje.h" />
 		<Unit filename="Modelo/Fondo.cpp" />
@@ -72,16 +74,15 @@
 		<Unit filename="Modelo/Modelo_Jugador.h" />
 		<Unit filename="Modelo/Mono.cpp" />
 		<Unit filename="Modelo/Mono.h" />
-		<Unit filename="Modelo/Nivel.cpp" />
 		<Unit filename="Modelo/Nivel.h" />
-		<Unit filename="Modelo/NivelDos.cpp" />
 		<Unit filename="Modelo/NivelDos.h" />
-		<Unit filename="Modelo/NivelUno.cpp" />
 		<Unit filename="Modelo/NivelUno.h" />
 		<Unit filename="View/FactoryVistaPersonaje.cpp" />
 		<Unit filename="View/FactoryVistaPersonaje.h" />
 		<Unit filename="View/Vista.cpp" />
 		<Unit filename="View/Vista.h" />
+		<Unit filename="View/VistaBarril.cpp" />
+		<Unit filename="View/VistaBarril.h" />
 		<Unit filename="View/VistaFondo.cpp" />
 		<Unit filename="View/VistaFondo.h" />
 		<Unit filename="View/VistaFuegoPiso.cpp" />

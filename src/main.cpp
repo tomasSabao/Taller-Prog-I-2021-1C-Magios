@@ -16,7 +16,7 @@ Logger logger = Logger();
 
 int main( int argc, char* args[] )
 {
-   
+
      logger.log("info","inicia programa");
      Modelo* modelo=new Modelo();
      //Modelo_Jugador* jugador=modelo->getModeloJugador();
@@ -30,7 +30,19 @@ int main( int argc, char* args[] )
     vista->init();
     vista->loadMedia();
     //
-    Modelo_Jugador* mario=modelo->getModeloJugador(7);
+    Modelo_Jugador* mario=NULL;
+    for (int i = 0; i < modelo->getCantJugadores( ); i++) {
+
+
+
+        if  (  modelo->getModeloJugador(i)->getNombre()=="mario")
+        {
+          mario=modelo->getModeloJugador(i);
+        }
+
+
+    }
+
     //
     int quit=0;
 

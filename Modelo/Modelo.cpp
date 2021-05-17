@@ -17,10 +17,11 @@
 Modelo::Modelo()
 {   this->jugador= new Modelo_Jugador();
 //    this->mono=new Mono();
-this->modelosPersonajes=std::vector<Modelo_Jugador*>();
+//this->modelosPersonajes=std::vector<Modelo_Jugador*>();
 this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("fondo"));
-this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("jugador",300,50));
-this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("jugador",500,20));
+this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("barril",100,0));
+//this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("jugador",300,50));
+//this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("jugador",500,20));
 this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("mono",250,100));
 
 this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("fueguito",150,100));
@@ -28,8 +29,11 @@ this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("fue
 this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("fuegopiso",350,100));
 this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("mario",350,350));
 this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("mono",500,150));
-this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("mono",120,105));
-this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("mono",400,100));
+this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("barril",450,0));
+this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("barril",0,0));
+
+this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("barril",680,0));
+
 
 
 }
@@ -62,12 +66,19 @@ void Modelo::acciones()
 
 
     for (int i = 0; i < modelosPersonajes.size(); i++) {
-      this->modelosPersonajes[i]->caminar() ;
 
 
-        if  ( this->modelosPersonajes[i]->getNombre()=="mario")
+        if  ( this->modelosPersonajes[i]->getNombre()=="barril")
         {
-        this->modelosPersonajes[mario]->fijarAnimacionMovimiento();
+
+        this->modelosPersonajes[i]->caminar() ;
+
+        }else if  ( this->modelosPersonajes[i]->getNombre()=="mario")
+        {
+        this->modelosPersonajes[i]->fijarAnimacionMovimiento();
+        }else
+        {
+        this->modelosPersonajes[i]->caminar() ;
         }
 
         }

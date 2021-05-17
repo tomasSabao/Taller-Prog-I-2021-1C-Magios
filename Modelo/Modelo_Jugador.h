@@ -34,12 +34,13 @@ class Modelo_Jugador
 
         bool estaParadoEnPiso();
         std::string  getNombre();
-
-	private:
-		void aumentarVelocidadX();
+        void aumentarVelocidadX();
 		void reducirVelocidadX();
 		void aumentarVelocidadY();
 		void reducirVelocidadY();
+
+	private:
+
 
 
 

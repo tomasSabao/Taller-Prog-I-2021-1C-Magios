@@ -4,6 +4,7 @@
 #include "../View/VistaMono.h"
 #include "../View/VistaFueguito.h"
 #include "../View/VistaFuegoPiso.h"
+#include "../View/VistaBarril.h"
 #include "../View/Vista_Jugador.h"
 FactoryVistaPersonaje::FactoryVistaPersonaje(Modelo_Jugador* jugadores)
 {
@@ -42,6 +43,10 @@ FactoryVistaPersonaje::~FactoryVistaPersonaje()
   }else if( nombre=="fondo" )
   {
    return new VistaFondo(this->personaje);
+
+  }else if( nombre=="barril" )
+  {
+   return new VistaBarril(this->personaje);
 
   }else
   { return NULL;}

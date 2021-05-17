@@ -4,6 +4,7 @@
 #include "../View/VistaFueguito.h"
 #include "../View/VistaFuegoPiso.h"
 #include "../View/VistaMario.h"
+#include "../View/VistaBarril.h"
 
 #include "../View/FactoryVistaPersonaje.h"
 
