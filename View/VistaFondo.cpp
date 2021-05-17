@@ -3,7 +3,7 @@
 VistaFondo::VistaFondo(Modelo_Jugador* jugadore): Vista_Jugador( jugadore)
 {
     this->anchoProporcion=600;
-   this->altoProporcion =400;
+   this->altoProporcion =360;
 }
 
 VistaFondo::~VistaFondo()
@@ -23,7 +23,7 @@ printf("scope: Vista_jugador::load_media\n");
 
     //LTexture  newTexture ;
 	//Load sprite sheet texture
-	if( !gSpriteSheetTextureJugador->loadFromFile( "total.png", grendered) )
+	if( !gSpriteSheetTextureJugador->loadFromFile( "fondo.png", grendered) )
 	{
 		printf( "Failed to load walking animation texture!\n" );
 		success = false;
@@ -31,10 +31,11 @@ printf("scope: Vista_jugador::load_media\n");
 	else
 	{
 		//Set sprite clips
-		gSpriteClips[ 0 ].x =   0;
-		gSpriteClips[ 0 ].y =   200;
-		gSpriteClips[ 0 ].w =  230;
-		gSpriteClips[ 0 ].h = 220;
+		gSpriteClips[ 0 ].x = 0
+		  ;
+		gSpriteClips[ 0 ].y =   0;
+		gSpriteClips[ 0 ].w =  225;
+		gSpriteClips[ 0 ].h = 244;
 
 
          }
