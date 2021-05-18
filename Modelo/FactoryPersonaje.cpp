@@ -5,6 +5,8 @@
 #include "../Modelo/FuegoPiso.h"
 #include "../Modelo/Barril.h"
 #include "../Modelo/Modelo_Jugador.h"
+#include "../Modelo/Modelo_Plataforma.h"
+#include "../Modelo/ModeloPlataformaDerecha.h"
 FactoryPersonaje::FactoryPersonaje()
 {
     //ctor
@@ -47,7 +49,15 @@ Modelo_Jugador* FactoryPersonaje::getPersonaje(string nombre, int posX, int posY
   {
    return new Barril(posX,posY);
 
-  }else
+  }
+else if(nombre=="plataforma"){
+  return new Modelo_Plataforma(posX,posY);
+
+}else if(nombre=="plataforma_derecha"){
+  return new ModeloPlataformaDerecha(posX,posY);
+
+}
+  else
   {
    return NULL;
 

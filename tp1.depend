@@ -48,23 +48,28 @@
 1619410287 source:/home/yuscu/Documentos/juegosdl/tp/Modelo/Modelo.cpp
 	"Modelo.h"
 
-1620769700 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/LTexture.cpp
+1621307686 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/LTexture.cpp
 	"LTexture.h"
 	"../View/Vista_Jugador.h"
 
-1620769700 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/LTexture.h
+1621307686 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/LTexture.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 	<iostream>
 	<stdlib.h>
 	<stdio.h>
 
-1620839613 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo.cpp
+1621364528 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo.cpp
 	"Modelo.h"
+	<random>
+	<iostream>
+	<math.h>
 	"../Modelo/Modelo.h"
 	"../Modelo/Mario.h"
+	"../Modelo/FactoryPersonaje.h"
+	"../Modelo/Modelo_Plataforma.h"
 
-1620769700 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo.h
+1621307686 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo.h
 	"../Modelo/Modelo_Jugador.h"
 	"../Modelo/Mono.h"
 	"../Modelo/Fondo.h"
@@ -72,15 +77,15 @@
 	"../Modelo/FuegoPiso.h"
 	<vector>
 
-1620844132 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo_Jugador.h
+1621361029 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo_Jugador.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 	"../Modelo/LTexture.h"
 
-1620843922 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo_Jugador.cpp
+1621361079 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo_Jugador.cpp
 	"../Modelo/Modelo_Jugador.h"
 
-1620771881 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/src/main.cpp
+1621353686 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/src/main.cpp
 	<stdio.h>
 	<string>
 	"../View/Vista.h"
@@ -92,7 +97,7 @@
 	"Test.h"
 	"../lib/Logger.h"
 
-1620769700 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/View/Vista.h
+1621307686 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/View/Vista.h
 	<stdio.h>
 	<string>
 	<SDL2/SDL.h>
@@ -102,28 +107,30 @@
 	"../Modelo/Modelo.h"
 	<vector>
 
-1620841693 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/View/Vista_Jugador.h
+1621307686 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/View/Vista_Jugador.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 	"../Modelo/Modelo_Jugador.h"
 
-1620772510 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/View/Vista.cpp
+1621307686 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/View/Vista.cpp
 	"Vista.h"
 	"../View/VistaMono.h"
 	"../View/VistaFondo.h"
 	"../View/VistaFueguito.h"
 	"../View/VistaFuegoPiso.h"
 	"../View/VistaMario.h"
+	"../View/VistaBarril.h"
+	"../View/FactoryVistaPersonaje.h"
 
-1620840919 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/View/Vista_Jugador.cpp
+1621307686 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/View/Vista_Jugador.cpp
 	"../View/Vista_Jugador.h"
 	"../View/VistaMono.h"
 
-1620769700 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Controlador/Controlador.cpp
+1621307686 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Controlador/Controlador.cpp
 	"Controlador.h"
 	"../Modelo/Modelo.h"
 
-1620769700 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/include/Controlador.h
+1621307686 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/include/Controlador.h
 	"Modelo.h"
 	<SDL2/SDL.h>
 
@@ -219,12 +226,12 @@
 1620746982 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/src/Mario.h
 	<Modelo_Jugador.h>
 
-1620769700 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/src/Test.cpp
+1621307687 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/src/Test.cpp
 	"Test.h"
 	"Mario.h"
 	<VistaMario.h>
 
-1620769700 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/src/Test.h
+1621307687 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/src/Test.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 	"../Modelo/Modelo.h"
@@ -438,64 +445,64 @@
 1621260005 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaFuegoPiso.cpp
 	"VistaFuegoPiso.h"
 
-1620769700 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/Mono.h
+1621307686 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/Mono.h
 	<Modelo_Jugador.h>
 
-1620769700 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/Fondo.h
+1621307686 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/Fondo.h
 	<Modelo_Jugador.h>
 
-1620769700 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/Fueguito.h
+1621307686 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/Fueguito.h
 	<Modelo_Jugador.h>
 
-1620769700 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/FuegoPiso.h
+1621307686 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/FuegoPiso.h
 	<Modelo_Jugador.h>
 
-1620769700 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/Fondo.cpp
+1621307686 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/Fondo.cpp
 	"Fondo.h"
 
-1620769700 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/FuegoPiso.cpp
+1621307686 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/FuegoPiso.cpp
 	"FuegoPiso.h"
 
-1620769700 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/Fueguito.cpp
+1621307686 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/Fueguito.cpp
 	"Fueguito.h"
 
-1620769700 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/Mono.cpp
+1621307686 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/Mono.cpp
 	"Mono.h"
 
-1620769700 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/View/VistaMono.h
+1621307686 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/View/VistaMono.h
 	<Vista_Jugador.h>
 	"../Modelo/Modelo_Jugador.h"
 
-1620769700 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/lib/Logger.h
+1621307686 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/lib/Logger.h
 	<stdio.h>
 	<string>
 	<ctime>
 	<iostream>
 	<fstream>
 
-1620769700 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/View/VistaFondo.h
+1621307686 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/View/VistaFondo.h
 	<Vista_Jugador.h>
 	"../Modelo/Modelo_Jugador.h"
 
-1620769700 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/View/VistaFueguito.h
+1621307686 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/View/VistaFueguito.h
 	<Vista_Jugador.h>
 
-1620769700 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/View/VistaFuegoPiso.h
+1621307686 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/View/VistaFuegoPiso.h
 	<Vista_Jugador.h>
 
-1620769700 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/View/VistaFondo.cpp
+1621307686 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/View/VistaFondo.cpp
 	"VistaFondo.h"
 
-1620769700 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/View/VistaFuegoPiso.cpp
+1621307686 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/View/VistaFuegoPiso.cpp
 	"VistaFuegoPiso.h"
 
-1620769700 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/View/VistaFueguito.cpp
+1621307686 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/View/VistaFueguito.cpp
 	"VistaFueguito.h"
 
-1620769700 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/View/VistaMono.cpp
+1621307686 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/View/VistaMono.cpp
 	"VistaMono.h"
 
-1620769700 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/lib/Logger.cpp
+1621307686 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/lib/Logger.cpp
 	<stdio.h>
 	<iostream>
 	<fstream>
@@ -507,19 +514,19 @@
 	<chrono>
 	"Logger.h"
 
-1620769700 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/Mario.h
+1621307686 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/Mario.h
 	<Modelo_Jugador.h>
 
 1620754270 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/View/Vista_Mario.h
 	<Vista_Jugador.h>
 
-1620769700 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/View/VistaMario.h
+1621307686 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/View/VistaMario.h
 	<Vista_Jugador.h>
 
-1620843256 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/View/VistaMario.cpp
+1621307686 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/View/VistaMario.cpp
 	"VistaMario.h"
 
-1620752510 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/Mario.cpp
+1621344403 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/Mario.cpp
 	"Mario.h"
 
 1621201958 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Fueguito.h
@@ -700,4 +707,68 @@
 
 1621260005 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaMario.cpp
 	"VistaMario.h"
+
+1621307686 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/FactoryPersonaje.h
+	"../Modelo/Modelo.h"
+
+1621307686 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/View/VistaBarril.h
+	<Vista_Jugador.h>
+
+1621307686 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/View/FactoryVistaPersonaje.h
+	"../View/Vista.h"
+
+1621307686 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/Barril.cpp
+	"Barril.h"
+
+1621307686 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/Barril.h
+	<Modelo_Jugador.h>
+
+1621364064 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/FactoryPersonaje.cpp
+	"FactoryPersonaje.h"
+	"../Modelo/Mario.h"
+	"../Modelo/Mono.h"
+	"../Modelo/FuegoPiso.h"
+	"../Modelo/Barril.h"
+	"../Modelo/Modelo_Jugador.h"
+	"../Modelo/Modelo_Plataforma.h"
+	"../Modelo/ModeloPlataformaDerecha.h"
+
+1621364127 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/View/FactoryVistaPersonaje.cpp
+	"FactoryVistaPersonaje.h"
+	"../View/VistaFondo.h"
+	"../View/VistaMario.h"
+	"../View/VistaMono.h"
+	"../View/VistaFueguito.h"
+	"../View/VistaFuegoPiso.h"
+	"../View/VistaBarril.h"
+	"../View/Vista_Jugador.h"
+	"../View/Vista_Plataforma.h"
+	"../View/VistaPlataformaDerecha.h"
+
+1621307686 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/View/VistaBarril.cpp
+	"VistaBarril.h"
+
+1621360871 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/View/Vista_Plataforma.cpp
+	"Vista_Plataforma.h"
+
+1621348948 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/View/Vista_Plataforma.h
+	<Vista_Jugador.h>
+
+1621360757 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo_Plataforma.cpp
+	"Modelo_Plataforma.h"
+
+1621360604 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo_Plataforma.h
+	<Modelo_Jugador.h>
+
+1621363762 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/ModeloPlataformaDerecha.h
+	<Modelo_Jugador.h>
+
+1621363813 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/View/VistaPlataformaDerecha.h
+	<Vista_Jugador.h>
+
+1621364201 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/ModeloPlataformaDerecha.cpp
+	"ModeloPlataformaDerecha.h"
+
+1621365737 source:/home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/View/VistaPlataformaDerecha.cpp
+	"VistaPlataformaDerecha.h"
 

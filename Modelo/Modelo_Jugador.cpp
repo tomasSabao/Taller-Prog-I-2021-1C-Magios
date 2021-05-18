@@ -209,13 +209,61 @@ bool Modelo_Jugador::estaParadoEnPiso(){
 }
 void Modelo_Jugador::caminar2()
 {
+/*
+	//en animacion cero va a estar en el borde derecho superior
+	if(this->ultima_animacion==0){
+		this->reducirVelocidadX();
+	}
+	//aca baja
+	if(this->ultima_animacion==100){
+		this->aumentarVelocidadX();
+	//	this->aumentarVelocidadX();
+		this->aumentarVelocidadY();
+	}
+	//aca va para la derecha
+	if(this->ultima_animacion==140){
+		this->reducirVelocidadY();
+		this->aumentarVelocidadX();
+	}
+	if(this->ultima_animacion==240){
+		this->reducirVelocidadY();
+		this->reducirVelocidadX();
+	}
+	if(this->ultima_animacion==280){
+		this->aumentarVelocidadY();
+		this->ultima_animacion=0;
+		return;
+	}
+	this->mover();
+	this->ultima_animacion++;
+	*/
 
-    if(  this->frames / 8 >= WALKING_ANIMATION_FRAMES )
-        {
-            this->frames = 0;
-        }
-     this->frames+= 1;
 
-   // this->frames++;
-    //this->frames=this->frames%WALKING_ANIMATION_FRAMES;
+//vamos a usar ultima dirección
+
+	//primero evaluamos la posicion
+	if(this->getPosicionX()<=30){
+		this->setPosicionX(719);
+		return;
+	}
+	if(this->getPosicionX()>=770){
+		this->setPosicionX(31);
+		return;
+	}
+
+	this->mover();
+}
+
+
+
+void Modelo_Jugador::setVelocidadHorizontal(int numero){
+	this->velocidad_horizontal=numero;
+}
+
+void Modelo_Jugador::setVelocidadVertical(int numero){
+	this->velocidad_vertical=numero;
+}
+
+void Modelo_Jugador::setDireccion(int numero){
+	this->ultima_direccion=numero;
 }

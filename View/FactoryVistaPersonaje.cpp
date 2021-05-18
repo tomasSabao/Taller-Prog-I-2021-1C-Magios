@@ -6,6 +6,8 @@
 #include "../View/VistaFuegoPiso.h"
 #include "../View/VistaBarril.h"
 #include "../View/Vista_Jugador.h"
+#include "../View/Vista_Plataforma.h"
+#include "../View/VistaPlataformaDerecha.h"
 FactoryVistaPersonaje::FactoryVistaPersonaje(Modelo_Jugador* jugadores)
 {
     this->personaje=jugadores;
@@ -48,6 +50,14 @@ FactoryVistaPersonaje::~FactoryVistaPersonaje()
   {
    return new VistaBarril(this->personaje);
 
-  }else
+  }
+  else if(nombre=="plataforma")
+    {
+      return new Vista_Plataforma(this->personaje);
+    }
+  else if(nombre=="plataforma_derecha"){
+    return new VistaPlataformaDerecha(this->personaje);
+  }
+  else
   { return NULL;}
  }

@@ -23,6 +23,9 @@ class Modelo_Jugador
 		void setPosicionX(int pos_x);
 		void setPosicionY(int pos_y);
 		void setGravedad(int num);
+		void setVelocidadHorizontal(int numero);
+		void setVelocidadVertical(int numero);
+		void setDireccion(int numero);
 
 		//solo tiene que usarse para el mario, porque necesita el valor de las teclas
 		void fijarAnimacionMovimiento();

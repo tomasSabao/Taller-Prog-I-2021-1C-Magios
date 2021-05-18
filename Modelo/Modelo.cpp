@@ -14,6 +14,7 @@
 #include "../Modelo/Modelo.h"
 #include "../Modelo/Mario.h"
 #include "../Modelo/FactoryPersonaje.h"
+#include "../Modelo/Modelo_Plataforma.h"
 
 Modelo::Modelo()
 {
@@ -37,6 +38,14 @@ this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("bar
 this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("barril",680,0));
 
 
+//meto cuatro plataformas que se mueven a izquierda
+this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("plataforma",50,200));
+this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("plataforma",130,200));
+this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("plataforma",220,200));
+this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("plataforma",300,200));
+
+//meto una plataforma que se mueve a derecha
+this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("plataforma_derecha",50,220));
 
 
 int cantidad_fueguitos = 10;
@@ -132,6 +141,14 @@ void Modelo::acciones()
                 this->contador = 0;
             }
 
+        }
+
+        //condicion para la plataforma
+        if(this->modelosPersonajes[i]->getNombre()=="plataforma"){
+            this->modelosPersonajes[i]->caminar2();
+        }
+        if(this->modelosPersonajes[i]->getNombre()=="plataforma_derecha"){
+            this->modelosPersonajes[i]->caminar2();
         }
         this->contador = this->contador+1;
     }
