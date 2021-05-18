@@ -151,13 +151,16 @@
 	"LTexture.h"
 	"../View/Vista_Jugador.h"
 
-1621215873 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo.cpp
+1621306926 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo.cpp
 	"Modelo.h"
+	<random>
+	<iostream>
+	<math.h>
 	"../Modelo/Modelo.h"
 	"../Modelo/Mario.h"
 	"../Modelo/FactoryPersonaje.h"
 
-1621198709 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo.h
+1621306619 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo.h
 	"../Modelo/Modelo_Jugador.h"
 	"../Modelo/Mono.h"
 	"../Modelo/Fondo.h"
@@ -273,7 +276,7 @@
 	<Vista_Jugador.h>
 	"../Modelo/Modelo_Jugador.h"
 
-1620589636 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/View/VistaFondo.cpp
+1621306619 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/View/VistaFondo.cpp
 	"VistaFondo.h"
 
 1621202023 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Fondo.h

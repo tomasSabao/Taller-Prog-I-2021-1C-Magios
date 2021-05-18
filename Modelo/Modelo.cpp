@@ -39,7 +39,7 @@ this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("bar
 
 
 
-int cantidad_fueguitos = 5;
+int cantidad_fueguitos = 10;
 int posiciones_x[cantidad_fueguitos]={};
 int posiciones_y[cantidad_fueguitos]={};
 //esto es para la aleatoriedad
