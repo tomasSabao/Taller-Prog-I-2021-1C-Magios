@@ -18,7 +18,7 @@ class Vista
         virtual ~Vista();
         bool init(  );
 
-        void render();
+        void render(int event);
          //Loads media
         bool loadMedia();
         void close();

@@ -8,6 +8,8 @@
 
 #include "../View/FactoryVistaPersonaje.h"
 
+#define WINDOW_TITLE "Donkey Kong II - Magios"
+
 Vista::Vista(Modelo* modelo)
 {
 
@@ -78,7 +80,7 @@ bool Vista::init(   )
 		}
 
 		//Create window
-		auxGWindow = SDL_CreateWindow( "SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,800  , 600, SDL_WINDOW_SHOWN );
+		auxGWindow = SDL_CreateWindow( WINDOW_TITLE, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,800  , 600, SDL_WINDOW_SHOWN );
 		if( auxGWindow == NULL )
 		{
 			printf( "Window could not be created! SDL Error: %s\n", SDL_GetError() );
@@ -153,7 +155,7 @@ bool  Vista::loadMedia()
 }
 
 
- void Vista::render(   )
+ void Vista::render(int event = 0)
  {
 
     SDL_SetRenderDrawColor( this->gRenderer, 0xFF, 0xFF, 0, 0xFF );

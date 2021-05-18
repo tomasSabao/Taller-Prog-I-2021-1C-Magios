@@ -29,6 +29,7 @@ int Controlador::descifrarEvento(){
                 case SDLK_RIGHT: return 5;
                 case SDLK_LEFT: return 4;
                 case SDLK_z: return 6;
+                case SDLK_SPACE: return 32;
                 default :   break;
             }
         }
@@ -37,6 +38,7 @@ int Controlador::descifrarEvento(){
                 case SDLK_RIGHT: return 51;
                 case SDLK_LEFT: return 41;
                 case SDLK_z: return 61;
+                case SDLK_SPACE: return 32;
                 default: break;
             }
         }

@@ -33,13 +33,10 @@ int main( int argc, char* args[] )
     Modelo_Jugador* mario=NULL;
     for (int i = 0; i < modelo->getCantJugadores( ); i++) {
 
-
-
         if  (  modelo->getModeloJugador(i)->getNombre()=="mario")
         {
           mario=modelo->getModeloJugador(i);
         }
-
 
     }
 
@@ -56,13 +53,13 @@ int main( int argc, char* args[] )
             mario->imprimirPosicion();
             mario->imprimirVelocidad();
             modelo->acciones();
-            vista->render();
+            vista->render(quit);
 
          }
             mario->aplicarGravedad();
             mario->mover();
             modelo->acciones();
-             vista->render();
+            vista->render(quit);
             //modelo->getModeloJugador(0)->caminar();
 
 
