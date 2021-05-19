@@ -79,6 +79,21 @@ this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("pla
 
         }
 
+
+        if(this->modelosPersonajes[i]->getNombre()=="fuegopiso"){
+         this->modelosPersonajes[i]->setPosicionX(10000);
+         this->modelosPersonajes[i]->setPosicionY(10000);
+
+        }
+
+         if(this->modelosPersonajes[i]->getNombre()=="mono"){
+         this->modelosPersonajes[i]->setPosicionX(100);
+         this->modelosPersonajes[i]->setPosicionY(70);
+
+        }
+
+
+
         }
 
 

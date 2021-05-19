@@ -51,7 +51,7 @@ int main( int argc, char* args[] )
             if(quit==32)
             {
 
-            modelo->escenario2(100);
+            modelo->escenario2(12);
             vista->escenario2();
             }
             mario->traducirTecla(quit);
