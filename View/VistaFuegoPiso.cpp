@@ -3,7 +3,7 @@
 
 VistaFuegoPiso::VistaFuegoPiso(Modelo_Jugador* jugadore): Vista_Jugador( jugadore)
 {
-   this->anchoProporcion=3;
+   this->anchoProporcion=-30;
    this->altoProporcion =0;
 }
 

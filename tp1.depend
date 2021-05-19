@@ -293,15 +293,15 @@
 1621428183 source:/home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/Modelo/Fondo.cpp
 	"Fondo.h"
 
-1621260005 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Controlador/Controlador.cpp
+1621457952 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Controlador/Controlador.cpp
 	"Controlador.h"
 	"../Modelo/Modelo.h"
 
-1621260005 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/include/Controlador.h
+1621457952 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/include/Controlador.h
 	"Modelo.h"
 	<SDL2/SDL.h>
 
-1621277490 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo.h
+1621457952 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo.h
 	"../Modelo/Modelo_Jugador.h"
 	"../Modelo/Mono.h"
 	"../Modelo/Fondo.h"
@@ -309,40 +309,40 @@
 	"../Modelo/FuegoPiso.h"
 	<vector>
 
-1621260005 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo_Jugador.h
+1621457952 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo_Jugador.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 	"../Modelo/LTexture.h"
 
-1621260005 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/LTexture.h
+1621457952 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/LTexture.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 	<iostream>
 	<stdlib.h>
 	<stdio.h>
 
-1621260005 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Mono.h
+1621457952 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Mono.h
 	<Modelo_Jugador.h>
 
-1621260005 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Fondo.h
+1621457952 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Fondo.h
 	<Modelo_Jugador.h>
 
-1621260005 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/LTexture.cpp
+1621457952 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/LTexture.cpp
 	"LTexture.h"
 	"../View/Vista_Jugador.h"
 
-1621260005 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/Vista_Jugador.h
+1621457952 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/Vista_Jugador.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 	"../Modelo/Modelo_Jugador.h"
 
-1621260005 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo_Jugador.cpp
+1621457952 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo_Jugador.cpp
 	"../Modelo/Modelo_Jugador.h"
 
-1621260005 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Mono.cpp
+1621457952 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Mono.cpp
 	"Mono.h"
 
-1621260005 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/src/main.cpp
+1621457952 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/src/main.cpp
 	<stdio.h>
 	<string>
 	"../View/Vista.h"
@@ -354,7 +354,7 @@
 	"Test.h"
 	"../lib/Logger.h"
 
-1621260005 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/Vista.h
+1621457952 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/Vista.h
 	<stdio.h>
 	<string>
 	<SDL2/SDL.h>
@@ -364,11 +364,11 @@
 	"../Modelo/Modelo.h"
 	<vector>
 
-1621260005 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaMono.h
+1621457952 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaMono.h
 	<Vista_Jugador.h>
 	"../Modelo/Modelo_Jugador.h"
 
-1621260005 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/src/Test.h
+1621457952 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/src/Test.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 	"../Modelo/Modelo.h"
@@ -381,25 +381,25 @@
 
 1620660371 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/src/Mario.h
 
-1621260005 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/src/Test.cpp
+1621457952 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/src/Test.cpp
 	"Test.h"
 	"Mario.h"
 	<VistaMario.h>
 
-1621260005 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/Vista_Jugador.cpp
+1621457952 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/Vista_Jugador.cpp
 	"../View/Vista_Jugador.h"
 	"../View/VistaMono.h"
 
-1621260005 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaMono.cpp
+1621457952 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaMono.cpp
 	"VistaMono.h"
 
-1621260005 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Fueguito.cpp
+1621457952 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Fueguito.cpp
 	"Fueguito.h"
 
-1621260005 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Fueguito.h
+1621457952 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Fueguito.h
 	<Modelo_Jugador.h>
 
-1621260005 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/Vista.cpp
+1621457952 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/Vista.cpp
 	"Vista.h"
 	"../View/VistaMono.h"
 	"../View/VistaFondo.h"
@@ -409,14 +409,14 @@
 	"../View/VistaBarril.h"
 	"../View/FactoryVistaPersonaje.h"
 
-1621260005 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaFondo.h
+1621457952 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaFondo.h
 	<Vista_Jugador.h>
 	"../Modelo/Modelo_Jugador.h"
 
-1621260005 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaFueguito.h
+1621457952 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaFueguito.h
 	<Vista_Jugador.h>
 
-1621277685 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo.cpp
+1621457952 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo.cpp
 	"Modelo.h"
 	<random>
 	<iostream>
@@ -424,26 +424,27 @@
 	"../Modelo/Modelo.h"
 	"../Modelo/Mario.h"
 	"../Modelo/FactoryPersonaje.h"
+	"../Modelo/Modelo_Plataforma.h"
 
-1621260005 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaFueguito.cpp
+1621457952 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaFueguito.cpp
 	"VistaFueguito.h"
 
-1621260005 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Fondo.cpp
+1621457952 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Fondo.cpp
 	"Fondo.h"
 
-1621266068 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaFondo.cpp
+1621457952 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaFondo.cpp
 	"VistaFondo.h"
 
-1621260005 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/FuegoPiso.cpp
+1621457952 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/FuegoPiso.cpp
 	"FuegoPiso.h"
 
-1621260005 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/FuegoPiso.h
+1621457952 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/FuegoPiso.h
 	<Modelo_Jugador.h>
 
-1621260005 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaFuegoPiso.h
+1621457952 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaFuegoPiso.h
 	<Vista_Jugador.h>
 
-1621260005 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaFuegoPiso.cpp
+1621458002 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaFuegoPiso.cpp
 	"VistaFuegoPiso.h"
 
 1621307686 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/Mono.h
@@ -648,29 +649,29 @@
 1621428183 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/View/VistaBarril.h
 	<Vista_Jugador.h>
 
-1621260005 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Mario.h
+1621457952 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Mario.h
 	<Modelo_Jugador.h>
 
-1621260005 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/FactoryPersonaje.h
+1621457952 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/FactoryPersonaje.h
 	"../Modelo/Modelo.h"
 
-1621260005 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/lib/Logger.h
+1621457952 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/lib/Logger.h
 	<stdio.h>
 	<string>
 	<ctime>
 	<iostream>
 	<fstream>
 
-1621260005 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaMario.h
+1621457952 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaMario.h
 	<Vista_Jugador.h>
 
-1621260005 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaBarril.h
+1621457952 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaBarril.h
 	<Vista_Jugador.h>
 
-1621260005 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/FactoryVistaPersonaje.h
+1621457952 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/FactoryVistaPersonaje.h
 	"../View/Vista.h"
 
-1621260005 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/lib/Logger.cpp
+1621457952 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/lib/Logger.cpp
 	<stdio.h>
 	<iostream>
 	<fstream>
@@ -682,24 +683,27 @@
 	<chrono>
 	"Logger.h"
 
-1621260005 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Barril.cpp
+1621457952 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Barril.cpp
 	"Barril.h"
 
-1621260005 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Barril.h
+1621457952 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Barril.h
 	<Modelo_Jugador.h>
 
-1621260005 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/FactoryPersonaje.cpp
+1621457952 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/FactoryPersonaje.cpp
 	"FactoryPersonaje.h"
 	"../Modelo/Mario.h"
 	"../Modelo/Mono.h"
 	"../Modelo/FuegoPiso.h"
 	"../Modelo/Barril.h"
 	"../Modelo/Modelo_Jugador.h"
+	"../Modelo/Modelo_Plataforma.h"
+	"../Modelo/ModeloPlataformaDerecha.h"
+	"../Modelo/FondoDos.h"
 
-1621260005 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Mario.cpp
+1621457952 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Mario.cpp
 	"Mario.h"
 
-1621260005 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/FactoryVistaPersonaje.cpp
+1621457952 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/FactoryVistaPersonaje.cpp
 	"FactoryVistaPersonaje.h"
 	"../View/VistaFondo.h"
 	"../View/VistaMario.h"
@@ -708,11 +712,14 @@
 	"../View/VistaFuegoPiso.h"
 	"../View/VistaBarril.h"
 	"../View/Vista_Jugador.h"
+	"../View/Vista_Plataforma.h"
+	"../View/VistaPlataformaDerecha.h"
+	"../View/VistaFondoDos.h"
 
-1621260005 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaBarril.cpp
+1621457952 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaBarril.cpp
 	"VistaBarril.h"
 
-1621260005 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaMario.cpp
+1621457952 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaMario.cpp
 	"VistaMario.h"
 
 1621307686 /home/tomas/Escritorio/Taller_de_programacion_1/DonkeyKong/Taller-Prog-I-2021-1C-Magios/Modelo/FactoryPersonaje.h
@@ -814,4 +821,40 @@
 
 1621435317 /home/yuscu/Documentos/juegosdl/tpdevelopment/Taller-Prog-I-2021-1C-Magios/View/VistaFondoDos.h
 	<Vista_Jugador.h>
+
+1621457952 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo_Plataforma.h
+	<Modelo_Jugador.h>
+
+1621457952 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/ModeloPlataformaDerecha.h
+	<Modelo_Jugador.h>
+
+1621457952 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/FondoDos.h
+	<Modelo_Jugador.h>
+
+1621457952 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/FondoDos.cpp
+	"FondoDos.h"
+
+1621457952 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo_Plataforma.cpp
+	"Modelo_Plataforma.h"
+
+1621457952 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/ModeloPlataformaDerecha.cpp
+	"ModeloPlataformaDerecha.h"
+
+1621457952 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/Vista_Plataforma.h
+	<Vista_Jugador.h>
+
+1621457952 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaPlataformaDerecha.h
+	<Vista_Jugador.h>
+
+1621457952 /home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaFondoDos.h
+	<Vista_Jugador.h>
+
+1621457952 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/Vista_Plataforma.cpp
+	"Vista_Plataforma.h"
+
+1621457952 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaFondoDos.cpp
+	"VistaFondoDos.h"
+
+1621457952 source:/home/romanvl97/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaPlataformaDerecha.cpp
+	"VistaPlataformaDerecha.h"
 

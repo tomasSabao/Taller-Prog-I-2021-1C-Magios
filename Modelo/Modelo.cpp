@@ -58,10 +58,10 @@ this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("bar
 this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("barril",0,0));
 
 
-this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("fuegopiso",150,510));
-this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("fuegopiso",290,510));
-this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("fuegopiso",430,510));
-this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("fuegopiso",600,510));
+this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("fuegopiso",170,510));
+this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("fuegopiso",315,510));
+this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("fuegopiso",460,510));
+this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("fuegopiso",610,510));
 //meto cuatro plataformas que se mueven a izquierda
 this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("plataforma",50,290));
 this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("plataforma",130,290));
