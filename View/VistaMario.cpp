@@ -28,9 +28,62 @@ printf("scope: Vista_jugador::load_media\n");
 		printf( "Failed to load walking animation texture!\n" );
 		success = false;
 	}
+
+	if(!success){
+
+        gSpriteSheetTextureJugador->loadFromFile( "default_mario.png", grendered);
+
+        printf( "Default image loaded!\n" );
+
+        gSpriteClips[ 0 ].x = 108;
+		gSpriteClips[ 0 ].y = 51;
+		gSpriteClips[ 0 ].w =  29;
+		gSpriteClips[ 0 ].h = 23;
+
+		//mario camina izquierda[1]
+        gSpriteClips[ 1 ].x = 108;
+		gSpriteClips[ 1 ].y = 51;
+		gSpriteClips[ 1 ].w =  29;
+		gSpriteClips[ 1 ].h = 23;
+
+		//mario camina derecha[1]
+        gSpriteClips[ 2 ].x = 108;
+		gSpriteClips[ 2 ].y = 51;
+		gSpriteClips[ 2 ].w =  29;
+		gSpriteClips[ 2 ].h = 23;
+		//mario camina izquierda[2]
+        gSpriteClips[ 3 ].x = 108;
+		gSpriteClips[ 3 ].y = 51;
+		gSpriteClips[ 3 ].w =  29;
+		gSpriteClips[ 3 ].h = 23;
+		//mario camina derecha [2]
+        gSpriteClips[ 4 ].x = 108;
+		gSpriteClips[ 4 ].y = 51;
+		gSpriteClips[ 4 ].w =  29;
+		gSpriteClips[ 4 ].h = 23;
+
+		//Mario salta izquierda
+        gSpriteClips[ 5 ].x = 108;
+		gSpriteClips[ 5 ].y = 51;
+		gSpriteClips[ 5 ].w =  29;
+		gSpriteClips[ 5 ].h = 23;
+		//Mario salta derecha
+        gSpriteClips[ 6 ].x = 108;
+		gSpriteClips[ 6 ].y = 51;
+		gSpriteClips[ 6 ].w =  29;
+		gSpriteClips[ 6 ].h = 23;
+
+        gSpriteClips[ 7 ].x = 108;
+		gSpriteClips[ 7 ].y = 51;
+		gSpriteClips[ 7 ].w =  29;
+		gSpriteClips[ 7 ].h = 23;
+
+		success=true;
+	}
+
 	else
 	{
-		//Mario mira izquierda 
+		//Mario mira izquierda
 		gSpriteClips[ 0 ].x = 0;
 		gSpriteClips[ 0 ].y = 0;
 		gSpriteClips[ 0 ].w =  14;
@@ -65,7 +118,7 @@ printf("scope: Vista_jugador::load_media\n");
 		gSpriteClips[ 5 ].w =  15;
 		gSpriteClips[ 5 ].h = 18;
 
-		//Mario salta izquierda 
+		//Mario salta izquierda
 		gSpriteClips[ 6 ].x = 106;
 		gSpriteClips[ 6 ].y = 0;
 		gSpriteClips[ 6 ].w =  15;
@@ -76,7 +129,7 @@ printf("scope: Vista_jugador::load_media\n");
 		gSpriteClips[ 7 ].y = 0;
 		gSpriteClips[ 7 ].w =  15;
 		gSpriteClips[ 7 ].h = 18;
-		
+
          }
          return success;
 
