@@ -27,8 +27,7 @@ this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("fon
 
 //this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("jugador",300,50));
 //this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("jugador",500,20));
-this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("fuegopiso",250,510));
-this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("fuegopiso",500,510));
+
 
 this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("mario",350,350));
 this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("mono",500,12));
@@ -59,7 +58,10 @@ this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("bar
 this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("barril",0,0));
 
 
-
+this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("fuegopiso",150,510));
+this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("fuegopiso",290,510));
+this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("fuegopiso",430,510));
+this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("fuegopiso",600,510));
 //meto cuatro plataformas que se mueven a izquierda
 this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("plataforma",50,290));
 this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("plataforma",130,290));
@@ -80,11 +82,7 @@ this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("pla
         }
 
 
-        if(this->modelosPersonajes[i]->getNombre()=="fuegopiso"){
-         this->modelosPersonajes[i]->setPosicionX(10000);
-         this->modelosPersonajes[i]->setPosicionY(10000);
 
-        }
 
          if(this->modelosPersonajes[i]->getNombre()=="mono"){
          this->modelosPersonajes[i]->setPosicionX(100);
