@@ -75,7 +75,7 @@ void  Vista::escenario2( )
   personajes[i]->loadMedia(this->gRenderer);
   }
 
-  personajes[0]->setearFondo("total.png",150,470);
+  personajes[0]->setearFondo("fondo2.png",600,350);
   personajes[0]->loadMedia(this->gRenderer);
 
 

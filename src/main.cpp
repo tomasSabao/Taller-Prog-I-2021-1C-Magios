@@ -21,7 +21,7 @@ int main( int argc, char* args[] )
      Modelo* modelo=new Modelo();
      //Modelo_Jugador* jugador=modelo->getModeloJugador();
      //VistaMono *vistaMono = new vistaMono(jugador);
-     modelo->escenario1(5);
+     modelo->escenario1(10);
 
   //Modelo* modelo=new Modelo();
     // Modelo_Jugador* jugador=modelo->getModeloJugador();
@@ -51,7 +51,7 @@ int main( int argc, char* args[] )
             if(quit==32)
             {
 
-            modelo->escenario2(10);
+            modelo->escenario2(100);
             vista->escenario2();
             }
             mario->traducirTecla(quit);

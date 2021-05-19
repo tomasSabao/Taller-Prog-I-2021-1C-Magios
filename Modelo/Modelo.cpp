@@ -61,13 +61,13 @@ this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("bar
 
 
 //meto cuatro plataformas que se mueven a izquierda
-this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("plataforma",50,200));
-this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("plataforma",130,200));
-this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("plataforma",220,200));
-this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("plataforma",300,200));
+this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("plataforma",50,290));
+this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("plataforma",130,290));
+this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("plataforma",220,290));
+this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("plataforma",300,290));
 
 //meto una plataforma que se mueve a derecha
-this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("plataforma_derecha",50,220));
+this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("plataforma_derecha",50,310));
      for (int i = 0; i < modelosPersonajes.size(); i++) {
 
 
