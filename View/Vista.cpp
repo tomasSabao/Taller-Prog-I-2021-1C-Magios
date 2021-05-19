@@ -64,7 +64,7 @@ void  Vista::escenario1( )
 }
 
 void  Vista::escenario2( )
-{
+{   //posicion 0 es el fondo siempre
 
    printf("entra a vistra ecsenario 2 %s\n", "sdf");
   for (int i = this->personajes.size(); i <this->modelo->getCantJugadores(); i++) {
@@ -74,6 +74,10 @@ void  Vista::escenario2( )
   personajes.push_back(  ( new FactoryVistaPersonaje( jugador ) )->getVistaPersonaje(jugador->getNombre() ));
   personajes[i]->loadMedia(this->gRenderer);
   }
+
+  personajes[0]->setearFondo("total.png",150,470);
+  personajes[0]->loadMedia(this->gRenderer);
+
 
 
 

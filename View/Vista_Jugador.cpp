@@ -18,6 +18,9 @@ Vista_Jugador::~Vista_Jugador()
     //dtor
 }
 
+ void Vista_Jugador::setearFondo(std::string path,int ancho, int alto)
+ {
+ }
 
 bool Vista_Jugador::loadMedia(SDL_Renderer*  grendered)
 {

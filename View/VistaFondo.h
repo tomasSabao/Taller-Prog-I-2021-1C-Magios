@@ -11,8 +11,11 @@ class VistaFondo : public Vista_Jugador
         VistaFondo(Modelo_Jugador* jugadore);
         virtual ~VistaFondo();
          bool  loadMedia(SDL_Renderer*  grendered );
+         void setearFondo(std::string path,int ancho, int alto);
 
     protected:
+
+
 
     private:
 };

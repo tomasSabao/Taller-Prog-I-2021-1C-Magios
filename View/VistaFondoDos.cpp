@@ -1,24 +1,19 @@
-#include "VistaFondo.h"
+#include "VistaFondoDos.h"
 
-VistaFondo::VistaFondo(Modelo_Jugador* jugadore): Vista_Jugador( jugadore)
+VistaFondoDos::VistaFondoDos(Modelo_Jugador* jugadore): Vista_Jugador( jugadore)
 {
-    this->anchoProporcion=600;
+   this->anchoProporcion=600;
    this->altoProporcion =360;
-   this->path="fondo.png";
 }
 
-VistaFondo::~VistaFondo()
+VistaFondoDos::~VistaFondoDos()
 {
     //dtor
 }
 
-void VistaFondo::setearFondo(std::string path,int alto, int ancho)
-{
- this->path=path;
- this->anchoProporcion=alto;
-   this->altoProporcion =ancho;
-}
-bool VistaFondo::loadMedia(SDL_Renderer*  grendered )
+
+
+bool VistaFondoDos::loadMedia(SDL_Renderer*  grendered )
 {
 
 
@@ -29,7 +24,7 @@ printf("scope: Vista_jugador::load_media\n");
 
     //LTexture  newTexture ;
 	//Load sprite sheet texture
-	if( !gSpriteSheetTextureJugador->loadFromFile( this->path, grendered) )
+	if( !gSpriteSheetTextureJugador->loadFromFile( "fondo.png", grendered) )
 	{
 		printf( "Failed to load walking animation texture!\n" );
 		success = false;

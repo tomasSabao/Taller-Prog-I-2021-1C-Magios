@@ -60,6 +60,8 @@
 		<Unit filename="Modelo/FactoryPersonaje.h" />
 		<Unit filename="Modelo/Fondo.cpp" />
 		<Unit filename="Modelo/Fondo.h" />
+		<Unit filename="Modelo/FondoDos.cpp" />
+		<Unit filename="Modelo/FondoDos.h" />
 		<Unit filename="Modelo/FuegoPiso.cpp" />
 		<Unit filename="Modelo/FuegoPiso.h" />
 		<Unit filename="Modelo/Fueguito.cpp" />
@@ -70,8 +72,12 @@
 		<Unit filename="Modelo/Mario.h" />
 		<Unit filename="Modelo/Modelo.cpp" />
 		<Unit filename="Modelo/Modelo.h" />
+		<Unit filename="Modelo/ModeloPlataformaDerecha.cpp" />
+		<Unit filename="Modelo/ModeloPlataformaDerecha.h" />
 		<Unit filename="Modelo/Modelo_Jugador.cpp" />
 		<Unit filename="Modelo/Modelo_Jugador.h" />
+		<Unit filename="Modelo/Modelo_Plataforma.cpp" />
+		<Unit filename="Modelo/Modelo_Plataforma.h" />
 		<Unit filename="Modelo/Mono.cpp" />
 		<Unit filename="Modelo/Mono.h" />
 		<Unit filename="Modelo/Nivel.h" />
@@ -85,6 +91,8 @@
 		<Unit filename="View/VistaBarril.h" />
 		<Unit filename="View/VistaFondo.cpp" />
 		<Unit filename="View/VistaFondo.h" />
+		<Unit filename="View/VistaFondoDos.cpp" />
+		<Unit filename="View/VistaFondoDos.h" />
 		<Unit filename="View/VistaFuegoPiso.cpp" />
 		<Unit filename="View/VistaFuegoPiso.h" />
 		<Unit filename="View/VistaFueguito.cpp" />
@@ -93,8 +101,12 @@
 		<Unit filename="View/VistaMario.h" />
 		<Unit filename="View/VistaMono.cpp" />
 		<Unit filename="View/VistaMono.h" />
+		<Unit filename="View/VistaPlataformaDerecha.cpp" />
+		<Unit filename="View/VistaPlataformaDerecha.h" />
 		<Unit filename="View/Vista_Jugador.cpp" />
 		<Unit filename="View/Vista_Jugador.h" />
+		<Unit filename="View/Vista_Plataforma.cpp" />
+		<Unit filename="View/Vista_Plataforma.h" />
 		<Unit filename="include/Controlador.h" />
 		<Unit filename="lib/Logger.cpp" />
 		<Unit filename="lib/Logger.h" />

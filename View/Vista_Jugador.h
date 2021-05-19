@@ -18,6 +18,7 @@ class Vista_Jugador
         void close();
         //Tomas: Esta va a ser la conexion entre la vista y el modelo
         Modelo_Jugador* getModeloJugador();
+        virtual void setearFondo(std::string path,int ancho, int alto);
 
     protected:
         Modelo_Jugador* jugador;
@@ -40,6 +41,7 @@ class Vista_Jugador
         //esto es solo para el numero de la ultima animacion corriendo
         //en el mario
         int ultima_animacion=2;
+        std::string path;
 };
 
 #endif // VISTA_JUGADOR_H

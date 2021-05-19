@@ -7,6 +7,7 @@
 #include "../Modelo/Modelo_Jugador.h"
 #include "../Modelo/Modelo_Plataforma.h"
 #include "../Modelo/ModeloPlataformaDerecha.h"
+#include "../Modelo/FondoDos.h"
 FactoryPersonaje::FactoryPersonaje()
 {
     //ctor
@@ -40,6 +41,10 @@ Modelo_Jugador* FactoryPersonaje::getPersonaje(string nombre, int posX, int posY
   }else if( nombre=="fondo" )
   {
    return new Fondo(posX,posY);
+
+  }else if( nombre=="fondodos" )
+  {
+   return new FondoDos(posX,posY);
 
   }else if( nombre=="jugador" )
   {

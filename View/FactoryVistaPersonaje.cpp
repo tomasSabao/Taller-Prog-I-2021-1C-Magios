@@ -8,6 +8,8 @@
 #include "../View/Vista_Jugador.h"
 #include "../View/Vista_Plataforma.h"
 #include "../View/VistaPlataformaDerecha.h"
+#include "../View/VistaFondoDos.h"
+
 FactoryVistaPersonaje::FactoryVistaPersonaje(Modelo_Jugador* jugadores)
 {
     this->personaje=jugadores;
@@ -45,6 +47,10 @@ FactoryVistaPersonaje::~FactoryVistaPersonaje()
   }else if( nombre=="fondo" )
   {
    return new VistaFondo(this->personaje);
+
+  }else if( nombre=="fondodos" )
+  {
+   return new VistaFondoDos(this->personaje);
 
   }else if( nombre=="barril" )
   {
