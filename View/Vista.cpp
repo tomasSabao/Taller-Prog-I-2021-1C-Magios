@@ -49,6 +49,36 @@ Vista::~Vista()
 }
 
 
+void  Vista::escenario1( )
+{
+
+  printf("entra a vistra ecsenario 1 %s\n", "sdf");
+  for (int i = this->personajes.size(); i <this->modelo->getCantJugadores(); i++) {
+  Modelo_Jugador* jugador=  this->modelo->getModeloJugador(i);
+
+  printf("%s\n",jugador->getNombre().c_str());
+  personajes.push_back(  ( new FactoryVistaPersonaje( jugador ) )->getVistaPersonaje(jugador->getNombre() ));
+  personajes[i]->loadMedia(this->gRenderer);
+  }
+
+}
+
+void  Vista::escenario2( )
+{
+
+   printf("entra a vistra ecsenario 2 %s\n", "sdf");
+  for (int i = this->personajes.size(); i <this->modelo->getCantJugadores(); i++) {
+  Modelo_Jugador* jugador=  this->modelo->getModeloJugador(i);
+
+  printf("%s\n",jugador->getNombre().c_str());
+  personajes.push_back(  ( new FactoryVistaPersonaje( jugador ) )->getVistaPersonaje(jugador->getNombre() ));
+  personajes[i]->loadMedia(this->gRenderer);
+  }
+
+
+
+}
+
 bool Vista::init(   )
 {
     printf("Scope: vista::init\n");

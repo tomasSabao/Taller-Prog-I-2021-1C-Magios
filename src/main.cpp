@@ -21,7 +21,7 @@ int main( int argc, char* args[] )
      Modelo* modelo=new Modelo();
      //Modelo_Jugador* jugador=modelo->getModeloJugador();
      //VistaMono *vistaMono = new vistaMono(jugador);
-
+     modelo->escenario1(5);
 
   //Modelo* modelo=new Modelo();
     // Modelo_Jugador* jugador=modelo->getModeloJugador();
@@ -48,6 +48,12 @@ int main( int argc, char* args[] )
         while(controlador.desencolarEvento()!=0){
             //
             quit= controlador.descifrarEvento();
+            if(quit==32)
+            {
+
+            modelo->escenario2(10);
+            vista->escenario2();
+            }
             mario->traducirTecla(quit);
             mario->mover();
             mario->imprimirPosicion();

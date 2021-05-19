@@ -22,6 +22,8 @@ class Modelo
         //Frees media and shuts down SDL
 
         Modelo_Jugador* getModeloJugador(int posicion);
+        void escenario2(int cantFuieguitos=0);
+        void  escenario1(int cantFuieguitos=0);
 
         void acciones();
         int  getCantJugadores( );

@@ -27,6 +27,10 @@ class Vista
         SDL_Window* getWindow(){
             return this->gWindow;
         }
+
+
+        void  escenario1();
+        void  escenario2( );
         SDL_Renderer* getRenderer(){
             return this->gRenderer;
         }

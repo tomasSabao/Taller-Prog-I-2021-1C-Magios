@@ -29,7 +29,7 @@ int Controlador::descifrarEvento(){
                 case SDLK_RIGHT: return 5;
                 case SDLK_LEFT: return 4;
                 case SDLK_z: return 6;
-                case SDLK_SPACE: return 32;
+                case SDLK_SPACE: return 2;
                 default :   break;
             }
         }
