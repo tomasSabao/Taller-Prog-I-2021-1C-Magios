@@ -1,0 +1,27 @@
+{
+    "configuration": {
+        "log": {
+            "level": "asd"
+        },
+        "game": {
+            "enemies": [
+                {
+                    "type": "fuego",
+                    "quantity": "555"
+                }
+            ],
+            "stages": [
+                {
+                    "fondo1": "/home/file21.bmp",
+                    "fondo2": "/home/file22.bmp",
+                    "fondo3": "/home/file23.bmp"
+                },
+                {
+                    "fondo1": "/home/file31.bmp",
+                    "fondo2": "/home/file32.bmp",
+                    "fondo3": "/home/file33.bmp"
+                }
+            ]
+        }
+    }
+}

@@ -11,21 +11,31 @@
 #include "../View/VistaMono.h"
 #include "Test.h"
 #include "../lib/Logger.h"
+#include "../lib/Parser.h"
+
 
 Logger logger = Logger();
 
-int main( int argc, char* args[] )
+int main( int argc, char* argv[] )
 {
+    logger.log("info","inicia programa");
 
-     logger.log("info","inicia programa");
-     Modelo* modelo=new Modelo();
-     //Modelo_Jugador* jugador=modelo->getModeloJugador();
-     //VistaMono *vistaMono = new vistaMono(jugador);
-     modelo->escenario1(10);
+    //TODO: agarrar .json de CLI
+    Parser parser = Parser(logger);
+    parser.obtenerJson("lib/example.json");
 
-  //Modelo* modelo=new Modelo();
+    std::string nivel_log = parser.obtenerNivelLog();
+    std::map<std::string, std::string> enemigos = parser.obtenerEnemigos();
+    std::map<std::string, std::vector<std::string>> fondos = parser.obtenerFondos();
+
+    Modelo* modelo=new Modelo();
+    //Modelo_Jugador* jugador=modelo->getModeloJugador();
+    //VistaMono *vistaMono = new vistaMono(jugador);
+    modelo->escenario1(10);
+
+    //Modelo* modelo=new Modelo();
     // Modelo_Jugador* jugador=modelo->getModeloJugador();
-     Controlador controlador(modelo);
+    Controlador controlador(modelo);
     Vista* vista=new Vista(modelo);
     vista->init();
     vista->loadMedia();

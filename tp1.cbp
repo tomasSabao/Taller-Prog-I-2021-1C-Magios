@@ -26,6 +26,7 @@
 				<Linker>
 					<Add option="-lSDL2" />
 					<Add option="-lSDL2_image" />
+					<Add option="-ljsoncpp" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -110,6 +111,13 @@
 		<Unit filename="include/Controlador.h" />
 		<Unit filename="lib/Logger.cpp" />
 		<Unit filename="lib/Logger.h" />
+		<Unit filename="lib/Parser.cpp" />
+		<Unit filename="lib/Parser.h" />
+		<Unit filename="lib/default.json" />
+		<Unit filename="lib/example.json" />
+		<Unit filename="lib/json/json-forwards.h" />
+		<Unit filename="lib/json/json.h" />
+		<Unit filename="lib/jsoncpp.cpp" />
 		<Unit filename="src/Mario.h" />
 		<Unit filename="src/Test.cpp" />
 		<Unit filename="src/Test.h" />
