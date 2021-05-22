@@ -19,15 +19,20 @@ Logger logger = Logger();
 int main( int argc, char* argv[] )
 {
     logger.log("info","inicia programa");
+    std::string archivo_configuracion;
+    if (argc > 1) {
+        archivo_configuracion = argv[1];
+    } else {
+        archivo_configuracion = "lib/default.json";
+    }
 
     //TODO: agarrar .json de CLI
     Parser parser = Parser(logger);
-    parser.obtenerJson("lib/example.json");
+    parser.obtenerJson(archivo_configuracion);
 
     std::string nivel_log = parser.obtenerNivelLog();
-    logger.log("info", nivel_log);
     std::map<std::string, std::string> enemigos = parser.obtenerEnemigos();
-    std::map<std::string, std::vector<std::string>> fondos = parser.obtenerFondos();
+    std::vector<std::string> fondos = parser.obtenerFondos();
 
     Modelo* modelo=new Modelo();
     //Modelo_Jugador* jugador=modelo->getModeloJugador();

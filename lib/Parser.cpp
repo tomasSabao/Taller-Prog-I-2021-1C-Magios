@@ -14,12 +14,8 @@
 #define ENEMIGOS_CANTIDAD_MINIMA 0
 #define ENEMIGOS_CANTIDAD_MAXIMA 30
 
-#define PATH_1FONDO1 "/home/file21.bmp"
-#define PATH_1FONDO2 "/home/file22.bmp"
-#define PATH_1FONDO3 "/home/file23.bmp"
-#define PATH_2FONDO1 "/home/file31.bmp"
-#define PATH_2FONDO2 "/home/file32.bmp"
-#define PATH_2FONDO3 "/home/file33.bmp"
+#define PATH_FONDO1 "fondo.png"
+#define PATH_FONDO2 "fondo2.png"
 
 using namespace std;
 
@@ -27,8 +23,6 @@ using namespace std;
 Parser::Parser(Logger logger) {
   this->logger = logger;
 
-  this->stages.push_back({ {"fondo1", PATH_1FONDO1}, {"fondo2", PATH_1FONDO2}, {"fondo3", PATH_1FONDO3} });
-  this->stages.push_back({ {"fondo1", PATH_2FONDO1}, {"fondo2", PATH_2FONDO2}, {"fondo3", PATH_2FONDO3} });
 }
 
 Parser::~Parser() {
@@ -71,6 +65,7 @@ void Parser::verificarJson() {
     this->logger.log("info","No se encontro el campo configuration->game->enemies en el archivo de configuracion");
     this->config = obtenerJsonPorDefecto();
   }
+
   if (!this->config["configuration"]["game"].isMember("stages")) {
     this->logger.log("info","No se encontro el campo configuration->game->stages en el archivo de configuracion");
     this->config = obtenerJsonPorDefecto();
@@ -95,35 +90,23 @@ void Parser::verificarJson() {
     }
   }
 
-  //TODO: hacer un open() a cada fondo, si esta correcto el path y abre bien, lo dejo. sino pongo uno default.
-  for (int i = 0; i < this->config["configuration"]["game"]["stages"].size(); i++) {
-    ofstream archivo;
-    //string fondo1 = this->config["configuration"]["game"]["stages"][i]["fondo1"].asString();
-    //string fondo2 = this->config["configuration"]["game"]["stages"][i]["fondo2"].asString();
-    //string fondo3 = this->config["configuration"]["game"]["stages"][i]["fondo3"].asString();
+    //TODO: chequeo que exista el file del fondo.
+    string nombre_archivo1 = this->config["configuration"]["game"]["stages"]["fondo1"].asString();
+    string nombre_archivo2 = this->config["configuration"]["game"]["stages"]["fondo2"].asString();
 
-    archivo.open(this->config["configuration"]["game"]["stages"][i]["fondo1"].asString());
-    if (!archivo.is_open()) {
-      this->config["configuration"]["game"]["stages"][i]["fondo1"] = this->stages[i]["fondo1"];
-      this->logger.log("info","Archivo de fondo invalido");
-      this->logger.log("info","Se configura por default otro fondo");
+    ifstream archivo1(nombre_archivo1.c_str());
+    ifstream archivo2(nombre_archivo2.c_str());
+
+    if (!archivo1.good()) {
+        this->config["configuration"]["game"]["stages"]["fondo1"] = PATH_FONDO1;
+        this->logger.log("info","Archivo de fondo invalido");
+        this->logger.log("info","Se configura por default otro fondo");
     }
-    archivo.close();
-    archivo.open(this->config["configuration"]["game"]["stages"][i]["fondo2"].asString());
-    if (!archivo.is_open()) {
-      this->config["configuration"]["game"]["stages"][i]["fondo2"] = this->stages[i]["fondo2"];
-      this->logger.log("info","Archivo de fondo invalido");
-      this->logger.log("info","Se configura por default otro fondo");
+    if (!archivo2.good()) {
+        this->config["configuration"]["game"]["stages"]["fondo1"] = PATH_FONDO1;
+        this->logger.log("info","Archivo de fondo invalido");
+        this->logger.log("info","Se configura por default otro fondo");
     }
-    archivo.close();
-    archivo.open(this->config["configuration"]["game"]["stages"][i]["fondo3"].asString());
-    if (!archivo.is_open()) {
-      this->config["configuration"]["game"]["stages"][i]["fondo3"] = this->stages[i]["fondo3"];
-      this->logger.log("info","Archivo de fondo invalido");
-      this->logger.log("info","Se configura por default otro fondo");
-    }
-    archivo.close();
-  }
 }
 
 int Parser::obtenerJson(string nombre_archivo) {
@@ -164,15 +147,11 @@ map<string, string> Parser::obtenerEnemigos() {
   return aux;
 }
 
-map<string, vector<string>> Parser::obtenerFondos() {
-  map<string, vector<string>> aux;
+vector<string> Parser::obtenerFondos() {
+  vector<string> aux;
 
-  aux["escenario1"].push_back(this->config["configuration"]["game"]["stages"][0]["fondo1"].asString());
-  aux["escenario1"].push_back(this->config["configuration"]["game"]["stages"][0]["fondo2"].asString());
-  aux["escenario1"].push_back(this->config["configuration"]["game"]["stages"][0]["fondo3"].asString());
-  aux["escenario2"].push_back(this->config["configuration"]["game"]["stages"][1]["fondo1"].asString());
-  aux["escenario2"].push_back(this->config["configuration"]["game"]["stages"][1]["fondo2"].asString());
-  aux["escenario2"].push_back(this->config["configuration"]["game"]["stages"][1]["fondo3"].asString());
+  aux.push_back(this->config["configuration"]["game"]["stages"]["fondo1"].asString());
+  aux.push_back(this->config["configuration"]["game"]["stages"]["fondo2"].asString());
 
   return aux;
 }

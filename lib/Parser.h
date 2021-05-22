@@ -13,9 +13,7 @@
 
 class Parser {
   Logger logger;
-  Json::Value	config;
-  std::vector<std::map<std::string, std::string>> stages;
-  std::map<std::string, std::vector<std::string>> fondos_por_defecto;
+  Json::Value config;
 
   public:
     Parser(Logger logger);
@@ -23,13 +21,13 @@ class Parser {
     int obtenerJson(std::string nombre_archivo);
     std::string obtenerNivelLog();
     std::map<std::string, std::string> obtenerEnemigos();
-    std::map<std::string, std::vector<std::string>> obtenerFondos();
+    std::vector<std::string> obtenerFondos();
     std::vector<std::map<std::string, std::string>> obtenerJugadores();
 
   private:
     Json::Value obtenerJsonPorDefecto();
     void verificarJson();
-    
+
 };
 
 #endif // PARSER_H
