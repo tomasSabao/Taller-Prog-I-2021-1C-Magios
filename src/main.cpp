@@ -25,6 +25,7 @@ int main( int argc, char* argv[] )
     parser.obtenerJson("lib/example.json");
 
     std::string nivel_log = parser.obtenerNivelLog();
+    logger.log("info", nivel_log);
     std::map<std::string, std::string> enemigos = parser.obtenerEnemigos();
     std::map<std::string, std::vector<std::string>> fondos = parser.obtenerFondos();
 
