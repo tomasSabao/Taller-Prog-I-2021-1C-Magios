@@ -22,7 +22,6 @@ using namespace std;
 
 Parser::Parser(Logger logger) {
   this->logger = logger;
-
 }
 
 Parser::~Parser() {

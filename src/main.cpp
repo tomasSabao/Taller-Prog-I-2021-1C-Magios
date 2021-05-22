@@ -31,6 +31,9 @@ int main( int argc, char* argv[] )
     parser.obtenerJson(archivo_configuracion);
 
     std::string nivel_log = parser.obtenerNivelLog();
+    //TODO fijar nivel del log para el Logger.
+    //continua el flujo
+
     std::map<std::string, std::string> enemigos = parser.obtenerEnemigos();
     std::vector<std::string> fondos = parser.obtenerFondos();
 
