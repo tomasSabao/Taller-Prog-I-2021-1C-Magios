@@ -18,10 +18,13 @@ public:
     Logger();
     virtual ~Logger();
     int log(string nivel, string mensaje);
+    void setNivelLog(std::string nivel_log);
 
 private:
+    std::string nivel_log;
     int guardar();
     void imprimirSeparador(const string mensaje);
+    
 };
 
 #endif //LOGGER_H

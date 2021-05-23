@@ -8,15 +8,13 @@
 #include <fstream>
 #include <map>
 #include "../jsoncpp/json/json.h"
-#include "Logger.h"
 
 
 class Parser {
-  Logger logger;
   Json::Value config;
 
   public:
-    Parser(Logger logger);
+    Parser();
     virtual ~Parser();
     int obtenerJson(std::string nombre_archivo);
     std::string obtenerNivelLog();

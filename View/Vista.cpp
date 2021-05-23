@@ -5,10 +5,15 @@
 #include "../View/VistaFuegoPiso.h"
 #include "../View/VistaMario.h"
 #include "../View/VistaBarril.h"
+#include "../lib/Logger.h"
+#include "../lib/Parser.h"
 
 #include "../View/FactoryVistaPersonaje.h"
 
 #define WINDOW_TITLE "Donkey Kong II - Magios"
+
+extern Parser parser;
+extern Logger logger;
 
 Vista::Vista(Modelo* modelo)
 {
@@ -66,7 +71,7 @@ void  Vista::escenario1( )
 void  Vista::escenario2( )
 {   //posicion 0 es el fondo siempre
 
-   printf("entra a vistra ecsenario 2 %s\n", "sdf");
+   printf("entra a vista ecsenario 2 %s\n", "sdf");
   for (int i = this->personajes.size(); i <this->modelo->getCantJugadores(); i++) {
   Modelo_Jugador* jugador=  this->modelo->getModeloJugador(i);
 
@@ -75,11 +80,12 @@ void  Vista::escenario2( )
   personajes[i]->loadMedia(this->gRenderer);
   }
 
-  personajes[0]->setearFondo("fondo2.png",600,350);
+  //TODO: ver tema de scope, no se deberia volver a obtener json para que levante el fondo
+  parser.obtenerJson("");
+  vector<string> fondos = parser.obtenerFondos();
+  personajes[0]->setearFondo((fondos.at(1)),600,350);
+   //personajes[0]->setearFondo("fondo2.png",600,350);
   personajes[0]->loadMedia(this->gRenderer);
-
-
-
 
 }
 

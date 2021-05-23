@@ -8,7 +8,6 @@
 #include "../jsoncpp/json/json.h"
 
 #include "Parser.h"
-#include "Logger.h"
 
 #define ENEMIGOS_CANTIDAD_DEFAULT 10
 #define ENEMIGOS_CANTIDAD_MINIMA 0
@@ -19,9 +18,8 @@
 
 using namespace std;
 
+Parser::Parser() {
 
-Parser::Parser(Logger logger) {
-  this->logger = logger;
 }
 
 Parser::~Parser() {
@@ -31,8 +29,7 @@ Json::Value Parser::obtenerJsonPorDefecto() {
   Json::Value config;
   Json::Reader lector;
 
-  cout << "Por defecto se abre el archivo de configuracion por default" << endl;
-  this->logger.log("info","Se abre archivo de configuracion por default");
+  cout << "Se abre el archivo de configuracion por defecto" << endl;
 
   ifstream archivo("lib/default.json", ios::in);
 
@@ -45,46 +42,46 @@ Json::Value Parser::obtenerJsonPorDefecto() {
 
 void Parser::verificarJson() {
   if (!this->config.isMember("configuration")) {
-    this->logger.log("info","No se encontro el campo configuration en el archivo de configuracion");
+    cerr << "No se encontro el campo configuration en el archivo de configuracion" << endl;
     this->config = obtenerJsonPorDefecto();
   }
   if (!this->config["configuration"].isMember("log")) {
-    this->logger.log("info","No se encontro el campo configuration->log en el archivo de configuracion");
+    cerr << "No se encontro el campo configuration->log en el archivo de configuracion" << endl;
     this->config = obtenerJsonPorDefecto();
   }
   if (!this->config["configuration"]["log"].isMember("level")) {
-    this->logger.log("info","No se encontro el campo configuration->log->level en el archivo de configuracion");
+    cerr << "No se encontro el campo configuration->log->level en el archivo de configuracion" << endl;
     this->config = obtenerJsonPorDefecto();
   }
   if (!this->config["configuration"].isMember("game")) {
-    this->logger.log("info","No se encontro el campo configuration->game en el archivo de configuracion");
+    cerr << "No se encontro el campo configuration->game en el archivo de configuracion" << endl;
     this->config = obtenerJsonPorDefecto();
   }
   if (!this->config["configuration"]["game"].isMember("enemies")) {
-    this->logger.log("info","No se encontro el campo configuration->game->enemies en el archivo de configuracion");
+    cerr << "No se encontro el campo configuration->game->enemies en el archivo de configuracion" << endl;
     this->config = obtenerJsonPorDefecto();
   }
 
   if (!this->config["configuration"]["game"].isMember("stages")) {
-    this->logger.log("info","No se encontro el campo configuration->game->stages en el archivo de configuracion");
+    cerr << "No se encontro el campo configuration->game->stages en el archivo de configuracion" << endl;
     this->config = obtenerJsonPorDefecto();
   }
 
   //TODO: emprolijar esto
-  if ((this->config["configuration"]["log"]["level"].asString() == "ERROR") ||
-      (this->config["configuration"]["log"]["level"].asString() == "DEBUG") ||
-      (this->config["configuration"]["log"]["level"].asString() == "INFO")) {
+  if ((this->config["configuration"]["log"]["level"].asString() == "error") ||
+      (this->config["configuration"]["log"]["level"].asString() == "debug") ||
+      (this->config["configuration"]["log"]["level"].asString() == "info")) {
   } else {
-    this->logger.log("info","Nivel de log invalido");
-    this->logger.log("info","Se configura por default INFO como nivel de log");
-    this->config["configuration"]["log"]["level"] = "INFO";
+    cerr << "Nivel de log invalido" << endl;
+    cout << "Se configura por default INFO como nivel de log" << endl;
+    this->config["configuration"]["log"]["level"] = "info";
   }
   for (int i = 0; i < this->config["configuration"]["game"]["enemies"].size(); i++ ) {
     if ((stoi(this->config["configuration"]["game"]["enemies"][i]["quantity"].asString()) < ENEMIGOS_CANTIDAD_MINIMA) ||
         (stoi(this->config["configuration"]["game"]["enemies"][i]["quantity"].asString()) > ENEMIGOS_CANTIDAD_MAXIMA)) {
 
-      this->logger.log("info","Cantidad de enemigos invalida");
-      this->logger.log("info","Se configura por default 10 como la cantidad de enemigos");
+      cerr << "Cantidad de enemigos invalida" << endl;
+      cout << "Se configura por default 10 como la cantidad de enemigos" << endl;
       this->config["configuration"]["game"]["enemies"][i]["quantity"] = ENEMIGOS_CANTIDAD_DEFAULT;
     }
   }
@@ -98,31 +95,31 @@ void Parser::verificarJson() {
 
     if (!archivo1.good()) {
         this->config["configuration"]["game"]["stages"]["fondo1"] = PATH_FONDO1;
-        this->logger.log("info","Archivo de fondo invalido");
-        this->logger.log("info","Se configura por default otro fondo");
+        cerr << "Archivo de fondo invalido" << endl;
+        cout << "Se configura por default otro fondo" << endl;
     }
     if (!archivo2.good()) {
         this->config["configuration"]["game"]["stages"]["fondo1"] = PATH_FONDO1;
-        this->logger.log("info","Archivo de fondo invalido");
-        this->logger.log("info","Se configura por default otro fondo");
+        cerr << "Archivo de fondo invalido" << endl;
+        cout << "Se configura por default otro fondo" << endl;
     }
 }
 
 int Parser::obtenerJson(string nombre_archivo) {
   Json::Value config;
 
-  this->logger.log("info","Se abre archivo de configuracion");
+  cout << "Se abre archivo de configuracion" << endl;
   if (nombre_archivo.find(".json") == string::npos) {
     cout << "Archivo con formato distinto a un .json" << endl;
-    this->logger.log("info","No se encontro el archivo .json de configuracion");
+    cerr << "No se encontro el archivo .json de configuracion" << endl;
     this->config = obtenerJsonPorDefecto();
   }
+
   Json::Reader lector;
 
   ifstream archivo(nombre_archivo, ios::in);
   if (archivo) {
     if (!lector.parse(archivo, this->config)) {
-      this->logger.log("info", lector.getFormattedErrorMessages());
       cerr << lector.getFormattedErrorMessages() << endl;
       archivo.close();
       this->config = obtenerJsonPorDefecto();
@@ -151,7 +148,9 @@ vector<string> Parser::obtenerFondos() {
 
   aux.push_back(this->config["configuration"]["game"]["stages"]["fondo1"].asString());
   aux.push_back(this->config["configuration"]["game"]["stages"]["fondo2"].asString());
-
+  cout << "TEST PROBLEMA SCOPE" << endl;
+  cout << this->config["configuration"]["game"]["stages"]["fondo2"].asString() << endl;
+  cout << aux.at(1) << endl;
   return aux;
 }
 

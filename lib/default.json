@@ -1,13 +1,17 @@
 {
     "configuration": {
         "log": {
-            "level": "INFO"
+            "level": "info"
         },
         "game": {
             "enemies": [
                 {
-                    "type": "fuego",
-                    "quantity": "10"
+                    "type": "fuego-1",
+                    "quantity": "1"
+                },
+                {
+                    "type": "fuego-2",
+                    "quantity": "20"
                 }
             ],
             "stages": {

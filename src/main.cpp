@@ -13,26 +13,30 @@
 #include "../lib/Logger.h"
 #include "../lib/Parser.h"
 
+#define CDAD_ARGUMENTOS 2
+#define POS_ARCHIVO_CONFIGURACION 1
+
 
 Logger logger = Logger();
+Parser parser = Parser();
 
 int main( int argc, char* argv[] )
 {
-    logger.log("info","inicia programa");
     std::string archivo_configuracion;
-    if (argc > 1) {
-        archivo_configuracion = argv[1];
+
+    if (argc >= CDAD_ARGUMENTOS) {
+        archivo_configuracion = argv[POS_ARCHIVO_CONFIGURACION];
     } else {
         archivo_configuracion = "lib/default.json";
     }
 
-    //TODO: agarrar .json de CLI
-    Parser parser = Parser(logger);
+    Parser parser = Parser();
     parser.obtenerJson(archivo_configuracion);
-
     std::string nivel_log = parser.obtenerNivelLog();
-    //TODO fijar nivel del log para el Logger.
+    logger.setNivelLog(nivel_log);
     //continua el flujo
+
+    logger.log("info","inicia programa");
 
     std::map<std::string, std::string> enemigos = parser.obtenerEnemigos();
     std::vector<std::string> fondos = parser.obtenerFondos();
@@ -40,7 +44,7 @@ int main( int argc, char* argv[] )
     Modelo* modelo=new Modelo();
     //Modelo_Jugador* jugador=modelo->getModeloJugador();
     //VistaMono *vistaMono = new vistaMono(jugador);
-    modelo->escenario1(10);
+    modelo->escenario1(std::stoi(enemigos["fuego-1"]));
 
     //Modelo* modelo=new Modelo();
     // Modelo_Jugador* jugador=modelo->getModeloJugador();
@@ -70,7 +74,7 @@ int main( int argc, char* argv[] )
             if(quit==32)
             {
 
-            modelo->escenario2(12);
+            modelo->escenario2(std::stoi(enemigos["fuego-2"]));
             vista->escenario2();
             }
             mario->traducirTecla(quit);
