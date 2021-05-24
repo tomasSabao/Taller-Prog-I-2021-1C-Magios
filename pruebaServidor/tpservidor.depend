@@ -1,0 +1,29 @@
+# depslib dependency file v1.0
+1621871628 source:/home/yuscu/Documentos/juegosdl/EjemplosBasicosSocket (copia)/pruebaServidor/ModeloServidor/ModeloServidor.cpp
+	"ModeloServidor.h"
+
+1621872947 /home/yuscu/Documentos/juegosdl/EjemplosBasicosSocket (copia)/pruebaServidor/ModeloServidor/ModeloServidor.h
+	"../SocketServidor/SocketServidor.h"
+
+1621871618 /home/yuscu/Documentos/juegosdl/EjemplosBasicosSocket (copia)/pruebaServidor/SocketServidor/SocketServidor.h
+	<sys/socket.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<arpa/inet.h>
+	<unistd.h>
+	<stdbool.h>
+
+1621871618 source:/home/yuscu/Documentos/juegosdl/EjemplosBasicosSocket (copia)/pruebaServidor/SocketServidor/SocketServidor.cpp
+	"SocketServidor.h"
+
+1621873813 source:/home/yuscu/Documentos/juegosdl/EjemplosBasicosSocket (copia)/pruebaServidor/ModeloServidor/main.cpp
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<sys/socket.h>
+	<arpa/inet.h>
+	<unistd.h>
+	<stdbool.h>
+	"../ModeloServidor/ModeloServidor.h"
+
