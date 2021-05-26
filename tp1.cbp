@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="donkey_kong_ii" />
+		<Option execution_dir="." />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="donkey_kong_ii" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-std=gnu++11" />
+					<Add option="-std=c++11" />
+					<Add option="-g" />
+					<Add directory="./include" />
+					<Add directory=".include" />
+					<Add directory="src" />
+					<Add directory="Modelo" />
+					<Add directory="View" />
+					<Add directory="include" />
+				</Compiler>
+				<Linker>
+					<Add option="-lSDL2" />
+					<Add option="-lSDL2_image" />
+					<Add option="-ljsoncpp" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/tpppp" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add directory="./include" />
+					<Add directory=".include" />
+					<Add directory="src" />
+					<Add directory="Modelo" />
+					<Add directory="View" />
+					<Add directory="include" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Linker>
+			<Add option="-lSDL2 -lSDL2_image" />
+		</Linker>
+		<Unit filename="Controlador/Controlador.cpp" />
+		<Unit filename="Modelo/Barril.cpp" />
+		<Unit filename="Modelo/Barril.h" />
+		<Unit filename="Modelo/FactoryPersonaje.cpp" />
+		<Unit filename="Modelo/FactoryPersonaje.h" />
+		<Unit filename="Modelo/Fondo.cpp" />
+		<Unit filename="Modelo/Fondo.h" />
+		<Unit filename="Modelo/FondoDos.cpp" />
+		<Unit filename="Modelo/FondoDos.h" />
+		<Unit filename="Modelo/FuegoPiso.cpp" />
+		<Unit filename="Modelo/FuegoPiso.h" />
+		<Unit filename="Modelo/Fueguito.cpp" />
+		<Unit filename="Modelo/Fueguito.h" />
+		<Unit filename="Modelo/LTexture.cpp" />
+		<Unit filename="Modelo/LTexture.h" />
+		<Unit filename="Modelo/Mario.cpp" />
+		<Unit filename="Modelo/Mario.h" />
+		<Unit filename="Modelo/Modelo.cpp" />
+		<Unit filename="Modelo/Modelo.h" />
+		<Unit filename="Modelo/ModeloPlataformaDerecha.cpp" />
+		<Unit filename="Modelo/ModeloPlataformaDerecha.h" />
+		<Unit filename="Modelo/Modelo_Jugador.cpp" />
+		<Unit filename="Modelo/Modelo_Jugador.h" />
+		<Unit filename="Modelo/Modelo_Plataforma.cpp" />
+		<Unit filename="Modelo/Modelo_Plataforma.h" />
+		<Unit filename="Modelo/Mono.cpp" />
+		<Unit filename="Modelo/Mono.h" />
+		<Unit filename="Modelo/Nivel.h" />
+		<Unit filename="Modelo/NivelDos.h" />
+		<Unit filename="Modelo/NivelUno.h" />
+		<Unit filename="View/FactoryVistaPersonaje.cpp" />
+		<Unit filename="View/FactoryVistaPersonaje.h" />
+		<Unit filename="View/Vista.cpp" />
+		<Unit filename="View/Vista.h" />
+		<Unit filename="View/VistaBarril.cpp" />
+		<Unit filename="View/VistaBarril.h" />
+		<Unit filename="View/VistaFondo.cpp" />
+		<Unit filename="View/VistaFondo.h" />
+		<Unit filename="View/VistaFondoDos.cpp" />
+		<Unit filename="View/VistaFondoDos.h" />
+		<Unit filename="View/VistaFuegoPiso.cpp" />
+		<Unit filename="View/VistaFuegoPiso.h" />
+		<Unit filename="View/VistaFueguito.cpp" />
+		<Unit filename="View/VistaFueguito.h" />
+		<Unit filename="View/VistaMario.cpp" />
+		<Unit filename="View/VistaMario.h" />
+		<Unit filename="View/VistaMono.cpp" />
+		<Unit filename="View/VistaMono.h" />
+		<Unit filename="View/VistaPlataformaDerecha.cpp" />
+		<Unit filename="View/VistaPlataformaDerecha.h" />
+		<Unit filename="View/Vista_Jugador.cpp" />
+		<Unit filename="View/Vista_Jugador.h" />
+		<Unit filename="View/Vista_Plataforma.cpp" />
+		<Unit filename="View/Vista_Plataforma.h" />
+		<Unit filename="include/Controlador.h" />
+		<Unit filename="lib/Logger.cpp" />
+		<Unit filename="lib/Logger.h" />
+		<Unit filename="lib/Parser.cpp" />
+		<Unit filename="lib/Parser.h" />
+		<Unit filename="lib/default.json" />
+		<Unit filename="lib/example.json" />
+		<Unit filename="lib/json/json-forwards.h" />
+		<Unit filename="lib/json/json.h" />
+		<Unit filename="lib/jsoncpp.cpp" />
+		<Unit filename="src/Mario.h" />
+		<Unit filename="src/Test.cpp" />
+		<Unit filename="src/Test.h" />
+		<Unit filename="src/main.cpp" />
+		<Extensions />
+	</Project>
+</CodeBlocks_project_file>
