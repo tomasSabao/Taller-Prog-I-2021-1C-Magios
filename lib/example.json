@@ -7,11 +7,11 @@
             "enemies": [
                 {
                     "type": "fuego-1",
-                    "quantity": "10"
+                    "quantity": "3"
                 },
                 {
                     "type": "fuego-2",
-                    "quantity": "20"
+                    "quantity": "8"
                 }
             ],
             "stages": {

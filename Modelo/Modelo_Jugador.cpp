@@ -1,5 +1,10 @@
 #include "../Modelo/Modelo_Jugador.h"
+#include "../lib/Logger.h"
+
 #define WALKING_ANIMATION_FRAMES 4
+
+extern Logger logger;
+
 Modelo_Jugador::Modelo_Jugador(int posicion_x,int posicion_y)
 {
      this->frames=0;
@@ -112,12 +117,17 @@ void Modelo_Jugador::mover(){
 
 
 void Modelo_Jugador::imprimirPosicion(){
-	printf("posicion x: %d, posicion y: %d\n",this->posicion_x,this->posicion_y);
+	char mensaje[150];
+	sprintf(mensaje,"posicion x: %d, posicion y: %d\n",this->posicion_x,this->posicion_y);
+	logger.log("debug", mensaje);
 }
 
 void Modelo_Jugador::imprimirVelocidad(){
-	printf("velocidad x: %d, velocidad y: %d\n",this->velocidad_x,this->velocidad_y);
+	char mensaje[150];
+	sprintf(mensaje, "velocidad x: %d, velocidad y: %d\n",this->velocidad_x,this->velocidad_y);
+	logger.log("debug", mensaje);
 }
+
 
 void Modelo_Jugador::setPosicionX(int pos_x){
 	this->posicion_x=pos_x;

@@ -8,6 +8,7 @@
 #include "../jsoncpp/json/json.h"
 
 #include "Parser.h"
+#include "Logger.h"
 
 #define ENEMIGOS_CANTIDAD_DEFAULT 10
 #define ENEMIGOS_CANTIDAD_MINIMA 0
@@ -17,6 +18,8 @@
 #define PATH_FONDO2 "fondo2.png"
 
 using namespace std;
+
+extern Logger logger;
 
 Parser::Parser() {
 
@@ -29,7 +32,7 @@ Json::Value Parser::obtenerJsonPorDefecto() {
   Json::Value config;
   Json::Reader lector;
 
-  cout << "Se abre el archivo de configuracion por defecto" << endl;
+  logger.log("error", "Se abre el archivo de configuracion por defecto");
 
   ifstream archivo("lib/default.json", ios::in);
 
@@ -42,28 +45,28 @@ Json::Value Parser::obtenerJsonPorDefecto() {
 
 void Parser::verificarJson() {
   if (!this->config.isMember("configuration")) {
-    cerr << "No se encontro el campo configuration en el archivo de configuracion" << endl;
+    logger.log("error", "No se encontro el campo configuration en el archivo de configuracion");
     this->config = obtenerJsonPorDefecto();
   }
   if (!this->config["configuration"].isMember("log")) {
-    cerr << "No se encontro el campo configuration->log en el archivo de configuracion" << endl;
+    logger.log("error", "No se encontro el campo configuration->log en el archivo de configuracion");
     this->config = obtenerJsonPorDefecto();
   }
   if (!this->config["configuration"]["log"].isMember("level")) {
-    cerr << "No se encontro el campo configuration->log->level en el archivo de configuracion" << endl;
+    logger.log("error", "No se encontro el campo configuration->log->level en el archivo de configuracion");
     this->config = obtenerJsonPorDefecto();
   }
   if (!this->config["configuration"].isMember("game")) {
-    cerr << "No se encontro el campo configuration->game en el archivo de configuracion" << endl;
+    logger.log("error", "No se encontro el campo configuration->game en el archivo de configuracion");
     this->config = obtenerJsonPorDefecto();
   }
   if (!this->config["configuration"]["game"].isMember("enemies")) {
-    cerr << "No se encontro el campo configuration->game->enemies en el archivo de configuracion" << endl;
+    logger.log("error", "No se encontro el campo configuration->game->enemies en el archivo de configuracion");
     this->config = obtenerJsonPorDefecto();
   }
 
   if (!this->config["configuration"]["game"].isMember("stages")) {
-    cerr << "No se encontro el campo configuration->game->stages en el archivo de configuracion" << endl;
+    logger.log("error", "No se encontro el campo configuration->game->stages en el archivo de configuracion");
     this->config = obtenerJsonPorDefecto();
   }
 
@@ -110,7 +113,7 @@ int Parser::obtenerJson(string nombre_archivo) {
 
   cout << "Se abre archivo de configuracion" << endl;
   if (nombre_archivo.find(".json") == string::npos) {
-    cout << "Archivo con formato distinto a un .json" << endl;
+    logger.log("error","Archivo con formato distinto a un .json");
     cerr << "No se encontro el archivo .json de configuracion" << endl;
     this->config = obtenerJsonPorDefecto();
   }
@@ -148,9 +151,7 @@ vector<string> Parser::obtenerFondos() {
 
   aux.push_back(this->config["configuration"]["game"]["stages"]["fondo1"].asString());
   aux.push_back(this->config["configuration"]["game"]["stages"]["fondo2"].asString());
-  cout << "TEST PROBLEMA SCOPE" << endl;
-  cout << this->config["configuration"]["game"]["stages"]["fondo2"].asString() << endl;
-  cout << aux.at(1) << endl;
+
   return aux;
 }
 

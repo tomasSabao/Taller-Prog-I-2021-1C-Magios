@@ -16,8 +16,7 @@
 #define CDAD_ARGUMENTOS 2
 #define POS_ARCHIVO_CONFIGURACION 1
 
-
-Logger logger = Logger();
+extern Logger logger;
 Parser parser = Parser();
 
 int main( int argc, char* argv[] )
@@ -30,13 +29,12 @@ int main( int argc, char* argv[] )
         archivo_configuracion = "lib/default.json";
     }
 
-    Parser parser = Parser();
     parser.obtenerJson(archivo_configuracion);
     std::string nivel_log = parser.obtenerNivelLog();
     logger.setNivelLog(nivel_log);
     //continua el flujo
 
-    logger.log("info","inicia programa");
+    logger.log("info","Inicio del juego.");
 
     std::map<std::string, std::string> enemigos = parser.obtenerEnemigos();
     std::vector<std::string> fondos = parser.obtenerFondos();

@@ -11,9 +11,10 @@
 #include "../View/FactoryVistaPersonaje.h"
 
 #define WINDOW_TITLE "Donkey Kong II - Magios"
+#define WINDOW_WIDTH 800
+#define WINDOW_HEIGHT 600
 
 extern Parser parser;
-extern Logger logger;
 
 Vista::Vista(Modelo* modelo)
 {
@@ -120,7 +121,7 @@ bool Vista::init(   )
 		}
 
 		//Create window
-		auxGWindow = SDL_CreateWindow( WINDOW_TITLE, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,800  , 600, SDL_WINDOW_SHOWN );
+		auxGWindow = SDL_CreateWindow( WINDOW_TITLE, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN );
 		if( auxGWindow == NULL )
 		{
 			printf( "Window could not be created! SDL Error: %s\n", SDL_GetError() );

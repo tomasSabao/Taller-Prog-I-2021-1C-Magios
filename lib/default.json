@@ -1,7 +1,7 @@
 {
     "configuration": {
         "log": {
-            "level": "info"
+            "level": "debug"
         },
         "game": {
             "enemies": [

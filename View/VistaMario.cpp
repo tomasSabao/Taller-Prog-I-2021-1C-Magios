@@ -1,4 +1,7 @@
 #include "VistaMario.h"
+#include "../lib/Logger.h"
+
+extern Logger logger;
 
 VistaMario::VistaMario(Modelo_Jugador* jugadore): Vista_Jugador( jugadore)
 {
@@ -31,6 +34,7 @@ printf("scope: Vista_jugador::load_media\n");
 
 	if(!success){
 
+		logger.log("error", "Error al cargar imagen del personaje principal. Se carga imagen por defecto");
         gSpriteSheetTextureJugador->loadFromFile( "default_mario.png", grendered);
 
         printf( "Default image loaded!\n" );

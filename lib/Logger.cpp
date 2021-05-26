@@ -10,6 +10,7 @@
 
 #include "Logger.h"
 
+#define LOG_DIR "log/"
 #define MAX_BUFFER_TIMESTAMP 50
 
 using namespace std;
@@ -19,14 +20,17 @@ using chrono::milliseconds;
 
 map<string, int> nivel_log_map { {"error", 1}, {"info", 2}, {"debug", 3} };
 
+Logger logger = Logger();
+
 Logger::Logger()
 {
     time_t tiempo_unix = time(0);
     tm * tiempo_local = localtime(&tiempo_unix);
 
-    strftime(nombre_archivo, LONGITUD_NOMBRE_ARCHIVO, "%Y-%m-%d.log", tiempo_local);
+    strftime(this->nombre_archivo, LONGITUD_NOMBRE_ARCHIVO, "%Y-%m-%d-%H%M%S.log", tiempo_local);
 
     string nivel = "info";
+    this->path = LOG_DIR + string(this->nombre_archivo);
 
     imprimirSeparador("Donkey Kong II - Inicio");
 }
@@ -37,12 +41,15 @@ Logger::~Logger()
 
 int Logger::log(const string nivel, const string mensaje)
 {
+    nivel_log = (nivel_log.empty()) ? "error" : nivel_log;
+
     // si es un nivel de log valido...
     if (nivel_log_map.find(nivel) != nivel_log_map.end())
     {
+
         if (nivel_log_map[nivel] <= nivel_log_map[nivel_log])
         {
-            ofstream f(nombre_archivo, ios::app);
+            ofstream f(path, ios::app);
 
             if (f.is_open())
             {
@@ -60,7 +67,7 @@ int Logger::log(const string nivel, const string mensaje)
                 auto timestamp_ms = timestamp;
                 sprintf(timestamp_ms, "%s.%03d",timestamp,(int)tiempo_ms);
 
-                f << "[" << nivel << "] " << timestamp << "  - " << mensaje << endl;
+                f << timestamp << " [" << nivel << "]: " << mensaje << endl;
             }
             else
             {

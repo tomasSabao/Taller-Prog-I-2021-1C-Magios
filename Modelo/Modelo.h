@@ -15,10 +15,6 @@ class Modelo
         Modelo();
         ~Modelo();
 
-
-
-
-
         //Frees media and shuts down SDL
 
         Modelo_Jugador* getModeloJugador(int posicion);

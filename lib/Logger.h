@@ -7,13 +7,13 @@
 #include <iostream>
 #include <fstream>
 
-#define LONGITUD_NOMBRE_ARCHIVO 15
+#define LONGITUD_NOMBRE_ARCHIVO 40
 
 using namespace std;
 
 class Logger
 {
-char nombre_archivo[LONGITUD_NOMBRE_ARCHIVO];
+
 public:
     Logger();
     virtual ~Logger();
@@ -24,7 +24,8 @@ private:
     std::string nivel_log;
     int guardar();
     void imprimirSeparador(const string mensaje);
-    
+    char nombre_archivo[LONGITUD_NOMBRE_ARCHIVO];
+    std::string path;
 };
 
 #endif //LOGGER_H
