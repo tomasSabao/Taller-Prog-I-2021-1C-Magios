@@ -37,5 +37,8 @@
 bin/
 obj/
 
+# VSCode
+.vscode/
+
 # Logs
 *.log
