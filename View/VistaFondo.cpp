@@ -1,10 +1,17 @@
 #include "VistaFondo.h"
+#include "../lib/Parser.h"
+#include <string>
+
+extern Parser parser;
 
 VistaFondo::VistaFondo(Modelo_Jugador* jugadore): Vista_Jugador( jugadore)
 {
-    this->anchoProporcion=600;
+   std::vector<std::string> fondos = parser.obtenerFondos();
+
+   this->anchoProporcion=600;
    this->altoProporcion =360;
-   this->path="fondo.png";
+   //this->path="fondo.png";
+   this->path=fondos.at(0);
 }
 
 VistaFondo::~VistaFondo()

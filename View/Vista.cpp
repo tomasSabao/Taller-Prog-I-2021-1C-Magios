@@ -58,7 +58,7 @@ Vista::~Vista()
 void  Vista::escenario1( )
 {
 
-  printf("entra a vistra ecsenario 1 %s\n", "sdf");
+  printf("entra a vista escenario 1 %s\n", "sdf");
   for (int i = this->personajes.size(); i <this->modelo->getCantJugadores(); i++) {
   Modelo_Jugador* jugador=  this->modelo->getModeloJugador(i);
 
@@ -72,7 +72,7 @@ void  Vista::escenario1( )
 void  Vista::escenario2( )
 {   //posicion 0 es el fondo siempre
 
-   printf("entra a vista ecsenario 2 %s\n", "sdf");
+   printf("entra a vista escenario 2 %s\n", "sdf");
   for (int i = this->personajes.size(); i <this->modelo->getCantJugadores(); i++) {
   Modelo_Jugador* jugador=  this->modelo->getModeloJugador(i);
 

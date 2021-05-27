@@ -1,22 +1,22 @@
 {
     "configuration": {
         "log": {
-            "level": "debug"
+            "level": "info"
         },
         "game": {
             "enemies": [
                 {
                     "type": "fuego-1",
-                    "quantity": "1"
+                    "quantity": "10"
                 },
                 {
                     "type": "fuego-2",
-                    "quantity": "20"
+                    "quantity": "10"
                 }
             ],
             "stages": {
-                "fondo1": "fondo.png",
-                "fondo2": "fondo2.png"
+                "fondo1": "fondo1_default.png",
+                "fondo2": "fondo2_default.png"
 
             }
         }

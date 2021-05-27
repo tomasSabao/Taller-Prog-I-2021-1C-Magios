@@ -1,4 +1,3 @@
-
 //Using SDL, SDL_image, standard IO, and strings
 
 #include <stdio.h>
@@ -42,6 +41,9 @@ int main( int argc, char* argv[] )
     Modelo* modelo=new Modelo();
     //Modelo_Jugador* jugador=modelo->getModeloJugador();
     //VistaMono *vistaMono = new vistaMono(jugador);
+
+    //TODO: sacar este hardcodeo, ?hay que cambiar la imagen del enemigo cuando ponemos el tipo de enemigo por default?
+    //enemigos.keys() -> la priemra key es el tipo de enemigo para nivel 1
     modelo->escenario1(std::stoi(enemigos["fuego-1"]));
 
     //Modelo* modelo=new Modelo();
@@ -72,6 +74,8 @@ int main( int argc, char* argv[] )
             if(quit==32)
             {
 
+            //TODO: sacar este hardcodeo, ?hay que cambiar la imagen del enemigo cuando ponemos el tipo de enemigo por default?
+            //enemigos.keys() -> la priemra key es el tipo de enemigo para nivel 2
             modelo->escenario2(std::stoi(enemigos["fuego-2"]));
             vista->escenario2();
             }
