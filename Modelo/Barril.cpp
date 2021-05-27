@@ -15,8 +15,11 @@ Barril::~Barril()
 
 void Barril::caminar()
 {
+   this->setearEpilepsia(30,4);
+   printf("El valor es epilepi %d.\n", this->getCantFrameActualizar());
+   printf("El valor es sdf epilepi framsfs %d.\n",  this->frames / this->getCantFrameActualizar());
 
-    if(  this->frames / 4 >= 4 )
+    if(  this->frames / this->getCantFrameActualizar() >= 3 )
         {
             this->frames = 0;
         }

@@ -41,6 +41,10 @@ class Modelo_Jugador
 		void reducirVelocidadX();
 		void aumentarVelocidadY();
 		void reducirVelocidadY();
+		void setearEpilepsia(int cantFrameActualizar, int cantidadDeSprite);
+
+		int  getCantFrameActualizar();
+		int  getCantFrameDelPersonaje();
 
 	private:
 
@@ -55,6 +59,7 @@ class Modelo_Jugador
 
 		int velocidad_x=0;
 		int velocidad_y=0;
+		int cantidadDeSprite;
 
 
     protected:
@@ -67,6 +72,7 @@ class Modelo_Jugador
     int ultima_animacion=2;
     //esto es para la ultima direccion. 1 es izquierda, 2 es derecha
     int ultima_direccion=2;
+    int cuantosFrameActualizo;
     };
 
 #endif // MODELO_JUGADOR_H

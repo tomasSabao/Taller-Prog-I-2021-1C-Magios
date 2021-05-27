@@ -10,6 +10,8 @@ class VistaBarril : public Vista_Jugador
         VistaBarril(Modelo_Jugador* jugadore);
         bool  loadMedia(SDL_Renderer*  grendered );
         virtual ~VistaBarril();
+        void  setGSpriteActual();
+        //void  render( int posx, int posy ,SDL_Renderer* grendered);
 
 
     protected:

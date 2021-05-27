@@ -9,6 +9,7 @@ class Mono : public Modelo_Jugador
     public:
         Mono(int posicion_x=0,int posicion_y=0);
         virtual ~Mono();
+        void  caminar();
 
     protected:
 

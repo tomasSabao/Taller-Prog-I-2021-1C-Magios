@@ -56,3 +56,10 @@ printf("scope: Vista_jugador::load_media\n");
          return success;
 
 }
+
+void VistaMono::setGSpriteActual()
+{
+
+    this->gSpriteActual=&gSpriteClips[ this->jugador->getFrame()/this->jugador->getCantFrameActualizar()];
+
+}
