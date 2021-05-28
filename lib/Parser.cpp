@@ -67,7 +67,6 @@ void Parser::verificarJson() {
     logger.log("error", "No se encontro el campo configuration->game->enemies en el archivo de configuracion");
     this->config = obtenerJsonPorDefecto();
   }
-
   if (!this->config["configuration"]["game"].isMember("stages")) {
     logger.log("error", "No se encontro el campo configuration->game->stages en el archivo de configuracion");
     this->config = obtenerJsonPorDefecto();
@@ -77,7 +76,7 @@ void Parser::verificarJson() {
       (this->config["configuration"]["log"]["level"].asString() == "debug") ||
       (this->config["configuration"]["log"]["level"].asString() == "info")) {
   } else {
-    logger.log("error", "Nivel de log invalido");
+    logger.log("error", "Dentro de configuration->log, el nivel de log invalido");
     logger.log("error", "Se configura por default INFO como nivel de log");
 
     cerr << "Nivel de log invalido" << endl;
@@ -89,7 +88,7 @@ void Parser::verificarJson() {
     //ver que tipos de enemigos existen.
     //TODO: cambiar el tipo de enemigo 'fuego-' por 'fuego-default-' y poner otra imagen.
     if (this->config["configuration"]["game"]["enemies"][i]["type"].asString().compare(ENEMIGO_NIVEL + to_string(i + 1))) {
-      logger.log("error", "Tipo de enemigo de nivel " + to_string(i + 1) + " invalida");
+      logger.log("error", "Dentro de configuration->game->enemies, el tipo de enemigo de nivel " + to_string(i + 1) + " invalida");
       logger.log("error", "Se configura por default un enemigo para el nivel " + to_string(i + 1));
 
       cerr << "Tipo de enemigo invalido" << endl;
@@ -100,7 +99,7 @@ void Parser::verificarJson() {
     //chequeo de cantidades
     if ((stoi(this->config["configuration"]["game"]["enemies"][i]["quantity"].asString()) < ENEMIGOS_CANTIDAD_MINIMA) ||
         (stoi(this->config["configuration"]["game"]["enemies"][i]["quantity"].asString()) > ENEMIGOS_CANTIDAD_MAXIMA)) {
-      logger.log("error", "Cantidad de enemigos de nivel " + to_string(i + 1) + " invalida");
+      logger.log("error", "Dentro de configuration->game->enemies, la cantidad de enemigos de nivel " + to_string(i + 1) + " invalida");
       logger.log("error", "Se configura por default 10 como cantidad de enemigos en nivel " + to_string(i + 1));
 
       cerr << "Cantidad de enemigos invalida" << endl;
@@ -118,7 +117,7 @@ void Parser::verificarJson() {
 
     if (!archivo1.good()) {
         this->config["configuration"]["game"]["stages"]["fondo1"] = PATH_DEFAULT_FONDO1;
-        logger.log("error", "Archivo de fondo de nivel 1 invalido");
+        logger.log("error", "Dentro de configuration->game->stages, el archivo de fondo de nivel 1 invalido");
         logger.log("error", "Se configura por default el fondo de nivel 1");
 
         cerr << "Archivo de fondo de nivel 1 invalido" << endl;
@@ -126,7 +125,7 @@ void Parser::verificarJson() {
     }
     if (!archivo2.good()) {
         this->config["configuration"]["game"]["stages"]["fondo2"] = PATH_DEFAULT_FONDO2;
-        logger.log("error", "Archivo de fondo de nivel 2 invalido");
+        logger.log("error", "Dentro de configuration->game->stages, el archivo de fondo de nivel 2 invalido");
         logger.log("error", "Se configura por default el fondo de nivel 2");
 
         cerr << "Archivo de fondo de nivel 2 invalido" << endl;
@@ -141,7 +140,7 @@ int Parser::obtenerJson(string nombre_archivo) {
 
   cout << "Se trata de abrir archivo de configuracion" << endl;
   if (nombre_archivo.find(".json") == string::npos) {
-    logger.log("error","Archivo con formato distinto a .json");
+    logger.log("error","Tipo de archivo con distinto formato a un .json");
     cerr << "No se encontro el archivo .json de configuracion" << endl;
     this->config = obtenerJsonPorDefecto();
   }
