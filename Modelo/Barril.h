@@ -10,6 +10,7 @@ class Barril : public Modelo_Jugador
         Barril(int posicion_x=0,int posicion_y=0);
         virtual ~Barril();
         void  caminar();
+        void  mover();
 
     protected:
 
