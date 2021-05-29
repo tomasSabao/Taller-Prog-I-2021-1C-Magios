@@ -10,8 +10,6 @@
 #include "Parser.h"
 #include "Logger.h"
 
-#define ENEMIGO_NIVEL "fuego-"
-
 #define ENEMIGOS_CANTIDAD_DEFAULT 10
 #define ENEMIGOS_CANTIDAD_MINIMA 0
 #define ENEMIGOS_CANTIDAD_MAXIMA 30
@@ -99,15 +97,14 @@ void Parser::verificarJson()
   {
 
     //ver que tipos de enemigos existen.
-    //TODO: cambiar el tipo de enemigo 'fuego-' por 'fuego-default-' y poner otra imagen.
-    if (this->config["configuration"]["game"]["enemies"][i]["type"].asString().compare(ENEMIGO_NIVEL + to_string(i + 1)))
+    if (this->config["configuration"]["game"]["enemies"][i]["type"].asString().compare("fuego-" + to_string(i + 1)))
     {
       logger.log("error", "Dentro de configuration->game->enemies, el tipo de enemigo de nivel " + to_string(i + 1) + " invalida");
       logger.log("error", "Se configura por default un enemigo para el nivel " + to_string(i + 1));
 
       cerr << "Tipo de enemigo invalido" << endl;
       cout << "Se configura por default un enemigo" << endl;
-      this->config["configuration"]["game"]["enemies"][i]["type"] = ENEMIGO_NIVEL + to_string(i + 1);
+      this->config["configuration"]["game"]["enemies"][i]["type"] = "fuego-default-" + to_string(i + 1);
     }
 
     //chequeo de cantidades

@@ -46,7 +46,7 @@ Modelo::~Modelo()
     //dtor
 }
 
-void Modelo::escenario2(int cantidad_fueguitos)
+void Modelo::escenario2(std::string tipo_enemigo, int cantidad_fueguitos)
 {
 printf("Entre al esceneraio %d\n",modelosPersonajes.size());
 
@@ -80,9 +80,12 @@ this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("pla
          this->modelosPersonajes[i]->setPosicionY(10000);
 
         }
+        
+        if(this->modelosPersonajes[i]->getNombre()=="fueguito-default"){
+         this->modelosPersonajes[i]->setPosicionX(10000);
+         this->modelosPersonajes[i]->setPosicionY(10000);
 
-
-
+        }
 
          if(this->modelosPersonajes[i]->getNombre()=="mono"){
          this->modelosPersonajes[i]->setPosicionX(100);
@@ -123,19 +126,19 @@ while(i<cantidad_fueguitos){
     }
     posiciones_x[i] = posicion_x_aleatoria;
     posiciones_y[i] = posicion_y_aleatoria;
-    this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("fueguito",posicion_x_aleatoria,posicion_y_aleatoria));
+    this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje(tipo_enemigo,posicion_x_aleatoria,posicion_y_aleatoria));
     i++;
     cantidad_fueguitos_generados++;
 }
 
 
-printf("Entre al esceneraio %d\n",modelosPersonajes.size());
+printf("Entre al escenario %d\n",modelosPersonajes.size());
 
 }
 
 
 
-void Modelo::escenario1(int cantidad_fueguitos)
+void Modelo::escenario1(std::string tipo_enemigo, int cantidad_fueguitos)
 
 
 {
@@ -169,7 +172,7 @@ while(i<cantidad_fueguitos){
     }
     posiciones_x[i] = posicion_x_aleatoria;
     posiciones_y[i] = posicion_y_aleatoria;
-    this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("fueguito",posicion_x_aleatoria,posicion_y_aleatoria));
+    this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje(tipo_enemigo,posicion_x_aleatoria,posicion_y_aleatoria));
     i++;
     cantidad_fueguitos_generados++;
 }
@@ -177,7 +180,7 @@ while(i<cantidad_fueguitos){
 
 
 
-printf("Entre al esceneraio%d\n",cantidad_fueguitos);
+printf("Entre al escenario%d\n",cantidad_fueguitos);
  //this->modelosPersonajes=std::vector<Modelo_Jugador*>();
 
 
@@ -223,14 +226,24 @@ void Modelo::acciones()
         if(this->modelosPersonajes[i]->getNombre()=="fueguito"){
             if(this->contador<300){
             this->modelosPersonajes[i]->setPosicionX(this->modelosPersonajes[i]->getPosicionX()+1);
-        }
-        else{
-            this->modelosPersonajes[i]->setPosicionX(this->modelosPersonajes[i]->getPosicionX()-1);
-        }
-            if (this->contador>600){
-                this->contador = 0;
             }
-
+            else{
+                this->modelosPersonajes[i]->setPosicionX(this->modelosPersonajes[i]->getPosicionX()-1);
+            }
+                if (this->contador>600){
+                    this->contador = 0;
+                }
+        }
+        else if (this->modelosPersonajes[i]->getNombre()=="fueguito-default") {
+            if(this->contador<300){
+            this->modelosPersonajes[i]->setPosicionX(this->modelosPersonajes[i]->getPosicionX()+1);
+            }
+            else{
+                this->modelosPersonajes[i]->setPosicionX(this->modelosPersonajes[i]->getPosicionX()-1);
+            }
+                if (this->contador>600){
+                    this->contador = 0;
+                }
         }
 
         //condicion para la plataforma

@@ -67,6 +67,8 @@
 		<Unit filename="Modelo/FuegoPiso.h" />
 		<Unit filename="Modelo/Fueguito.cpp" />
 		<Unit filename="Modelo/Fueguito.h" />
+		<Unit filename="Modelo/FueguitoDefault.cpp" />
+		<Unit filename="Modelo/FueguitoDefault.h" />
 		<Unit filename="Modelo/LTexture.cpp" />
 		<Unit filename="Modelo/LTexture.h" />
 		<Unit filename="Modelo/Mario.cpp" />
@@ -98,6 +100,8 @@
 		<Unit filename="View/VistaFuegoPiso.h" />
 		<Unit filename="View/VistaFueguito.cpp" />
 		<Unit filename="View/VistaFueguito.h" />
+		<Unit filename="View/VistaFueguitoDefault.cpp" />
+		<Unit filename="View/VistaFueguitoDefault.h" />
 		<Unit filename="View/VistaMario.cpp" />
 		<Unit filename="View/VistaMario.h" />
 		<Unit filename="View/VistaMono.cpp" />

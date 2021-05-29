@@ -2,6 +2,7 @@
 #include "../View/VistaMono.h"
 #include "../View/VistaFondo.h"
 #include "../View/VistaFueguito.h"
+#include "../View/VistaFueguitoDefault.h"
 #include "../View/VistaFuegoPiso.h"
 #include "../View/VistaMario.h"
 #include "../View/VistaBarril.h"
@@ -38,15 +39,15 @@ Vista::Vista(Modelo* modelo)
       //printf("%d\n",this->modelo->getCantJugadores());
 
 
-     for (int i = 0; i <this->modelo->getCantJugadores(); i++) {
-     Modelo_Jugador* jugador=  this->modelo->getModeloJugador(i);
-        printf("%s\n",jugador->getNombre().c_str());
+    for (int i = 0; i <this->modelo->getCantJugadores(); i++) {
+      Modelo_Jugador* jugador=  this->modelo->getModeloJugador(i);
+      printf("%s\n",jugador->getNombre().c_str());
 
-     personajes.push_back(  ( new FactoryVistaPersonaje( jugador ) )->getVistaPersonaje(jugador->getNombre() ));
-     printf("%s\n","exito de init");
-        }
+      personajes.push_back(  ( new FactoryVistaPersonaje( jugador ) )->getVistaPersonaje(jugador->getNombre() ));
+      printf("%s\n","exito de init");
+    }
 
-         printf("%d\n",personajes.size());
+    printf("%d\n",personajes.size());
 }
 
 Vista::~Vista()

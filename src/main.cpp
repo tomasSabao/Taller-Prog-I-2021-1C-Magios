@@ -15,6 +15,7 @@
 #define CDAD_ARGUMENTOS 2
 #define POS_ARCHIVO_CONFIGURACION 1
 
+
 extern Logger logger;
 Parser parser = Parser();
 
@@ -42,19 +43,34 @@ int main( int argc, char* argv[] )
     //Modelo_Jugador* jugador=modelo->getModeloJugador();
     //VistaMono *vistaMono = new vistaMono(jugador);
 
-    //TODO: sacar este hardcodeo, ?hay que cambiar la imagen del enemigo cuando ponemos el tipo de enemigo por default?
-    //enemigos.keys() -> la priemra key es el tipo de enemigo para nivel 1
-    modelo->escenario1(std::stoi(enemigos["fuego-1"]));
+    if (enemigos.find("fuego-1") != enemigos.end()) {
+        cout << "Se encontro fuego-1 con "<< enemigos["fuego-1"] << " enemigos" << endl;
+        modelo->escenario1("fueguito", std::stoi(enemigos["fuego-1"]));
+    }
+    else
+    {
+        cout << "Se encontro fuego-default-1 con "<< enemigos["fuego-default-1"] << " enemigos" << endl;
+        modelo->escenario1("fueguito-default", std::stoi(enemigos["fuego-default-1"]));
+    }
 
     //Modelo* modelo=new Modelo();
     // Modelo_Jugador* jugador=modelo->getModeloJugador();
     Controlador controlador(modelo);
+    
+    cout << "antes de crear la Vista" << endl;
+
+    //TODO: rompe ACA
     Vista* vista=new Vista(modelo);
+    
+    cout << "antes del init de vista" << endl;
+
     vista->init();
     vista->loadMedia();
     //
     Modelo_Jugador* mario=NULL;
     for (int i = 0; i < modelo->getCantJugadores( ); i++) {
+        
+        cout << "loop de jugadores" << i << endl;
 
         if  (  modelo->getModeloJugador(i)->getNombre()=="mario")
         {
@@ -63,6 +79,7 @@ int main( int argc, char* argv[] )
 
     }
 
+    
     //
     int quit=0;
 
@@ -74,9 +91,15 @@ int main( int argc, char* argv[] )
             if(quit==32)
             {
 
-            //TODO: sacar este hardcodeo, ?hay que cambiar la imagen del enemigo cuando ponemos el tipo de enemigo por default?
-            //enemigos.keys() -> la priemra key es el tipo de enemigo para nivel 2
-            modelo->escenario2(std::stoi(enemigos["fuego-2"]));
+            if (enemigos.find("fuego-2") != enemigos.end()) {
+                cout << "Se encontro fuego-1 con "<< enemigos["fuego-1"] << " enemigos" << endl;
+                modelo->escenario2("fueguito", std::stoi(enemigos["fuego-2"]));
+            }
+            else
+            {
+                cout << "Se encontro fuego-default-2 con "<< enemigos["fuego-default-2"] << " enemigos" << endl;
+                modelo->escenario2("fueguito-default", std::stoi(enemigos["fuego-default-2"]));
+            }
             vista->escenario2();
             }
             mario->traducirTecla(quit);
