@@ -24,7 +24,7 @@ printf("scope: Vista_jugador::load_media\n");
     //LTexture  newTexture ;
 	//Load sprite sheet texture
 	//TODO: cambiar textura para fueguito default
-	if( !gSpriteSheetTextureJugador->loadFromFile( "dksprites.png", grendered) )
+	if( !gSpriteSheetTextureJugador->loadFromFile( "dksprites-default.png", grendered) )
 	{
 		printf( "Failed to load walking animation texture!\n" );
 		success = false;
