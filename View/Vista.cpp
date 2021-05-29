@@ -81,8 +81,6 @@ void  Vista::escenario2( )
   personajes[i]->loadMedia(this->gRenderer);
   }
 
-  //TODO: ver tema de scope, no se deberia volver a obtener json para que levante el fondo
-  parser.obtenerJson("");
   vector<string> fondos = parser.obtenerFondos();
   personajes[0]->setearFondo((fondos.at(1)),600,350);
    //personajes[0]->setearFondo("fondo2.png",600,350);
