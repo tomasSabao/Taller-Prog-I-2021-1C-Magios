@@ -13,6 +13,7 @@ Modelo_Jugador::Modelo_Jugador(int posicion_x,int posicion_y)
      this->posicion_y=posicion_y;
 
 
+
 }
 
 Modelo_Jugador::~Modelo_Jugador()
@@ -141,6 +142,31 @@ void Modelo_Jugador::setGravedad(int nueva_gravedad){
 	this->gravedad=nueva_gravedad;
 }
 
+//OJO ACA, SI TIENEN 4 SPRITE ENTONCES PONER 3 (SPRITE 0,1,2)
+ //la logica seria esta, prueben valores para darse cuaenta. mientras mas grande cuantosframeactualizo mas lento
+void Modelo_Jugador::setearEpilepsia(int cantFrameActualizar, int cantidadDeSprite)
+{
+ this->cuantosFrameActualizo=cantFrameActualizar;
+ this->cantidadDeSprite=cantidadDeSprite;//OJO ACA, SI TIENEN 4 SPRITE ENTONCES PONER 3 (SPRITE 0,1,2)
+ //la logica seria esta, prueben valores para darse cuaenta. mientras mas grande cuantosframeactualizo mas lento
+   /*
+  if(this->frames / cuantosFrameActualizo >= cantidadDeSprite)
+   {
+            this->frames = 0;
+        }
+
+        this->frames+= 1;*/
+
+}
+int Modelo_Jugador::getCantFrameActualizar()
+{   //esto lo voy a necesitar para renderizar ya que en el renderizado tenemos que poner que frame vamos a poner render(frame/getCantFrameActualizar)
+    return this->cuantosFrameActualizo ;
+}
+
+int Modelo_Jugador::getCantFrameDelPersonaje()
+{   //esto lo voy a necesitar para renderizar ya que en el renderizado tenemos que poner que frame vamos a poner render(frame/getCantFrameActualizar)
+    return this->cantidadDeSprite;
+}
 void Modelo_Jugador::caminar()
 {
 
@@ -161,7 +187,7 @@ void Modelo_Jugador::fijarAnimacionMovimiento(){
 	//caso en el que el jugador esta en el piso
 	//
 	if(this->estaParadoEnPiso()){
-		if(this->velocidad_x >0){
+		/*if(this->velocidad_x >0){
 		if(this->ultima_animacion==1){
 			this->frames=5;
 			this->ultima_animacion=2;
@@ -169,15 +195,67 @@ void Modelo_Jugador::fijarAnimacionMovimiento(){
 			return;
 		}
 		else{
-			this->frames=3;
+			this->frames=4;
 			this->ultima_animacion=1;
 			this->ultima_direccion=1;
 			return;
 		}
 	}
+*/
+	if(this->velocidad_x>0){
+		if(this->estaba_parado==false){
+			this->estaba_parado=true;
+			this->frames=4;
+		}
+		if(this->cuantosFrameActualizo>8 & this->ultima_animacion==1){
+			this->cuantosFrameActualizo=0;
+			this->frames=5;
+			this->ultima_animacion=2;
+			this->ultima_direccion=1;
+			this->cuantosFrameActualizo++;
+			return;
+		}
+		if(this->cuantosFrameActualizo>8 & this->ultima_animacion==2){
+			this->cuantosFrameActualizo=0;
+			this->frames=4;
+			this->ultima_animacion=1;
+			this->ultima_direccion=1;
+			this->cuantosFrameActualizo++;
+			return;
+		}
+		this->ultima_direccion=1;
+		this->cuantosFrameActualizo++;
+	}
+	//este es el caso del desplazamento a izquierda
+	if(this->velocidad_x<0){
+		//quiero actualizar cada 4 frames
+		if(this->estaba_parado==false){
+			this->estaba_parado=true;
+			this->frames=2;
+		}
+		if(this->cuantosFrameActualizo > 8 & this->ultima_animacion==1){
+			this->cuantosFrameActualizo=0;
+			this->frames=3;
+			this->ultima_animacion=2;
+			this->ultima_direccion=2;
+			this->cuantosFrameActualizo++;
+			return;
+		}
+		if(this->cuantosFrameActualizo > 8 & this->ultima_animacion==2){
+			this->cuantosFrameActualizo=0;
+			this->frames=2;
+			this->ultima_animacion=1;
+			this->ultima_direccion=2;
+			this->cuantosFrameActualizo++;
+			return;
+		}
+		this->ultima_direccion=2;
+		this->cuantosFrameActualizo++;
+	}
+	/*
 	if(this->velocidad_x<0){
 		if(this->ultima_animacion==1){
-			this->frames=4;
+			this->frames=3;
 			this->ultima_animacion=2;
 			this->ultima_direccion=2;
 			return;
@@ -188,16 +266,20 @@ void Modelo_Jugador::fijarAnimacionMovimiento(){
 			this->ultima_direccion=2;
 			return;
 		}
-	}
+	}*/
 	if(this->velocidad_x ==0){
 		if(this->ultima_direccion==1){
 			this->frames=1;
 			this->ultima_animacion=2;
+			this->cuantosFrameActualizo=0;
+			this->estaba_parado=true;
 			return;
 		}
 		else{
 			this->frames=0;
 			this->ultima_animacion=2;
+			this->cuantosFrameActualizo=0;
+			this->estaba_parado=true;
 			return;
 		}
 	}

@@ -56,15 +56,15 @@ printf("scope: Vista_jugador::load_media\n");
 		gSpriteClips[ 2 ].w =  29;
 		gSpriteClips[ 2 ].h = 23;
 		//mario camina izquierda[2]
-        gSpriteClips[ 3 ].x = 108;
-		gSpriteClips[ 3 ].y = 51;
-		gSpriteClips[ 3 ].w =  29;
-		gSpriteClips[ 3 ].h = 23;
-		//mario camina derecha [2]
         gSpriteClips[ 4 ].x = 108;
 		gSpriteClips[ 4 ].y = 51;
 		gSpriteClips[ 4 ].w =  29;
 		gSpriteClips[ 4 ].h = 23;
+		//mario camina derecha [2]
+        gSpriteClips[ 3 ].x = 108;
+		gSpriteClips[ 3 ].y = 51;
+		gSpriteClips[ 3 ].w =  29;
+		gSpriteClips[ 3 ].h = 23;
 
 		//Mario salta izquierda
         gSpriteClips[ 5 ].x = 108;
@@ -107,15 +107,15 @@ printf("scope: Vista_jugador::load_media\n");
 		gSpriteClips[ 2].h = 18;
 
 		//mario camina derecha[1]
-		gSpriteClips[ 3 ].x =   48;
-		gSpriteClips[ 3 ].y =   0;
-		gSpriteClips[ 3 ].w =  15;
-		gSpriteClips[ 3].h = 18;
-		//mario camina izquierda[2]
-		gSpriteClips[ 4 ].x =   67;
+		gSpriteClips[ 4 ].x =   48;
 		gSpriteClips[ 4 ].y =   0;
 		gSpriteClips[ 4 ].w =  15;
 		gSpriteClips[ 4 ].h = 18;
+		//mario camina izquierda[2]
+		gSpriteClips[ 3 ].x =   67;
+		gSpriteClips[ 3 ].y =   0;
+		gSpriteClips[ 3 ].w =  15;
+		gSpriteClips[ 3 ].h = 18;
 		//mario camina derecha [2]
 		gSpriteClips[ 5 ].x =   86;
 		gSpriteClips[ 5 ].y =   0;

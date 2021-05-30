@@ -11,10 +11,10 @@ class Vista_Jugador
         virtual ~Vista_Jugador();
         virtual bool loadMedia(SDL_Renderer*  grendered);
         LTexture* getTextureJugador();
-        void setGSpriteActual();
+        virtual void setGSpriteActual();
         SDL_Rect* getGSpriteActual();
         //Renders texture at given point
-		void render( int posx, int posy, SDL_Renderer*  grendered );
+		virtual void render( int posx, int posy, SDL_Renderer*  grendered );
         void close();
         //Tomas: Esta va a ser la conexion entre la vista y el modelo
         Modelo_Jugador* getModeloJugador();

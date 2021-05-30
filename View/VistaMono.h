@@ -11,7 +11,7 @@ class VistaMono : public Vista_Jugador
         VistaMono(Modelo_Jugador* jugadore);
         virtual ~VistaMono();
          bool  loadMedia(SDL_Renderer*  grendered );
-
+         void  setGSpriteActual();
     protected:
 
     private:

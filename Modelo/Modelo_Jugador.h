@@ -16,7 +16,7 @@ class Modelo_Jugador
     	void traducirTecla(int tecla_apretada);
 		int getPosicionX();
 		int getPosicionY();
-		void mover();
+		virtual void mover();
 		void imprimirPosicion();
 		void imprimirVelocidad();
 		void aplicarGravedad();
@@ -42,31 +42,33 @@ class Modelo_Jugador
 		void aumentarVelocidadY();
 		void reducirVelocidadY();
 
-	private:
+		void setearEpilepsia(int cantFrameActualizar, int cantidadDeSprite);
 
-
-
-
+		int  getCantFrameActualizar();
+		int  getCantFrameDelPersonaje();
 		int velocidad_horizontal=10;
 
-	//solo para el mario:con velocidad_vertical=20 el pico del salto es de 50
-		int velocidad_vertical=20;
-		int gravedad=5;
+	private:
 
 		int velocidad_x=0;
-		int velocidad_y=0;
+
+		int cantidadDeSprite;
 
 
     protected:
+    bool estaba_parado=true;
+    int velocidad_vertical=20;
+	int gravedad=1;
+    int velocidad_y=0;
     int posicion_x=0;
 		int posicion_y=0;
     std::string nombre;
     int frames;
-    //esto es solo para el numero de la ultima animacion corriendo
-    //en el mario
+
     int ultima_animacion=2;
     //esto es para la ultima direccion. 1 es izquierda, 2 es derecha
     int ultima_direccion=2;
+    int cuantosFrameActualizo;
     };
 
 #endif // MODELO_JUGADOR_H

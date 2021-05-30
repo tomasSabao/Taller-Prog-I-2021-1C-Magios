@@ -58,3 +58,18 @@ printf("scope: Vista_jugador::load_media\n");
          return success;
 
 }
+
+
+void VistaBarril::setGSpriteActual()
+{
+
+    this->gSpriteActual=&gSpriteClips[ this->jugador->getFrame()/this->jugador->getCantFrameActualizar()];
+
+}
+/*
+void VistaBarril::render( int posx, int posy ,SDL_Renderer* grendered)
+{
+	this->setGSpriteActual();
+    this->gSpriteSheetTextureJugador->render( posx , posy,this->getGSpriteActual()/this->jugador->getCantFrameActualizar() ,grendered,this->anchoProporcion,this->altoProporcion );
+}
+*/
