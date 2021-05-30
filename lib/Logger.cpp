@@ -12,6 +12,7 @@
 
 #define LOG_DIR "log/"
 #define MAX_BUFFER_TIMESTAMP 50
+#define LOG_LEVEL_DEFAULT "error"
 
 using namespace std;
 using chrono::system_clock;
@@ -41,7 +42,7 @@ Logger::~Logger()
 
 int Logger::log(const string nivel, const string mensaje)
 {
-    nivel_log = (nivel_log.empty()) ? "error" : nivel_log;
+    nivel_log = (nivel_log.empty()) ? LOG_LEVEL_DEFAULT : nivel_log;
 
     // si es un nivel de log valido...
     if (nivel_log_map.find(nivel) != nivel_log_map.end())
