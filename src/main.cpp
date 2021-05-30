@@ -57,12 +57,7 @@ int main( int argc, char* argv[] )
     // Modelo_Jugador* jugador=modelo->getModeloJugador();
     Controlador controlador(modelo);
     
-    cout << "antes de crear la Vista" << endl;
-
-    //TODO: rompe ACA
     Vista* vista=new Vista(modelo);
-    
-    cout << "antes del init de vista" << endl;
 
     vista->init();
     vista->loadMedia();
@@ -92,7 +87,7 @@ int main( int argc, char* argv[] )
             {
 
             if (enemigos.find("fuego-2") != enemigos.end()) {
-                cout << "Se encontro fuego-1 con "<< enemigos["fuego-1"] << " enemigos" << endl;
+                cout << "Se encontro fuego-2 con "<< enemigos["fuego-2"] << " enemigos" << endl;
                 modelo->escenario2("fueguito", std::stoi(enemigos["fuego-2"]));
             }
             else
