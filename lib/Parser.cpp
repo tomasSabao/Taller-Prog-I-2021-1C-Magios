@@ -46,8 +46,6 @@ Json::Value Parser::obtenerJsonPorDefecto()
 
 void Parser::verificarJson()
 {
-  //TODO: agregar error de lineas en este chequeo de campos.
-
   if (!this->config.isMember("configuration"))
   {
     logger.log("error", "No se encontro el campo configuration en el archivo de configuracion");
