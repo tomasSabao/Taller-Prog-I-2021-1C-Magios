@@ -2,6 +2,7 @@
 #include "../View/VistaMono.h"
 #include "../View/VistaFondo.h"
 #include "../View/VistaFueguito.h"
+#include "../View/VistaFueguitoDefault.h"
 #include "../View/VistaFuegoPiso.h"
 #include "../View/VistaMario.h"
 #include "../View/VistaBarril.h"
@@ -38,15 +39,15 @@ Vista::Vista(Modelo* modelo)
       //printf("%d\n",this->modelo->getCantJugadores());
 
 
-     for (int i = 0; i <this->modelo->getCantJugadores(); i++) {
-     Modelo_Jugador* jugador=  this->modelo->getModeloJugador(i);
-        printf("%s\n",jugador->getNombre().c_str());
+    for (int i = 0; i <this->modelo->getCantJugadores(); i++) {
+      Modelo_Jugador* jugador=  this->modelo->getModeloJugador(i);
+      printf("%s\n",jugador->getNombre().c_str());
 
-     personajes.push_back(  ( new FactoryVistaPersonaje( jugador ) )->getVistaPersonaje(jugador->getNombre() ));
-     printf("%s\n","exito de init");
-        }
+      personajes.push_back(  ( new FactoryVistaPersonaje( jugador ) )->getVistaPersonaje(jugador->getNombre() ));
+      printf("%s\n","exito de init");
+    }
 
-         printf("%d\n",personajes.size());
+    printf("%d\n",personajes.size());
 }
 
 Vista::~Vista()
@@ -58,7 +59,7 @@ Vista::~Vista()
 void  Vista::escenario1( )
 {
 
-  printf("entra a vistra ecsenario 1 %s\n", "sdf");
+  printf("entra a vista escenario 1 %s\n", "sdf");
   for (int i = this->personajes.size(); i <this->modelo->getCantJugadores(); i++) {
   Modelo_Jugador* jugador=  this->modelo->getModeloJugador(i);
 
@@ -72,7 +73,7 @@ void  Vista::escenario1( )
 void  Vista::escenario2( )
 {   //posicion 0 es el fondo siempre
 
-   printf("entra a vista ecsenario 2 %s\n", "sdf");
+   printf("entra a vista escenario 2 %s\n", "sdf");
   for (int i = this->personajes.size(); i <this->modelo->getCantJugadores(); i++) {
   Modelo_Jugador* jugador=  this->modelo->getModeloJugador(i);
 
@@ -81,8 +82,6 @@ void  Vista::escenario2( )
   personajes[i]->loadMedia(this->gRenderer);
   }
 
-  //TODO: ver tema de scope, no se deberia volver a obtener json para que levante el fondo
-  parser.obtenerJson("");
   vector<string> fondos = parser.obtenerFondos();
   personajes[0]->setearFondo((fondos.at(1)),600,350);
    //personajes[0]->setearFondo("fondo2.png",600,350);

@@ -38,6 +38,10 @@ Modelo_Jugador* FactoryPersonaje::getPersonaje(string nombre, int posX, int posY
   {
    return new Fueguito(posX,posY);
 
+  }else if( nombre=="fueguito-default" )
+  {
+   return new FueguitoDefault(posX,posY);
+
   }else if( nombre=="fondo" )
   {
    return new Fondo(posX,posY);

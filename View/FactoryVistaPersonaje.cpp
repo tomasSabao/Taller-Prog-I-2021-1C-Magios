@@ -3,6 +3,7 @@
 #include "../View/VistaMario.h"
 #include "../View/VistaMono.h"
 #include "../View/VistaFueguito.h"
+#include "../View/VistaFueguitoDefault.h"
 #include "../View/VistaFuegoPiso.h"
 #include "../View/VistaBarril.h"
 #include "../View/Vista_Jugador.h"
@@ -39,6 +40,10 @@ FactoryVistaPersonaje::~FactoryVistaPersonaje()
   }else if( nombre=="fueguito" )
   {
    return new VistaFueguito(this->personaje);
+
+  }else if( nombre=="fueguito-default" )
+  {
+   return new VistaFueguitoDefault(this->personaje);
 
   }else if( nombre=="jugador" )
   {

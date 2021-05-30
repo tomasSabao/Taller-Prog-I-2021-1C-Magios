@@ -6,7 +6,7 @@
         "game": {
             "enemies": [
                 {
-                    "type": "fuego-1",
+                    "type": "fuego-5",
                     "quantity": "3"
                 },
                 {
