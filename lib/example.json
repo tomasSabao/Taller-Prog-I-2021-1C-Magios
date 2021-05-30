@@ -1,12 +1,12 @@
 {
     "configuration": {
         "log": {
-            "level": "error"
+            "level": "debug"
         },
         "game": {
             "enemies": [
                 {
-                    "type": "fuego-5",
+                    "type": "fuego-1",
                     "quantity": "3"
                 },
                 {

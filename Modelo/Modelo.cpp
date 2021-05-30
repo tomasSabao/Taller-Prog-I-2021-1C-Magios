@@ -80,7 +80,7 @@ this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("pla
          this->modelosPersonajes[i]->setPosicionY(10000);
 
         }
-        
+
         if(this->modelosPersonajes[i]->getNombre()=="fueguito-default"){
          this->modelosPersonajes[i]->setPosicionX(10000);
          this->modelosPersonajes[i]->setPosicionY(10000);
@@ -273,18 +273,18 @@ void Modelo::acciones()
           this->modelosPersonajes[i]->caminar() ;
 
           if(this->modelosPersonajes[i]->getNombre()=="fueguito"){
-              if(this->contador<100){
+              /*if(this->contador<=100){
               this->modelosPersonajes[i]->setPosicionX(this->modelosPersonajes[i]->getPosicionX()+1);
               }
               else{
                   this->modelosPersonajes[i]->setPosicionX(this->modelosPersonajes[i]->getPosicionX()-1);
               }
-                  if (this->contador>600){
+                  if (this->contador>=200){
                       this->contador = 0;
-                  }
+                  }*/
           }
           else if (this->modelosPersonajes[i]->getNombre()=="fueguito-default") {
-              if(this->contador<100){
+             /* if(this->contador<100){
               this->modelosPersonajes[i]->setPosicionX(this->modelosPersonajes[i]->getPosicionX()+1);
               }
               else{
@@ -292,7 +292,7 @@ void Modelo::acciones()
               }
                   if (this->contador>200){
                       this->contador = 0;
-                  }
+                  }*/
           }
 
           //condicion para la plataforma

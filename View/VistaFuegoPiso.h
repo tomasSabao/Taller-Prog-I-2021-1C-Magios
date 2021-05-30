@@ -10,6 +10,7 @@ class VistaFuegoPiso : public Vista_Jugador
         VistaFuegoPiso(Modelo_Jugador* jugadore);
         bool  loadMedia(SDL_Renderer*  grendered );
         virtual ~VistaFuegoPiso();
+        void  setGSpriteActual();
 
     protected:
 

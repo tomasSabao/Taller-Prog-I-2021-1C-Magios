@@ -10,6 +10,7 @@ class VistaFueguito : public Vista_Jugador
         VistaFueguito(Modelo_Jugador* jugadore);
         bool  loadMedia(SDL_Renderer*  grendered );
         virtual ~VistaFueguito();
+        void  setGSpriteActual();
 
     protected:
 

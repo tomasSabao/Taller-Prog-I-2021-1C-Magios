@@ -10,6 +10,8 @@ class FueguitoDefault : public Modelo_Jugador
         FueguitoDefault(int posicion_x=0,int posicion_y=0);
         virtual ~FueguitoDefault();
         void caminar();
+         void  moverDer();
+     void  moverIz();
     protected:
 
     private:

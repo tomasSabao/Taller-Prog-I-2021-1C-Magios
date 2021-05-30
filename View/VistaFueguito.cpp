@@ -35,48 +35,55 @@ printf("scope: Vista_jugador::load_media\n");
 		gSpriteClips[ 0 ].w =  16;
 		gSpriteClips[ 0 ].h = 16;
 
-		//Set sprite clips
+		/*//Set sprite clips
 		gSpriteClips[ 1 ].x =   111;
 		gSpriteClips[ 1 ].y =   223;
 		gSpriteClips[ 1 ].w =  16;
-		gSpriteClips[ 1 ].h = 16;
+		gSpriteClips[ 1 ].h = 16;*/
 
 
 		//Set sprite clips
-		gSpriteClips[ 2 ].x =   132;
+		gSpriteClips[ 1 ].x =   132;
+		gSpriteClips[ 1 ].y =   223;
+		gSpriteClips[ 1 ].w =  16;
+		gSpriteClips[ 1].h = 16;
+
+		//Set sprite clips
+		/*gSpriteClips[ 3 ].x =   132;
+		gSpriteClips[ 3 ].y =   223;
+		gSpriteClips[ 3 ].w =  16;
+		gSpriteClips[ 3].h = 16;*/
+
+
+		 //Set sprite clips
+		gSpriteClips[ 2 ].x =   158;
 		gSpriteClips[ 2 ].y =   223;
-		gSpriteClips[ 2 ].w =  16;
-		gSpriteClips[ 2].h = 16;
+		gSpriteClips[ 2].w =  16;
+		gSpriteClips[2].h = 16;
+		//Set sprite clips
+		/*gSpriteClips[ 5 ].x =   158;
+		gSpriteClips[ 5 ].y =   220;
+		gSpriteClips[ 5 ].w =  16;
+		gSpriteClips[ 5].h = 16;*/
 
 		//Set sprite clips
-		gSpriteClips[ 3 ].x =   132;
+		gSpriteClips[ 3 ].x =   179;
 		gSpriteClips[ 3 ].y =   223;
 		gSpriteClips[ 3 ].w =  16;
 		gSpriteClips[ 3].h = 16;
-
-
-		//Set sprite clips
-		gSpriteClips[ 4 ].x =   158;
-		gSpriteClips[ 4 ].y =   220;
-		gSpriteClips[ 4 ].w =  16;
-		gSpriteClips[4].h = 16;
-		//Set sprite clips
-		gSpriteClips[ 5 ].x =   158;
-		gSpriteClips[ 5 ].y =   220;
-		gSpriteClips[ 5 ].w =  16;
-		gSpriteClips[ 5].h = 16;
-
-		//Set sprite clips
-		gSpriteClips[ 6 ].x =   179;
-		gSpriteClips[ 6 ].y =   220;
-		gSpriteClips[ 6 ].w =  16;
-		gSpriteClips[ 6].h = 16;
 				//Set sprite clips
-		gSpriteClips[ 7 ].x =   179;
-		gSpriteClips[ 7 ].y =   220;
-		gSpriteClips[ 7 ].w =  16;
-		gSpriteClips[ 7].h = 16;
+		 gSpriteClips[ 4 ].x =   179;
+		gSpriteClips[ 4 ].y =   223;
+		gSpriteClips[ 4].w =  16;
+		gSpriteClips[ 4].h = 16;
          }
          return success;
+
+}
+
+void VistaFueguito::setGSpriteActual()
+{
+
+    this->gSpriteActual=&gSpriteClips[ this->jugador->getFrame()/this->jugador->getCantFrameActualizar()];
 
 }
