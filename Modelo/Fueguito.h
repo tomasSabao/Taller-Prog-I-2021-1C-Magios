@@ -9,7 +9,7 @@ class Fueguito : public Modelo_Jugador
     public:
         Fueguito(int posicion_x=0,int posicion_y=0);
         virtual ~Fueguito();
-
+        void caminar();
     protected:
 
     private:
