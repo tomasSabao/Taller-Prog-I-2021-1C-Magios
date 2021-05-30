@@ -2,7 +2,10 @@
 
 ModeloServidor::ModeloServidor()
 {
-    //ctor
+ Modelo m;
+ this->modelo= &m;
+
+
 }
 
 ModeloServidor::~ModeloServidor()
@@ -10,32 +13,41 @@ ModeloServidor::~ModeloServidor()
     //dtor
 }
 
- void ModeloServidor::initializeData(struct View* client_view)
+ void ModeloServidor::initializeData( )
 {
-   (*client_view).positionX = 0;
-   (*client_view).positionY = 0;
+
+     this->modelo->positionX=0 ;
+     this->modelo->positionY=0 ;
+
+    // this->View.positionX=0;
+
 }
-void ModeloServidor::processData(int action, struct View* view)
+
+
+
+
+void ModeloServidor::processData(int action )
 {
     switch ( action )
     {
-        case 1:
-            (*view).positionY += 1;
+        case 1://derecha
+
+             this->modelo->positionX=this->modelo->positionX +1;
+
             break;
-        case 2:
-            (*view).positionY -= 1;
+        case 2://izquierda
+
+            this->modelo->positionY=this->modelo->positionY +1;
+
             break;
         case 3:
-            (*view).positionX += 1;
+
             break;
         case 4:
-            (*view).positionX -= 1;
+
             break;
     }
 }
-
-
-
 
 
 
@@ -48,36 +60,40 @@ void ModeloServidor::processData(int action, struct View* view)
 
 
 
- int  ModeloServidor::receiveData(int* client_socket, struct Command* client_command)
+ int  ModeloServidor::receiveData(  )
 {
- this->socketServidor->recibirData(client_socket, client_command);
- return 0;
+ int result=this->socketServidor->recibirData( );
+ this->comando=this->socketServidor->getClientComand();
+  printf("recibe el comando action: %d\n", this->comando->action );
+ return result;
  }
 
- int  ModeloServidor::sendData(int* client_socket, struct View* client_view)
+ int  ModeloServidor::sendData(  )
  {
-    this->socketServidor->enviarData(client_socket, client_view);
-    return 0;
+    int result=this->socketServidor->enviarData(  this->modelo);
+    return result;
  }
 
 int ModeloServidor::bindSocket( )
 {
- this->socketServidor->bindSocket();
-return 0;
+ return this->socketServidor->bindSocket();
+
 }
 int ModeloServidor::escuchar()
 {
- this->socketServidor->escuchar();
-return 0;
+ return this->socketServidor->escuchar();
+
 }
 int ModeloServidor::aceptandoConexiones()
 {
- this->socketServidor->aceptandoConexiones();
-return 0;
+  int result=this->socketServidor->aceptandoConexiones();
+this->client_socket=this->socketServidor->getClientSocket();
+ return result;
+
 }
 
 int ModeloServidor::closeSocket()
 {
- this->socketServidor->cerrar();
- return 0;
+ return this->socketServidor->cerrar();
+
 }

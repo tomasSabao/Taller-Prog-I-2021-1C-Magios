@@ -1,9 +1,11 @@
 #include "SocketServidor.h"
 
 SocketServidor::SocketServidor(int puerto)
-{
+{   Command m;
+    this->comando=&m;
     this->server_socket=0;
     this->puerto=puerto;
+    //this->comando=0;
     printf("Arguments: 1) port: %d \n", this->puerto);
 }
 
@@ -11,6 +13,10 @@ SocketServidor::~SocketServidor()
 {
     //dtor
 }
+
+
+
+
 
 
 int SocketServidor::crearSocket()
@@ -96,22 +102,32 @@ int SocketServidor::aceptandoConexiones()
     // addr -> pointer to a sockaddr structure for the CLIENT.
     // addrlen -> size of sockaddr structure for the CLIENT.
     this->client_socket = accept(this->server_socket, (struct sockaddr *) &client_addr, (socklen_t*) &client_addrlen);
-    if (client_socket < 0)
+     printf("este es el clienteeeeeeeee numerooooo %d ", this->client_socket);
+
+    if (this->client_socket < 0)
     {
         perror("Accept failed");
         return 1;
     }
     printf("Connection accepted\n\n");
-
+    return this->client_socket ;
 }
 
+int SocketServidor::getClientSocket()
+{
+ return this->client_socket;
+}
 
+ Command* SocketServidor::getClientComand()
+{
+ return this->comando;
+}
 
-int SocketServidor::enviarData(int* client_socket, struct View* client_view){
+int SocketServidor::enviarData(   Modelo*  modelo){
 
     int total_bytes_written = 0;
     int bytes_written = 0;
-    int send_data_size = sizeof(struct View);
+    int send_data_size = sizeof( struct Modelo);
     bool client_socket_still_open = true;
 
     // Send
@@ -124,7 +140,8 @@ int SocketServidor::enviarData(int* client_socket, struct View* client_view){
     // The send() call may be used only when the socket is in a connected state (so that the intended recipient is known).
 
     while ((send_data_size > total_bytes_written) && client_socket_still_open){
-        bytes_written = send(*client_socket, (client_view + total_bytes_written), (send_data_size - total_bytes_written), MSG_NOSIGNAL);
+        printf("el servidor envia al socket del  cliente = (%d ) \n",this->client_socket);
+        bytes_written = send(this->client_socket, ( modelo + total_bytes_written), (send_data_size - total_bytes_written), MSG_NOSIGNAL);
         if (bytes_written < 0) { // Error
             return bytes_written;
         }
@@ -145,7 +162,8 @@ int SocketServidor::cerrar()
  return 0;
 }
 
-int SocketServidor::recibirData(int* client_socket, struct Command* client_command){
+int SocketServidor::recibirData(  ){
+      struct Command comandos ;
 
     int total_bytes_receive = 0;
     int bytes_receive = 0;
@@ -160,9 +178,14 @@ int SocketServidor::recibirData(int* client_socket, struct Command* client_comma
     // flags
     // The recv() call are used to receive messages from a socket.
     // If no messages are available at the socket, the receive call wait for a message to arrive. (Blocking)
+     printf("numero del socket cliente que recibo= (%d ) \n",  this->client_socket);
 
     while ((receive_data_size > bytes_receive) && client_socket_still_open) {
-        bytes_receive = recv(*client_socket, (client_command + total_bytes_receive), (receive_data_size - total_bytes_receive), MSG_NOSIGNAL);
+     printf("el servidor recibe del  socket del  cliente = (%d ) \n",this->client_socket);
+        bytes_receive = recv(this->client_socket, (   &comandos + total_bytes_receive), (receive_data_size - total_bytes_receive), MSG_NOSIGNAL);
+        printf("error de recibir dato de cliente si es menor a cero = (%d ) \n",bytes_receive);
+        printf("que numero de comando recibe del cliente= (%d ) \n",  this->comando->action);
+        printf("size recibe= (%d ) \n", receive_data_size);
         if (bytes_receive < 0) { // Error
             return bytes_receive;
         }
@@ -174,5 +197,6 @@ int SocketServidor::recibirData(int* client_socket, struct Command* client_comma
         }
     }
 
+    this->comando=&comandos;
     return 0;
 }

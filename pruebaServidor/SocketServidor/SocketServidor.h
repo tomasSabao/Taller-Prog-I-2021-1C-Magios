@@ -8,14 +8,18 @@
 #include <unistd.h>
 #include <stdbool.h>
 
-struct Command {
-   int action;
-};
 
-struct View {
-    int positionX;
-    int positionY;
-};
+
+
+      struct  Command {
+           int action;
+        }  ;
+
+
+     struct  Modelo {
+            int positionX;
+            int positionY;
+        }  ;
 
 class SocketServidor
 {
@@ -26,16 +30,27 @@ class SocketServidor
         int bindSocket( );
         int escuchar();
         int aceptandoConexiones();
-        int enviarData(int* client_socket, struct View* client_view);
-        int recibirData(int* client_socket, struct Command* client_command);
+
+        int recibirData(     );
         int cerrar();
+        int getClientSocket();
+
+
+  int enviarData(   Modelo*  modelo);
+         Command* getClientComand();
+
 
 
     protected:
+    Command* comando;
+     //Modelo* modelo;
     int server_socket;
     struct sockaddr_in server_addr;
     int puerto;
     int client_socket ;
+    //Comando* comando;
+    // Structs for data transfer
+
 
 
     private:

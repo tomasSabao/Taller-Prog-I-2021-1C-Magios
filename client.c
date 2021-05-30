@@ -104,7 +104,7 @@ int sendData(int* client_socket, struct Command* client_command){
     int bytes_written = 0;
     int send_data_size = sizeof(struct Command);
     bool client_socket_still_open = true;
-
+    printf("  envio del socket cliente = (%d ) \n",*client_socket);			
     while ((send_data_size > total_bytes_written) && client_socket_still_open){
         bytes_written = send(*client_socket, (client_command + total_bytes_written), (send_data_size-total_bytes_written), MSG_NOSIGNAL);
         
@@ -129,7 +129,8 @@ int receiveData(int* client_socket, struct View* client_view){
     int receive_data_size = sizeof(struct View);
     bool client_socket_still_open = true;
     
-    while ((receive_data_size > bytes_receive) && client_socket_still_open) {
+    while ((receive_data_size > bytes_receive) && client_socket_still_open) { 
+      printf("recibe de cliente = (%d ) \n",*client_socket);	
         bytes_receive = recv(*client_socket, (client_view + total_bytes_receive), (receive_data_size - total_bytes_receive), MSG_NOSIGNAL);
         
         if (bytes_receive < 0) { // Error
