@@ -12,25 +12,39 @@
 #include "../lib/Logger.h"
 #include "../lib/Parser.h"
 
-#define CDAD_ARGUMENTOS 2
+#define CANTIDAD_MIN_ARGS 2
 #define POS_ARCHIVO_CONFIGURACION 1
-
+#define CONFIG_LEN 7
+#define LOG_LEN 4
 
 extern Logger logger;
 Parser parser = Parser();
 
 int main( int argc, char* argv[] )
 {
-    std::string archivo_configuracion;
+    std::string archivo_configuracion = "lib/default.json";
+    std::string cli_log = "";
 
-    if (argc >= CDAD_ARGUMENTOS) {
-        archivo_configuracion = argv[POS_ARCHIVO_CONFIGURACION];
-    } else {
-        archivo_configuracion = "lib/default.json";
+    for (int i = 0; i < argc; i++) {
+        std::string arg = argv[i];
+        if (arg.find("config=") != std::string::npos) {
+            archivo_configuracion = arg.substr(CONFIG_LEN);
+        }
+        else if (arg.find("log=") != std::string::npos) {
+            cli_log = arg.substr(LOG_LEN);
+        }
     }
 
     parser.obtenerJson(archivo_configuracion);
-    std::string nivel_log = parser.obtenerNivelLog();
+
+    std::string nivel_log = ((cli_log == "error") || (cli_log == "debug") || (cli_log == "info")) ? cli_log : parser.obtenerNivelLog();
+    /*
+    if (!cli_log) {
+        std::string nivel_log = parser.obtenerNivelLog();
+    } else {
+        std::string nivel_log = cli_log;
+    }*/
+
     logger.setNivelLog(nivel_log);
     //continua el flujo
 
@@ -44,12 +58,10 @@ int main( int argc, char* argv[] )
     //VistaMono *vistaMono = new vistaMono(jugador);
 
     if (enemigos.find("fuego-1") != enemigos.end()) {
-        cout << "Se encontro fuego-1 con "<< enemigos["fuego-1"] << " enemigos" << endl;
         modelo->escenario1("fueguito", std::stoi(enemigos["fuego-1"]));
     }
     else
     {
-        cout << "Se encontro fuego-default-1 con "<< enemigos["fuego-default-1"] << " enemigos" << endl;
         modelo->escenario1("fueguito-default", std::stoi(enemigos["fuego-default-1"]));
     }
 
@@ -87,12 +99,10 @@ int main( int argc, char* argv[] )
             {
 
             if (enemigos.find("fuego-2") != enemigos.end()) {
-                cout << "Se encontro fuego-2 con "<< enemigos["fuego-2"] << " enemigos" << endl;
                 modelo->escenario2("fueguito", std::stoi(enemigos["fuego-2"]));
             }
             else
             {
-                cout << "Se encontro fuego-default-2 con "<< enemigos["fuego-default-2"] << " enemigos" << endl;
                 modelo->escenario2("fueguito-default", std::stoi(enemigos["fuego-default-2"]));
             }
             vista->escenario2();
