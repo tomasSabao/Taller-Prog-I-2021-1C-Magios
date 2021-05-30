@@ -50,31 +50,37 @@ void Parser::verificarJson()
   {
     logger.log("error", "No se encontro el campo configuration en el archivo de configuracion");
     this->config = obtenerJsonPorDefecto();
+    return;
   }
   if (!this->config["configuration"].isMember("log"))
   {
     logger.log("error", "No se encontro el campo configuration->log en el archivo de configuracion");
     this->config = obtenerJsonPorDefecto();
+    return;
   }
   if (!this->config["configuration"]["log"].isMember("level"))
   {
     logger.log("error", "No se encontro el campo configuration->log->level en el archivo de configuracion");
     this->config = obtenerJsonPorDefecto();
+    return;
   }
   if (!this->config["configuration"].isMember("game"))
   {
     logger.log("error", "No se encontro el campo configuration->game en el archivo de configuracion");
     this->config = obtenerJsonPorDefecto();
+    return;
   }
   if (!this->config["configuration"]["game"].isMember("enemies"))
   {
     logger.log("error", "No se encontro el campo configuration->game->enemies en el archivo de configuracion");
     this->config = obtenerJsonPorDefecto();
+    return;
   }
   if (!this->config["configuration"]["game"].isMember("stages"))
   {
     logger.log("error", "No se encontro el campo configuration->game->stages en el archivo de configuracion");
     this->config = obtenerJsonPorDefecto();
+    return;
   }
 
   if ((this->config["configuration"]["log"]["level"].asString() == "error") ||
@@ -169,6 +175,7 @@ int Parser::obtenerJson(string nombre_archivo)
     logger.log("error", "Tipo de archivo con distinto formato a un .json");
     cerr << "No se encontro el archivo .json de configuracion" << endl;
     this->config = obtenerJsonPorDefecto();
+    return 0;
   }
 
   Json::Reader lector;
@@ -184,6 +191,7 @@ int Parser::obtenerJson(string nombre_archivo)
       cerr << lector.getFormattedErrorMessages() << endl;
       archivo.close();
       this->config = obtenerJsonPorDefecto();
+      return 0;
     }
     else
     {
