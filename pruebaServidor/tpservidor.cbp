@@ -14,9 +14,15 @@
 				<Option compiler="gcc" />
 				<Option parameters="5555" />
 				<Compiler>
+					<Add option="-std=gnu++11" />
+					<Add option="-std=c++11" />
 					<Add option="-g" />
 					<Add directory="Modelo" />
+					<Add directory="Thread" />
 				</Compiler>
+				<Linker>
+					<Add option="-lpthread" />
+				</Linker>
 			</Target>
 			<Target title="Release">
 				<Option output="bin/Release/t" prefix_auto="1" extension_auto="1" />
@@ -26,6 +32,7 @@
 				<Compiler>
 					<Add option="-O2" />
 					<Add directory="Modelo" />
+					<Add directory="Thread" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -34,16 +41,19 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
+			<Add option="-std=gnu++11" />
+			<Add option="-std=c++11" />
 		</Compiler>
-		<Unit filename="Modelo/Comando.cpp" />
-		<Unit filename="Modelo/Comando.h" />
-		<Unit filename="Modelo/Modelo.cpp" />
-		<Unit filename="Modelo/Modelo.h" />
+		<Linker>
+			<Add option="-lpthread" />
+		</Linker>
 		<Unit filename="ModeloServidor/ModeloServidor.cpp" />
 		<Unit filename="ModeloServidor/ModeloServidor.h" />
 		<Unit filename="ModeloServidor/main.cpp" />
 		<Unit filename="SocketServidor/SocketServidor.cpp" />
 		<Unit filename="SocketServidor/SocketServidor.h" />
+		<Unit filename="Thread/Thread.cpp" />
+		<Unit filename="Thread/Thread.h" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

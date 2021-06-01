@@ -17,7 +17,7 @@
 1622392352 source:/home/yuscu/Documentos/juegosdl/EjemplosBasicosSocket (copia)/pruebaServidor/SocketServidor/SocketServidor.cpp
 	"SocketServidor.h"
 
-1622371393 source:/home/yuscu/Documentos/juegosdl/EjemplosBasicosSocket (copia)/pruebaServidor/ModeloServidor/main.cpp
+1622503388 source:/home/yuscu/Documentos/juegosdl/EjemplosBasicosSocket (copia)/pruebaServidor/ModeloServidor/main.cpp
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -26,6 +26,7 @@
 	<unistd.h>
 	<stdbool.h>
 	"../ModeloServidor/ModeloServidor.h"
+	"../Thread/Thread.h"
 
 1621994424 source:/home/yuscu/Documentos/juegosdl/EjemplosBasicosSocket (copia)/pruebaServidor/Modelo/Comando.cpp
 	"Comando.h"
@@ -37,31 +38,10 @@
 1621993647 source:/home/yuscu/Documentos/juegosdl/EjemplosBasicosSocket (copia)/pruebaServidor/Modelo/Modelo.cpp
 	"Modelo.h"
 
-1622371393 source:/home/yuscu/Documentos/juegosdl/EjemplosBasicosSocket (copia)/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/main.cpp
+1622503175 source:/home/yuscu/Documentos/juegosdl/EjemplosBasicosSocket (copia)/pruebaServidor/Thread/Thread.cpp
+	"Thread.h"
+
+1622502702 /home/yuscu/Documentos/juegosdl/EjemplosBasicosSocket (copia)/pruebaServidor/Thread/Thread.h
+	<pthread.h>
 	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	<sys/socket.h>
-	<arpa/inet.h>
-	<unistd.h>
-	<stdbool.h>
-	"../ModeloServidor/ModeloServidor.h"
-
-1622371437 /home/yuscu/Documentos/juegosdl/EjemplosBasicosSocket (copia)/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/ModeloServidor.h
-	"../SocketServidor/SocketServidor.h"
-
-1622372925 /home/yuscu/Documentos/juegosdl/EjemplosBasicosSocket (copia)/Taller-Prog-I-2021-1C-Magios/pruebaServidor/SocketServidor/SocketServidor.h
-	<sys/socket.h>
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	<arpa/inet.h>
-	<unistd.h>
-	<stdbool.h>
-
-1622374827 source:/home/yuscu/Documentos/juegosdl/EjemplosBasicosSocket (copia)/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/ModeloServidor.cpp
-	"ModeloServidor.h"
-
-1622392352 source:/home/yuscu/Documentos/juegosdl/EjemplosBasicosSocket (copia)/Taller-Prog-I-2021-1C-Magios/pruebaServidor/SocketServidor/SocketServidor.cpp
-	"SocketServidor.h"
 

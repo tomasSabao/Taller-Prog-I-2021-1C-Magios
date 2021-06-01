@@ -6,13 +6,20 @@
 #include <unistd.h>
 #include <stdbool.h>
 #include "../ModeloServidor/ModeloServidor.h"
+#include "../Thread/Thread.h"
 //#include "ModeloServidor.h"
 //#include "../SocketServidor/SocketServidor.h"
 
 // Structs for data transfer
 
 //------------------------
+void *saludar(void* algo)
+{
+ int i;
+ while(1)
+ printf("hilo funcion saludar");
 
+}
 // First argument: port
 int main(int argc , char *argv[])
 {
@@ -23,7 +30,8 @@ int main(int argc , char *argv[])
     int port = atoi(argv[1]);
 
 
-
+    Thread* hilo= new Thread();
+    hilo->crearThread(saludar);
 
 
   //SocketServidor* socket=new SocketServidor( port);
