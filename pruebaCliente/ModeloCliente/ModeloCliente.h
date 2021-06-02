@@ -11,8 +11,8 @@ class ModeloCliente
         virtual ~ModeloCliente();
         //void  initializeData(struct View* client_view);
         //void  processData(int action, struct View* view);
-        int crearSocket(int puerto, char* host);
-        void initializeData();
+        int crearSocket(char* host, int puerto);
+        void initializeData(int action);
         int conectar();
         int receiveData();
         int sendData(Command* comando);
@@ -21,6 +21,7 @@ class ModeloCliente
 
         int skt;//este es el cliente que fue ya aceptado por el servidor
         Modelo* modelo;
+        Command* comando;
       
     protected:
         int positionX;

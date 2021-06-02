@@ -27,6 +27,7 @@ class SocketCliente
         int conectar();
         int recibirData();
         int enviarData(Command* comando);
+        Modelo* getServerModel();
         int cerrar();
         Command* comando;
         Modelo* modelo;

@@ -136,3 +136,7 @@ int SocketCliente::recibirData()
     this->modelo=&model;
     return 0;
 }
+
+Modelo* SocketCliente::getServerModel() {
+    return this->modelo;
+}
