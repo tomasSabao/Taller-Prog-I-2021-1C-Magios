@@ -14,8 +14,8 @@ Mono::~Mono()
 void Mono::caminar()
 {
    this->setearEpilepsia(30,4);
-   printf("El valor es epilepi %d.\n", this->getCantFrameActualizar());
-   printf("El valor es sdf epilepi framsfs %d.\n",  this->frames / this->getCantFrameActualizar());
+   //printf("El valor es epilepi %d.\n", this->getCantFrameActualizar());
+   //printf("El valor es sdf epilepi framsfs %d.\n",  this->frames / this->getCantFrameActualizar());
 
     if(  this->frames / this->getCantFrameActualizar() >= this->getCantFrameDelPersonaje() )
         {

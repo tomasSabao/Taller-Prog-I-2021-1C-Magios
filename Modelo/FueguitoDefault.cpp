@@ -29,8 +29,8 @@ void FueguitoDefault::caminar()
 {
 
 this->setearEpilepsia(35,5);
-   printf("El valor es epilepi %d.\n", this->getCantFrameActualizar());
-   printf("El valor es sdf epilepi framsfs %d.\n",  this->frames / this->getCantFrameActualizar());
+   //printf("El valor es epilepi %d.\n", this->getCantFrameActualizar());
+   //printf("El valor es sdf epilepi framsfs %d.\n",  this->frames / this->getCantFrameActualizar());
 
 
    //aca los frames a mostrar
