@@ -35,7 +35,7 @@ Json::Value Parser::obtenerJsonPorDefecto()
   Json::Reader lector;
 
   logger.log("error", "Se abre el archivo de configuracion por defecto");
-  ifstream archivo("lib/default.json", ios::in);
+  ifstream archivo("default.json", ios::in);
 
   // Parsear JSON
   lector.parse(archivo, config);
