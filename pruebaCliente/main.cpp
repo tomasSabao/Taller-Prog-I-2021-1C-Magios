@@ -7,7 +7,8 @@
 #include <stdbool.h>
 #include "SocketCliente/SocketCliente.h"
 #include "ModeloCliente/ModeloCliente.h"
-
+using namespace std;
+#include<iostream>
 // Structs for data transfer
 
 //------------------------
@@ -41,7 +42,18 @@ int main(int argc , char *argv[])
 
         // Set data to send
         //socket->comando->action = commands[i];
-        command.action = commands[i];
+
+        cout << "Hola! ingrese un comando , si ingresa 1 aumenta eje y si ingresa 2 aumenta eje x" << "\n"  ;
+    //La instrucción \n es un salto de línea Mostrando los textos separados
+
+        int comando;//En esta variable estará almacenado el nombre ingresado.
+        cin >> comando; //Se lee el nombre
+
+        cout << "Bienvenido al sistema " << comando << ". Gracias por usar nuestra aplicación" << "\n";
+
+
+
+        command.action = comando;
 
         unModeloCliente->sendData(&command);
         printf("loop:  %d\n", i);

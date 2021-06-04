@@ -49,12 +49,12 @@ void ModeloServidor::processData(int action )
              this->modelo.positionY=this->modelo.positionY+1;
 
             break;
-        case 2://izquierda
+        case 3://izquierda
 
              this->modelo.positionY=this->modelo.positionY -1;
 
             break;
-        case 3:
+        case 2:
             this->modelo.positionX=this->modelo.positionX +1;
             break;
         case 4:
