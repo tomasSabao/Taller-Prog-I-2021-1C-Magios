@@ -2,9 +2,9 @@
 
 
 SocketCliente::SocketCliente(char* host, int puerto)
-{   
-    Command m;
-    this->comando=&m;
+{
+    //Command m;
+//    this->comando=&m;
     this->skt=0;
     this->puerto=puerto;
     this->host=host;
@@ -38,7 +38,7 @@ int SocketCliente::crearSocket()
 
 int SocketCliente::conectar()
 {
-    // Prepare the sockaddr_in structure 
+    // Prepare the sockaddr_in structure
     this->server_addr.sin_addr.s_addr = inet_addr((const char*)this->host);
     this->server_addr.sin_family = AF_INET;
     this->server_addr.sin_port = htons(this->puerto);
@@ -48,20 +48,21 @@ int SocketCliente::conectar()
     // sockfd -> file descriptor that refers to a socket
     // addr -> pointer to sockaddr_in structure for the SERVER.
     // addrlen -> size of sockaddr_in structure for the SERVER.
-    // The connect() system call connects the socket referred to by the file descriptor sockfd to the address specified by addr.  
+    // The connect() system call connects the socket referred to by the file descriptor sockfd to the address specified by addr.
     if (connect(this->skt, (struct sockaddr *)&this->server_addr, sizeof(struct sockaddr_in)) < 0)
     {
         perror("connect failed. Error");
         return 1;
-    }     
+    }
     printf("Connected\n\n");
+    return 0;
 }
 
-int SocketCliente::enviarData(Command* comando) 
+int SocketCliente::enviarData(Command* comando)
 {
     int total_bytes_written = 0;
     int bytes_written = 0;
-    int send_data_size = sizeof(struct Command);
+    int send_data_size = sizeof(Comandito);
     bool client_socket_still_open = true;
 
     // Send
@@ -97,11 +98,11 @@ int SocketCliente::cerrar()
 
 int SocketCliente::recibirData()
 {
-    struct Modelo model;
+    Modelito model;
 
     int total_bytes_receive = 0;
     int bytes_receive = 0;
-    int receive_data_size = sizeof(struct Modelo);
+    int receive_data_size = sizeof(Modelito);
     bool client_socket_still_open = true;
 
     // Receive
@@ -115,10 +116,10 @@ int SocketCliente::recibirData()
      printf("numero del socket cliente que recibo= (%d ) \n",  this->skt);
 
     while ((receive_data_size > bytes_receive) && client_socket_still_open) {
-        printf("recibe el cliente = (%d ) \n", this->skt);	
+        printf("recibe el cliente = (%d ) \n", this->skt);
         bytes_receive = recv(this->skt, (&model + total_bytes_receive), (receive_data_size - total_bytes_receive), MSG_NOSIGNAL);
         printf("error de recibir dato de cliente si es menor a cero = (%d ) \n",bytes_receive);
-        printf("que numero de comando recibe del cliente= (%d ) \n",  this->comando->action);
+        //printf("que numero de comando recibe del cliente= (%d ) \n",  this->comando->action);
         printf("size recibe= (%d ) \n", receive_data_size);
         if (bytes_receive < 0) { // Error
             printf("hubo un error en recibirData cliente socket");
@@ -133,10 +134,10 @@ int SocketCliente::recibirData()
         }
     }
 
-    this->modelo=&model;
+    this->modelo=model;
     return 0;
 }
 
-Modelo* SocketCliente::getServerModel() {
-    return this->modelo;
+Modelito* SocketCliente::getServerModel() {
+    return &this->modelo;
 }

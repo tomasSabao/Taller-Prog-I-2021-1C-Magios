@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1622818990 source:/home/yuscu/Documentos/juegosdl/EjemplosBasicosSocket (copia)/pruebaCliente/main.cpp
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<sys/socket.h>
+	<arpa/inet.h>
+	<unistd.h>
+	<stdbool.h>
+	"SocketCliente/SocketCliente.h"
+	"ModeloCliente/ModeloCliente.h"
+
+1622778290 /home/yuscu/Documentos/juegosdl/EjemplosBasicosSocket (copia)/pruebaCliente/SocketCliente/SocketCliente.h
+	<sys/socket.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<arpa/inet.h>
+	<unistd.h>
+	<stdbool.h>
+
+1622818958 /home/yuscu/Documentos/juegosdl/EjemplosBasicosSocket (copia)/pruebaCliente/ModeloCliente/ModeloCliente.h
+	"../SocketCliente/SocketCliente.h"
+
+1622819039 source:/home/yuscu/Documentos/juegosdl/EjemplosBasicosSocket (copia)/pruebaCliente/ModeloCliente/ModeloCliente.cpp
+	"ModeloCliente.h"
+
+1622778441 source:/home/yuscu/Documentos/juegosdl/EjemplosBasicosSocket (copia)/pruebaCliente/SocketCliente/SocketCliente.cpp
+	"SocketCliente.h"
+

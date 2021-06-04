@@ -1,8 +1,8 @@
 #include "SocketServidor.h"
 
 SocketServidor::SocketServidor(int puerto)
-{   Command m;
-    this->comando=&m;
+{    Comandito m;
+     this->comando =m;
     this->server_socket=0;
     this->puerto=puerto;
     //this->comando=0;
@@ -118,16 +118,16 @@ int SocketServidor::getClientSocket()
  return this->client_socket;
 }
 
- Command* SocketServidor::getClientComand()
+ Comandito* SocketServidor::getClientComand()
 {
- return this->comando;
+ return &this->comando;
 }
 
-int SocketServidor::enviarData(   Modelo*  modelo){
+int SocketServidor::enviarData(   Modelito*  modelo){
 
     int total_bytes_written = 0;
     int bytes_written = 0;
-    int send_data_size = sizeof( struct Modelo);
+    int send_data_size = sizeof( Modelito);
     bool client_socket_still_open = true;
 
     // Send
@@ -163,7 +163,7 @@ int SocketServidor::cerrar()
 }
 
 int SocketServidor::recibirData(  ){
-      struct Command comandos ;
+      Comandito comandito ;
 
     int total_bytes_receive = 0;
     int bytes_receive = 0;
@@ -182,9 +182,9 @@ int SocketServidor::recibirData(  ){
 
     while ((receive_data_size > bytes_receive) && client_socket_still_open) {
      printf("el servidor recibe del  socket del  cliente = (%d ) \n",this->client_socket);
-        bytes_receive = recv(this->client_socket, (   &comandos + total_bytes_receive), (receive_data_size - total_bytes_receive), MSG_NOSIGNAL);
+        bytes_receive = recv(this->client_socket, (   &comandito + total_bytes_receive), (receive_data_size - total_bytes_receive), MSG_NOSIGNAL);
         printf("error de recibir dato de cliente si es menor a cero = (%d ) \n",bytes_receive);
-        printf("que numero de comando recibe del cliente= (%d ) \n",  this->comando->action);
+        //printf("que numero de comando recibe del cliente= (%d ) \n",  this->comando->action);
         printf("size recibe= (%d ) \n", receive_data_size);
         if (bytes_receive < 0) { // Error
             return bytes_receive;
@@ -197,6 +197,6 @@ int SocketServidor::recibirData(  ){
         }
     }
 
-    this->comando=&comandos;
+    this->comando=comandito;
     return 0;
 }

@@ -9,14 +9,18 @@
 #include <stdbool.h>
 
 
-struct Command {
-    int action;
-};
+struct  Command {
+           int action;
+        }  ;
 
-struct  Modelo {
-    int positionX;
-    int positionY;
-};
+
+     struct  Modelo {
+            int positionX;
+            int positionY;
+        }  ;
+
+        typedef struct Command  Comandito;
+        typedef struct Modelo  Modelito;
 
 class SocketCliente
 {
@@ -26,13 +30,14 @@ class SocketCliente
         int crearSocket();
         int conectar();
         int recibirData();
-        int enviarData(Command* comando);
-        Modelo* getServerModel();
+        int enviarData(Comandito* comando);
+        Modelito* getServerModel();
         int cerrar();
-        Command* comando;
-        Modelo* modelo;
+
 
     protected:
+        //Comandito comando;
+        Modelito modelo;
 
         struct sockaddr_in server_addr;
         int puerto;

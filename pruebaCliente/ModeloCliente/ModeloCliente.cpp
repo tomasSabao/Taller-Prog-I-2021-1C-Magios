@@ -3,11 +3,11 @@
 
 ModeloCliente::ModeloCliente()
 {
-    Modelo m;
-    this->modelo = &m;
+    //Modelo m;
+    //this->modelo = &m;
 
-    Command c;
-    this->comando = &c;
+   // Comandito c;
+    //this->comando = c;
 }
 
 ModeloCliente::~ModeloCliente()
@@ -24,11 +24,18 @@ int ModeloCliente::crearSocket(char* host, int puerto)
 
 void ModeloCliente::initializeData(int action)
 {
-    this->modelo->positionX=0 ;
-    this->modelo->positionY=0 ;
+    //this->modelo->positionX=0 ;
+    //this->modelo->positionY=0 ;
 
-    this->comando->action = action;
+//    this->comando.action = action;
 }
+
+
+void ModeloCliente::ImprimirModeloActulizado()
+ {
+
+   printf("Receive data: pos(X,Y) = (%d,%d)\n\n", this->modelo->positionX, this->modelo->positionY );
+ }
 
 int ModeloCliente::receiveData()
 {
@@ -37,7 +44,7 @@ int ModeloCliente::receiveData()
     return result;
 }
 
-int ModeloCliente::sendData(Command* comando)
+int ModeloCliente::sendData(Comandito* comando)
 {
     int result = this->socketCliente->enviarData(comando);
     return result;

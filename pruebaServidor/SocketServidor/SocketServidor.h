@@ -8,10 +8,7 @@
 #include <unistd.h>
 #include <stdbool.h>
 
-
-
-
-      struct  Command {
+   struct  Command {
            int action;
         }  ;
 
@@ -20,6 +17,12 @@
             int positionX;
             int positionY;
         }  ;
+
+        typedef struct Command  Comandito;
+        typedef struct Modelo  Modelito;
+
+
+
 
 class SocketServidor
 {
@@ -36,13 +39,13 @@ class SocketServidor
         int getClientSocket();
 
 
-  int enviarData(   Modelo*  modelo);
-         Command* getClientComand();
+  int enviarData(   Modelito*  modelo);
+         Comandito* getClientComand();
 
 
 
     protected:
-    Command* comando;
+    Comandito comando;
      //Modelo* modelo;
     int server_socket;
     struct sockaddr_in server_addr;

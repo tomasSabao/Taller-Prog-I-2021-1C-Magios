@@ -30,8 +30,8 @@ int main(int argc , char *argv[])
     int port = atoi(argv[1]);
 
 
-    Thread* hilo= new Thread();
-    hilo->crearThread(saludar);
+    //Thread* hilo= new Thread();
+    //hilo->crearThread(saludar);
 
 
   //SocketServidor* socket=new SocketServidor( port);
@@ -66,11 +66,11 @@ int main(int argc , char *argv[])
             perror("Receive Data Error");
             status = -1;
         }
-         printf("Incomming command action: %d\n", modeloServidor->comando->action );
+         printf("Incomming command action: %d\n", modeloServidor->getAction() );
         //--------------------
 
         // Process model
-        modeloServidor->processData(modeloServidor->comando->action  );
+        modeloServidor->processData(modeloServidor->getAction()  );
         //--------------------
 
         // Send data (view)
@@ -78,14 +78,16 @@ int main(int argc , char *argv[])
             perror("Send Data Error");
             status = -1;
         }
-        printf("Send data: pos(X,Y) = (%d,%d)\n\n", modeloServidor->modelo->positionX, modeloServidor->modelo->positionY);
+        printf("Send data: pos(X,Y) = (%d,%d)\n\n", modeloServidor->getPosicionX(), modeloServidor->getPosicionY());
         //--------------------*/
 
         commands_count++;
     }
 
-     close(modeloServidor->client_socket);
-    printf("Client socket number %d closed\n",modeloServidor->client_socket);
+
+modeloServidor->imprimirComandos();
+     close(modeloServidor->getCliente());
+    printf("Client socket number %d closed\n",modeloServidor->getCliente());
     modeloServidor->closeSocket();
     //printf("Server socket number %d closed\n",server_socket);*/
 

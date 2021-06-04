@@ -15,15 +15,17 @@ class ModeloCliente
         void initializeData(int action);
         int conectar();
         int receiveData();
-        int sendData(Command* comando);
+        int sendData(Comandito* comando);
         int closeSocket();
+        void ImprimirModeloActulizado();
         // Structs for data transfer
 
         int skt;//este es el cliente que fue ya aceptado por el servidor
-        Modelo* modelo;
-        Command* comando;
-      
+
+        //Comandito comando;
+
     protected:
+    Modelito* modelo;
         int positionX;
         int positionY;
         int action;
