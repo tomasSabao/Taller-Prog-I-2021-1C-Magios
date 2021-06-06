@@ -3,6 +3,9 @@
 #include "../SocketServidor/SocketServidor.h"
 #include <vector>
  using namespace std;
+ #include <pthread.h>
+#include <stdio.h>
+#define MAX_CLIENTS 4
 // Structs for data transfer
 
 
@@ -24,6 +27,12 @@ class ModeloServidor
         int  getPosicionX();
         int cargarComandos(Comandito comando);
         void imprimirComandos();
+        void* receiveDataGeneral(int socketCliente  );
+        void  desencolar(int clients);
+
+         int  socketAceptando(SocketServidor* unSocket);
+         void  send_message(int clients, Modelito* modelito);
+          int sendDataGeneral(int cliente, Modelito* modelito );
         //int cargarComandos();
 
 
@@ -44,6 +53,7 @@ int  getAction();
     protected:
      std::vector<Comandito> colaComando;
      std::vector<Modelito> colaModelo;
+     std::vector<int> colaSocketCliente;
      int client_socket;//este es el cliente que fue ya aceptado por el servidor
    Comandito* comando;
    Modelito modelo;

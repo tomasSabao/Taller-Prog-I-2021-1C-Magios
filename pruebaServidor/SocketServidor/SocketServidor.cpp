@@ -38,6 +38,13 @@ int SocketServidor::crearSocket()
 
 
 }
+
+int SocketServidor::getSocket()
+{
+
+
+return this->server_socket;
+}
 int SocketServidor::bindSocket( )
 {
 
@@ -156,6 +163,40 @@ int SocketServidor::enviarData(   Modelito*  modelo){
     return 0;
 }
 
+
+int SocketServidor::enviarDataGeneral(  int client_socket, Modelito*  modelo){
+
+    int total_bytes_written = 0;
+    int bytes_written = 0;
+    int send_data_size = sizeof( Modelito);
+    bool client_socket_still_open = true;
+
+    // Send
+    // ssize_t send(int sockfd, const void *buf, size_t len, int flags);
+    // sockfd -> file descriptor that refers to a socket
+    // buf ->  the message is found in buf.
+    // len -> the message and has length len
+    // flags
+    // The system call send() is used to transmit a message to another socket.
+    // The send() call may be used only when the socket is in a connected state (so that the intended recipient is known).
+
+    while ((send_data_size > total_bytes_written) && client_socket_still_open){
+        printf("el servidor envia al socket del  cliente = (%d ) \n", client_socket);
+        bytes_written = send( client_socket, ( modelo + total_bytes_written), (send_data_size - total_bytes_written), MSG_NOSIGNAL);
+        if (bytes_written < 0) { // Error
+            return bytes_written;
+        }
+        else if (bytes_written == 0) { // Socket closed
+            client_socket_still_open = false;
+        }
+        else {
+            total_bytes_written += bytes_written;
+        }
+    }
+
+    return 0;
+}
+
 int SocketServidor::cerrar()
 {
  close(this->server_socket);
@@ -183,6 +224,46 @@ int SocketServidor::recibirData(  ){
     while ((receive_data_size > bytes_receive) && client_socket_still_open) {
      printf("el servidor recibe del  socket del  cliente = (%d ) \n",this->client_socket);
         bytes_receive = recv(this->client_socket, (   &comandito + total_bytes_receive), (receive_data_size - total_bytes_receive), MSG_NOSIGNAL);
+        printf("error de recibir dato de cliente si es menor a cero = (%d ) \n",bytes_receive);
+        //printf("que numero de comando recibe del cliente= (%d ) \n",  this->comando->action);
+        printf("size recibe= (%d ) \n", receive_data_size);
+        if (bytes_receive < 0) { // Error
+            return bytes_receive;
+        }
+        else if (bytes_receive == 0) { // Socket closed
+            client_socket_still_open = false;
+        }
+        else {
+            total_bytes_receive += bytes_receive;
+        }
+    }
+
+    this->comando=comandito;
+    return 0;
+}
+
+
+int SocketServidor::recibirDataGeneral(  int client_socket ){
+      Comandito comandito ;
+
+    int total_bytes_receive = 0;
+    int bytes_receive = 0;
+    int receive_data_size = sizeof(struct Command);
+    bool client_socket_still_open = true;
+
+    // Receive
+    // ssize_t recv(int sockfd, void *buf, size_t len, int flags);
+    // sockfd -> file descriptor that refers to a socket
+    // buf -> where the received message into the buffer buf.
+    // len -> The caller must specify the size of the buffer in len.
+    // flags
+    // The recv() call are used to receive messages from a socket.
+    // If no messages are available at the socket, the receive call wait for a message to arrive. (Blocking)
+     printf("numero del socket cliente que recibo= (%d ) \n",   client_socket);
+
+    while ((receive_data_size > bytes_receive) && client_socket_still_open) {
+     printf("el servidor recibe del  socket del  cliente = (%d ) \n",this->client_socket);
+        bytes_receive = recv( client_socket, (   &comandito + total_bytes_receive), (receive_data_size - total_bytes_receive), MSG_NOSIGNAL);
         printf("error de recibir dato de cliente si es menor a cero = (%d ) \n",bytes_receive);
         //printf("que numero de comando recibe del cliente= (%d ) \n",  this->comando->action);
         printf("size recibe= (%d ) \n", receive_data_size);

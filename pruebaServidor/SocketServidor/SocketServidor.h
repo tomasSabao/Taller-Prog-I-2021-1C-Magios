@@ -37,6 +37,9 @@ class SocketServidor
         int recibirData(     );
         int cerrar();
         int getClientSocket();
+        int  getSocket();
+         int enviarDataGeneral(  int client_socket, Modelito*  modelo);
+         int  recibirDataGeneral(  int client_socket );
 
 
   int enviarData(   Modelito*  modelo);
