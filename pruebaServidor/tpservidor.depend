@@ -95,3 +95,52 @@
 
 1622912977 /home/yuscu/Documentos/juegosdl/servidorfinal/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/Conexion.h
 
+1623034177 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/Conexion.cpp
+	"Conexion.h"
+
+1623034177 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/Conexion.h
+
+1623213070 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/main.cpp
+	<stdio.h>
+	<iostream>
+	<stdlib.h>
+	<string.h>
+	<sys/socket.h>
+	<arpa/inet.h>
+	<unistd.h>
+	<stdbool.h>
+	"../ModeloServidor/ModeloServidor.h"
+	"../ModeloServidor/Conexion.h"
+	"../Thread/Thread.h"
+	"../SocketServidor/SocketServidor.h"
+	<vector>
+	<pthread.h>
+
+1623213161 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/ModeloServidor.h
+	"../SocketServidor/SocketServidor.h"
+	<vector>
+	<pthread.h>
+	<stdio.h>
+
+1623213189 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/pruebaServidor/SocketServidor/SocketServidor.h
+	<sys/socket.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<arpa/inet.h>
+	<unistd.h>
+	<stdbool.h>
+
+1623005827 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/pruebaServidor/Thread/Thread.h
+	<pthread.h>
+	<stdio.h>
+
+1623213313 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/ModeloServidor.cpp
+	"ModeloServidor.h"
+
+1623214187 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/pruebaServidor/SocketServidor/SocketServidor.cpp
+	"SocketServidor.h"
+
+1623005827 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/pruebaServidor/Thread/Thread.cpp
+	"Thread.h"
+

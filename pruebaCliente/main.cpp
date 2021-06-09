@@ -9,6 +9,10 @@
 #include "ModeloCliente/ModeloCliente.h"
 using namespace std;
 #include<iostream>
+
+#define ARG_POS_HOST 1
+#define ARG_POS_PORT 2
+
 // Structs for data transfer
 
 //------------------------
@@ -17,10 +21,10 @@ using namespace std;
 int main(int argc , char *argv[])
 {
 
-    Comandito command;
-    Modelito model;
-    int port = atoi(argv[2]);
-    char* host = argv[1];
+    Comando command;
+    Modelo model;
+    int port = atoi(argv[ARG_POS_PORT]);
+    char* host = argv[ARG_POS_HOST];
 
 
     ModeloCliente* unModeloCliente= new ModeloCliente();
@@ -80,7 +84,7 @@ int main(int argc , char *argv[])
         //TODO: process client Data to show in here:
         //modeloCliente->processData(modeloCliente->comando->action);
 
-         unModeloCliente->ImprimirModeloActulizado();
+         unModeloCliente->ImprimirModeloActualizado();
         //--------------------
     }
 

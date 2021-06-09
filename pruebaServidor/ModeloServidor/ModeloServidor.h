@@ -12,7 +12,7 @@
 class ModeloServidor
 {
     public:
-        ModeloServidor();
+        ModeloServidor(int port);
         virtual ~ModeloServidor();
          //void  initializeData(struct View* client_view);
          void  initializeData( );
@@ -25,14 +25,14 @@ class ModeloServidor
         int  receiveData( );
         int  getCliente();
         int  getPosicionX();
-        int cargarComandos(Comandito comando);
+        int cargarComandos(Comando comando);
         void imprimirComandos();
         void* receiveDataGeneral(int socketCliente  );
         void  desencolar(int clients);
 
          int  socketAceptando(SocketServidor* unSocket);
-         void  send_message(int clients, Modelito* modelito);
-          int sendDataGeneral(int cliente, Modelito* modelito );
+         void  send_message(int clients, Modelo* modelito);
+          int sendDataGeneral(int cliente, Modelo* modelito );
         //int cargarComandos();
 
 
@@ -51,12 +51,12 @@ int  getAction();
 
 
     protected:
-     std::vector<Comandito> colaComando;
-     std::vector<Modelito> colaModelo;
+     std::vector<Comando> colaComando;
+     std::vector<Modelo> colaModelo;
      std::vector<int> colaSocketCliente;
      int client_socket;//este es el cliente que fue ya aceptado por el servidor
-   Comandito* comando;
-   Modelito modelo;
+   Comando* comando;
+   Modelo modelo;
 
     int positionX;
     int positionY;

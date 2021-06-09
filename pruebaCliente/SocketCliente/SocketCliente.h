@@ -19,8 +19,8 @@ struct  Command {
             int positionY;
         }  ;
 
-        typedef struct Command  Comandito;
-        typedef struct Modelo  Modelito;
+        typedef struct Command  Comando;
+        typedef struct Modelo  Modelo;
 
 class SocketCliente
 {
@@ -30,14 +30,14 @@ class SocketCliente
         int crearSocket();
         int conectar();
         int recibirData();
-        int enviarData(Comandito* comando);
-        Modelito* getServerModel();
+        int enviarData(Comando* comando);
+        Modelo* getServerModel();
         int cerrar();
 
 
     protected:
-        //Comandito comando;
-        Modelito modelo;
+        //Comando comando;
+        Modelo modelo;
 
         struct sockaddr_in server_addr;
         int puerto;

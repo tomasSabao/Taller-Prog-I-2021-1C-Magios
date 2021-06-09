@@ -62,7 +62,7 @@ int SocketCliente::enviarData(Command* comando)
 {
     int total_bytes_written = 0;
     int bytes_written = 0;
-    int send_data_size = sizeof(Comandito);
+    int send_data_size = sizeof(Comando);
     bool client_socket_still_open = true;
 
     // Send
@@ -98,11 +98,11 @@ int SocketCliente::cerrar()
 
 int SocketCliente::recibirData()
 {
-    Modelito model;
+    Modelo model;
 
     int total_bytes_receive = 0;
     int bytes_receive = 0;
-    int receive_data_size = sizeof(Modelito);
+    int receive_data_size = sizeof(Modelo);
     bool client_socket_still_open = true;
 
     // Receive
@@ -138,6 +138,6 @@ int SocketCliente::recibirData()
     return 0;
 }
 
-Modelito* SocketCliente::getServerModel() {
+Modelo* SocketCliente::getServerModel() {
     return &this->modelo;
 }
