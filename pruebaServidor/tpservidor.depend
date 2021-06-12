@@ -46,8 +46,9 @@
 	<pthread.h>
 	<stdio.h>
 
-1623011067 source:/home/yuscu/Documentos/juegosdl/servidorfinal/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/main.cpp
+1623372391 source:/home/yuscu/Documentos/juegosdl/servidorfinal/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/main.cpp
 	<stdio.h>
+	<iostream>
 	<stdlib.h>
 	<string.h>
 	<sys/socket.h>
@@ -60,15 +61,14 @@
 	"../SocketServidor/SocketServidor.h"
 	<vector>
 	<pthread.h>
-	<stdio.h>
 
-1623010752 /home/yuscu/Documentos/juegosdl/servidorfinal/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/ModeloServidor.h
+1623284740 /home/yuscu/Documentos/juegosdl/servidorfinal/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/ModeloServidor.h
 	"../SocketServidor/SocketServidor.h"
 	<vector>
-	<pthread.h>
 	<stdio.h>
+	"Thread.h"
 
-1622994982 /home/yuscu/Documentos/juegosdl/servidorfinal/Taller-Prog-I-2021-1C-Magios/pruebaServidor/SocketServidor/SocketServidor.h
+1623238745 /home/yuscu/Documentos/juegosdl/servidorfinal/Taller-Prog-I-2021-1C-Magios/pruebaServidor/SocketServidor/SocketServidor.h
 	<sys/socket.h>
 	<stdio.h>
 	<stdlib.h>
@@ -77,17 +77,19 @@
 	<unistd.h>
 	<stdbool.h>
 
-1622502702 /home/yuscu/Documentos/juegosdl/servidorfinal/Taller-Prog-I-2021-1C-Magios/pruebaServidor/Thread/Thread.h
+1623261763 /home/yuscu/Documentos/juegosdl/servidorfinal/Taller-Prog-I-2021-1C-Magios/pruebaServidor/Thread/Thread.h
 	<pthread.h>
 	<stdio.h>
+	"../ModeloServidor/ModeloServidor.h"
 
-1623010702 source:/home/yuscu/Documentos/juegosdl/servidorfinal/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/ModeloServidor.cpp
+1623378897 source:/home/yuscu/Documentos/juegosdl/servidorfinal/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/ModeloServidor.cpp
 	"ModeloServidor.h"
+	"Thread.h"
 
-1622994955 source:/home/yuscu/Documentos/juegosdl/servidorfinal/Taller-Prog-I-2021-1C-Magios/pruebaServidor/SocketServidor/SocketServidor.cpp
+1623368285 source:/home/yuscu/Documentos/juegosdl/servidorfinal/Taller-Prog-I-2021-1C-Magios/pruebaServidor/SocketServidor/SocketServidor.cpp
 	"SocketServidor.h"
 
-1622503175 source:/home/yuscu/Documentos/juegosdl/servidorfinal/Taller-Prog-I-2021-1C-Magios/pruebaServidor/Thread/Thread.cpp
+1623261763 source:/home/yuscu/Documentos/juegosdl/servidorfinal/Taller-Prog-I-2021-1C-Magios/pruebaServidor/Thread/Thread.cpp
 	"Thread.h"
 
 1622912306 source:/home/yuscu/Documentos/juegosdl/servidorfinal/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/Conexion.cpp
@@ -143,4 +145,56 @@
 
 1623005827 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/pruebaServidor/Thread/Thread.cpp
 	"Thread.h"
+
+1622912306 source:/home/yuscu/Documentos/juegosdl/servidorfinaltest/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/Conexion.cpp
+	"Conexion.h"
+
+1622912977 /home/yuscu/Documentos/juegosdl/servidorfinaltest/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/Conexion.h
+
+1623456402 source:/home/yuscu/Documentos/juegosdl/servidorfinaltest/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/ModeloServidor.cpp
+	"ModeloServidor.h"
+	"Thread.h"
+
+1623455322 /home/yuscu/Documentos/juegosdl/servidorfinaltest/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/ModeloServidor.h
+	"../SocketServidor/SocketServidor.h"
+	<vector>
+	<pthread.h>
+	<stdio.h>
+	"Thread.h"
+
+1623455219 /home/yuscu/Documentos/juegosdl/servidorfinaltest/Taller-Prog-I-2021-1C-Magios/pruebaServidor/SocketServidor/SocketServidor.h
+	<sys/socket.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<arpa/inet.h>
+	<unistd.h>
+	<stdbool.h>
+
+1623261763 /home/yuscu/Documentos/juegosdl/servidorfinaltest/Taller-Prog-I-2021-1C-Magios/pruebaServidor/Thread/Thread.h
+	<pthread.h>
+	<stdio.h>
+	"../ModeloServidor/ModeloServidor.h"
+
+1623456334 source:/home/yuscu/Documentos/juegosdl/servidorfinaltest/Taller-Prog-I-2021-1C-Magios/pruebaServidor/SocketServidor/SocketServidor.cpp
+	"SocketServidor.h"
+
+1623261763 source:/home/yuscu/Documentos/juegosdl/servidorfinaltest/Taller-Prog-I-2021-1C-Magios/pruebaServidor/Thread/Thread.cpp
+	"Thread.h"
+
+1623455837 source:/home/yuscu/Documentos/juegosdl/servidorfinaltest/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/main.cpp
+	<stdio.h>
+	<iostream>
+	<stdlib.h>
+	<string.h>
+	<sys/socket.h>
+	<arpa/inet.h>
+	<unistd.h>
+	<stdbool.h>
+	"../ModeloServidor/ModeloServidor.h"
+	"../ModeloServidor/Conexion.h"
+	"../Thread/Thread.h"
+	"../SocketServidor/SocketServidor.h"
+	<vector>
+	<pthread.h>
 

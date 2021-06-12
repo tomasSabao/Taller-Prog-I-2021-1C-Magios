@@ -8,6 +8,10 @@
 #include <unistd.h>
 #include <stdbool.h>
 
+//#include "Thread.h"
+
+
+
 struct Comando
 {
     int action;
@@ -38,9 +42,11 @@ public:
     int getSocket();
     int enviarDataGeneral(int client_socket, Modelo *modelo);
     int recibirDataGeneral(int client_socket);
+    //std::vector<Comando>  returnComandosSocket( );
 
     int enviarData(Modelo *modelo);
     Comando *getClientComand();
+    int cargarComandosSocket(Comando comando);
 
 protected:
     Comando comando;
@@ -49,7 +55,8 @@ protected:
     struct sockaddr_in server_addr;
     int puerto;
     int client_socket;
-    //Comando* comando;
+   //  std::vector<Comando> colaComandito;
+    Comando* comandoPuntero;
     // Structs for data transfer
 
 private:

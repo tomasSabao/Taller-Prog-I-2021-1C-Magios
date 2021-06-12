@@ -17,6 +17,9 @@ SocketCliente::~SocketCliente()
     //dtor
 }
 
+
+
+
 int SocketCliente::crearSocket()
 {
     printf("entre a crear socket\n");
@@ -58,8 +61,9 @@ int SocketCliente::conectar()
     return 0;
 }
 
-int SocketCliente::enviarData(Command* comando)
+int SocketCliente::enviarData(Comando* comando)
 {
+    Modelo model;
     int total_bytes_written = 0;
     int bytes_written = 0;
     int send_data_size = sizeof(Comando);
@@ -87,7 +91,16 @@ int SocketCliente::enviarData(Command* comando)
             total_bytes_written += bytes_written;
         }
     }
-    return 0;
+
+    if(total_bytes_written==send_data_size)
+    {
+            printf(" data  enviado al servidor \n");
+         this->modelo=&model;
+         return true;
+    }else
+    {
+     return false;
+    }
 }
 
 int SocketCliente::cerrar()
@@ -105,12 +118,7 @@ int SocketCliente::recibirData()
     int receive_data_size = sizeof(Modelo);
     bool client_socket_still_open = true;
 
-    // Receive
-    // ssize_t recv(int sockfd, void *buf, size_t len, int flags);
-    // sockfd -> file descriptor that refers to a socket
-    // buf -> where the received message into the buffer buf.
-    // len -> The caller must specify the size of the buffer in len.
-    // flags
+
     // The recv() call are used to receive messages from a socket.
     // If no messages are available at the socket, the receive call wait for a message to arrive. (Blocking)
      printf("numero del socket cliente que recibo= (%d ) \n",  this->skt);
@@ -134,10 +142,20 @@ int SocketCliente::recibirData()
         }
     }
 
-    this->modelo=model;
-    return 0;
+    if(total_bytes_receive==bytes_receive)
+    {
+            printf(" data recibido del cliente es completo, entonces guardar en el coladecomando \n");
+         this->modelo=&model;
+         return true;
+    }else
+    {
+     return false;
+    }
+
+
+
 }
 
 Modelo* SocketCliente::getServerModel() {
-    return &this->modelo;
+    return this->modelo;
 }

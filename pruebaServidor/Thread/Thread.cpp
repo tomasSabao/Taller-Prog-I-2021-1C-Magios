@@ -15,7 +15,16 @@ Thread::~Thread()
 }
 
 
-void* Thread::crearThread(void *algunaFuncion(void*))
+int Thread::crearThread(  )
+
+{
+
+
+   //pthread_create(this->hilo,NULL,  &ModeloServidor::hello_helper,modelo);
+  return 0;
+}
+/*
+void* Thread::crearThread(void *algunaFuncion(void*),ModeloServidor* modelo)
 
 {
 
@@ -23,3 +32,4 @@ void* Thread::crearThread(void *algunaFuncion(void*))
    pthread_create(this->hilo,NULL, algunaFuncion,NULL);
   return NULL;
 }
+*/

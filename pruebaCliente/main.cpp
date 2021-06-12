@@ -7,6 +7,7 @@
 #include <stdbool.h>
 #include "SocketCliente/SocketCliente.h"
 #include "ModeloCliente/ModeloCliente.h"
+#include <pthread.h>
 using namespace std;
 #include<iostream>
 
@@ -37,56 +38,45 @@ int main(int argc , char *argv[])
     int commands_count = 0;
     int status = 0;
 
-    //keep communicating with client
-    int commands [20]={2,1,2,1,1,1,2,1,1,1,1,1,2,1,2,1,1,1,2,1};
 
-    //keep communicating with server
-    for(int i=0; i<20; i++)
-    {
+           pthread_t ingresarDatos;
+            pthread_t recv_msg_thread;
+             pthread_t send_msg_thread;
 
-        // Set data to send
-        //socket->comando->action = commands[i];
-
-        cout << "Hola! ingrese un comando , si ingresa 1 aumenta eje y si ingresa 2 aumenta eje x" << "\n"  ;
-    //La instrucción \n es un salto de línea Mostrando los textos separados
-
-        int comando;//En esta variable estará almacenado el nombre ingresado.
-        cin >> comando; //Se lee el nombre
-
-        cout << "Bienvenido al sistema " << comando << ". Gracias por usar nuestra aplicación" << "\n";
-
-
-
-        command.action = comando;
-
-        unModeloCliente->sendData(&command);
-        printf("loop:  %d\n", i);
-
-        //--------------------
-        printf("Commands count: %d\n", i + 1);
-
-        // Send data (command)
-      /*  if (socket->enviarData(&command) < 0) {
-        //if (socket->enviarData(socket->comando) < 0) {
-            perror("Send Data Error");
-            status = -1;
-        }*/
-        //printf("Send data: action = %d\n", socket->comando->action);
-        printf("Send data: action = %d\n", command.action);
-        //--------------------
-
-        // Receive data (view)
-        if (unModeloCliente->receiveData() < 0) {
-            perror("Receive Data Error");
-            status = -1;
+      if(pthread_create(&ingresarDatos, NULL, &ModeloCliente::hello_helperIngresarDatos, unModeloCliente) != 0){
+            printf("ERROR: pthread\n");
+            return EXIT_FAILURE;
         }
+
+
+      if(pthread_create(&recv_msg_thread, NULL, &ModeloCliente::hello_helperRecieve, unModeloCliente) != 0){
+            printf("ERROR: pthread\n");
+            return EXIT_FAILURE;
+        }
+
+
+
+        if(pthread_create(&send_msg_thread, NULL, &ModeloCliente::hello_helperSend, unModeloCliente) != 0){
+                printf("ERROR: pthread\n");
+            return EXIT_FAILURE;
+            }
+
+
+
+          pthread_join(ingresarDatos,NULL);
+            pthread_join(recv_msg_thread,NULL);
+              pthread_join(send_msg_thread,NULL);
+
+       //modeloServidor->closeSocket();
+
+//
 
         //TODO: process client Data to show in here:
         //modeloCliente->processData(modeloCliente->comando->action);
 
          unModeloCliente->ImprimirModeloActualizado();
         //--------------------
-    }
+
 
     unModeloCliente->closeSocket();
     //printf("Server socket number %d closed\n",server_socket);

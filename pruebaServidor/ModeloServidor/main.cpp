@@ -30,7 +30,7 @@ void *saludar(void *algo)
     int i;
   //  while (1)
         //printf("hilo funcion saludar soy un cliente");
-        printf("hilo SOY CLIENTE NUMERO : %d\n", algo);
+        printf("hilo SOY CLIENTE NUMERO : %d\n", algo  );
 }
 
 void *handle_client(void *clientSocket)
@@ -40,11 +40,16 @@ void *handle_client(void *clientSocket)
  printf("hilo  de conectado cliente saludar");*/
     printf("=== WELCOME TO THE CHATROOM ===\n");
 
+
+
     /*	pthread_t send_msg_thread; desencolar motodo de la clase modeloservidor
   if(pthread_create(&send_msg_thread, NULL, (void *) send_msg_handler, NULL) != 0){
 		printf("ERROR: pthread\n");
     return EXIT_FAILURE;
 	}*/
+    /*ModeloServidor* modeloServidor= (ModeloServidor*)clientSocket;
+	modeloServidor->receiveDataGeneral(clientSocket);
+	modeloServidor->desencolar(int clients);*/
 
     /*pthread_t recv_msg_thread;
   if(pthread_create(&recv_msg_thread, NULL,  modeloservidor->receiveDataGeneral(), clientSocket) != 0){
@@ -136,65 +141,42 @@ int main(int argc, char *argv[])
 
     int port = stoi(argv[ARG_POS_IP_PORT]);
 
-    //Thread* hilo= new Thread();
-    //hilo->crearThread(saludar);
 
-    /*new Thread()
-    while(true)
-    {
-     Conexion unaConexion;
-     //SocketServidor* socket=new SocketServidor( port);
-    SocketServidor* nuevoSocket= new SocketServidor(  port);
-
-    unaConexion.setearConexion(nuevoSocket->getSocket());
-
-   modeloServidor->CrearSocket(port);
+    ModeloServidor *modeloServidor = new ModeloServidor(5555);
+    modeloServidor->CrearSocket(port);
    modeloServidor->bindSocket();
    modeloServidor->escuchar();
-   modeloServidor->aceptandoConexiones();
-   colaConexiones.push_back(  new Thread->crearThread());
 
-    }*/
+    pthread_t envio;
+    pthread_t recivo;
 
-    ModeloServidor *modeloServidor = new ModeloServidor(port);
 
-    pthread_t tid;
 
+
+     int err = pthread_create(&envio, NULL,   &ModeloServidor::hello_helperDesencolar,   modeloServidor);
+
+     pthread_t hilos[MAX_CLIENTS];
     int i = 0;
     while (true)
     {
         i++;
-        //Conexion unaConexion;
-        //SocketServidor* socket=new SocketServidor( port);
-        //SocketServidor* nuevoSocket= new SocketServidor(  port);
+
         modeloServidor->aceptandoConexiones();
 
-        /* Add client to the queue and fork thread */
-        queue_add(modeloServidor->getCliente());
-        //pthread_create(&tid, NULL, &handle_client, (void*)modeloServidor->getCliente());
-        int err = pthread_create(&tid, NULL, &saludar, (void *)modeloServidor->getCliente());
 
 
-        if (err)
-        {
-            cout << "Fallo thread : " << err;
-            return err;
-        }
 
-        err = pthread_join(tid, NULL);
+          int er2 = pthread_create(&hilos[i], NULL,   &ModeloServidor::hello_helperRecieve,   modeloServidor);
 
-        if (err)
-        {
-            cout << "Fallo al unir thread : " << err;
-            return err;
-        }
 
-        //unaConexion.setearConexion(nuevoSocket->getSocket());
+         printf("mas de un cliente");
 
-        //modeloServidor->socketAceptando(nuevoSocket);
-        //colaConexiones.push_back(  new Thread->crearThread());
+
     }
 
+    pthread_join(envio,NULL);
+		pthread_join(hilos[1],NULL);
+       modeloServidor->closeSocket();
     int commands_count = 0;
     int status = 0;
 

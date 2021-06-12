@@ -37,7 +37,7 @@ class SocketCliente
 
     protected:
         //Comando comando;
-        Modelo modelo;
+        Modelo* modelo;
 
         struct sockaddr_in server_addr;
         int puerto;

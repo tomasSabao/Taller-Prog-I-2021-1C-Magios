@@ -1,7 +1,10 @@
 #ifndef MODELOCLIENTE_H
 #define MODELOCLIENTE_H
 #include "../SocketCliente/SocketCliente.h"
-
+#include <vector>
+#include <pthread.h>
+#include<iostream>
+ using namespace std;
 // Structs for data transfer
 
 class ModeloCliente
@@ -15,9 +18,17 @@ class ModeloCliente
         void initializeData(int action);
         int conectar();
         int receiveData();
-        int sendData(Comando* comando);
+        int sendData( Comando* comando);
         int closeSocket();
         void ImprimirModeloActualizado();
+        int  cargarComandos(Comando comando);
+
+        static void * hello_helperRecieve(void *context);
+        static void * hello_helperSend(void *context);
+        static void * hello_helperIngresarDatos(void *context);
+        void  recibirDatosUsuario();
+        void*  desencolar( ) ;
+
         // Structs for data transfer
 
         int skt;//este es el cliente que fue ya aceptado por el servidor
@@ -30,6 +41,8 @@ class ModeloCliente
         int positionY;
         int action;
         SocketCliente* socketCliente;
+        std::vector<Comando> colaComando;
+        bool estaConectado;
 
     private:
 };

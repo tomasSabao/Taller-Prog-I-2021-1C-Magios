@@ -3,6 +3,7 @@
 
 #include <pthread.h>
 #include <stdio.h>
+#include "../ModeloServidor/ModeloServidor.h"
 //#include <conio.h>
 
 class Thread
@@ -10,7 +11,8 @@ class Thread
     public:
         Thread();
         virtual ~Thread();
-        void* crearThread(void *algunaFuncion(void*));
+        //void* crearThread(void *algunaFuncion(void*));
+       int crearThread(  );
 
 
     protected:
