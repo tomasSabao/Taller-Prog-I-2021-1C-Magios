@@ -30,6 +30,8 @@ int Controlador::descifrarEvento(){
                 case SDLK_LEFT: return 4;
                 case SDLK_z: return 6;
                 case SDLK_SPACE: return 2;
+                case SDLK_UP: return 8; //agregado para hacer la suba en escaleras
+                case SDLK_DOWN: return 9;//agregado para hacer el descenso en escaleras
                 default :   break;
             }
         }
@@ -39,6 +41,8 @@ int Controlador::descifrarEvento(){
                 case SDLK_LEFT: return 41;
                 case SDLK_z: return 61;
                 case SDLK_SPACE: return 32;
+                case SDLK_UP: return 81; //agregados para hacer la suba en escaleras
+                case SDLK_DOWN: return 91;//agregados para hacer el descenso en escaleras
                 default: break;
             }
         }

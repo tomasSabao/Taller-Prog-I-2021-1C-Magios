@@ -36,22 +36,39 @@ void Modelo_Jugador::traducirTecla(int tecla_apretada){
 	//aprete tecla derecha
 	if(tecla_apretada ==5){
 		this->aumentarVelocidadX();
+		//esto lo agrego solo para romper el estado de subir por escalera
+		if(this->esta_en_escalera==true){
+			this->setEstaEnAire();
+		}
 	}
 	//solte tecla derecha
 	if(tecla_apretada==51){
 		this->reducirVelocidadX();
-		/*if(this->posicion_y > 0){
+		if(this->posicion_y > 0){
 			this->aplicarGravedad();
-		}*/
+		}
+		//esto lo agrego solo para romper el estado de subir por escalera
+		if(this->esta_en_escalera==true){
+			this->setEstaEnAire();
+		}
 	}
 	if(tecla_apretada==4){
 		this->reducirVelocidadX();
+		//esto lo agrego solo para romper el estado de subir por escalera
+		if(this->esta_en_escalera==true){
+			this->setEstaEnAire();
+		}
 	}
 	if(tecla_apretada==41){
 		this->aumentarVelocidadX();
+		//esto lo agrego solo para romper el estado de subir por escalera
+		if(this->esta_en_escalera==true){
+			this->setEstaEnAire();
+		}
 	}
 	if(tecla_apretada==6){
 		this->aumentarVelocidadY();
+		this->setEstaEnAire();
 	}
 	if(tecla_apretada == 61){
 		this->reducirVelocidadY();
@@ -297,8 +314,15 @@ void Modelo_Jugador::fijarAnimacionMovimiento(){
 
 }
 bool Modelo_Jugador::estaParadoEnPiso(){
+	/*version vieja
 	return this->posicion_y==0;
+	*/
+	if(esta_en_escalera==true){
+		return true;
+	}
+	return esta_en_piso;
 }
+
 void Modelo_Jugador::caminar2()
 {
 /*
@@ -358,4 +382,112 @@ void Modelo_Jugador::setVelocidadVertical(int numero){
 
 void Modelo_Jugador::setDireccion(int numero){
 	this->ultima_direccion=numero;
+}
+
+
+void Modelo_Jugador::fijarAnimacionesEnEscalera(){
+	if(this->unSwitch==false){
+		this->unSwitch=true;
+		this->frames=10;
+		this->ultima_direccion=2;
+		this->ultima_animacion_escalera=10;
+		this->cuantos_frame_actualizo_escalera=0;
+		return;
+	}
+	if(this->esta_quieto==true){
+		printf("El jugador esta quieto\n");
+		this->frames=this->ultima_animacion_escalera;
+		return;
+	}
+	//el jugador aplico alguna de las teclas de subir y bajar
+	else{
+		printf("El jugador se movio\n");
+		if(this->ultima_animacion_escalera==10 & this->cuantos_frame_actualizo_escalera >4){
+			this->frames=11;
+			this->ultima_animacion_escalera=11;
+			this->cuantos_frame_actualizo_escalera=0;
+			return;
+		}
+		if(this->ultima_animacion_escalera==11  & this->cuantos_frame_actualizo_escalera>4){
+			printf("xxxxxxxx cambio de frame 11 a 10 \n");
+			this->frames=10;
+			this->ultima_animacion_escalera=10;
+			this->cuantos_frame_actualizo_escalera=0;
+			return;
+		}
+		this->frames=this->ultima_animacion_escalera;
+		this->cuantos_frame_actualizo_escalera++;
+		printf("valor de los frames: %d\n",this->cuantos_frame_actualizo_escalera);
+	}
+}
+
+
+void Modelo_Jugador::fijarAnimacionBordeSuperior(Rectangulo* escalera){
+	int mario_y=550-this->getPosicionY()+42 ;
+	int escalera_y=escalera->getPosY();
+	int DISTANCIA=10;
+
+	printf("Valor de mario_y: %d 	valor de escalera_y: %d \n",mario_y,escalera_y);
+	//quiero que mario este a DISTANCIA del tope de escalera cuando setea el sprite
+	if(escalera_y <=mario_y   &   mario_y <= escalera_y+DISTANCIA){
+		//necesito la direccion cosa de que coincida el sprite
+
+		if(escalera_y <=mario_y  & mario_y <=escalera_y+DISTANCIA/2){
+			if(this->ultima_direccion==1){
+				this->frames=13;
+				return;
+			}
+			this->frames=8;
+		}
+
+		if(this->ultima_direccion==1){
+			this->frames=9;
+			return;
+		}
+		this->frames=12;
+	}
+}
+
+void Modelo_Jugador::setEstaQuieto(){
+	this->esta_quieto=true;
+}
+
+void Modelo_Jugador::setEstaMoviendo(){
+	this->esta_quieto=false;
+}
+
+int Modelo_Jugador::getVelocidadX(){
+	return this->velocidad_x;
+}
+
+int Modelo_Jugador::getVelocidadY(){
+	return this->velocidad_y;
+}
+
+
+void Modelo_Jugador::resetVelocidadY(){
+	this->velocidad_y=0;
+}
+
+void Modelo_Jugador::setEstaEnPiso(){
+	this->esta_en_piso=true;
+	this->esta_en_aire=false;
+	this->esta_en_escalera=false;
+}
+
+void Modelo_Jugador::setEstaEnAire(){
+	this->esta_en_aire=true;
+	this->esta_en_piso=false;
+	this->esta_en_escalera=false;
+}
+
+void Modelo_Jugador::setEstaEnEscalera(){
+	this->esta_en_escalera=true;
+	this->esta_en_piso=false;
+	this->esta_en_aire=false;
+}
+
+
+bool Modelo_Jugador::getEstaEnEscalera(){
+	return this->esta_en_escalera;
 }

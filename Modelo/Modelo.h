@@ -6,6 +6,8 @@
 #include "../Modelo/Fueguito.h"
 #include "../Modelo/FueguitoDefault.h"
 #include "../Modelo/FuegoPiso.h"
+#include "../Modelo/Colisionador.h"
+#include "../Modelo/Rectangulo.h"
 #include <vector>
  using namespace std;
 
@@ -25,11 +27,18 @@ class Modelo
         void acciones();
         int  getCantJugadores( );
 
-
+        void agregarObjetosAlColisionador();
+        //esta funcion es la que agrega los elementos del fondo a la pantalla
+        //haciendo como que estan sin necesidad de graficarlos
+        void agregarRectangulo(Rectangulo* rect);
+        //esta funcion agrega las escaleras
+        void agregarEscalera(Rectangulo* rect);
+        //metodo que se usa solamente para mandarle la tecla apretada al colisionador
+        void recibirTecla(int tecla_apretada,std::string nombre_jugador);
 
     private:
 
-
+    Colisionador colisionador;
     Modelo_Jugador * jugador;
     std::vector<Modelo_Jugador*> modelosPersonajes;
     int contador = 0;

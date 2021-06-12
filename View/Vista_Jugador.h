@@ -27,8 +27,8 @@ class Vista_Jugador
         LTexture*  gSpriteSheetTextureJugador;
         //Walking animation
 
-        //Nota tomas: cambie el numero de elementos de gSpriteClips de 4 a 8
-        SDL_Rect gSpriteClips[ 8 ];
+        //Nota tomas: cambie el numero de elementos de gSpriteClips de 8 a 14
+        SDL_Rect gSpriteClips[ 14 ];
         SDL_Rect* gSpriteActual ;
 
 

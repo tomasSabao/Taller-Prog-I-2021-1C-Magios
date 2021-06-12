@@ -217,7 +217,7 @@ bool  Vista::loadMedia()
        if(personajes[i]->getModeloJugador()->getNombre()=="mario")
        {
       personajes[i]->render(personajes[i]->getModeloJugador()->getPosicionX(),\
-        500-personajes[i]->getModeloJugador()->getPosicionY(),this->getRenderer());
+        550-personajes[i]->getModeloJugador()->getPosicionY(),this->getRenderer());
 
         }else
         {

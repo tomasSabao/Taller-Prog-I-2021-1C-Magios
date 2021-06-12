@@ -82,6 +82,36 @@ printf("scope: Vista_jugador::load_media\n");
 		gSpriteClips[ 7 ].w =  29;
 		gSpriteClips[ 7 ].h = 23;
 
+		gSpriteClips[ 8 ].x = 108;
+		gSpriteClips[ 8 ].y = 51;
+		gSpriteClips[ 8 ].w =  29;
+		gSpriteClips[ 8 ].h = 23;
+
+		gSpriteClips[ 9 ].x = 108;
+		gSpriteClips[ 9 ].y = 51;
+		gSpriteClips[ 9 ].w =  29;
+		gSpriteClips[ 9 ].h = 23;
+
+		gSpriteClips[ 10 ].x = 108;
+		gSpriteClips[ 10 ].y = 51;
+		gSpriteClips[ 10 ].w =  29;
+		gSpriteClips[ 10 ].h = 23;
+
+		gSpriteClips[ 11 ].x = 108;
+		gSpriteClips[ 11 ].y = 51;
+		gSpriteClips[ 11 ].w =  29;
+		gSpriteClips[ 11 ].h = 23;
+
+		gSpriteClips[ 12 ].x = 108;
+		gSpriteClips[ 12 ].y = 51;
+		gSpriteClips[ 12 ].w =  29;
+		gSpriteClips[ 12 ].h = 23;
+
+		gSpriteClips[ 13 ].x = 108;
+		gSpriteClips[ 13 ].y = 51;
+		gSpriteClips[ 13 ].w =  29;
+		gSpriteClips[ 13 ].h = 23;
+
 		success=true;
 	}
 
@@ -133,6 +163,43 @@ printf("scope: Vista_jugador::load_media\n");
 		gSpriteClips[ 7 ].y = 0;
 		gSpriteClips[ 7 ].w =  15;
 		gSpriteClips[ 7 ].h = 18;
+
+		//Mario sube borde escalera, pierna izquierda extendida [2]
+		gSpriteClips[ 8 ].x = 0;
+		gSpriteClips[ 8 ].y = 30;
+		gSpriteClips[ 8 ].w = 15;
+		gSpriteClips[ 8 ].h = 18;
+
+		//mario sube borde escalera, pierna derecha extendida [1]
+        gSpriteClips[ 9 ].x = 22;
+		gSpriteClips[ 9 ].y = 31;
+		gSpriteClips[ 9 ].w =  15;
+		gSpriteClips[ 9 ].h = 18;
+
+
+		//mario sube escalera, pierna derecha extendida
+        gSpriteClips[ 10 ].x = 40;
+		gSpriteClips[ 10].y = 31;
+		gSpriteClips[ 10 ].w =  15;
+		gSpriteClips[ 10 ].h = 18;
+
+		//mario sube escalera, pierna izquierda extendida
+        gSpriteClips[ 11 ].x = 56;
+		gSpriteClips[ 11 ].y = 34;
+		gSpriteClips[ 11 ].w =  15;
+		gSpriteClips[ 11 ].h = 18;
+
+		//mario sube borde escalera, pierna izquierda extendida [1]
+        gSpriteClips[ 12 ].x = 77;
+		gSpriteClips[ 12 ].y = 34;
+		gSpriteClips[ 12 ].w =  15;
+		gSpriteClips[ 12 ].h = 18;
+
+		//mario sube borde escalera, pierna derecha extendida [2]
+        gSpriteClips[ 13 ].x = 98;
+		gSpriteClips[ 13 ].y = 34;
+		gSpriteClips[ 13 ].w =  15;
+		gSpriteClips[ 13 ].h = 18;
 
          }
          return success;

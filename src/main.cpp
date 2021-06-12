@@ -111,6 +111,7 @@ int main( int argc, char* argv[] )
             mario->mover();
             mario->imprimirPosicion();
             mario->imprimirVelocidad();
+            modelo->recibirTecla(quit,"Jugador1");
             modelo->acciones();
             vista->render(quit);
 
@@ -118,6 +119,7 @@ int main( int argc, char* argv[] )
             mario->aplicarGravedad();
             mario->mover();
             modelo->acciones();
+            modelo->recibirTecla(0,"Jugador1");
             vista->render(quit);
             //modelo->getModeloJugador(0)->caminar();
 
