@@ -62,7 +62,7 @@ int login() {
 	}
 
 	kill();
-
+    return 0;
 }
 
 
