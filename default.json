@@ -19,6 +19,17 @@
                 "fondo2": "fondo2_default.png"
 
             }
-        }
+        },
+        "users": [
+            {
+                "username": "alejandro",
+                "password": "123456"
+            },
+            {
+                "username": "andrea",
+                "password": "986543"
+            }
+        ],
+        "players": 2
     }
 }

@@ -22,7 +22,7 @@ Parser parser = Parser();
 
 int main( int argc, char* argv[] )
 {
-    std::string archivo_configuracion = "lib/default.json";
+    std::string archivo_configuracion = "default.json";
     std::string cli_log = "";
 
     for (int i = 0; i < argc; i++) {

@@ -1,7 +1,7 @@
 {
     "configuration": {
         "log": {
-            "level": "debug"
+            "level": "error"
         },
         "game": {
             "enemies": [
@@ -19,6 +19,17 @@
                 "fondo2": "fondo2.png"
 
             }
-        }
+        },
+        "users": [
+            {
+                "username": "alejandro",
+                "password": "123456"
+            },
+            {
+                "username": "andrea",
+                "password": "986543"
+            }
+        ],
+        "players": 2
     }
 }

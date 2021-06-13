@@ -162,7 +162,38 @@ void Parser::verificarJson()
     cout << "Se configura por default otro fondo para nivel 2" << endl;
   }
 
-  cout << "Finaliza los chequeos del archivo de configuracion dado por el user" << endl;
+  if (!this->config["configuration"].isMember("players"))
+  {
+    logger.log("error", "No se encontro el campo configuration->players en el archivo de configuracion");
+    this->config = obtenerJsonPorDefecto();
+    return;
+  }
+  if (!this->config["configuration"].isMember("users"))
+  {
+    logger.log("error", "No se encontro el campo configuration->users en el archivo de configuracion");
+    this->config = obtenerJsonPorDefecto();
+    return;
+  }
+
+  try
+  {
+    int cantidad_jugadores = stoi(this->config["configuration"]["players"].asString());
+    if (cantidad_jugadores != this->config["configuration"]["users"].size())
+    {
+      logger.log("error", "No hay compatibilidad entre la cantidad de jugadores ingresada y la cantidad de usuarios y contrasenias en el archivo de configuracion");
+      this->config = obtenerJsonPorDefecto();
+      return;
+    }
+  }
+  catch (exception &err)
+  {
+    logger.log("error", "Dentro de configuration->players, la cantidad de jugadores es invalida");
+    cerr << "Cantidad de jugadores invalida: no es un entero" << endl;
+    this->config = obtenerJsonPorDefecto();
+    return; 
+  }
+
+  cout << "Finalizan los chequeos del archivo de configuracion dado por el user" << endl;
 }
 
 int Parser::obtenerJson(string nombre_archivo)
@@ -232,16 +263,14 @@ string Parser::obtenerNivelLog()
   return aux;
 }
 
-vector<map<string, string>> Parser::obtenerJugadores()
+bool Parser::validarJugador(string user, string password)
 {
-  vector<map<string, string>> aux(this->config["configuration"]["players"].asInt());
-
-  //TODO: arreglar esto TP2
-  for (int i = 0; i < this->config["configuration"]["players"].asInt(); i++)
+  for (int i = 0; i < this->config["configuration"]["users"].size(); i++)
   {
-    aux[i]["username"] = this->config["configuration"]["users"]["username"][i].asString();
-    aux[i]["password"] = this->config["configuration"]["users"]["password"][i].asString();
+    if ((this->config["configuration"]["users"][i]["username"].asString() == user) && (this->config["configuration"]["users"][i]["password"].asString() == password))
+    {
+      return true;
+    }
   }
-
-  return aux;
+  return false;
 }
