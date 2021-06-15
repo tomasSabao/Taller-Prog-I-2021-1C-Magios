@@ -13,6 +13,8 @@
 #define ENEMIGOS_CANTIDAD_DEFAULT 10
 #define ENEMIGOS_CANTIDAD_MINIMA 0
 #define ENEMIGOS_CANTIDAD_MAXIMA 30
+#define CANTIDAD_MAXIMA_JUGADORES 4
+#define CANTIDAD_MINIMA_JUGADORES 1
 
 #define PATH_DEFAULT_FONDO1 "fondo1_default.png"
 #define PATH_DEFAULT_FONDO2 "fondo2_default.png"
@@ -110,7 +112,6 @@ void Parser::verificarJson()
       cout << "Se configura por default un enemigo" << endl;
       this->config["configuration"]["game"]["enemies"][i]["type"] = "fuego-default-" + to_string(i + 1);
     }
-
     //chequeo de cantidades
     try
     {
@@ -161,7 +162,6 @@ void Parser::verificarJson()
     cerr << "Archivo de fondo de nivel 2 invalido" << endl;
     cout << "Se configura por default otro fondo para nivel 2" << endl;
   }
-
   if (!this->config["configuration"].isMember("players"))
   {
     logger.log("error", "No se encontro el campo configuration->players en el archivo de configuracion");
@@ -181,6 +181,14 @@ void Parser::verificarJson()
     if (cantidad_jugadores != this->config["configuration"]["users"].size())
     {
       logger.log("error", "No hay compatibilidad entre la cantidad de jugadores ingresada y la cantidad de usuarios y contrasenias en el archivo de configuracion");
+      this->config = obtenerJsonPorDefecto();
+      return;
+    } else if (this->config["configuration"]["users"].size() > CANTIDAD_MAXIMA_JUGADORES) {
+      logger.log("error", "Se excede el numero maximo de jugadores permitido en el archivo de configuracion");
+      this->config = obtenerJsonPorDefecto();
+      return;
+    } else if (this->config["configuration"]["users"].size() < CANTIDAD_MINIMA_JUGADORES) {
+      logger.log("error", "No se llega al numero minimo de jugadores permitido en el archivo de configuracion");
       this->config = obtenerJsonPorDefecto();
       return;
     }
