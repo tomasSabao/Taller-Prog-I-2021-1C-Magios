@@ -65,10 +65,40 @@ int main( int argc, char* argv[] )
         modelo->escenario1("fueguito-default", std::stoi(enemigos["fuego-default-1"]));
     }
 
+    int cantidad_jugadores = parser.obtenerCantidadJugadoresRestantes();
+    cout << "cantidad jugadores: " << cantidad_jugadores << endl;
+
+    char* u1 = "alejandro";
+    char* p1 = "123456";
+
+    cout << "valido usuario1: " << parser.validarJugador(u1, p1) << endl;
+
+    cantidad_jugadores = parser.obtenerCantidadJugadoresRestantes();
+    cout << "cantidad jugadores AHORA: " << cantidad_jugadores << endl;
+
+
+    cout << "valido usuario1 DE NUEVO: " << parser.validarJugador(u1, p1) << endl;
+
+    char* u2 = "andrea";
+    char* p2 = "986543";
+
+
+    cout << "valido usuario2: " << parser.validarJugador(u2, p2) << endl;
+
+    char* u3 = "andrea";
+    char* p3 = "986545";
+
+    cout << "valido usuario3: " << parser.validarJugador(u3, p3) << endl;
+
+    cantidad_jugadores = parser.obtenerCantidadJugadoresRestantes();
+    cout << "cantidad jugadores AHORA: " << cantidad_jugadores << endl;
+
+    cout << "valido usuario1 OTRA OTRA VEZ: " << parser.validarJugador(u1, p1) << endl;
+
     //Modelo* modelo=new Modelo();
     // Modelo_Jugador* jugador=modelo->getModeloJugador();
     Controlador controlador(modelo);
-    
+
     Vista* vista=new Vista(modelo);
 
     vista->init();
@@ -76,7 +106,7 @@ int main( int argc, char* argv[] )
     //
     Modelo_Jugador* mario=NULL;
     for (int i = 0; i < modelo->getCantJugadores( ); i++) {
-        
+
         cout << "loop de jugadores" << i << endl;
 
         if  (  modelo->getModeloJugador(i)->getNombre()=="mario")
@@ -86,7 +116,7 @@ int main( int argc, char* argv[] )
 
     }
 
-    
+
     //
     int quit=0;
 

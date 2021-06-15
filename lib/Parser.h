@@ -20,6 +20,7 @@ class Parser {
     std::string obtenerNivelLog();
     std::map<std::string, std::string> obtenerEnemigos();
     std::vector<std::string> obtenerFondos();
+    int obtenerCantidadJugadoresRestantes();
     bool validarJugador(std::string user, std::string password);
 
   private:

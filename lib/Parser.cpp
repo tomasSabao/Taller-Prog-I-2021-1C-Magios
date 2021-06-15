@@ -198,7 +198,7 @@ void Parser::verificarJson()
     logger.log("error", "Dentro de configuration->players, la cantidad de jugadores es invalida");
     cerr << "Cantidad de jugadores invalida: no es un entero" << endl;
     this->config = obtenerJsonPorDefecto();
-    return; 
+    return;
   }
 
   cout << "Finalizan los chequeos del archivo de configuracion dado por el user" << endl;
@@ -271,12 +271,20 @@ string Parser::obtenerNivelLog()
   return aux;
 }
 
+int Parser::obtenerCantidadJugadoresRestantes(){
+  return this->config["configuration"]["users"].size();
+}
+
 bool Parser::validarJugador(string user, string password)
 {
+  //se podria hacer de otra forma.
   for (int i = 0; i < this->config["configuration"]["users"].size(); i++)
   {
     if ((this->config["configuration"]["users"][i]["username"].asString() == user) && (this->config["configuration"]["users"][i]["password"].asString() == password))
     {
+      Json::Value aux;
+      this->config["configuration"]["users"].removeIndex(i, &aux);
+      aux.clear();
       return true;
     }
   }
