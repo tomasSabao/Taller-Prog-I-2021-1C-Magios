@@ -1,5 +1,0 @@
-class BloqueGenerico{
-	BloqueGenerico(){
-	
-	}
-}

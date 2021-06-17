@@ -1,9 +1,0 @@
-x=0,y=0,w=14,h=18 --->Mario se para mira izquierda
-x=14,y=0,w=14,h=18 --->Mario se para mira derecha
-x=29,y=0,w=14,h=18 --->Mario camina izquierda [1]
-x=48,y=0,w=14,h=18 --->Mario camina derecha [1]
-x=67,y=0,w=15,h=18 --->Mario camina izquierda [2]
-x=86,y=0,w=15,h=18 --->Mario camina derecha [2]
-x=106,y=0,w=15,h=18 --->Mario salta izquierda
-x=124,y=0,w=15,h=18 --->Mario camina izquierda [2]
-
