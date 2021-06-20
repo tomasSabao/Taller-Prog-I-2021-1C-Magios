@@ -271,20 +271,19 @@ string Parser::obtenerNivelLog()
   return aux;
 }
 
-int Parser::obtenerCantidadJugadoresRestantes(){
+int Parser::obtenerCantidadJugadores(){
   return this->config["configuration"]["users"].size();
 }
 
 bool Parser::validarJugador(string user, string password)
 {
-  //se podria hacer de otra forma.
   for (int i = 0; i < this->config["configuration"]["users"].size(); i++)
   {
     if ((this->config["configuration"]["users"][i]["username"].asString() == user) && (this->config["configuration"]["users"][i]["password"].asString() == password))
     {
-      Json::Value aux;
-      this->config["configuration"]["users"].removeIndex(i, &aux);
-      aux.clear();
+      //Json::Value aux;
+      //this->config["configuration"]["users"].removeIndex(i, &aux);
+      //aux.clear();
       return true;
     }
   }
