@@ -85,6 +85,7 @@ int SocketCliente::enviarData(Comando* comando)
             return bytes_written;
         }
         else if (bytes_written == 0) { // Socket closed
+            printf("El socket se cerro\n");
             client_socket_still_open = false;
         }
         else {
@@ -102,6 +103,45 @@ int SocketCliente::enviarData(Comando* comando)
      return false;
     }
 }
+
+
+
+int SocketCliente::enviarData(void* msj,int tamanio_bytes){
+    printf("----------- Funcion: Enviar Data-----------\n");
+    int total_bytes_escritos=0;
+    int bytes_escritos=0;
+    bool client_socket_still_open=true;
+    printf("Tamanio de bytes a escribir: %d\n",tamanio_bytes);
+    while( (tamanio_bytes > total_bytes_escritos)   && client_socket_still_open==true){
+
+        printf("Funcion: enviarData. El socket cliente numero: %d envia datos\n",this->skt);
+        bytes_escritos=send(this->skt, (void*) ((char*)msj+total_bytes_escritos), (tamanio_bytes - total_bytes_escritos), MSG_NOSIGNAL);
+        printf("numero de bytes escritos: %d\n",bytes_escritos);
+        if(bytes_escritos < 0){//error
+            printf("El numero de bytes escritos es menor a cero\n");
+            return bytes_escritos;
+        }
+
+        else if(bytes_escritos==0){//se cerro el socket
+            printf("ERROR_ SE CERRO EL SOCKET\n");
+            client_socket_still_open=false;
+        }
+        else{
+            total_bytes_escritos += bytes_escritos;
+        }
+    }
+    if(total_bytes_escritos==tamanio_bytes){
+        //se mandaron todos los datos 
+        printf("Funcion: enviarData. Se mandaron todos los bytes que componen el mensaje\n");
+        //aca habia una funcion que metia al modelo, no se por que. Asi que la saco
+        return 0;
+    }
+    printf("Funcion: enviarData. No se mandaron todos los bytes que componen el mensaje\n");
+    //llegue aca, significa que no se mandaron todos los bytes del mensaje. Devuelvo 1
+    return 1;
+}
+
+
 
 int SocketCliente::cerrar()
 {
@@ -151,9 +191,38 @@ int SocketCliente::recibirData()
     {
      return false;
     }
+}
 
+int SocketCliente::recibirData(int tamanio_msj, void* buffer){
+    int total_bytes_recibidos=0;
+    int bytes_recibidos=0;
+    bool client_socket_still_open=true;
+    printf("Funcion: socketCliente-recibirData\n");
 
+    printf("numero del socket cliente que recibo= (%d ) \n",  this->skt);
 
+    while( (tamanio_msj > bytes_recibidos)  &&  client_socket_still_open){
+        printf("recibe el cliente: %d\n",this->skt);
+        bytes_recibidos= recv(this->skt, (void*) ((char*)buffer+total_bytes_recibidos)  , (tamanio_msj-total_bytes_recibidos),MSG_NOSIGNAL);
+
+        if(bytes_recibidos < 0){
+            printf("hubo un error\n");
+            return bytes_recibidos;
+        }
+        else if(bytes_recibidos==0){
+            //se desconecto el socket
+            client_socket_still_open=false;
+        }
+        else{
+            total_bytes_recibidos+=bytes_recibidos;
+        }
+    }
+
+    if(total_bytes_recibidos==tamanio_msj){
+        printf("Fin de socketcliente. Datos recibidos de forma exitosa\n");
+        return 0;
+    }
+    return 1;
 }
 
 Modelo* SocketCliente::getServerModel() {

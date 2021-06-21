@@ -8,6 +8,9 @@ ModeloCliente::ModeloCliente()
     m.positionY=0;
     this->modelo = &(m);
     this->estaConectado=false;
+    //despues se redimensiona, pero es necesario para
+    //que no haya segmentation fault
+    this->envio_msj_login.asignarMemoria(1,1);
 
    // Comando c;
     //this->comando = c;
@@ -38,6 +41,17 @@ int ModeloCliente::cargarComandos(Comando comando)
   return 0;
 }
 
+
+int ModeloCliente::cargarMensaje(Mensaje* msj){
+  printf("funcion CargarMensaje, entro\n");
+    pthread_mutex_t colaMutex = PTHREAD_MUTEX_INITIALIZER;
+    pthread_mutex_lock(&colaMutex);
+    this->colaMensajes.push_back(msj);
+    pthread_mutex_unlock(&colaMutex);
+  printf("Funcion cargarMensaje, salgo\n");
+    return 0;
+}
+
 void* ModeloCliente::desencolar( )
 {
 
@@ -64,11 +78,87 @@ void* ModeloCliente::desencolar( )
 }
 
 
+//desencolar mensaje saca el mensaje de la cola y lo manda
+Mensaje* ModeloCliente::desencolarMensaje(){
+  Mensaje* msj_desencolado=NULL;
+  pthread_mutex_t colaMutex = PTHREAD_MUTEX_INITIALIZER;
+  pthread_mutex_lock(&colaMutex);
+
+  //las condiciones son: la cola de mensajes no este vacia, y esta conectado el cliente
+  if(this->colaMensajes.size()!=0   &&   this->estaConectado == true){
+    msj_desencolado=this->colaMensajes.back();
+    this->colaMensajes.pop_back();
+  }
+  pthread_mutex_unlock(&colaMutex);
+  printf("Valor del mensaje desencolado: %d\n",msj_desencolado);
+  return msj_desencolado;
+}
+
+
 void ModeloCliente::initializeData(int action)
 {
 
 }
 
+//wrapper para la funcion recibirDatosUsuario
+void* ModeloCliente::funcionParaThread(void* context){
+  while(1){
+      ((ModeloCliente *)context)->recibirUsuarioContrasenia();
+  }
+
+  return NULL;
+}
+
+
+void* ModeloCliente::threadFunctionRecibir(void* context){
+  printf("Funcion: threadFunctionRecibir\n");
+  bool estado_conectado_al_servidor=((ModeloCliente*)context)->getEstaConectadoServidor();
+  void* msg_ptr=NULL;
+  while(1){
+    //ESTO ESTA MAL
+    if( ((ModeloCliente*)context)->estaConectado==false){
+      //no estoy conectado, entonces lo que se hace es recibir mensajes de tamanio 1
+      msg_ptr=((ModeloCliente*)context)->recibir_msj_login.getMensaje();
+      //es recibo el mensaje, guardando el contenido en recibir_msj_login del cliente
+      ((ModeloCliente*)context)->recibirMensaje(1,msg_ptr);
+    }
+    //aca iria la logica para el otro caso, el del mensaje de actualizacion
+
+  }
+  return NULL;
+}
+
+//se tiene que desencolar el mensaje de la cola, y se tiene que enviar
+void* ModeloCliente::threadFunctionEnviar(void* context){
+  printf("Funcion: threadEnviar\n");
+  bool estaConectado= ((ModeloCliente*)context)->getEstaConectado();
+  Mensaje* msj_a_mandar=NULL;
+  void* contenido=NULL;
+  int tamanio_msj;
+  while(1){
+    ((ModeloCliente*)context)->manejadora();
+  }
+  printf("Funcion threadEnviar. FIN\n");
+  return NULL;
+}
+
+void ModeloCliente::manejadora(){
+  int resultado;
+  if(this->getEstaConectado()==true && this->colaMensajes.size()!=0){
+    printf("Se va a mandar un mensaje\n");
+    Mensaje* msj_a_mandar=this->desencolarMensaje();
+    int tamanio_msj=msj_a_mandar->getTamanio();
+    void* contenido=msj_a_mandar->getMensaje();
+    resultado=this->enviarMensaje(contenido,tamanio_msj);
+    if(resultado==0){
+      printf("Se mando un mensaje correctamente\n");
+    }
+    else{
+      printf("Error al mandar mensaje\n");
+    }
+  }
+ // printf("Sali de funcion manejadora\n");
+}
 
   void *ModeloCliente::hello_helperRecieve(void *context)
     {
@@ -138,6 +228,10 @@ void ModeloCliente::initializeData(int action)
 
 
 
+
+
+
+
 void ModeloCliente::ImprimirModeloActualizado()
  {
 
@@ -164,6 +258,18 @@ int ModeloCliente::receiveData()
     return result;
 }
 
+int ModeloCliente::recibirMensaje(int tamanio_msj, void* buffer){
+
+  int resultado=this->socketCliente->recibirData(tamanio_msj,buffer);
+  if(resultado==0){//funciono el recibir data
+    //hago algo con el modelo. Creo que conviene llamar al decodificador
+    this->decodificador.decodificarMensajeDos(buffer);
+
+  }
+
+  return resultado;
+}
+
 
 int ModeloCliente::sendData(Comando* comando)
 {
@@ -174,6 +280,11 @@ int ModeloCliente::sendData(Comando* comando)
     return result;
 }
 
+
+int ModeloCliente::enviarMensaje(void* msj, int tamanio_bytes){
+  int resultado= this->socketCliente->enviarData(msj,tamanio_bytes);
+  return resultado;
+}
 
 
 int ModeloCliente::conectar()
@@ -195,4 +306,51 @@ int ModeloCliente::conectar()
 int ModeloCliente::closeSocket()
 {
     return this->socketCliente->cerrar();
+}
+
+
+bool ModeloCliente::getEstaConectado(){
+  return this->estaConectado;
+}
+
+int ModeloCliente::recibirUsuarioContrasenia(){
+  int success=0;
+  std::string usuario="";
+  std::string contrasenia="";
+
+  char buffer_usr_str[16];
+  char buffer_psw_str[16];
+  printf("Ingrese usuario: \n");
+  scanf("%s" ,buffer_usr_str);
+  for(int i=0; i<15; i++){
+    if (buffer_usr_str[i]==0){
+      break;
+    }
+    usuario+=buffer_usr_str[i];
+  }
+  printf("Ingrese contrasenia:  \n");
+  scanf("%s" ,buffer_psw_str);
+  for(int i=0;i<15;i++){
+    if(buffer_psw_str[i]==0){
+      break;
+    }
+    printf("%c\n",buffer_psw_str[i]);
+    contrasenia+=buffer_psw_str[i];
+  }
+  printf("Voy a entrar al codificador\n");
+  success=this->codificador.codificarMensajeConexionDos(&this->envio_msj_login, usuario, contrasenia);
+  //saco el mutex
+
+  //meter el mensaje en la cola
+  this->cargarMensaje(&this->envio_msj_login);
+  printf("Fin de funcion usuario contrasenia\n");
+
+  //la mando
+
+  return success;
+}
+
+
+bool ModeloCliente::getEstaConectadoServidor(){
+  return this->estaConectadoAlServidor;
 }

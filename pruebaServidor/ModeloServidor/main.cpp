@@ -165,9 +165,10 @@ int main(int argc, char *argv[])
 
 
 
-
-          int er2 = pthread_create(&hilos[i], NULL,   &ModeloServidor::hello_helperRecieve,   modeloServidor);
-
+          //version original
+          //int er2 = pthread_create(&hilos[i], NULL,   &ModeloServidor::hello_helperRecieve,   modeloServidor);
+          //version mia
+        int er2=pthread_create(&hilos[i],NULL, &ModeloServidor::funcionThreadRecibir, modeloServidor);
 
          printf("mas de un cliente");
 
@@ -210,12 +211,15 @@ int main(int argc, char *argv[])
             status = -1;
         }
         printf("Send data: pos(X,Y) = (%d,%d)\n\n", modeloServidor->getPosicionX(), modeloServidor->getPosicionY());
-        //--------------------*/
+        //--------------------
 
         commands_count++;
     }
 
-    modeloServidor->imprimirComandos();
+
+
+
+    //modeloServidor->imprimirComandos();
     close(modeloServidor->getCliente());
     printf("Client socket number %d closed\n", modeloServidor->getCliente());
     modeloServidor->closeSocket();

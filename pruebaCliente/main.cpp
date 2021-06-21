@@ -22,7 +22,7 @@ using namespace std;
 int main(int argc , char *argv[])
 {
 
-    Comando command;
+    //Comando command;
     Modelo model;
     int port = atoi(argv[ARG_POS_PORT]);
     char* host = argv[ARG_POS_HOST];
@@ -39,33 +39,53 @@ int main(int argc , char *argv[])
     int status = 0;
 
 
-           pthread_t ingresarDatos;
-            pthread_t recv_msg_thread;
-             pthread_t send_msg_thread;
-
+          // pthread_t ingresarDatos;
+            //pthread_t recv_msg_thread;
+            // pthread_t send_msg_thread;
+              pthread_t login_thread;
+              // pthread_t recibir_msg_thread;
+                pthread_t enviar_msg_thread;
+/*
       if(pthread_create(&ingresarDatos, NULL, &ModeloCliente::hello_helperIngresarDatos, unModeloCliente) != 0){
             printf("ERROR: pthread\n");
             return EXIT_FAILURE;
         }
-
-
+*/
+      if(pthread_create(&login_thread,NULL, &ModeloCliente::funcionParaThread,unModeloCliente) != 0){
+        printf("ERROR: pthread login fallo\n");
+        return EXIT_FAILURE;
+      }
+/*
       if(pthread_create(&recv_msg_thread, NULL, &ModeloCliente::hello_helperRecieve, unModeloCliente) != 0){
             printf("ERROR: pthread\n");
             return EXIT_FAILURE;
         }
-
-
-
+*//*
+      if(pthread_create(&recibir_msg_thread, NULL, &ModeloCliente::threadFunctionRecibir,unModeloCliente) != 0){
+        printf("ERROR: pthread recibir fallo\n");
+        return EXIT_FAILURE;
+      }
+/*
         if(pthread_create(&send_msg_thread, NULL, &ModeloCliente::hello_helperSend, unModeloCliente) != 0){
                 printf("ERROR: pthread\n");
             return EXIT_FAILURE;
             }
+*/
 
+      if(pthread_create(&enviar_msg_thread, NULL, &ModeloCliente::threadFunctionEnviar,unModeloCliente) != 0){
+        printf("ERROR: pthread enviar fallo\n");
+        return EXIT_FAILURE;
+      }
 
+/*
 
           pthread_join(ingresarDatos,NULL);
             pthread_join(recv_msg_thread,NULL);
               pthread_join(send_msg_thread,NULL);
+*/
+                  pthread_join(enviar_msg_thread,NULL);
+            pthread_join(login_thread,NULL);
+            //pthread_join(recibir_msg_thread,NULL);
 
        //modeloServidor->closeSocket();
 
@@ -76,7 +96,6 @@ int main(int argc , char *argv[])
 
          unModeloCliente->ImprimirModeloActualizado();
         //--------------------
-
 
     unModeloCliente->closeSocket();
     //printf("Server socket number %d closed\n",server_socket);

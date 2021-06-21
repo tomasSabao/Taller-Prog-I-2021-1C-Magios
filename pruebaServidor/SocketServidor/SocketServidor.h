@@ -7,6 +7,8 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <stdbool.h>
+#include "../mensaje/Mensaje.h"
+
 
 //#include "Thread.h"
 
@@ -44,6 +46,14 @@ public:
     int recibirDataGeneral(int client_socket);
     //std::vector<Comando>  returnComandosSocket( );
 
+
+
+
+    //el servidor no tiene guardado el mensaje, recibe una posicion de memoria y solo copia
+    int recibirData(Mensaje* buffer,int tamanio_bytes,int socket_cliente);
+
+
+
     int enviarData(Modelo *modelo);
     Comando *getClientComand();
     int cargarComandosSocket(Comando comando);
@@ -58,6 +68,8 @@ protected:
    //  std::vector<Comando> colaComandito;
     Comando* comandoPuntero;
     // Structs for data transfer
+
+    Mensaje msj_recibido_buff;
 
 private:
 };

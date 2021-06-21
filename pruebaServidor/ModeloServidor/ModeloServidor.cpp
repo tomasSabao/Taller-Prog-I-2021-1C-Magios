@@ -6,6 +6,10 @@ ModeloServidor::ModeloServidor(int port = 5050)
   this->modelo = m;
   this->modelo.positionX=0;
   this->modelo.positionY=0;
+
+  //tengo que asignar a los mensaje un tamanio
+  this->msj_login_fallo.asignarMemoria(1,1);
+  this->buffer_login.asignarMemoria(34,1);
   /*this->CrearSocket(port);
   this->bindSocket();
   this->escuchar();
@@ -46,6 +50,22 @@ ModeloServidor::ModeloServidor(int port = 5050)
 
     }
 
+void* ModeloServidor::funcionThreadRecibir(void* contexto){
+  while(1){
+    ( ((ModeloServidor*)contexto)->recibirDataGeneral2());
+  }
+
+  return NULL;
+}
+
+void* ModeloServidor::funcionThreadDesencolar(void* contexto){
+
+  while(1){
+    //( (ModeloServidor*)contexto->recibirMensajeGeneral());
+  }
+  return NULL;
+}
+
 
      void *ModeloServidor::hello_helperDesencolar(void *context)
 
@@ -76,11 +96,24 @@ ModeloServidor::ModeloServidor(int port = 5050)
          printf("guarde el comando definitivamente a la coladecomando : %d\n",this->socketServidor->getClientComand()->action );
         }
   }
-
-
  return NULL;
+}
 
+void* ModeloServidor::recibirDataGeneral2(){
+  printf("Entra a la funcion: recibirDataGenral2\n");
+  if(!this->colaSocketCliente.empty()){
+    int socketClienteActual=this->colaSocketCliente[this->numeroThread-1];
+    printf("Saque el socket de la cola de clientes. Valor del socket: %d\n",socketClienteActual);
+    //por ahora siempre lleva -1 porque quiero recibir el tipo de mensaje login
+    int  result=this->socketServidor->recibirData(&this->buffer_login,-1,socketClienteActual);
+    if(result == 0){
+      //quiero que el decodificador me decodifique el mensaje
+      this->decodificador.decodificarMensajeDos(this->buffer_login.getMensaje());
+      printf("no guarde ningun comando, lo recibi y lo decodifique\n");
+    }
 
+  }
+  return NULL;
 }
 
 void* ModeloServidor::desencolar( ) //es un vector que tiene clientes
@@ -263,3 +296,7 @@ int ModeloServidor::closeSocket()
 
 
 
+int  ModeloServidor::recibirMensaje(){
+  //return this->socketServidor->
+  return 0;
+}

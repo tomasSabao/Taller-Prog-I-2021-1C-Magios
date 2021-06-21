@@ -9,6 +9,7 @@
 #include <stdbool.h>
 
 
+
 struct  Command {
            int action;
         }  ;
@@ -30,7 +31,12 @@ class SocketCliente
         int crearSocket();
         int conectar();
         int recibirData();
+        //version nueva de recibir data
+        //en teoria el buffer tiene el tamanio para guardar el mensaje
+        int recibirData(int tamanio_msj,void* buffer);
         int enviarData(Comando* comando);
+        //version nueva de enviar data
+        int enviarData(void* msj,int tamanio_bytes);
         Modelo* getServerModel();
         int cerrar();
 
