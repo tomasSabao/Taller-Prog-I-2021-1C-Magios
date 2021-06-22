@@ -41,9 +41,27 @@ class ModeloServidor
          //reemplazo con las funciones que usan mensaje, codificador, decodificador
          int recibirMensaje();
 
-         void* funcionThreadDesencolar(void* contexto);
          static void* funcionThreadRecibir(void* contexto);
-         
+
+         static void* funcionThreadDesencolarYEnviar(void* contexto);
+
+         static void* funcionThreadDesencolarYProcesar(void* contexto);
+
+
+
+         int desencolarYProcesarMensaje();
+
+
+         int desencolarYEnviarMensaje();
+
+         int procesarMensaje(Mensaje* msj);
+         //encola mensaje para ser procesado
+         void encolarMensaje(Mensaje* msj);
+         //encola mensajes para ser enviado
+         int encolarMensajeAEnviar(Mensaje* msj);
+
+         int enviarMensaje(Mensaje* msj,int tamanio_bytes);
+
          //este valor reemplaza a receiveDataGeneral()
          void* recibirDataGeneral2();
 
@@ -69,6 +87,7 @@ int  getAction();
 
 
     Mensaje buffer_login;
+    Mensaje buffer_rta_login;
 
     protected:
      std::vector<Comando> colaComando;
@@ -95,7 +114,11 @@ int  getAction();
 
     Mensaje buffer_tecla;
 
+    //esta es la cola de mensajes recibidos
+    std::vector<Mensaje*> cola_mensajes;
 
+    //esta es la cola de mensaje enviados
+    std::vector<Mensaje*> cola_mensajes_a_enviar;
 
 
 //

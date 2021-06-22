@@ -46,6 +46,8 @@ public:
     int recibirDataGeneral(int client_socket);
     //std::vector<Comando>  returnComandosSocket( );
 
+    //funcion que se encarga de mandar la data al cliente
+    int enviarData(Mensaje* msj,int tamanio_bytes);
 
 
 

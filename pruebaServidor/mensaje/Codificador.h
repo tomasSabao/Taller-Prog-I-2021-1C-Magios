@@ -16,9 +16,9 @@ class Codificador
         virtual ~Codificador();
 
 
-
+        //NO USAR
         int codificarMensajeRespuestaLoginPositiva(Mensaje* msj,char user_id,int numero_jugadores);
-
+        //VACIO
         int codificarMensajeRespuestaLoginNegativa();
 
         int codificarMensajeActualizacionPosiciones(Mensaje* msj,int numero_jugadores);

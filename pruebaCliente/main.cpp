@@ -43,7 +43,7 @@ int main(int argc , char *argv[])
             //pthread_t recv_msg_thread;
             // pthread_t send_msg_thread;
               pthread_t login_thread;
-              // pthread_t recibir_msg_thread;
+               pthread_t recibir_msg_thread;
                 pthread_t enviar_msg_thread;
 /*
       if(pthread_create(&ingresarDatos, NULL, &ModeloCliente::hello_helperIngresarDatos, unModeloCliente) != 0){
@@ -60,8 +60,14 @@ int main(int argc , char *argv[])
             printf("ERROR: pthread\n");
             return EXIT_FAILURE;
         }
-*//*
+*/
+
+      /*
       if(pthread_create(&recibir_msg_thread, NULL, &ModeloCliente::threadFunctionRecibir,unModeloCliente) != 0){
+        printf("ERROR: pthread recibir fallo\n");
+        return EXIT_FAILURE;
+      }*/
+      if(pthread_create(&recibir_msg_thread,NULL, &ModeloCliente::threadFunctionRecibir,unModeloCliente)  != 0){
         printf("ERROR: pthread recibir fallo\n");
         return EXIT_FAILURE;
       }

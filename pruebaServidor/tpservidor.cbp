@@ -58,6 +58,15 @@
 		<Unit filename="SocketServidor/SocketServidor.h" />
 		<Unit filename="Thread/Thread.cpp" />
 		<Unit filename="Thread/Thread.h" />
-		<Extensions />
+		<Unit filename="mensaje/Codificador.cpp" />
+		<Unit filename="mensaje/Codificador.h" />
+		<Unit filename="mensaje/Decodificador.cpp" />
+		<Unit filename="mensaje/Decodificador.h" />
+		<Unit filename="mensaje/Mensaje.cpp" />
+		<Unit filename="mensaje/Mensaje.h" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

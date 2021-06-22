@@ -194,10 +194,12 @@ int SocketCliente::recibirData()
 }
 
 int SocketCliente::recibirData(int tamanio_msj, void* buffer){
+
+
     int total_bytes_recibidos=0;
     int bytes_recibidos=0;
     bool client_socket_still_open=true;
-    printf("Funcion: socketCliente-recibirData\n");
+    printf("-------------------------Funcion: socketCliente-recibirData---------------------\n");
 
     printf("numero del socket cliente que recibo= (%d ) \n",  this->skt);
 
@@ -217,11 +219,12 @@ int SocketCliente::recibirData(int tamanio_msj, void* buffer){
             total_bytes_recibidos+=bytes_recibidos;
         }
     }
-
+    printf("XXXXXXXXXXXXXXXXXXXXXXXX Se recibieron %d bytes\n",total_bytes_recibidos);
     if(total_bytes_recibidos==tamanio_msj){
-        printf("Fin de socketcliente. Datos recibidos de forma exitosa\n");
+        printf("Se recibieron %d bytes de forma exitosa\n",total_bytes_recibidos);
         return 0;
     }
+    printf("Fallo la recepcion de los clientes \n");
     return 1;
 }
 

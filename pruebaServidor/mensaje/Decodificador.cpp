@@ -50,7 +50,7 @@ void Decodificador::decodificarMensajeDos(void* msj){
 		return;
 	}
 	if(tipo_msj==2){
-		printf("Tipo de mensaje login\n");
+		printf("Tipo de mensaje login aceptacion\n");
 		unsigned char user_id=contenedor<<6;
 		user_id=user_id>>6;
 		printf("User id asignado: %d",user_id+1);
@@ -118,4 +118,24 @@ char Decodificador::mapearIdJugador(int id_jugador){
 		return '3';
 	}
 	return '4';
+}
+
+
+int Decodificador::obtenerTipo(void* msj){
+	unsigned char tipo_msj=* (char*)msj;
+	tipo_msj=tipo_msj>>4;
+	return tipo_msj;
+}
+
+
+
+
+std::string Decodificador::obtenerUsuario(void* msj){
+	void* puntero=msj;
+	//el usuario va a estar dos char a derecha
+
+	std::string usuario="";
+
+	//yo se que los 
+
 }

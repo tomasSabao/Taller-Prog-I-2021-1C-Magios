@@ -50,7 +50,7 @@ void Decodificador::decodificarMensajeDos(void* msj){
 		return;
 	}
 	if(tipo_msj==2){
-		printf("Tipo de mensaje login\n");
+		printf("Tipo de mensaje login aceptacion\n");
 		unsigned char user_id=contenedor<<6;
 		user_id=user_id>>6;
 		printf("User id asignado: %d",user_id+1);

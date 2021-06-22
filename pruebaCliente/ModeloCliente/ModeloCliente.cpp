@@ -11,7 +11,7 @@ ModeloCliente::ModeloCliente()
     //despues se redimensiona, pero es necesario para
     //que no haya segmentation fault
     this->envio_msj_login.asignarMemoria(1,1);
-
+    this->recibir_msj_login.asignarMemoria(1,1);
    // Comando c;
     //this->comando = c;
 }
@@ -111,19 +111,9 @@ void* ModeloCliente::funcionParaThread(void* context){
 
 
 void* ModeloCliente::threadFunctionRecibir(void* context){
-  printf("Funcion: threadFunctionRecibir\n");
-  bool estado_conectado_al_servidor=((ModeloCliente*)context)->getEstaConectadoServidor();
-  void* msg_ptr=NULL;
-  while(1){
-    //ESTO ESTA MAL
-    if( ((ModeloCliente*)context)->estaConectado==false){
-      //no estoy conectado, entonces lo que se hace es recibir mensajes de tamanio 1
-      msg_ptr=((ModeloCliente*)context)->recibir_msj_login.getMensaje();
-      //es recibo el mensaje, guardando el contenido en recibir_msj_login del cliente
-      ((ModeloCliente*)context)->recibirMensaje(1,msg_ptr);
-    }
-    //aca iria la logica para el otro caso, el del mensaje de actualizacion
 
+  while(1){
+    ((ModeloCliente*)context)->recibirDataGeneral2();
   }
   return NULL;
 }
@@ -238,25 +228,7 @@ void ModeloCliente::ImprimirModeloActualizado()
    printf("Receive data: pos(X,Y) = (%d,%d)\n\n", this->modelo->positionX, this->modelo->positionY );
  }
 
-int ModeloCliente::receiveData()
-{
 
-
-
-
-    int result = this->socketCliente->recibirData();
-    if(result)
-    {
-
-     this->modelo = this->socketCliente->getServerModel();
-
-    }
-
-    this->ImprimirModeloActualizado();
-
-
-    return result;
-}
 
 int ModeloCliente::recibirMensaje(int tamanio_msj, void* buffer){
 
@@ -353,4 +325,47 @@ int ModeloCliente::recibirUsuarioContrasenia(){
 
 bool ModeloCliente::getEstaConectadoServidor(){
   return this->estaConectadoAlServidor;
+}
+
+
+
+int ModeloCliente::receiveData()
+{
+
+
+
+
+    int result = this->socketCliente->recibirData();
+    if(result)
+    {
+
+     this->modelo = this->socketCliente->getServerModel();
+
+    }
+
+    this->ImprimirModeloActualizado();
+
+
+    return result;
+}
+
+
+
+void* ModeloCliente::recibirDataGeneral2(){
+ // printf("Entra a la funcion: recibirDataGenral2\n");
+  int estado_conexion=this->estaConectadoAlServidor;
+  if(estado_conexion==true){
+    //El cliente esta conectado al servidor, por lo que va a recibir mensajes de actualizacion de posiciones
+    //TODO
+  }
+  else{
+    //el cliente no esta conectado al servidor, por lo que va a recibir mensajes de aceptacion/rechazo de login
+    int resultado= this->socketCliente->recibirData(1,&this->recibir_msj_login);
+    //veo que pasa con el resultado del servidor
+    if(resultado == 0){
+      printf("Se recibio un mensaje del servidor, se procede a decodificarlo\n");
+      this->decodificador.decodificarMensajeDos(this->recibir_msj_login.getMensaje());
+    }
+  }
+  return NULL;
 }

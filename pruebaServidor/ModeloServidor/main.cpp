@@ -149,11 +149,16 @@ int main(int argc, char *argv[])
 
     pthread_t envio;
     pthread_t recivo;
+    pthread_t proceso;
 
 
+    //esta es la version vieja, la saco
+   //  int err = pthread_create(&envio, NULL,   &ModeloServidor::hello_helperDesencolar,   modeloServidor);
+    //version nueva
+    int err=pthread_create(&envio, NULL, &ModeloServidor::funcionThreadDesencolarYEnviar, modeloServidor);
 
-
-     int err = pthread_create(&envio, NULL,   &ModeloServidor::hello_helperDesencolar,   modeloServidor);
+    //voy a agregar un tercer thread, uno que se encargue de procesar los mensajes que le llegan al server
+    int err3=pthread_create(&proceso, NULL, &ModeloServidor::funcionThreadDesencolarYProcesar,modeloServidor);
 
      pthread_t hilos[MAX_CLIENTS];
     int i = 0;
@@ -177,6 +182,7 @@ int main(int argc, char *argv[])
 
     pthread_join(envio,NULL);
 		pthread_join(hilos[1],NULL);
+            pthread_join(proceso,NULL);
        modeloServidor->closeSocket();
     int commands_count = 0;
     int status = 0;

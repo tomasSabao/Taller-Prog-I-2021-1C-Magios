@@ -203,7 +203,7 @@
 
 1624215052 /home/tomas/Escritorio/Taller_de_programacion_1/version_cliente_servidor/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/Conexion.h
 
-1624297488 source:/home/tomas/Escritorio/Taller_de_programacion_1/version_cliente_servidor/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/main.cpp
+1624392552 source:/home/tomas/Escritorio/Taller_de_programacion_1/version_cliente_servidor/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/main.cpp
 	<stdio.h>
 	<iostream>
 	<stdlib.h>
@@ -219,7 +219,7 @@
 	<vector>
 	<pthread.h>
 
-1624297262 /home/tomas/Escritorio/Taller_de_programacion_1/version_cliente_servidor/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/ModeloServidor.h
+1624391846 /home/tomas/Escritorio/Taller_de_programacion_1/version_cliente_servidor/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/ModeloServidor.h
 	"../SocketServidor/SocketServidor.h"
 	"../mensaje/Codificador.h"
 	"../mensaje/Decodificador.h"
@@ -229,7 +229,7 @@
 	<stdio.h>
 	"Thread.h"
 
-1624310548 /home/tomas/Escritorio/Taller_de_programacion_1/version_cliente_servidor/Taller-Prog-I-2021-1C-Magios/pruebaServidor/SocketServidor/SocketServidor.h
+1624390564 /home/tomas/Escritorio/Taller_de_programacion_1/version_cliente_servidor/Taller-Prog-I-2021-1C-Magios/pruebaServidor/SocketServidor/SocketServidor.h
 	<sys/socket.h>
 	<stdio.h>
 	<stdlib.h>
@@ -244,20 +244,20 @@
 	<stdio.h>
 	"../ModeloServidor/ModeloServidor.h"
 
-1624312171 source:/home/tomas/Escritorio/Taller_de_programacion_1/version_cliente_servidor/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/ModeloServidor.cpp
+1624398970 source:/home/tomas/Escritorio/Taller_de_programacion_1/version_cliente_servidor/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/ModeloServidor.cpp
 	"ModeloServidor.h"
 	"Thread.h"
 
-1624311921 source:/home/tomas/Escritorio/Taller_de_programacion_1/version_cliente_servidor/Taller-Prog-I-2021-1C-Magios/pruebaServidor/SocketServidor/SocketServidor.cpp
+1624393200 source:/home/tomas/Escritorio/Taller_de_programacion_1/version_cliente_servidor/Taller-Prog-I-2021-1C-Magios/pruebaServidor/SocketServidor/SocketServidor.cpp
 	"SocketServidor.h"
 
 1624214960 source:/home/tomas/Escritorio/Taller_de_programacion_1/version_cliente_servidor/Taller-Prog-I-2021-1C-Magios/pruebaServidor/Thread/Thread.cpp
 	"Thread.h"
 
-1624286808 source:/home/tomas/Escritorio/Taller_de_programacion_1/version_cliente_servidor/Taller-Prog-I-2021-1C-Magios/pruebaServidor/mensaje/Codificador.cpp
+1624313520 source:/home/tomas/Escritorio/Taller_de_programacion_1/version_cliente_servidor/Taller-Prog-I-2021-1C-Magios/pruebaServidor/mensaje/Codificador.cpp
 	"Codificador.h"
 
-1624231270 /home/tomas/Escritorio/Taller_de_programacion_1/version_cliente_servidor/Taller-Prog-I-2021-1C-Magios/pruebaServidor/mensaje/Codificador.h
+1624385979 /home/tomas/Escritorio/Taller_de_programacion_1/version_cliente_servidor/Taller-Prog-I-2021-1C-Magios/pruebaServidor/mensaje/Codificador.h
 	"Mensaje.h"
 	<stdio.h>
 	<string>
@@ -269,10 +269,10 @@
 	<string.h>
 	<stdlib.h>
 
-1624126314 source:/home/tomas/Escritorio/Taller_de_programacion_1/version_cliente_servidor/Taller-Prog-I-2021-1C-Magios/pruebaServidor/mensaje/Decodificador.cpp
+1624397986 source:/home/tomas/Escritorio/Taller_de_programacion_1/version_cliente_servidor/Taller-Prog-I-2021-1C-Magios/pruebaServidor/mensaje/Decodificador.cpp
 	"Decodificador.h"
 
-1624120303 /home/tomas/Escritorio/Taller_de_programacion_1/version_cliente_servidor/Taller-Prog-I-2021-1C-Magios/pruebaServidor/mensaje/Decodificador.h
+1624385540 /home/tomas/Escritorio/Taller_de_programacion_1/version_cliente_servidor/Taller-Prog-I-2021-1C-Magios/pruebaServidor/mensaje/Decodificador.h
 	<stdio.h>
 	"Mensaje.h"
 	<string>

@@ -53,9 +53,13 @@ class ModeloCliente
         int recibirUsuarioContrasenia();
 
         static void* funcionParaThread(void* contexto);
+        //esta vacia
         static void* threadFunctionLogin(void* contexto);
         static void* threadFunctionEnviar(void* contexto);
+
         static void* threadFunctionRecibir(void* contexto);
+
+        void* recibirDataGeneral2();
 
         bool getEstaConectadoServidor();
 
@@ -86,6 +90,7 @@ class ModeloCliente
 
         std::vector<Mensaje*> colaMensajes;
 
+        std::vector<Mensaje*> colaMensajesAProcesar;
 
         //agregamos los codificadores, decodificadores y dos tipos de mensaje
         Codificador codificador;
