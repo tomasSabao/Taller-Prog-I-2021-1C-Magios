@@ -1,0 +1,132 @@
+# depslib dependency file v1.0
+1622818990 source:/home/yuscu/Documentos/juegosdl/EjemplosBasicosSocket (copia)/pruebaCliente/main.cpp
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<sys/socket.h>
+	<arpa/inet.h>
+	<unistd.h>
+	<stdbool.h>
+	"SocketCliente/SocketCliente.h"
+	"ModeloCliente/ModeloCliente.h"
+
+1622778290 /home/yuscu/Documentos/juegosdl/EjemplosBasicosSocket (copia)/pruebaCliente/SocketCliente/SocketCliente.h
+	<sys/socket.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<arpa/inet.h>
+	<unistd.h>
+	<stdbool.h>
+
+1622818958 /home/yuscu/Documentos/juegosdl/EjemplosBasicosSocket (copia)/pruebaCliente/ModeloCliente/ModeloCliente.h
+	"../SocketCliente/SocketCliente.h"
+
+1622819039 source:/home/yuscu/Documentos/juegosdl/EjemplosBasicosSocket (copia)/pruebaCliente/ModeloCliente/ModeloCliente.cpp
+	"ModeloCliente.h"
+
+1622778441 source:/home/yuscu/Documentos/juegosdl/EjemplosBasicosSocket (copia)/pruebaCliente/SocketCliente/SocketCliente.cpp
+	"SocketCliente.h"
+
+1623291145 source:/home/yuscu/Documentos/juegosdl/servidorfinal/Taller-Prog-I-2021-1C-Magios/pruebaCliente/main.cpp
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<sys/socket.h>
+	<arpa/inet.h>
+	<unistd.h>
+	<stdbool.h>
+	"SocketCliente/SocketCliente.h"
+	"ModeloCliente/ModeloCliente.h"
+	<pthread.h>
+	<iostream>
+
+1623238745 /home/yuscu/Documentos/juegosdl/servidorfinal/Taller-Prog-I-2021-1C-Magios/pruebaCliente/SocketCliente/SocketCliente.h
+	<sys/socket.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<arpa/inet.h>
+	<unistd.h>
+	<stdbool.h>
+
+1623284143 /home/yuscu/Documentos/juegosdl/servidorfinal/Taller-Prog-I-2021-1C-Magios/pruebaCliente/ModeloCliente/ModeloCliente.h
+	"../SocketCliente/SocketCliente.h"
+	<vector>
+	<pthread.h>
+	<iostream>
+
+1623291890 source:/home/yuscu/Documentos/juegosdl/servidorfinal/Taller-Prog-I-2021-1C-Magios/pruebaCliente/ModeloCliente/ModeloCliente.cpp
+	"ModeloCliente.h"
+
+1623291642 source:/home/yuscu/Documentos/juegosdl/servidorfinal/Taller-Prog-I-2021-1C-Magios/pruebaCliente/SocketCliente/SocketCliente.cpp
+	"SocketCliente.h"
+
+1623458922 source:/home/yuscu/Documentos/juegosdl/servidorfinaltest/Taller-Prog-I-2021-1C-Magios/pruebaCliente/main.cpp
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<sys/socket.h>
+	<arpa/inet.h>
+	<unistd.h>
+	<stdbool.h>
+	"SocketCliente/SocketCliente.h"
+	"ModeloCliente/ModeloCliente.h"
+	<pthread.h>
+	<iostream>
+
+1623457773 /home/yuscu/Documentos/juegosdl/servidorfinaltest/Taller-Prog-I-2021-1C-Magios/pruebaCliente/SocketCliente/SocketCliente.h
+	<sys/socket.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<arpa/inet.h>
+	<unistd.h>
+	<stdbool.h>
+
+1623459188 /home/yuscu/Documentos/juegosdl/servidorfinaltest/Taller-Prog-I-2021-1C-Magios/pruebaCliente/ModeloCliente/ModeloCliente.h
+	"../SocketCliente/SocketCliente.h"
+	<vector>
+	<pthread.h>
+	<iostream>
+
+1623462171 source:/home/yuscu/Documentos/juegosdl/servidorfinaltest/Taller-Prog-I-2021-1C-Magios/pruebaCliente/ModeloCliente/ModeloCliente.cpp
+	"ModeloCliente.h"
+
+1623461133 source:/home/yuscu/Documentos/juegosdl/servidorfinaltest/Taller-Prog-I-2021-1C-Magios/pruebaCliente/SocketCliente/SocketCliente.cpp
+	"SocketCliente.h"
+
+1624143439 source:/home/yuscu/Documentos/juegosdl/servidorparaborrar/srevidor2/Taller-Prog-I-2021-1C-Magios-servidor/pruebaCliente/main.cpp
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<sys/socket.h>
+	<arpa/inet.h>
+	<unistd.h>
+	<stdbool.h>
+	"SocketCliente/SocketCliente.h"
+	"ModeloCliente/ModeloCliente.h"
+	<pthread.h>
+	<iostream>
+
+1624136549 /home/yuscu/Documentos/juegosdl/servidorparaborrar/srevidor2/Taller-Prog-I-2021-1C-Magios-servidor/pruebaCliente/SocketCliente/SocketCliente.h
+	<sys/socket.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<arpa/inet.h>
+	<unistd.h>
+	<stdbool.h>
+
+1624143818 /home/yuscu/Documentos/juegosdl/servidorparaborrar/srevidor2/Taller-Prog-I-2021-1C-Magios-servidor/pruebaCliente/ModeloCliente/ModeloCliente.h
+	"../SocketCliente/SocketCliente.h"
+	<vector>
+	<pthread.h>
+	<iostream>
+
+1624137417 source:/home/yuscu/Documentos/juegosdl/servidorparaborrar/srevidor2/Taller-Prog-I-2021-1C-Magios-servidor/pruebaCliente/SocketCliente/SocketCliente.cpp
+	"SocketCliente.h"
+
+1624144502 source:/home/yuscu/Documentos/juegosdl/servidorparaborrar/srevidor2/Taller-Prog-I-2021-1C-Magios-servidor/pruebaCliente/ModeloCliente/ModeloCliente.cpp
+	"ModeloCliente.h"
+
