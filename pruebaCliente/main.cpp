@@ -45,6 +45,7 @@ int main(int argc , char *argv[])
               pthread_t login_thread;
                pthread_t recibir_msg_thread;
                 pthread_t enviar_msg_thread;
+                 pthread_t procesar_msg_thread;
 /*
       if(pthread_create(&ingresarDatos, NULL, &ModeloCliente::hello_helperIngresarDatos, unModeloCliente) != 0){
             printf("ERROR: pthread\n");
@@ -55,6 +56,12 @@ int main(int argc , char *argv[])
         printf("ERROR: pthread login fallo\n");
         return EXIT_FAILURE;
       }
+
+
+      if(pthread_create(&procesar_msg_thread,NULL, &ModeloCliente::funcionThreadDesencolarYProcesar,unModeloCliente)!=0){
+        printf("ERROR: pthread procesar fallo\n");
+        return EXIT_FAILURE;
+      }
 /*
       if(pthread_create(&recv_msg_thread, NULL, &ModeloCliente::hello_helperRecieve, unModeloCliente) != 0){
             printf("ERROR: pthread\n");
@@ -62,12 +69,8 @@ int main(int argc , char *argv[])
         }
 */
 
-      /*
-      if(pthread_create(&recibir_msg_thread, NULL, &ModeloCliente::threadFunctionRecibir,unModeloCliente) != 0){
-        printf("ERROR: pthread recibir fallo\n");
-        return EXIT_FAILURE;
-      }*/
-      if(pthread_create(&recibir_msg_thread,NULL, &ModeloCliente::threadFunctionRecibir,unModeloCliente)  != 0){
+
+      if(pthread_create(&recibir_msg_thread,NULL, &ModeloCliente::funcionThreadRecibir,unModeloCliente)  != 0){
         printf("ERROR: pthread recibir fallo\n");
         return EXIT_FAILURE;
       }
@@ -83,6 +86,7 @@ int main(int argc , char *argv[])
         return EXIT_FAILURE;
       }
 
+
 /*
 
           pthread_join(ingresarDatos,NULL);
@@ -90,9 +94,9 @@ int main(int argc , char *argv[])
               pthread_join(send_msg_thread,NULL);
 */
                   pthread_join(enviar_msg_thread,NULL);
-            pthread_join(login_thread,NULL);
-            //pthread_join(recibir_msg_thread,NULL);
-
+                pthread_join(login_thread,NULL);
+            pthread_join(recibir_msg_thread,NULL);
+            pthread_join(procesar_msg_thread,NULL);
        //modeloServidor->closeSocket();
 
 //

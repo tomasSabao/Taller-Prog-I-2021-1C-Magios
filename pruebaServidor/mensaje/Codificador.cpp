@@ -220,6 +220,7 @@ int Codificador::codificarMensajeSalaVaciaAceptacion(Mensaje* msj, char id_jugad
 	//ahora falta copiar el contenido al mensaje
 	void* puntero_a_msj=msj->getMensaje();
 	memcpy(puntero_a_msj,&resultado,sizeof(char));
+	printf("Valor del mensaje codificado en numero: %d\n",*(unsigned char*)puntero_a_msj);
 	return success;
 }
 

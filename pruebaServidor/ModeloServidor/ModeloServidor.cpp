@@ -354,11 +354,17 @@ int ModeloServidor::procesarMensaje(Mensaje* msj){
   //lo que voy a hacer aca por ahora es codificar una respuesta de login postivia, mandandole un id
 
   int success= this->codificador.codificarMensajeSalaVaciaAceptacion(&this->buffer_rta_login, '1', MAX_CLIENTS);
+  //int success= this->codificador.codificarMensajeSalaLlenaRechazo(msj);
+  printf("Valor del mensaje una vez codificado: %d\n",*(unsigned char*)msj->getMensaje());
   if(success==0){
     //se codifico correctamente el menstaje, vamos a encolarlo
-    this->encolarMensajeAEnviar(&this->buffer_rta_login);
-    printf("El mensaje que se va a enviar es: \n");
-    this->decodificador.decodificarMensajeDos(this->buffer_rta_login.getMensaje());
+    //necesito una copia
+    Mensaje* msj_aux=new Mensaje();
+    msj_aux->asignarMemoria(1,1);
+    memcpy(msj_aux->getMensaje(),this->buffer_rta_login.getMensaje(),1);
+    printf("Valor de copia: %d\n",*(unsigned char*)msj->getMensaje());
+    this->encolarMensajeAEnviar(msj_aux);
+    //this->decodificador.decodificarMensajeDos(this->buffer_rta_login.getMensaje());
     return 0;
   }
   printf("El mensaje no fue procesado correctamente\n");
@@ -384,7 +390,7 @@ int ModeloServidor::desencolarYEnviarMensaje(){
   Mensaje* msj_desencolado=this->cola_mensajes_a_enviar.front();
   this->cola_mensajes_a_enviar.erase(this->cola_mensajes_a_enviar.begin());
   pthread_mutex_unlock(&colaMutex);
-
+  printf("Antes de entrar a la funcion de envio, valor del mensaje: %d\n",*(unsigned char*)msj_desencolado->getMensaje());
   this->enviarMensaje(msj_desencolado,msj_desencolado->getTamanio());
   return 0;
 }
@@ -403,6 +409,8 @@ int ModeloServidor::encolarMensajeAEnviar(Mensaje* msj){
 
 int ModeloServidor::enviarMensaje(Mensaje* msj,int tamanio_bytes){
   printf("--------------- Thread: Se va a enviar un mensaje ---------\n");
+  //printf("Se decodifica el mensaje a mandar: \n");
+  //this->decodificador.decodificarMensajeDos(msj->getMensaje());
   int resultado=this->socketServidor->enviarData(msj,tamanio_bytes);
   return resultado;
 }

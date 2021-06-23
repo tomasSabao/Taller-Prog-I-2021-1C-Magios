@@ -192,40 +192,36 @@ int SocketCliente::recibirData()
      return false;
     }
 }
+//tamanio_msj es el tamanio total va a tener el mensaje recibido, en bytes
+int SocketCliente::recibirData(int tamanio_msj, Mensaje* msj){
 
-int SocketCliente::recibirData(int tamanio_msj, void* buffer){
-
-
-    int total_bytes_recibidos=0;
     int bytes_recibidos=0;
-    bool client_socket_still_open=true;
-    printf("-------------------------Funcion: socketCliente-recibirData---------------------\n");
+    int bytes_recibidos_totales=0;
+    bool server_socket_still_open=true;
+    void* puntero_a_msj=msj->getMensaje();
 
-    printf("numero del socket cliente que recibo= (%d ) \n",  this->skt);
+    while( (tamanio_msj > bytes_recibidos   && server_socket_still_open==true)){
 
-    while( (tamanio_msj > bytes_recibidos)  &&  client_socket_still_open){
-        printf("recibe el cliente: %d\n",this->skt);
-        bytes_recibidos= recv(this->skt, (void*) ((char*)buffer+total_bytes_recibidos)  , (tamanio_msj-total_bytes_recibidos),MSG_NOSIGNAL);
+        bytes_recibidos=recv(this->skt, (void*)((char*)puntero_a_msj + bytes_recibidos_totales), (tamanio_msj-bytes_recibidos_totales),MSG_NOSIGNAL);
 
         if(bytes_recibidos < 0){
-            printf("hubo un error\n");
-            return bytes_recibidos;
+            //error
+            return -1;
         }
-        else if(bytes_recibidos==0){
-            //se desconecto el socket
-            client_socket_still_open=false;
+        else if(bytes_recibidos == 0){
+            server_socket_still_open=false;
         }
         else{
-            total_bytes_recibidos+=bytes_recibidos;
+            bytes_recibidos_totales+=bytes_recibidos;
         }
     }
-    printf("XXXXXXXXXXXXXXXXXXXXXXXX Se recibieron %d bytes\n",total_bytes_recibidos);
-    if(total_bytes_recibidos==tamanio_msj){
-        printf("Se recibieron %d bytes de forma exitosa\n",total_bytes_recibidos);
+
+    if(bytes_recibidos_totales == tamanio_msj){
+        printf("Se recibieron todos los datos que se esperaban\n");
         return 0;
     }
-    printf("Fallo la recepcion de los clientes \n");
-    return 1;
+    printf("No se recibieron todos los datos que se esperaban\n");
+    return -1;
 }
 
 Modelo* SocketCliente::getServerModel() {

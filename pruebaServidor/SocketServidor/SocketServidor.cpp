@@ -327,14 +327,16 @@ int SocketServidor::recibirData(Mensaje* buffer_msj,int tamanio,int socket_clien
 
 int SocketServidor::enviarData(Mensaje* msj, int tamanio_bytes){
     printf("----------- Funcion: Enviar Data-----------\n");
+    printf(".......... Valor del mensaje a mandar: %d\n",*(unsigned char*)(msj->getMensaje()));
     int total_bytes_escritos=0;
     int bytes_escritos=0;
     bool client_socket_still_open=true;
+    void* puntero_a_msj=msj->getMensaje();
     printf("Tamanio de bytes a escribir: %d\n",tamanio_bytes);
     while( (tamanio_bytes > total_bytes_escritos)   && client_socket_still_open==true){
 
         printf("Funcion: enviarData. El socket cliente numero: %d envia datos\n",this->client_socket);
-        bytes_escritos=send(this->client_socket, (void*) ((char*)msj+total_bytes_escritos), (tamanio_bytes - total_bytes_escritos), MSG_NOSIGNAL);
+        bytes_escritos=send(this->client_socket, (void*) ((char*)puntero_a_msj +total_bytes_escritos), (tamanio_bytes - total_bytes_escritos), MSG_NOSIGNAL);
         printf("numero de bytes escritos: %d\n",bytes_escritos);
         if(bytes_escritos < 0){//error
             printf("El numero de bytes escritos es menor a cero\n");
@@ -352,6 +354,7 @@ int SocketServidor::enviarData(Mensaje* msj, int tamanio_bytes){
     if(total_bytes_escritos==tamanio_bytes){
         //se mandaron todos los datos 
         printf("Funcion: enviarData. Se mandaron todos los bytes que componen el mensaje\n");
+        printf("Valor de la data supuestamente enviada : %d\n",*(unsigned char*)puntero_a_msj);
         //aca habia una funcion que metia al modelo, no se por que. Asi que la saco
         return 0;
     }

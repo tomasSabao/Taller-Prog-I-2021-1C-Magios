@@ -138,8 +138,7 @@ void ModeloCliente::manejadora(){
     printf("Se va a mandar un mensaje\n");
     Mensaje* msj_a_mandar=this->desencolarMensaje();
     int tamanio_msj=msj_a_mandar->getTamanio();
-    void* contenido=msj_a_mandar->getMensaje();
-    resultado=this->enviarMensaje(contenido,tamanio_msj);
+    resultado=this->enviarMensaje(msj_a_mandar,tamanio_msj);
     if(resultado==0){
       printf("Se mando un mensaje correctamente\n");
     }
@@ -229,7 +228,7 @@ void ModeloCliente::ImprimirModeloActualizado()
  }
 
 
-
+/*
 int ModeloCliente::recibirMensaje(int tamanio_msj, void* buffer){
 
   int resultado=this->socketCliente->recibirData(tamanio_msj,buffer);
@@ -241,7 +240,7 @@ int ModeloCliente::recibirMensaje(int tamanio_msj, void* buffer){
 
   return resultado;
 }
-
+*/
 
 int ModeloCliente::sendData(Comando* comando)
 {
@@ -255,6 +254,13 @@ int ModeloCliente::sendData(Comando* comando)
 
 int ModeloCliente::enviarMensaje(void* msj, int tamanio_bytes){
   int resultado= this->socketCliente->enviarData(msj,tamanio_bytes);
+  return resultado;
+}
+
+//version nueva
+int ModeloCliente::enviarMensaje(Mensaje* msj,int tamanio_bytes){
+  void* mensaje_a_mandar=msj->getMensaje();
+  int resultado=this->socketCliente->enviarData(mensaje_a_mandar,tamanio_bytes);
   return resultado;
 }
 
@@ -313,11 +319,10 @@ int ModeloCliente::recibirUsuarioContrasenia(){
   success=this->codificador.codificarMensajeConexionDos(&this->envio_msj_login, usuario, contrasenia);
   //saco el mutex
 
-  //meter el mensaje en la cola
-  this->cargarMensaje(&this->envio_msj_login);
+  //meter el mensaje en la cola de mensajes a enviar
+  this->encolarMensajeAEnviar(&this->envio_msj_login);
   printf("Fin de funcion usuario contrasenia\n");
 
-  //la mando
 
   return success;
 }
@@ -352,20 +357,125 @@ int ModeloCliente::receiveData()
 
 
 void* ModeloCliente::recibirDataGeneral2(){
- // printf("Entra a la funcion: recibirDataGenral2\n");
-  int estado_conexion=this->estaConectadoAlServidor;
-  if(estado_conexion==true){
+  printf("-----Thread: recibir mensaje -------\n");
+  if(this->estaConectadoAlServidor==true){
     //El cliente esta conectado al servidor, por lo que va a recibir mensajes de actualizacion de posiciones
     //TODO
   }
   else{
     //el cliente no esta conectado al servidor, por lo que va a recibir mensajes de aceptacion/rechazo de login
+    printf("XXXXXXXX Valor del buffer antes de recibir: %d\n",*(unsigned char*) (this->recibir_msj_login.getMensaje()));
     int resultado= this->socketCliente->recibirData(1,&this->recibir_msj_login);
     //veo que pasa con el resultado del servidor
     if(resultado == 0){
-      printf("Se recibio un mensaje del servidor, se procede a decodificarlo\n");
-      this->decodificador.decodificarMensajeDos(this->recibir_msj_login.getMensaje());
+
+      printf("XXXXXXXXSe recibio un mensaje del servidor\n");
+      printf("XXXXXXXXXValor del mensaje recibido: %d\n",*(unsigned char*)(this->recibir_msj_login.getMensaje()));
+      //quiero encolarlo en la cola de mensajes recibidos
+      Mensaje* un_msj=new Mensaje();
+      un_msj->asignarMemoria(this->recibir_msj_login.getTamanio(),1);
+      //en teoria el nuevo mensaje tiene el espacio para almacenar el contenido del mensaje
+      memcpy(un_msj->getMensaje(),this->recibir_msj_login.getMensaje(),1);
+      this->encolarMensaje(un_msj);
     }
+  }
+  return NULL;
+}
+
+//encola mensaje para ser procesado
+void ModeloCliente::encolarMensaje(Mensaje* msj){
+  printf("Funcion ENCOLARMENSAJE\n");
+  pthread_mutex_t colaMutex = PTHREAD_MUTEX_INITIALIZER;
+  pthread_mutex_lock(&colaMutex);
+
+  this->colaMensajesAProcesar.push_back(msj);
+  printf("Se encolo un mensaje en la cola para procesar\n");
+  pthread_mutex_unlock(&colaMutex);
+}
+
+
+void ModeloCliente::encolarMensajeAEnviar(Mensaje* msj){
+  pthread_mutex_t colaMutex=PTHREAD_MUTEX_INITIALIZER;
+  pthread_mutex_lock(&colaMutex);
+
+  this->colaMensajes.push_back(msj);
+  printf("Se encolo un mensaje en la cola para enviar \n");
+  pthread_mutex_unlock(&colaMutex);
+}
+
+
+int ModeloCliente::procesarMensaje(Mensaje* msj){
+  //TODO: el procesamiento de las vistas en base al mensaje
+  //por ahora el procesamiento del mensaje consiste solo en su decodificacion
+  printf("Se procesa el mensaje de la cola\n");
+  this->decodificador.decodificarMensajeDos(msj->getMensaje());
+  return 0;
+}
+
+
+int ModeloCliente::desencolarYProcesarMensaje(){
+  pthread_mutex_t colaMutex= PTHREAD_MUTEX_INITIALIZER;
+  pthread_mutex_lock (&colaMutex);
+
+  if(this->colaMensajesAProcesar.size() ==0){
+    //no hay mensajes para procesar
+    pthread_mutex_unlock(&colaMutex);
+    return 1;
+  }
+  //tenemos mensajes para desencolar
+  printf("777777777777 ModeloCliente::desencolarYProcesarMensaje. Hay mensaje para procesar\n");
+  Mensaje* msj_desencolado=this->colaMensajesAProcesar.front();
+  this->colaMensajesAProcesar.erase(this->colaMensajesAProcesar.begin());
+  pthread_mutex_unlock(&colaMutex);
+  //proceso el mensaje ahora
+  this->procesarMensaje(msj_desencolado);
+  return 0;
+}
+
+
+int ModeloCliente::desencolarYEnviarMensaje(){
+  //solo si hay mensajes para enviar
+
+  pthread_mutex_t colaMutex=PTHREAD_MUTEX_INITIALIZER;
+  pthread_mutex_lock (&colaMutex);
+
+  if(this->colaMensajes.size()==0){
+    //no hay mensajes para enviar
+    pthread_mutex_unlock(&colaMutex);
+    return 1;
+  }
+
+  //tenemos mensajes para enviar
+
+  Mensaje* msj_desencolado=this->colaMensajes.front();
+  this->colaMensajesAProcesar.erase(this->colaMensajesAProcesar.begin());
+  pthread_mutex_unlock(&colaMutex);
+
+  this->enviarMensaje(msj_desencolado,msj_desencolado->getTamanio());
+  return 0;
+}
+
+
+
+
+void* ModeloCliente::funcionThreadDesencolarYEnviar(void* contexto){
+  while(1){
+    ((ModeloCliente*)contexto)->desencolarYEnviarMensaje();
+  }
+  return NULL;
+}
+
+void* ModeloCliente::funcionThreadDesencolarYProcesar(void* contexto){
+  while(1){
+    ((ModeloCliente*)contexto)->desencolarYProcesarMensaje();
+  }
+  return NULL;
+}
+
+
+void* ModeloCliente::funcionThreadRecibir(void* contexto){
+  while(1){
+    ((ModeloCliente*)contexto)->recibirDataGeneral2();
   }
   return NULL;
 }

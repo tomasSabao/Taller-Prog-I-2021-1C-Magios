@@ -59,7 +59,34 @@ class ModeloCliente
 
         static void* threadFunctionRecibir(void* contexto);
 
+
+
+        static void* funcionThreadTomarInput(void* contexto);
+
+        static void* funcionThreadRecibir(void* contexto);
+
+        static void* funcionThreadDesencolarYEnviar(void* contexto);
+
+        static void* funcionThreadDesencolarYProcesar(void* contexto);
+
         void* recibirDataGeneral2();
+
+
+
+
+        int desencolarYProcesarMensaje();
+        int desencolarYEnviarMensaje();
+
+         int procesarMensaje(Mensaje* msj);
+         //encola mensaje para ser procesado
+         void encolarMensaje(Mensaje* msj);
+         //encola mensajes para ser enviado
+         void encolarMensajeAEnviar(Mensaje* msj);
+
+         int enviarMensaje(Mensaje* msj,int tamanio_bytes);
+
+
+
 
         bool getEstaConectadoServidor();
 

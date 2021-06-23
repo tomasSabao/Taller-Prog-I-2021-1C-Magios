@@ -7,7 +7,7 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <stdbool.h>
-
+#include "../mensaje/Mensaje.h"
 
 
 struct  Command {
@@ -33,7 +33,7 @@ class SocketCliente
         int recibirData();
         //version nueva de recibir data
         //en teoria el buffer tiene el tamanio para guardar el mensaje
-        int recibirData(int tamanio_msj,void* buffer);
+        int recibirData(int tamanio_msj,Mensaje* msj);
         int enviarData(Comando* comando);
         //version nueva de enviar data
         int enviarData(void* msj,int tamanio_bytes);

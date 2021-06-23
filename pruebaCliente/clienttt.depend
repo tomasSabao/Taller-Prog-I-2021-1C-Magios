@@ -96,7 +96,7 @@
 1623461133 source:/home/yuscu/Documentos/juegosdl/servidorfinaltest/Taller-Prog-I-2021-1C-Magios/pruebaCliente/SocketCliente/SocketCliente.cpp
 	"SocketCliente.h"
 
-1624397425 source:/home/tomas/Escritorio/Taller_de_programacion_1/version_cliente_servidor/Taller-Prog-I-2021-1C-Magios/pruebaCliente/main.cpp
+1624471924 source:/home/tomas/Escritorio/Taller_de_programacion_1/version_cliente_servidor/Taller-Prog-I-2021-1C-Magios/pruebaCliente/main.cpp
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -109,7 +109,7 @@
 	<pthread.h>
 	<iostream>
 
-1624219908 /home/tomas/Escritorio/Taller_de_programacion_1/version_cliente_servidor/Taller-Prog-I-2021-1C-Magios/pruebaCliente/SocketCliente/SocketCliente.h
+1624474344 /home/tomas/Escritorio/Taller_de_programacion_1/version_cliente_servidor/Taller-Prog-I-2021-1C-Magios/pruebaCliente/SocketCliente/SocketCliente.h
 	<sys/socket.h>
 	<stdio.h>
 	<stdlib.h>
@@ -117,8 +117,9 @@
 	<arpa/inet.h>
 	<unistd.h>
 	<stdbool.h>
+	"../mensaje/Mensaje.h"
 
-1624395691 /home/tomas/Escritorio/Taller_de_programacion_1/version_cliente_servidor/Taller-Prog-I-2021-1C-Magios/pruebaCliente/ModeloCliente/ModeloCliente.h
+1624470934 /home/tomas/Escritorio/Taller_de_programacion_1/version_cliente_servidor/Taller-Prog-I-2021-1C-Magios/pruebaCliente/ModeloCliente/ModeloCliente.h
 	"../SocketCliente/SocketCliente.h"
 	<vector>
 	<pthread.h>
@@ -128,10 +129,10 @@
 	"../mensaje/Decodificador.h"
 	<string>
 
-1624397253 source:/home/tomas/Escritorio/Taller_de_programacion_1/version_cliente_servidor/Taller-Prog-I-2021-1C-Magios/pruebaCliente/ModeloCliente/ModeloCliente.cpp
+1624474805 source:/home/tomas/Escritorio/Taller_de_programacion_1/version_cliente_servidor/Taller-Prog-I-2021-1C-Magios/pruebaCliente/ModeloCliente/ModeloCliente.cpp
 	"ModeloCliente.h"
 
-1624396899 source:/home/tomas/Escritorio/Taller_de_programacion_1/version_cliente_servidor/Taller-Prog-I-2021-1C-Magios/pruebaCliente/SocketCliente/SocketCliente.cpp
+1624476435 source:/home/tomas/Escritorio/Taller_de_programacion_1/version_cliente_servidor/Taller-Prog-I-2021-1C-Magios/pruebaCliente/SocketCliente/SocketCliente.cpp
 	"SocketCliente.h"
 
 1624313510 source:/home/tomas/Escritorio/Taller_de_programacion_1/version_cliente_servidor/Taller-Prog-I-2021-1C-Magios/pruebaCliente/mensaje/Codificador.cpp
@@ -149,7 +150,7 @@
 	<string.h>
 	<stdlib.h>
 
-1624126314 source:/home/tomas/Escritorio/Taller_de_programacion_1/version_cliente_servidor/Taller-Prog-I-2021-1C-Magios/pruebaCliente/mensaje/Decodificador.cpp
+1624397996 source:/home/tomas/Escritorio/Taller_de_programacion_1/version_cliente_servidor/Taller-Prog-I-2021-1C-Magios/pruebaCliente/mensaje/Decodificador.cpp
 	"Decodificador.h"
 
 1624287144 /home/tomas/Escritorio/Taller_de_programacion_1/version_cliente_servidor/Taller-Prog-I-2021-1C-Magios/pruebaCliente/mensaje/Decodificador.h
