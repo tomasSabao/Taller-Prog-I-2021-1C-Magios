@@ -1,7 +1,5 @@
-#include "Controlador.h"
+#include "../include/Controlador.h"
 #include "../Modelo/Modelo.h"
-
-
 
 
 Controlador::Controlador(Modelo * modelo )

@@ -259,7 +259,7 @@
 1624496846 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/SocketServidor/SocketServidor.cpp
 	"SocketServidor.h"
 
-1624496846 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/SocketServidor/SocketServidor.h
+1624566757 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/SocketServidor/SocketServidor.h
 	<sys/socket.h>
 	<stdio.h>
 	<stdlib.h>
@@ -552,4 +552,119 @@
 
 1624555829 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo_Plataforma.cpp
 	"Modelo_Plataforma.h"
+
+1624496846 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/VistaFueguito.cpp
+	"VistaFueguito.h"
+
+1624555848 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/VistaFueguito.h
+	"Vista_Jugador.h"
+
+1624496846 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/VistaFondoDos.cpp
+	"VistaFondoDos.h"
+
+1624557404 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/VistaFondoDos.h
+	"Vista_Jugador.h"
+
+1624496846 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/VistaBarril.cpp
+	"VistaBarril.h"
+
+1624557424 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/VistaBarril.h
+	"Vista_Jugador.h"
+
+1624496846 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/VistaFondo.cpp
+	"VistaFondo.h"
+	"../lib/Parser.h"
+	<string>
+
+1624557429 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/VistaFondo.h
+	"Vista_Jugador.h"
+	"../Modelo/Modelo_Jugador.h"
+
+1624496846 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/VistaFueguitoDefault.cpp
+	"VistaFueguitoDefault.h"
+
+1624557434 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/VistaFueguitoDefault.h
+	"Vista_Jugador.h"
+
+1624496846 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/VistaFuegoPiso.cpp
+	"VistaFuegoPiso.h"
+
+1624557439 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/VistaFuegoPiso.h
+	"Vista_Jugador.h"
+
+1624557294 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Controlador/Controlador.cpp
+	"../include/Controlador.h"
+	"../Modelo/Modelo.h"
+
+1624557495 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/include/Controlador.h
+	"../Modelo/Modelo.h"
+	<SDL2/SDL.h>
+
+1624496846 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/Vista_Plataforma.cpp
+	"Vista_Plataforma.h"
+
+1624557502 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/Vista_Plataforma.h
+	"Vista_Jugador.h"
+
+1624496846 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/Vista.cpp
+	"Vista.h"
+	"../View/VistaMono.h"
+	"../View/VistaFondo.h"
+	"../View/VistaFueguito.h"
+	"../View/VistaFueguitoDefault.h"
+	"../View/VistaFuegoPiso.h"
+	"../View/VistaMario.h"
+	"../View/VistaBarril.h"
+	"../lib/Logger.h"
+	"../lib/Parser.h"
+	"../View/FactoryVistaPersonaje.h"
+
+1624496846 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/Vista.h
+	<stdio.h>
+	<string>
+	<SDL2/SDL.h>
+	<SDL2/SDL_image.h>
+	"../View/Vista_Jugador.h"
+	"../View/VistaMono.h"
+	"../Modelo/Modelo.h"
+	<vector>
+
+1624557507 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/VistaMario.h
+	"Vista_Jugador.h"
+
+1624496846 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/FactoryVistaPersonaje.h
+	"../View/Vista.h"
+
+1624496846 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/VistaMario.cpp
+	"VistaMario.h"
+	"../lib/Logger.h"
+
+1624496846 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/FactoryVistaPersonaje.cpp
+	"FactoryVistaPersonaje.h"
+	"../View/VistaFondo.h"
+	"../View/VistaMario.h"
+	"../View/VistaMono.h"
+	"../View/VistaFueguito.h"
+	"../View/VistaFueguitoDefault.h"
+	"../View/VistaFuegoPiso.h"
+	"../View/VistaBarril.h"
+	"../View/Vista_Jugador.h"
+	"../View/Vista_Plataforma.h"
+	"../View/VistaPlataformaDerecha.h"
+	"../View/VistaFondoDos.h"
+
+1624557511 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/VistaPlataformaDerecha.h
+	"Vista_Jugador.h"
+
+1624496846 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/VistaPlataformaDerecha.cpp
+	"VistaPlataformaDerecha.h"
+
+1624566706 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo.cpp
+	<random>
+	<iostream>
+	<math.h>
+	"../Modelo/Modelo.h"
+	"../Modelo/Mario.h"
+	"../Modelo/FactoryPersonaje.h"
+	"../Modelo/Modelo_Plataforma.h"
 

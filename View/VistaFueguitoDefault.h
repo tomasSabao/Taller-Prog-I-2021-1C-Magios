@@ -1,7 +1,7 @@
 #ifndef VISTAFUEGUITODEFAULT_H
 #define VISTAFUEGUITODEFAULT_H
 
-#include <Vista_Jugador.h>
+#include "Vista_Jugador.h"
 
 
 class VistaFueguitoDefault : public Vista_Jugador

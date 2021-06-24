@@ -1,7 +1,7 @@
 #ifndef VISTAFONDO_H
 #define VISTAFONDO_H
 
-#include <Vista_Jugador.h>
+#include "Vista_Jugador.h"
 #include "../Modelo/Modelo_Jugador.h"
 
 

@@ -32,7 +32,7 @@ typedef struct Modelo Modelo;
 
 class SocketServidor
 {
-public:
+  public:
     SocketServidor(int puerto);
     virtual ~SocketServidor();
     int crearSocket();
@@ -52,7 +52,7 @@ public:
     Comando *getClientComand();
     int cargarComandosSocket(Comando comando);
 
-protected:
+  protected:
     Comando comando;
     //Modelo* modelo;
     int server_socket;
@@ -63,7 +63,7 @@ protected:
     Comando* comandoPuntero;
     // Structs for data transfer
 
-private:
+  private:
 };
 
 #endif // SOCKETSERVIDOR_H

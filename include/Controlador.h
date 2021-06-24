@@ -1,6 +1,6 @@
 #ifndef CONTROLADOR_H
 #define CONTROLADOR_H
-#include "Modelo.h"
+#include "../Modelo/Modelo.h"
 #include <SDL2/SDL.h>
 
 class Controlador

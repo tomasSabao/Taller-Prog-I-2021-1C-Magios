@@ -1,3 +1,11 @@
+#include <random>
+#include <iostream>
+#include <math.h>
+#include "../Modelo/Modelo.h"
+#include "../Modelo/Mario.h"
+#include "../Modelo/FactoryPersonaje.h"
+#include "../Modelo/Modelo_Plataforma.h"
+
 #define persona 0
 #define persona2 1
 #define mono 2
@@ -7,13 +15,6 @@
 #define fuegoPiso 6
 #define mario 7
 
-#include <random>
-#include <iostream>
-#include <math.h>
-#include "../Modelo/Modelo.h"
-#include "../Modelo/Mario.h"
-#include "../Modelo/FactoryPersonaje.h"
-#include "../Modelo/Modelo_Plataforma.h"
 
 Modelo::Modelo()
 {
@@ -195,7 +196,7 @@ void Modelo::escenario2(std::string tipo_enemigo, int cantidad_fueguitos)
     //tengo que remover a los marios agregado en el primer nivel
     for (int j = 0; j < nombreJugadores.size(); j++) {
         this->colisionador.desconectarJugador(nombreJugadores[j]);
-    }    
+    }
     this->colisionador.removerRectangulos();
     //aca quiero poner el colisionador
     this->agregarObjetosAlColisionador();

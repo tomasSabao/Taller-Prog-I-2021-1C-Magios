@@ -1,7 +1,7 @@
 #ifndef VISTAFUEGOPISO_H
 #define VISTAFUEGOPISO_H
 
-#include <Vista_Jugador.h>
+#include "Vista_Jugador.h"
 
 
 class VistaFuegoPiso : public Vista_Jugador

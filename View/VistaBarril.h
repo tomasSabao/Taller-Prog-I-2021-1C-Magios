@@ -1,7 +1,7 @@
 #ifndef VISTABARRIL_H
 #define VISTABARRIL_H
 
-#include <Vista_Jugador.h>
+#include "Vista_Jugador.h"
 
 
 class VistaBarril : public Vista_Jugador

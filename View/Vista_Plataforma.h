@@ -1,6 +1,6 @@
 #ifndef VISTA_PLATAFORMA_H
 #define VISTA_PLATAFORMA_H
-#include <Vista_Jugador.h>
+#include "Vista_Jugador.h"
 
 class Vista_Plataforma:  public Vista_Jugador
 {
