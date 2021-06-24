@@ -1,6 +1,6 @@
 #include "FuegoPiso.h"
 
-FuegoPiso::FuegoPiso(int posicion_x,int posicion_y):Modelo_Jugador(posicion_x,posicion_y)
+FuegoPiso::FuegoPiso(int posicion_x,int posicion_y):Modelo_Jugador(NULL,posicion_x,posicion_y)
 {
      this->nombre="fuegopiso";
      this->posicion_x=posicion_x;
@@ -46,7 +46,6 @@ this->setearEpilepsia(20,4);
          //this->mover();
 
      }
-
 
     this->frames+= 1;
 }

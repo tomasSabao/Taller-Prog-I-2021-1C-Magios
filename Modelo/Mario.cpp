@@ -1,8 +1,8 @@
 #include "Mario.h"
 
-Mario::Mario(int posicion_x,int posicion_y):Modelo_Jugador(posicion_x,posicion_y)
+Mario::Mario(std::string username, int posicion_x,int posicion_y):Modelo_Jugador(username, posicion_x,posicion_y)
 {
-     this->nombre="mario";
+     this->nombre=username;
      this->posicion_x=posicion_x;
      this->posicion_y=posicion_y;
      this->velocidad_horizontal=3;

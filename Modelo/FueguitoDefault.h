@@ -1,7 +1,7 @@
 #ifndef FUEGUITODEFAULT_H
 #define FUEGUITODEFAULT_H
 
-#include <Modelo_Jugador.h>
+#include "Modelo_Jugador.h"
 
 
 class FueguitoDefault : public Modelo_Jugador

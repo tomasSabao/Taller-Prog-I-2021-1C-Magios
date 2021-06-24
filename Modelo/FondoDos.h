@@ -1,7 +1,7 @@
 #ifndef FONDODOS_H
 #define FONDODOS_H
 
-#include <Modelo_Jugador.h>
+#include "Modelo_Jugador.h"
 
 
 class FondoDos : public Modelo_Jugador

@@ -251,3 +251,299 @@
 1624416587 source:/home/yuscu/Documentos/juegosdl/servidorparaborrar/srevidor2/Taller-Prog-I-2021-1C-Magios-servidor/pruebaServidor/Thread/Thread.cpp
 	"Thread.h"
 
+1624496846 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/Conexion.cpp
+	"Conexion.h"
+
+1624496846 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/Conexion.h
+
+1624496846 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/SocketServidor/SocketServidor.cpp
+	"SocketServidor.h"
+
+1624496846 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/SocketServidor/SocketServidor.h
+	<sys/socket.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<arpa/inet.h>
+	<unistd.h>
+	<stdbool.h>
+
+1624496846 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/Thread/Thread.cpp
+	"Thread.h"
+
+1624496846 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/Thread/Thread.h
+	<pthread.h>
+	<stdio.h>
+	"../ModeloServidor/ModeloServidor.h"
+
+1624504767 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/ModeloServidor.h
+	"../SocketServidor/SocketServidor.h"
+	"../ModeloServidor/Conexion.h"
+	<vector>
+	<pthread.h>
+	<stdio.h>
+	"Thread.h"
+
+1624504772 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/ModeloServidor.cpp
+	"ModeloServidor.h"
+	"Thread.h"
+
+1624496846 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/lib/jsoncpp.cpp
+	"json/json.h"
+	<json/config.h>
+	<clocale>
+	"json_tool.h"
+	<json/assertions.h>
+	<json/reader.h>
+	<json/value.h>
+	<algorithm>
+	<cassert>
+	<cstring>
+	<iostream>
+	<istream>
+	<limits>
+	<memory>
+	<set>
+	<sstream>
+	<utility>
+	<cstdio>
+	<json/assertions.h>
+	<json/value.h>
+	<json/writer.h>
+	<algorithm>
+	<cassert>
+	<cmath>
+	<cstddef>
+	<cstring>
+	<iostream>
+	<sstream>
+	<utility>
+	<stdarg.h>
+	"json_valueiterator.inl"
+	"json_tool.h"
+	<json/writer.h>
+	<algorithm>
+	<cassert>
+	<cctype>
+	<cstring>
+	<iomanip>
+	<memory>
+	<set>
+	<sstream>
+	<utility>
+	<cmath>
+	<cstdio>
+	<cmath>
+	<cstdio>
+	<float.h>
+	<float.h>
+	<ieeefp.h>
+
+1624496846 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/lib/json/json.h
+	<cstring>
+	<memory>
+	<cstddef>
+	<cstdint>
+	<istream>
+	<memory>
+	<ostream>
+	<sstream>
+	<string>
+	<type_traits>
+	"allocator.h"
+	"version.h"
+	"config.h"
+	"forwards.h"
+	"forwards.h"
+	<array>
+	<exception>
+	<map>
+	<memory>
+	<string>
+	<vector>
+	"json_features.h"
+	"value.h"
+	<deque>
+	<iosfwd>
+	<istream>
+	<stack>
+	<string>
+	"value.h"
+	<ostream>
+	<string>
+	<vector>
+	<cstdlib>
+	<sstream>
+	"config.h"
+
+1624496846 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/lib/Logger.cpp
+	<stdio.h>
+	<iostream>
+	<fstream>
+	<string>
+	<map>
+	<new>
+	<ctime>
+	<cstdlib>
+	<chrono>
+	"Logger.h"
+
+1624496846 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/lib/Logger.h
+	<stdio.h>
+	<string>
+	<ctime>
+	<iostream>
+	<fstream>
+
+1624496846 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/lib/Parser.cpp
+	<stdio.h>
+	<iostream>
+	<fstream>
+	<string>
+	<map>
+	<cstdlib>
+	<sstream>
+	"../jsoncpp/json/json.h"
+	"Parser.h"
+	"Logger.h"
+
+1624496846 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/lib/Parser.h
+	<stdio.h>
+	<string>
+	<ctime>
+	<iostream>
+	<fstream>
+	<map>
+	"../jsoncpp/json/json.h"
+
+1624496846 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/LTexture.cpp
+	"LTexture.h"
+	"../View/Vista_Jugador.h"
+
+1624496846 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/LTexture.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_image.h>
+	<iostream>
+	<stdlib.h>
+	<stdio.h>
+
+1624496846 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/Vista_Jugador.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_image.h>
+	"../Modelo/Modelo_Jugador.h"
+
+1624555765 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo_Jugador.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_image.h>
+	"../Modelo/LTexture.h"
+	"../Modelo/Rectangulo.h"
+
+1624496846 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/Rectangulo.h
+
+1624504731 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo_Jugador.cpp
+	"../Modelo/Modelo_Jugador.h"
+	"../lib/Logger.h"
+
+1624496846 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/Rectangulo.cpp
+	"Rectangulo.h"
+
+1624496846 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/Colisionador.cpp
+	"Colisionador.h"
+
+1624496846 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/Colisionador.h
+	"../Modelo/Modelo_Jugador.h"
+	"../Modelo/Modelo_Plataforma.h"
+	"../Modelo/Rectangulo.h"
+	<map>
+	<vector>
+
+1624554392 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo_Plataforma.h
+	"Modelo_Jugador.h"
+
+1624554771 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/Barril.cpp
+	"Barril.h"
+
+1624554633 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/Barril.h
+	"Modelo_Jugador.h"
+
+1624555480 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/FactoryPersonaje.cpp
+	"FactoryPersonaje.h"
+	"../Modelo/Mario.h"
+	"../Modelo/Mono.h"
+	"../Modelo/FuegoPiso.h"
+	"../Modelo/Barril.h"
+	"../Modelo/Modelo_Jugador.h"
+	"../Modelo/Modelo_Plataforma.h"
+	"../Modelo/ModeloPlataformaDerecha.h"
+	"../Modelo/FondoDos.h"
+
+1624496846 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/FactoryPersonaje.h
+	"../Modelo/Modelo.h"
+
+1624503166 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo.h
+	"../Modelo/Modelo_Jugador.h"
+	"../Modelo/Mono.h"
+	"../Modelo/Fondo.h"
+	"../Modelo/Fueguito.h"
+	"../Modelo/FueguitoDefault.h"
+	"../Modelo/FuegoPiso.h"
+	"../Modelo/Colisionador.h"
+	"../Modelo/Rectangulo.h"
+	<vector>
+
+1624554638 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/Mono.h
+	"Modelo_Jugador.h"
+
+1624554438 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/Fondo.h
+	"Modelo_Jugador.h"
+
+1624554402 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/Fueguito.h
+	"Modelo_Jugador.h"
+
+1624554386 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/FueguitoDefault.h
+	"Modelo_Jugador.h"
+
+1624554380 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/FuegoPiso.h
+	"Modelo_Jugador.h"
+
+1624554978 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/Mario.h
+	"Modelo_Jugador.h"
+
+1624554649 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/ModeloPlataformaDerecha.h
+	"Modelo_Jugador.h"
+
+1624554373 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/FondoDos.h
+	"Modelo_Jugador.h"
+
+1624555532 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/Fondo.cpp
+	"Fondo.h"
+
+1624555547 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/FondoDos.cpp
+	"FondoDos.h"
+
+1624555565 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/FuegoPiso.cpp
+	"FuegoPiso.h"
+
+1624555570 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/Fueguito.cpp
+	"Fueguito.h"
+
+1624555581 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/FueguitoDefault.cpp
+	"FueguitoDefault.h"
+
+1624554835 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/Mario.cpp
+	"Mario.h"
+
+1624555599 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/ModeloPlataformaDerecha.cpp
+	"ModeloPlataformaDerecha.h"
+
+1624555701 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/Mono.cpp
+	"Mono.h"
+
+1624496846 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/Vista_Jugador.cpp
+	"../View/Vista_Jugador.h"
+	"../View/VistaMono.h"
+
+1624555649 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/VistaMono.h
+	"Vista_Jugador.h"
+	"../Modelo/Modelo_Jugador.h"
+

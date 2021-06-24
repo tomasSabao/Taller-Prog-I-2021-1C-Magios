@@ -1,7 +1,7 @@
 #ifndef FONDO_H
 #define FONDO_H
 
-#include <Modelo_Jugador.h>
+#include "Modelo_Jugador.h"
 
 
 class Fondo : public Modelo_Jugador

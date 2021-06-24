@@ -1,6 +1,6 @@
 #ifndef MODELOPLATAFORMADERECHA_H
 #define MODELOPLATAFORMADERECHA_H
-#include <Modelo_Jugador.h>
+#include "Modelo_Jugador.h"
 
 class ModeloPlataformaDerecha: public Modelo_Jugador
 {

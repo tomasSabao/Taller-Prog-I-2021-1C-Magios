@@ -1,7 +1,7 @@
 #ifndef FUEGOPISO_H
 #define FUEGOPISO_H
 
-#include <Modelo_Jugador.h>
+#include "Modelo_Jugador.h"
 
 
 class FuegoPiso : public Modelo_Jugador

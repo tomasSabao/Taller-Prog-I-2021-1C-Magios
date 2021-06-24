@@ -8,6 +8,8 @@
 #include "../Modelo/Modelo_Plataforma.h"
 #include "../Modelo/ModeloPlataformaDerecha.h"
 #include "../Modelo/FondoDos.h"
+
+
 FactoryPersonaje::FactoryPersonaje()
 {
     //ctor
@@ -21,56 +23,53 @@ FactoryPersonaje::~FactoryPersonaje()
 
 Modelo_Jugador* FactoryPersonaje::getPersonaje(string nombre, int posX, int posY)
 {
-
- if (nombre=="mario" )
- {
-    return new Mario(posX,posY) ;
-
- }else if( nombre=="mono" )
- {
-    return new Mono(posX,posY);
-
- }else if( nombre=="fuegopiso" )
+  if(nombre=="mono")
   {
-   return new FuegoPiso(posX,posY);
+      return new Mono(posX,posY);
 
-  }else if( nombre=="fueguito" )
+  }else if(nombre=="fuegopiso")
   {
-   return new Fueguito(posX,posY);
+    return new FuegoPiso(posX,posY);
 
-  }else if( nombre=="fueguito-default" )
+  }else if(nombre=="fueguito")
   {
-   return new FueguitoDefault(posX,posY);
+    return new Fueguito(posX,posY);
 
-  }else if( nombre=="fondo" )
+  }else if(nombre=="fueguito-default")
   {
-   return new Fondo(posX,posY);
+    return new FueguitoDefault(posX,posY);
 
-  }else if( nombre=="fondodos" )
+  }else if(nombre=="fondo")
   {
-   return new FondoDos(posX,posY);
+    return new Fondo(posX,posY);
 
-  }else if( nombre=="jugador" )
+  }else if(nombre=="fondodos")
   {
-   return new Modelo_Jugador(posX,posY);
+    return new FondoDos(posX,posY);
 
-  }else if( nombre=="barril" )
+  }else if(nombre=="barril")
   {
-   return new Barril(posX,posY);
+    return new Barril(posX,posY);
 
+  }else if(nombre=="plataforma")
+  {
+    return new Modelo_Plataforma(posX,posY);
+
+  }else if(nombre=="plataforma_derecha")
+  {
+    return new ModeloPlataformaDerecha(posX,posY);
+
+  //aca nunca entraria.
+  //}else if(nombre=="jugador")
+  //{
+  //  return new Modelo_Jugador(posX,posY);
+  //
+  } else
+  {
+    return new Mario(nombre,posX,posY);
   }
-else if(nombre=="plataforma"){
-  return new Modelo_Plataforma(posX,posY);
-
-}else if(nombre=="plataforma_derecha"){
-  return new ModeloPlataformaDerecha(posX,posY);
-
-}
-  else
-  {
-   return NULL;
-
-  }
-
-
+  //}else 
+  //{
+  //  return NULL;
+  //}
 }

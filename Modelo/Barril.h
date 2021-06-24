@@ -1,7 +1,7 @@
 #ifndef BARRIL_H
 #define BARRIL_H
 
-#include <Modelo_Jugador.h>
+#include "Modelo_Jugador.h"
 
 
 class Barril : public Modelo_Jugador

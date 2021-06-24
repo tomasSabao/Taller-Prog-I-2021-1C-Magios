@@ -117,13 +117,11 @@ bool validate_arguments(int argc, char *argv[])
     try
     {
         int port = std::stoi(argv[ARG_POS_PORT]);
-
         if (port <= 0)
         {
             cout << "Puerto no válido" << endl;
             return false;
         }
-
         return true;
     }
     catch (invalid_argument)

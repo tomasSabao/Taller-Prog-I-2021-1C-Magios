@@ -1,7 +1,7 @@
 #ifndef MODELO_PLATAFORMA_H
 #define MODELO_PLATAFORMA_H
 
-#include <Modelo_Jugador.h>
+#include "Modelo_Jugador.h"
 
 class Modelo_Plataforma: public Modelo_Jugador
 {
@@ -14,7 +14,7 @@ class Modelo_Plataforma: public Modelo_Jugador
     protected:
 
     private:
- 
+
 };
 
 #endif // MODELO_PLATAFORMA_H
