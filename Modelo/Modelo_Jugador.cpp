@@ -5,15 +5,12 @@
 
 extern Logger logger;
 
-Modelo_Jugador::Modelo_Jugador(int posicion_x,int posicion_y)
+Modelo_Jugador::Modelo_Jugador(std::string username, int posicion_x,int posicion_y)
 {
-     this->frames=0;
-     this->nombre="jugador";
-     this->posicion_x=posicion_x;
-     this->posicion_y=posicion_y;
-
-
-
+    this->frames=0;
+    this->nombre=username;
+    this->posicion_x=posicion_x;
+    this->posicion_y=posicion_y;
 }
 
 Modelo_Jugador::~Modelo_Jugador()
@@ -32,7 +29,8 @@ std::string Modelo_Jugador::getNombre()
  return this->nombre;
 }
 
-void Modelo_Jugador::traducirTecla(int tecla_apretada){
+void Modelo_Jugador::traducirTecla(int tecla_apretada)
+{
 	//aprete tecla derecha
 	if(tecla_apretada ==5){
 		this->aumentarVelocidadX();
@@ -82,7 +80,6 @@ void Modelo_Jugador::traducirTecla(int tecla_apretada){
 			this->aplicarGravedad();
 		}
 	}
-
 }
 
 
@@ -101,7 +98,6 @@ int Modelo_Jugador::getPosicionY(){
 
 void Modelo_Jugador::aumentarVelocidadX(){
 	this->velocidad_x =this->velocidad_x + this->velocidad_horizontal;
-
 }
 
 void Modelo_Jugador::reducirVelocidadX(){
@@ -133,25 +129,27 @@ void Modelo_Jugador::mover(){
 	}
 }
 
-
-void Modelo_Jugador::imprimirPosicion(){
+void Modelo_Jugador::imprimirPosicion()
+{
 	char mensaje[150];
 	sprintf(mensaje,"posicion x: %d, posicion y: %d\n",this->posicion_x,this->posicion_y);
 	logger.log("debug", mensaje);
 }
 
-void Modelo_Jugador::imprimirVelocidad(){
+void Modelo_Jugador::imprimirVelocidad()
+{
 	char mensaje[150];
 	sprintf(mensaje, "velocidad x: %d, velocidad y: %d\n",this->velocidad_x,this->velocidad_y);
 	logger.log("debug", mensaje);
 }
 
-
-void Modelo_Jugador::setPosicionX(int pos_x){
+void Modelo_Jugador::setPosicionX(int pos_x)
+{
 	this->posicion_x=pos_x;
 }
 
-void Modelo_Jugador::setPosicionY(int pos_y){
+void Modelo_Jugador::setPosicionY(int pos_y)
+{
 	this->posicion_y=pos_y;
 }
 //nueva_gravedad: numero positivo
@@ -173,35 +171,33 @@ void Modelo_Jugador::setearEpilepsia(int cantFrameActualizar, int cantidadDeSpri
         }
 
         this->frames+= 1;*/
-
 }
+
 int Modelo_Jugador::getCantFrameActualizar()
 {   //esto lo voy a necesitar para renderizar ya que en el renderizado tenemos que poner que frame vamos a poner render(frame/getCantFrameActualizar)
-    return this->cuantosFrameActualizo ;
+    return this->cuantosFrameActualizo;
 }
 
 int Modelo_Jugador::getCantFrameDelPersonaje()
 {   //esto lo voy a necesitar para renderizar ya que en el renderizado tenemos que poner que frame vamos a poner render(frame/getCantFrameActualizar)
     return this->cantidadDeSprite;
 }
+
 void Modelo_Jugador::caminar()
 {
-
     if(  this->frames / 4 >= WALKING_ANIMATION_FRAMES )
         {
             this->frames = 0;
         }
      this->frames+= 1;
-
    // this->frames++;
     //this->frames=this->frames%WALKING_ANIMATION_FRAMES;
 }
 
 
-
-void Modelo_Jugador::fijarAnimacionMovimiento(){
-
-	//caso en el que el jugador esta en el piso
+void Modelo_Jugador::fijarAnimacionMovimiento()
+{
+	//caso en el que el jugador esta en elpiso
 	//
 	if(this->estaParadoEnPiso()){
 		/*if(this->velocidad_x >0){
@@ -311,9 +307,10 @@ void Modelo_Jugador::fijarAnimacionMovimiento(){
 			this->frames=6;
 		}
 	}
-
 }
-bool Modelo_Jugador::estaParadoEnPiso(){
+
+bool Modelo_Jugador::estaParadoEnPiso()
+{
 	/*version vieja
 	return this->posicion_y==0;
 	*/
@@ -371,7 +368,6 @@ void Modelo_Jugador::caminar2()
 }
 
 
-
 void Modelo_Jugador::setVelocidadHorizontal(int numero){
 	this->velocidad_horizontal=numero;
 }
@@ -385,7 +381,8 @@ void Modelo_Jugador::setDireccion(int numero){
 }
 
 
-void Modelo_Jugador::fijarAnimacionesEnEscalera(){
+void Modelo_Jugador::fijarAnimacionesEnEscalera()
+{
 	if(this->unSwitch==false){
 		this->unSwitch=true;
 		this->frames=10;
@@ -422,7 +419,8 @@ void Modelo_Jugador::fijarAnimacionesEnEscalera(){
 }
 
 
-void Modelo_Jugador::fijarAnimacionBordeSuperior(Rectangulo* escalera){
+void Modelo_Jugador::fijarAnimacionBordeSuperior(Rectangulo* escalera)
+{
 	int mario_y=550-this->getPosicionY()+42 ;
 	int escalera_y=escalera->getPosY();
 	int DISTANCIA=10;
@@ -448,46 +446,55 @@ void Modelo_Jugador::fijarAnimacionBordeSuperior(Rectangulo* escalera){
 	}
 }
 
-void Modelo_Jugador::setEstaQuieto(){
+void Modelo_Jugador::setEstaQuieto()
+{
 	this->esta_quieto=true;
 }
 
-void Modelo_Jugador::setEstaMoviendo(){
+void Modelo_Jugador::setEstaMoviendo()
+{
 	this->esta_quieto=false;
 }
 
-int Modelo_Jugador::getVelocidadX(){
+int Modelo_Jugador::getVelocidadX()
+{
 	return this->velocidad_x;
 }
 
-int Modelo_Jugador::getVelocidadY(){
+int Modelo_Jugador::getVelocidadY()
+{
 	return this->velocidad_y;
 }
 
 
-void Modelo_Jugador::resetVelocidadY(){
+void Modelo_Jugador::resetVelocidadY()
+{
 	this->velocidad_y=0;
 }
 
-void Modelo_Jugador::setEstaEnPiso(){
+void Modelo_Jugador::setEstaEnPiso()
+{
 	this->esta_en_piso=true;
 	this->esta_en_aire=false;
 	this->esta_en_escalera=false;
 }
 
-void Modelo_Jugador::setEstaEnAire(){
+void Modelo_Jugador::setEstaEnAire()
+{
 	this->esta_en_aire=true;
 	this->esta_en_piso=false;
 	this->esta_en_escalera=false;
 }
 
-void Modelo_Jugador::setEstaEnEscalera(){
+void Modelo_Jugador::setEstaEnEscalera()
+{
 	this->esta_en_escalera=true;
 	this->esta_en_piso=false;
 	this->esta_en_aire=false;
 }
 
 
-bool Modelo_Jugador::getEstaEnEscalera(){
+bool Modelo_Jugador::getEstaEnEscalera()
+{
 	return this->esta_en_escalera;
 }

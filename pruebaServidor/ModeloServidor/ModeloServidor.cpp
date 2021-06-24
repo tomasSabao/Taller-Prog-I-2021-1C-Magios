@@ -1,87 +1,78 @@
 #include "ModeloServidor.h"
 #include "Thread.h"
-ModeloServidor::ModeloServidor(int port = 5050)
+
+
+ModeloServidor::ModeloServidor(int port)
 {
-  Modelo m;
-  this->modelo = m;
-  this->modelo.positionX=0;
-  this->modelo.positionY=0;
-  this->cantidadJugadoresActuales=0;
-  this->id=0;
-  /*this->CrearSocket(port);
-  this->bindSocket();
-  this->escuchar();
-  this->numeroThread=0;*/
-  //this->colaComando=NULL;
+    Modelo m;
+    this->modelo = m;
+    this->modelo.positionX=0;
+    this->modelo.positionY=0;
+    this->cantidadJugadoresActuales=0;
+    this->id=0;
+    /*this->CrearSocket(port);
+    this->bindSocket();
+    this->escuchar();
+    this->numeroThread=0;*/
+    //this->colaComando=NULL;
 }
- int ModeloServidor::getNumeroThread()
- {
+
+int ModeloServidor::getNumeroThread()
+{
     return this->numeroThread;
- }
- int ModeloServidor::guardarCliente( int clienteSocket )
-    {
+}
 
-        pthread_mutex_t colaMute = PTHREAD_MUTEX_INITIALIZER;
-        pthread_mutex_lock(&colaMute);
+int ModeloServidor::guardarCliente(int clienteSocket)
+{
+    pthread_mutex_t colaMute = PTHREAD_MUTEX_INITIALIZER;
+    pthread_mutex_lock(&colaMute);
 
-        this->numeroThread=  this->numeroThread+1 ;
-         printf("numero thread : %d\n", this->numeroThread  );
+    this->numeroThread= this->numeroThread+1;
+    printf("numero thread : %d\n", this->numeroThread);
 
-        this->colaSocketCliente.push_back(clienteSocket);
-        printf("guardo el cliente en la cola cliente %d\n",clienteSocket);
+    this->colaSocketCliente.push_back(clienteSocket);
+    printf("guardo el cliente en la cola cliente %d\n",clienteSocket);
 
-         pthread_mutex_unlock(&colaMute);
-        return  0;
-    }
+    pthread_mutex_unlock(&colaMute);
+    return 0;
+}
 
-  int ModeloServidor::guardarConexion( Conexion* unaConexion )
-    {
+int ModeloServidor::guardarConexion(Conexion* unaConexion)
+{
+  pthread_mutex_t colaMute = PTHREAD_MUTEX_INITIALIZER;
+  pthread_mutex_lock(&colaMute);
+  printf("numero thread : %d\n", unaConexion->getId());
 
-        pthread_mutex_t colaMute = PTHREAD_MUTEX_INITIALIZER;
-        pthread_mutex_lock(&colaMute);
+  this->colaConexiones.push_back(*unaConexion);
+  printf("guardo el cliente en la cola cliente %d\n",unaConexion->getConexion());
 
-
-         printf("numero thread : %d\n", unaConexion->getId()  );
-
-        this->colaConexiones.push_back(*unaConexion);
-        printf("guardo el cliente en la cola cliente %d\n",unaConexion->getConexion());
-
-         pthread_mutex_unlock(&colaMute);
-        return  0;
-    }
+  pthread_mutex_unlock(&colaMute);
+  return 0;
+}
 
 
-  void *ModeloServidor::hello_helperRecieve(void *context)
+void *ModeloServidor::hello_helperRecieve(void *context)
+{
+  while(1)
+  {
 
-    {
-
-        while(1)
-        {
-
-         ((Tupla *)context)->unModelo->receiveDataGeneral(((Tupla *)context)->idSocket );
+         ((Tupla *)context)->unModelo->receiveDataGeneral(((Tupla *)context)->idSocket);
 
         }
 
         return NULL;
 
-    }
-
+}
 
     /*void *ModeloServidor::hello_helperRecieve2(void *context)
-
     {
-
         while(1)
         {
          ((ModeloServidor *)context)->receiveDataGeneral( );
 
         }
-
         return NULL;
-
     }
-
-
 
     void *ModeloServidor::receiveDataGeneral2(int socketdeesethread )
 {
@@ -104,35 +95,27 @@ ModeloServidor::ModeloServidor(int port = 5050)
 
 }*/
 
-     void *ModeloServidor::hello_helperDesencolar(void *context)
+void *ModeloServidor::hello_helperDesencolar(void *context)
+{
+  while(1)
+  {
+    ((ModeloServidor *)context)->desencolar();
+  }
 
-    {
-
-        while(1)
-        {
-
-        ((ModeloServidor *)context)->desencolar();
-        }
-
-        return NULL;
+  return NULL;
 //
-    }
-
+}
 
 
 /*
 void* ModeloServidor::crearThread(void *algunaFuncion(void*))
-
 {
     pthread_t hilos[3];
-
    pthread_create(&hilos[this->id],NULL, &ModeloServidor::hello_helperRecieve,NULL);
   return NULL;
 }
 
-
-
- void * ModeloServidor::receiveDataGeneral(void *context )
+void * ModeloServidor::receiveDataGeneral(void *context )
 {
     ((ModeloServidor *)context)->desencolar();
     while(1)
@@ -148,31 +131,26 @@ void* ModeloServidor::crearThread(void *algunaFuncion(void*))
         }
   }
     }
-
  return NULL;
-
-
 }
 */
-   void *ModeloServidor::receiveDataGeneral(int socketdeesethread )
+
+void *ModeloServidor::receiveDataGeneral(int socketdeesethread)
 {
-    if (!this->colaConexiones.empty())
+  if (!this->colaConexiones.empty())
   {
        //for (int i = 0; i < this->colaConexiones.size(); i++) {
-
-         int socketDeEsteThread=this->colaConexiones[socketdeesethread-1].getConexion() ;
-         printf("saque  RECIBE el socket de la cola de clientes numero : %d\n", socketDeEsteThread );
-         bool result = this->socketServidor->recibirDataGeneral(socketDeEsteThread );
-         if(result== true){
-            this->cargarComandos(*this->socketServidor->getClientComand());
-             printf("guarde el comando definitivamente a la coladecomando : %d\n",this->socketServidor->getClientComand()->action );
-            }
+      int socketDeEsteThread=this->colaConexiones[socketdeesethread-1].getConexion() ;
+      printf("saque  RECIBE el socket de la cola de clientes numero : %d\n", socketDeEsteThread );
+      bool result = this->socketServidor->recibirDataGeneral(socketDeEsteThread );
+      if(result== true){
+          this->cargarComandos(*this->socketServidor->getClientComand());
+          printf("guarde el comando definitivamente a la coladecomando : %d\n",this->socketServidor->getClientComand()->action );
+      }
   }
+//}
 
- //}
  return NULL;
-
-
 }
 
 /*
@@ -197,42 +175,38 @@ void* ModeloServidor::crearThread(void *algunaFuncion(void*))
 
 
 
-
 Comando  ModeloServidor::login(Comando comando)
 {
-
  printf("tipo es : %d\n",comando.tipo);
 
+    int passwordjugador1=101;// la base
+    int passwordjugador2=102;// la base
+    int passwordjugador3=103;// la base
+    int passwordjugador4=104;// la base
+    int passwordjugador5=105;// la base
+    int passwordjugador6=106;// la base
 
-
-  int passwordjugador1=101;// la base
-     int passwordjugador2=102;// la base
-     int passwordjugador3=103;// la base
-     int passwordjugador4=104;// la base
-     int passwordjugador5=105;// la base
-     int passwordjugador6=106;// la base
-
-     int nombrejugador1=101;// la base
-     int nombrejugador2=102;// la base
-     int nombrejugador3=103;// la base
-     int nombrejugador4=104;// la base
-     int nombrejugador5=105;// la base
+    int nombrejugador1=101;// la base
+    int nombrejugador2=102;// la base
+    int nombrejugador3=103;// la base
+    int nombrejugador4=104;// la base
+    int nombrejugador5=105;// la base
     int nombrejugador6=106;// la base
 
-          printf("password1 del juegador1 es: %d\n", passwordjugador1);
-          printf("nombredel juegador1 es: %d\n", nombrejugador1);
-          printf("comando desencolado el password : %d\n", comando.password);
-           printf("comando desencolado el nombre : %d\n",  comando.nombre);
+    printf("password1 del juegador1 es: %d\n", passwordjugador1);
+    printf("nombredel juegador1 es: %d\n", nombrejugador1);
+    printf("comando desencolado el password : %d\n", comando.password);
+    printf("comando desencolado el nombre : %d\n",  comando.nombre);
 
-      bool logeado=false;
+    bool logeado=false;
 
-      if(comando.password==passwordjugador1)
-      {
+    if(comando.password==passwordjugador1)
+    {
 
       logeado=true;
       }else if(comando.password==passwordjugador2)
       {
-           logeado=true;
+          logeado=true;
       }else if(comando.password==passwordjugador3)
       {
          logeado=true;
@@ -246,49 +220,34 @@ Comando  ModeloServidor::login(Comando comando)
       {
           logeado=true;
       }
-
-
-        Comando comandoLogin;
-        if(logeado)
-        {   this->cantidadJugadoresActuales=this->cantidadJugadoresActuales+1;
-            comandoLogin.action=this->cantidadJugadoresActuales;
-            comandoLogin.tipo=11;
-            printf("login correcto \n");
-
-        }else
-        {
-
+      Comando comandoLogin;
+      if(logeado)
+      {
+        this->cantidadJugadoresActuales=this->cantidadJugadoresActuales+1;
+        comandoLogin.action=this->cantidadJugadoresActuales;
+        comandoLogin.tipo=11;
+        printf("login correcto \n");
+      } else
+      {
         printf("login incorrecto \n");
         comandoLogin.action=0;
         comandoLogin.tipo=12;
-        }
-
+      }
   return  comandoLogin;
 }
 
 
 void ModeloServidor::processData(Comando comando)
 {
-
-
-
-
-
-
-
-
   switch (comando.action)
   {
   case 1: //derecha
     printf("muevo a eje y inicial: %d\n", this->modelo.positionY);
     this->modelo.positionY = this->modelo.positionY + 1;
     printf("muevo a eje y siguiente: %d\n", this->modelo.positionY);
-
     break;
   case 3: //izquierda
-
     this->modelo.positionY = this->modelo.positionY - 1;
-
     break;
   case 2:
     this->modelo.positionX = this->modelo.positionX + 1;
@@ -298,29 +257,22 @@ void ModeloServidor::processData(Comando comando)
     break;
   }
 
-
-
-
-
 }
 
 void* ModeloServidor::desencolar( ) //es un vector que tiene clientes
 {
-
 
   pthread_mutex_t colaMutex = PTHREAD_MUTEX_INITIALIZER;
   pthread_mutex_lock(&colaMutex);
 
   while(!this->colaComando.empty()&&!this->colaConexiones.empty())
   {
-
      int action = this->colaComando.back().action;
 
      printf("desencole el camondo de cargarcomando %d\n",  action);
 
      if(this->colaComando.back().tipo==1)
      {
-
       Comando unComando=this->login(this->colaComando.back());
        this->colaComando.pop_back();
 
@@ -337,21 +289,11 @@ void* ModeloServidor::desencolar( ) //es un vector que tiene clientes
             }*/
 
        for (int i = 0; i < this->colaConexiones.size(); i++) {
-
-
            // if(i!=posicion)
             //{
             this->sendDataGeneralComando(this->colaConexiones[i].getConexion(),&unComando);
             //}
-
-
-
-
-
-
-
          }
-
 
      }else if(this->colaComando.back().tipo==2)
      {
@@ -361,22 +303,14 @@ void* ModeloServidor::desencolar( ) //es un vector que tiene clientes
        this->colaComando.pop_back();
 
 
-     for (int i = 0; i < this->colaConexiones.size(); i++) {
-
+      for (int i = 0; i < this->colaConexiones.size(); i++) {
 
             this->sendDataGeneral(this->colaConexiones[i].getConexion(),&this->modelo);
-
         }
      }
-
-
-
-
   }
 
-
-
-pthread_mutex_unlock(&colaMutex);
+  pthread_mutex_unlock(&colaMutex);
   //return 0;
 }
 
@@ -390,9 +324,9 @@ void *ModeloServidor::manejoCliente( )
 {
     return NULL;
 }
+
 void ModeloServidor::initializeData()
 {
-
   this->modelo.positionX = 0;
   this->modelo.positionY = 0;
 
@@ -414,14 +348,8 @@ int ModeloServidor::getAction()
   return this->comando->action;
 }
 
-
-
-
-
 int ModeloServidor::cargarComandos(Comando comando)
 {
-
-
   pthread_mutex_t colaMutex = PTHREAD_MUTEX_INITIALIZER;
   pthread_mutex_lock(&colaMutex);
   Comando comandato = comando;
@@ -461,9 +389,6 @@ int ModeloServidor::getCliente()
   return this->client_socket;
 }
 
-
-
-
 int ModeloServidor::sendDataGeneral(int cliente, Modelo *modelito)
 {
   int result = this->socketServidor->enviarDataGeneral(cliente, modelito);
@@ -491,30 +416,25 @@ int ModeloServidor::aceptandoConexiones()
 
   if(result==1)
   {
-
     printf("acepto algo que no era un socket valido, no guardo cliente");
+  } else
+  {
+    Conexion* unaConexion= new Conexion();
+    this->client_socket = this->socketServidor->getClientSocket();
+    unaConexion->setearConexion(this->client_socket);
+    unaConexion->setearId(this->id);
+    unaConexion->setearEstado(false);
 
-  }else{
+    //this->guardarCliente(this->socketServidor->getClientSocket());
+    this->guardarConexion(unaConexion);
+    //this->crearThread(this->receiveDataGeneral((void*)unaConexion));
 
-      Conexion* unaConexion= new Conexion();
-      this->client_socket = this->socketServidor->getClientSocket();
-      unaConexion->setearConexion(this->client_socket);
-      unaConexion->setearId(this->id);
-      unaConexion->setearEstado(false);
-
-      //this->guardarCliente(this->socketServidor->getClientSocket());
-      this->guardarConexion(unaConexion);
-      //this->crearThread(this->receiveDataGeneral((void*)unaConexion));
-
-      pthread_t hilos[4];
-      //this->colaThread.push_back(&hilos[this->id]);
-     // pthread_create(&hilos[this->id], NULL,   &ModeloServidor::hello_helperRecieve2,  this);
-      this->id=this->id +1 ;
-      return 0;
-
+    pthread_t hilos[4];
+    //this->colaThread.push_back(&hilos[this->id]);
+    // pthread_create(&hilos[this->id], NULL,   &ModeloServidor::hello_helperRecieve2,  this);
+    this->id=this->id +1 ;
+    return 0;
   }
-
-
   return result;
 }
 
@@ -522,6 +442,3 @@ int ModeloServidor::closeSocket()
 {
   return this->socketServidor->cerrar();
 }
-
-
-
