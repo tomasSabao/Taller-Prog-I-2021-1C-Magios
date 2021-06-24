@@ -4,6 +4,7 @@
 #include "../mensaje/Codificador.h"
 #include "../mensaje/Decodificador.h"
 #include "../mensaje/Mensaje.h"
+#include "../ModeloServidor/Conexion.h"
 #include <vector>
  using namespace std;
  #include <pthread.h>
@@ -64,6 +65,11 @@ class ModeloServidor
 
          //este valor reemplaza a receiveDataGeneral()
          void* recibirDataGeneral2();
+         //nueva version de la funcion de arriba
+         void* recibirDataGeneral2(int socket_de_ese_thread);
+
+         int guardarConexion(Conexion* unaConexion);
+
 
       int  socketAceptando(SocketServidor* unSocket);
          void  send_message(int clients, Modelo* modelito);
@@ -84,7 +90,7 @@ int  getAction();
         int  sendData( );
         int closeSocket();
         // Structs for data transfer
-
+        std::vector<Conexion> colaConexiones;
 
     Mensaje buffer_login;
     Mensaje buffer_rta_login;
@@ -93,12 +99,19 @@ int  getAction();
      std::vector<Comando> colaComando;
      std::vector<Modelo> colaModelo;
      std::vector<int> colaSocketCliente;
+     std::vector< pthread_t* > colaThread;
 //     std::vector< Thread*> colaThread;
      int client_socket;//este es el cliente que fue ya aceptado por el servidor
    Comando* comando;
    Modelo modelo;
    int numeroThread;
 
+
+// Agregados de la version de yus y roman
+int cantidadJugadoresActuales;
+
+int id;
+//fin de lo agregado
     int positionX;
     int positionY;
     int action;
@@ -136,5 +149,16 @@ int  getAction();
 
     private:
 };
+
+
+
+struct Tupla
+{
+    ModeloServidor* unModelo;
+    int idSocket;
+};
+
+
+typedef struct Tupla Tupla;
 
 #endif // MODELOSERVIDOR_H

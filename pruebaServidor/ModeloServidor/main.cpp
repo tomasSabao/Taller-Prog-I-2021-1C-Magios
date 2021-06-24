@@ -161,6 +161,7 @@ int main(int argc, char *argv[])
     int err3=pthread_create(&proceso, NULL, &ModeloServidor::funcionThreadDesencolarYProcesar,modeloServidor);
 
      pthread_t hilos[MAX_CLIENTS];
+     Tupla tuplas[MAX_CLIENTS];
     int i = 0;
     while (true)
     {
@@ -168,12 +169,15 @@ int main(int argc, char *argv[])
 
         modeloServidor->aceptandoConexiones();
 
-
+        tuplas[i].idSocket=i;
+        tuplas[i].unModelo=modeloServidor;
+        printf(" socket id %d\n",tuplas[i].idSocket);
+        printf("id  %d\n",i);
 
           //version original
           //int er2 = pthread_create(&hilos[i], NULL,   &ModeloServidor::hello_helperRecieve,   modeloServidor);
           //version mia
-        int er2=pthread_create(&hilos[i],NULL, &ModeloServidor::funcionThreadRecibir, modeloServidor);
+        int er2=pthread_create(&hilos[i],NULL, &ModeloServidor::funcionThreadRecibir, &tuplas[i]);
 
          printf("mas de un cliente");
 

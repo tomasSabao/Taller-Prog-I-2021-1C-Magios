@@ -239,6 +239,7 @@ int SocketServidor::recibirData(Mensaje* buffer_msj,int tamanio,int socket_clien
     bool client_socket_still_open=true;
     if(tamanio==-1){//es mensaje de login
         //quiero recibir 2 bytes, ya que ahi tendria la longitud del usuario y de la password
+        //printf("SE RECIBIO UN MENSAJE DE LOGIN\n");
         void* puntero_msj=buffer_msj->getMensaje();
 
         int bytes_recibidos=0;
@@ -252,30 +253,28 @@ int SocketServidor::recibirData(Mensaje* buffer_msj,int tamanio,int socket_clien
                 printf("Fallo la redimension de la memoria\n");
                 return -1;
             }
-
-            while( (tamanio_max > bytes_recibidos)  && client_socket_still_open==true){
+        }
+        while( (tamanio_max > bytes_recibidos)  && client_socket_still_open==true){
             printf("Estoy por entrar a recibir mensajes del cliente\n");
 
-                bytes_recibidos=recv(socket_cliente, (void*)  ((char*)puntero_msj + bytes_recibidos_totales),(tamanio_max - bytes_recibidos_totales), MSG_NOSIGNAL);
-                printf("Bytes recibidos: %d\n",bytes_recibidos);
+            bytes_recibidos=recv(socket_cliente, (void*)  ((char*)puntero_msj + bytes_recibidos_totales),(tamanio_max - bytes_recibidos_totales), MSG_NOSIGNAL);
+            printf("Bytes recibidos: %d\n",bytes_recibidos);
 
-                if(bytes_recibidos<0){
-                    printf("Hubo un error al recibir el mensaje\n");
-                    return -1;
-                }
-                else if(bytes_recibidos==0){
-                    printf("Client_socket_still_open=false\n");
-                    client_socket_still_open=false;
-                }
-                else{
-                    bytes_recibidos_totales+=bytes_recibidos;
-                    if(bytes_recibidos_totales > 2){
-                        break;
-                    }
-                }
+            if(bytes_recibidos<0){
+                printf("Hubo un error al recibir el mensaje\n");
+                return -1;
+            }
+            else if(bytes_recibidos==0){
+                printf("Client_socket_still_open=false\n");
+                client_socket_still_open=false;
+            }
+            else{
+                bytes_recibidos_totales+=bytes_recibidos;
+                if(bytes_recibidos_totales > 2){
+                    break;
+                 }
             }
         }
-
         unsigned char longitud_usuario=* (char*)puntero_msj;
         longitud_usuario=longitud_usuario<<4;
         longitud_usuario=longitud_usuario>>4;
@@ -321,7 +320,6 @@ int SocketServidor::recibirData(Mensaje* buffer_msj,int tamanio,int socket_clien
         //printf("No se recibieron todos los bytes del mensaje\n");
         return -1;
     }
-
 }
 
 

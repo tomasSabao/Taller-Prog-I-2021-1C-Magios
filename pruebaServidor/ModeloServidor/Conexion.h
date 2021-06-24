@@ -10,12 +10,19 @@ class Conexion
         void  setearConexion(int socket);
 
 
-void  setearEstado(bool estado);
+        void setearId(int id);
+        void setearEstado(bool estado);
 
+        int getConexion();
+
+        bool getEstado();
+
+        int getId();
 
     protected:
     bool estado;
     int conexion;
+    int id;
 
 
     private:

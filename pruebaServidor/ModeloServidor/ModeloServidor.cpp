@@ -49,12 +49,22 @@ ModeloServidor::ModeloServidor(int port = 5050)
         return NULL;
 
     }
-
+//version vieja
+    /*
 void* ModeloServidor::funcionThreadRecibir(void* contexto){
   while(1){
     ( ((ModeloServidor*)contexto)->recibirDataGeneral2());
   }
 
+  return NULL;
+}
+*/
+//version nueva
+
+void* ModeloServidor::funcionThreadRecibir(void* contexto){
+  while(1){
+    ( (Tupla*)contexto)->unModelo->recibirDataGeneral2(  ((Tupla*)contexto)->idSocket );
+  }
   return NULL;
 }
 
@@ -118,10 +128,35 @@ void* ModeloServidor::recibirDataGeneral2(){
 }
 
 
+void* ModeloServidor::recibirDataGeneral2(int socket_del_thread){
+  if(!this->colaConexiones.empty()){
+    int socketDeEsteThread=this->colaConexiones[socket_del_thread-1].getConexion() ;
+    //printf("Saque RECIBE el socket de la cola de clientes numero: %d\n",socketDeEsteThread);
+    //TODO:logica que especifique el tamaño del mensaje a recibir segun el estado del servidor
+    //por ahora se hardcodea a un mensaje de recepcion de login positivo
+    bool resultado= this->socketServidor->recibirData(&this->buffer_login,-1,socketDeEsteThread);
+    if(resultado == 0){
+      printf("Se recibio un mensaje, se procede a encolarlo en la cola de mensajes\n");
+      Mensaje* unMensaje=new Mensaje();
+      unMensaje->asignarMemoria(this->buffer_login.getTamanio(),1);
+      memcpy(unMensaje->getMensaje(),this->buffer_login.getMensaje(),this->buffer_login.getTamanio());
+      //se encola el mensaje
+      this->encolarMensaje(unMensaje);
+    }
+    else{
+      //printf("No se recibio mensaje, no se encola nada\n");
+    }
+  }
+  else{
+    printf("La cola de conexiones esta vacia\n");
+  }
+  return NULL;
+}
+
 
 void* ModeloServidor::funcionThreadDesencolarYProcesar(void* context){
   while(1){
-
+   // printf("                                                                                        Thread desencolar y procesar\n");
     ((ModeloServidor*)context)->desencolarYProcesarMensaje();
 
   }
@@ -292,13 +327,32 @@ int ModeloServidor::aceptandoConexiones()
     printf("acepto algo que no era un socket valido, no guardo cliente");
 
   }else{
-
+      Conexion* unaConexion= new Conexion();
       this->client_socket = this->socketServidor->getClientSocket();
-      this->guardarCliente(this->socketServidor->getClientSocket());
+      unaConexion->setearConexion(this->client_socket);
+      unaConexion->setearId(this->id);
+      unaConexion->setearEstado(false);
+
+      this->guardarConexion(unaConexion);
+
+      pthread_t hilos[4];
+      this->id=this->id+1;
+      return 0;
   }
-
-
   return result;
+}
+
+int ModeloServidor::guardarConexion(Conexion* unaConexion){
+  pthread_mutex_t colaMutex = PTHREAD_MUTEX_INITIALIZER;
+  pthread_mutex_lock(&colaMutex);
+  printf("nuero thread: %d\n",unaConexion->getId());
+
+  this->colaConexiones.push_back(*unaConexion);
+  printf("guardo el cliente en la cola cliente %d\n",unaConexion);
+
+  pthread_mutex_unlock(&colaMutex);
+  return 0;
+
 }
 
 int ModeloServidor::closeSocket()
