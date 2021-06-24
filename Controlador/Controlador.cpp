@@ -8,16 +8,19 @@ Controlador::Controlador(Modelo * modelo )
     this->current_key_states=SDL_GetKeyboardState(NULL);
     //ctor
 }
+
 Controlador::~Controlador()
 {
     //dtor
 }
 
-int Controlador::desencolarEvento(){
+int Controlador::desencolarEvento()
+{
     return SDL_PollEvent(&this->e);
 }
 
-int Controlador::descifrarEvento(){
+int Controlador::descifrarEvento()
+{
     if(e.type==SDL_QUIT){
         return 1;
     }
@@ -45,10 +48,5 @@ int Controlador::descifrarEvento(){
             }
         }
 
-
     return 0;
 }
-
-
-
-

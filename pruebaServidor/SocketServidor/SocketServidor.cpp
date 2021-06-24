@@ -1,5 +1,6 @@
 #include "SocketServidor.h"
 
+
 SocketServidor::SocketServidor(int puerto)
 {
     Comando m;
@@ -173,12 +174,12 @@ int SocketServidor::enviarDataGeneralComando(int client_socket, Comando* comando
     }
 }
 
-int SocketServidor::enviarDataGeneral(int client_socket, Modelo *modelo)
+int SocketServidor::enviarDataGeneral(int client_socket, Modelito *modelito)
 {
 
     int total_bytes_written = 0;
     int bytes_written = 0;
-    int send_data_size = sizeof(Modelo);
+    int send_data_size = sizeof(Modelito);
     bool client_socket_still_open = true;
 
     // Send
@@ -193,7 +194,7 @@ int SocketServidor::enviarDataGeneral(int client_socket, Modelo *modelo)
     while ((send_data_size > total_bytes_written) && client_socket_still_open)
     {
         printf("el servidor envia si el socket cliente  (%d ) cuando este conectado   \n", client_socket);
-        bytes_written = send(client_socket, (modelo + total_bytes_written), (send_data_size - total_bytes_written), MSG_NOSIGNAL);
+        bytes_written = send(client_socket, (modelito + total_bytes_written), (send_data_size - total_bytes_written), MSG_NOSIGNAL);
         if (bytes_written < 0)
         { // Error
             return bytes_written;

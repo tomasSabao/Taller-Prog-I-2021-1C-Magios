@@ -20,15 +20,15 @@ struct Comando
     int password;
 };
 
-struct Modelo
+struct Modelito
 {
     int positionX;
     int positionY;
 };
 
-
 typedef struct Comando Comando;
-typedef struct Modelo Modelo;
+typedef struct Modelito Modelito;
+
 
 class SocketServidor
 {
@@ -44,17 +44,17 @@ class SocketServidor
     int cerrar();
     int getClientSocket();
     int getSocket();
-    int enviarDataGeneral(int client_socket, Modelo *modelo);
+    int enviarDataGeneral(int client_socket, Modelito *modelito);
     int recibirDataGeneral(int client_socket);
     //std::vector<Comando>  returnComandosSocket( );
 
-    int enviarData(Modelo *modelo);
+    int enviarData(Modelito *modelito);
     Comando *getClientComand();
     int cargarComandosSocket(Comando comando);
 
   protected:
     Comando comando;
-    //Modelo* modelo;
+    //Modelito* modelo;
     int server_socket;
     struct sockaddr_in server_addr;
     int puerto;

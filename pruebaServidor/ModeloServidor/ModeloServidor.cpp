@@ -4,7 +4,7 @@
 
 ModeloServidor::ModeloServidor(int port)
 {
-    Modelo m;
+    Modelito m;
     this->modelo = m;
     this->modelo.positionX=0;
     this->modelo.positionY=0;
@@ -389,13 +389,13 @@ int ModeloServidor::getCliente()
   return this->client_socket;
 }
 
-int ModeloServidor::sendDataGeneral(int cliente, Modelo *modelito)
+int ModeloServidor::sendDataGeneral(int cliente, Modelito *modelito)
 {
   int result = this->socketServidor->enviarDataGeneral(cliente, modelito);
   return result;
 }
 
-int ModeloServidor::sendDataGeneralComando(int cliente,Comando *comando)
+int ModeloServidor::sendDataGeneralComando(int cliente, Comando *comando)
 {
   int result = this->socketServidor->enviarDataGeneralComando(cliente,comando) ;
   return result;

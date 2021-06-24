@@ -206,7 +206,7 @@ int main(int argc , char *argv[])
     //if ((parser.validarJugador(u1,p1)) && jugador.status != ESPERANDO_PARTIDA) {
     //    //OK.
     //}
-    
+
     int i = 0;
     while (true)
     {

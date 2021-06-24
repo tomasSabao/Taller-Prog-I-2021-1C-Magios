@@ -256,10 +256,10 @@
 
 1624496846 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/Conexion.h
 
-1624496846 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/SocketServidor/SocketServidor.cpp
+1624569141 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/SocketServidor/SocketServidor.cpp
 	"SocketServidor.h"
 
-1624566757 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/SocketServidor/SocketServidor.h
+1624569154 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/SocketServidor/SocketServidor.h
 	<sys/socket.h>
 	<stdio.h>
 	<stdlib.h>
@@ -276,7 +276,7 @@
 	<stdio.h>
 	"../ModeloServidor/ModeloServidor.h"
 
-1624504767 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/ModeloServidor.h
+1624569204 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/ModeloServidor.h
 	"../SocketServidor/SocketServidor.h"
 	"../ModeloServidor/Conexion.h"
 	<vector>
@@ -284,7 +284,7 @@
 	<stdio.h>
 	"Thread.h"
 
-1624504772 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/ModeloServidor.cpp
+1624569267 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/ModeloServidor.cpp
 	"ModeloServidor.h"
 	"Thread.h"
 
@@ -592,7 +592,7 @@
 1624557439 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/VistaFuegoPiso.h
 	"Vista_Jugador.h"
 
-1624557294 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Controlador/Controlador.cpp
+1624569324 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Controlador/Controlador.cpp
 	"../include/Controlador.h"
 	"../Modelo/Modelo.h"
 
@@ -667,4 +667,24 @@
 	"../Modelo/Mario.h"
 	"../Modelo/FactoryPersonaje.h"
 	"../Modelo/Modelo_Plataforma.h"
+
+1624568821 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/main.cpp
+	<stdio.h>
+	<iostream>
+	<stdlib.h>
+	<string.h>
+	<sys/socket.h>
+	<arpa/inet.h>
+	<unistd.h>
+	<stdbool.h>
+	"../ModeloServidor/ModeloServidor.h"
+	"../ModeloServidor/Conexion.h"
+	"../Thread/Thread.h"
+	"../../Modelo/Modelo.h"
+	"../../Modelo/LTexture.h"
+	"../../lib/Logger.h"
+	"../../lib/Parser.h"
+	"../SocketServidor/SocketServidor.h"
+	<vector>
+	<pthread.h>
 
