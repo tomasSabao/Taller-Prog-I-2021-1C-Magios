@@ -9,16 +9,20 @@
 #include "../ModeloServidor/ModeloServidor.h"
 #include "../ModeloServidor/Conexion.h"
 #include "../Thread/Thread.h"
-
-//#include "ModeloServidor.h"
+#include "../../Modelo/Modelo.h"
+#include "../../Modelo/LTexture.h"
+#include "../../lib/Logger.h"
+#include "../../lib/Parser.h"
 #include "../SocketServidor/SocketServidor.h"
 #include <vector>
 using namespace std;
 
 //defines
-#define QTY_ARGUMENTS 2
-#define ARG_POS_IP_PORT 1
+#define CANT_MIN_ARGS 2
 #define MAX_CLIENTS 4
+#define ARG_POS_PORT 1
+#define ARG_POS_CONFG 2
+#define ARG_POS_LOG 3
 
 // Structs for data transfer
 std::vector<Conexion> colaConexiones;
@@ -103,16 +107,16 @@ void queue_remove(int uid)
 
 bool validate_arguments(int argc, char *argv[])
 {
-    if (argc != QTY_ARGUMENTS)
+    if (argc < CANT_MIN_ARGS)
     {
         cout << "Cantidad incorrecta de argumentos" << endl;
-        cout << "Uso: ./nombre_del_programa [puerto] " << endl;
+        cout << "Uso: ./nombre_del_programa [puerto] [archivo de configuracion] [nivel de log]" << endl;
         return false;
     }
 
     try
     {
-        int port = std::stoi(argv[ARG_POS_IP_PORT]);
+        int port = std::stoi(argv[ARG_POS_PORT]);
 
         if (port <= 0)
         {
@@ -135,34 +139,72 @@ bool validate_arguments(int argc, char *argv[])
 }
 
 // First argument: port
-int main(int argc, char *argv[])
+int main(int argc , char *argv[])
 {
-
     if (validate_arguments(argc, argv) == false)
     {
         return EXIT_FAILURE;
     }
 
+    string archivo_configuracion = (argc > ARG_POS_CONFG) ? argv[ARG_POS_CONFG] : "default.json";
+    string cli_log = (argc > ARG_POS_LOG) ? argv[ARG_POS_LOG] : "";
+    int port = stoi(argv[ARG_POS_PORT]);
+
+    parser.obtenerJson(archivo_configuracion);
+    string nivel_log = ((cli_log == "error") || (cli_log == "debug") || (cli_log == "info")) ? cli_log : parser.obtenerNivelLog();
+    logger.setNivelLog(nivel_log);
+    logger.log("info","Inicio del juego.");
+
+
+    //inicializo el modelo.
+    Modelo* modelo=new Modelo();
+
+    std::map<std::string, std::string> enemigos = parser.obtenerEnemigos();
+    std::vector<std::string> fondos = parser.obtenerFondos();
+    if (enemigos.find("fuego-1") != enemigos.end()) {
+        modelo->escenario1("fueguito", std::stoi(enemigos["fuego-1"]));
+    } else
+    {
+        modelo->escenario1("fueguito-default", std::stoi(enemigos["fuego-default-1"]));
+    }
+    int cantidad_jugadores = parser.obtenerCantidadJugadores();
+    cout << "cantidad jugadores: " << cantidad_jugadores << endl;
+
     int server_socket;
     int client_socket;
 
-    int port = stoi(argv[ARG_POS_IP_PORT]);
-
-
-    ModeloServidor *modeloServidor = new ModeloServidor(5555);
+    ModeloServidor *modeloServidor = new ModeloServidor(port);
     modeloServidor->CrearSocket(port);
-   modeloServidor->bindSocket();
-   modeloServidor->escuchar();
+    modeloServidor->bindSocket();
+    modeloServidor->escuchar();
 
     pthread_t envio;
     pthread_t recivo;
 
     Tupla unaTupla;
 
-     int err = pthread_create(&envio, NULL,   &ModeloServidor::hello_helperDesencolar,   modeloServidor);
+    int err = pthread_create(&envio, NULL, &ModeloServidor::hello_helperDesencolar, modeloServidor);
 
-     pthread_t hilos[MAX_CLIENTS];
-     Tupla tuplas[MAX_CLIENTS];
+    pthread_t hilos[MAX_CLIENTS];
+    Tupla tuplas[MAX_CLIENTS];
+
+
+    //keep communicating with client
+    char* u1 = "alejandro";
+    char* p1 = "123456";
+    char* u2 = "andrea";
+    char* p2 = "986543";
+    char* u3 = "andrea";
+    char* p3 = "986545";
+
+    cout << "valido usuario1: " << parser.validarJugador(u1, p1) << endl;
+    cout << "valido usuario2: " << parser.validarJugador(u2, p2) << endl;
+    cout << "valido usuario3: " << parser.validarJugador(u3, p3) << endl;
+
+    //if ((parser.validarJugador(u1,p1)) && jugador.status != ESPERANDO_PARTIDA) {
+    //    //OK.
+    //}
+    
     int i = 0;
     while (true)
     {
@@ -178,19 +220,15 @@ int main(int argc, char *argv[])
         tuplas[i].unModelo=modeloServidor;
         printf(" socket id %d\n", tuplas[i].idSocket);
         printf("id  %d\n", i);
-           int er2 = pthread_create(&hilos[i], NULL,   &ModeloServidor::hello_helperRecieve,    &tuplas[i]);
+        int er2 = pthread_create(&hilos[i], NULL, &ModeloServidor::hello_helperRecieve, &tuplas[i]);
 
-
-
-
-         printf("mas de un cliente");
-
-
+        printf("mas de un cliente");
     }
 
+
     pthread_join(envio,NULL);
-		pthread_join(hilos[1],NULL);
-       modeloServidor->closeSocket();
+	pthread_join(hilos[1],NULL);
+    modeloServidor->closeSocket();
     int commands_count = 0;
     int status = 0;
 
@@ -198,8 +236,9 @@ int main(int argc, char *argv[])
     modeloServidor->initializeData();
     printf("termino %d\n", 2);
 
+    //
     //keep communicating with client
-/*
+    /*
     while (commands_count < 20)
     {
         printf("Commands count: %d\n", commands_count + 1);
@@ -229,11 +268,12 @@ int main(int argc, char *argv[])
       /*  commands_count++;
     }*/
 
+
     modeloServidor->imprimirComandos();
     close(modeloServidor->getCliente());
     printf("Client socket number %d closed\n", modeloServidor->getCliente());
     modeloServidor->closeSocket();
-    //printf("Server socket number %d closed\n",server_socket);*/
+    //printf("Server socket number %d closed\n",server_socket);
 
     return 0;
 }
