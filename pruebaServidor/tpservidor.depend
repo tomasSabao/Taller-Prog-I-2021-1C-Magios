@@ -450,7 +450,7 @@
 1624496846 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/Colisionador.cpp
 	"Colisionador.h"
 
-1624496846 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/Colisionador.h
+1624555904 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/Colisionador.h
 	"../Modelo/Modelo_Jugador.h"
 	"../Modelo/Modelo_Plataforma.h"
 	"../Modelo/Rectangulo.h"
@@ -546,4 +546,10 @@
 1624555649 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/VistaMono.h
 	"Vista_Jugador.h"
 	"../Modelo/Modelo_Jugador.h"
+
+1624496846 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/VistaMono.cpp
+	"VistaMono.h"
+
+1624555829 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo_Plataforma.cpp
+	"Modelo_Plataforma.h"
 

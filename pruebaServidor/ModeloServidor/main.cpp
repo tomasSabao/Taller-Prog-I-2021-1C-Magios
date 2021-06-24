@@ -28,6 +28,10 @@ using namespace std;
 std::vector<Conexion> colaConexiones;
 int clients[MAX_CLIENTS] = {0 , 0 , 0, 0};
 #include <pthread.h>
+
+extern Logger logger;
+Parser parser = Parser();
+
 /*struct Tupla
 {
      ModeloServidor * unModelo;
