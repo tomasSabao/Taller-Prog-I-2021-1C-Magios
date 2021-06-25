@@ -147,6 +147,12 @@
 		<Unit filename="../plataforma.png" />
 		<Unit filename="../posiciones_mario_en_png" />
 		<Unit filename="../total.png" />
+		<Unit filename="Mensaje/Codificador.cpp" />
+		<Unit filename="Mensaje/Codificador.h" />
+		<Unit filename="Mensaje/Decodificador.cpp" />
+		<Unit filename="Mensaje/Decodificador.h" />
+		<Unit filename="Mensaje/Mensaje.cpp" />
+		<Unit filename="Mensaje/Mensaje.h" />
 		<Unit filename="ModeloServidor/Conexion.cpp" />
 		<Unit filename="ModeloServidor/Conexion.h" />
 		<Unit filename="ModeloServidor/ModeloServidor.cpp" />

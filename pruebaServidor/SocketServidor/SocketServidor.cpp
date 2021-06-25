@@ -74,6 +74,7 @@ int SocketServidor::bindSocket()
     //------------------------
     return 0;
 }
+
 int SocketServidor::escuchar()
 {
 
@@ -272,8 +273,134 @@ int SocketServidor::recibirDataGeneral(int client_socket)
      return false;
 
     }
-
-
-
-
 }
+
+int SocketServidor::recibirData(Mensaje* buffer_msj,int tamanio,int socket_cliente){
+    //printf("Entra a la funcion recibirData\n");
+    bool client_socket_still_open=true;
+    if(tamanio==-1){//es mensaje de login
+        //quiero recibir 2 bytes, ya que ahi tendria la longitud del usuario y de la password
+        //printf("SE RECIBIO UN MENSAJE DE LOGIN\n");
+        void* puntero_msj=buffer_msj->getMensaje();
+
+        int bytes_recibidos=0;
+        int bytes_recibidos_totales=0;
+        int tamanio_max=34;
+        int success;
+        bool client_socket_still_open=true;
+        if(buffer_msj->getTamanio() != tamanio_max){
+            success=buffer_msj->redimensionarMemoria(tamanio_max);
+            if(success == -1){
+                printf("Fallo la redimension de la memoria\n");
+                return -1;
+            }
+        }
+        while( (tamanio_max > bytes_recibidos)  && client_socket_still_open==true){
+            printf("Estoy por entrar a recibir mensajes del cliente\n");
+            bytes_recibidos=recv(socket_cliente, (void*)  ((char*)puntero_msj + bytes_recibidos_totales),(tamanio_max - bytes_recibidos_totales), MSG_NOSIGNAL);
+            printf("Bytes recibidos: %d\n",bytes_recibidos);
+
+            if(bytes_recibidos<0){
+                printf("Hubo un error al recibir el mensaje\n");
+                return -1;
+            }
+            else if(bytes_recibidos==0){
+                printf("Client_socket_still_open=false\n");
+                client_socket_still_open=false;
+            }
+            else{
+                bytes_recibidos_totales+=bytes_recibidos;
+                if(bytes_recibidos_totales > 2){
+                    break;
+                 }
+            }
+        }
+        unsigned char longitud_usuario=* (char*)puntero_msj;
+        longitud_usuario=longitud_usuario<<4;
+        longitud_usuario=longitud_usuario>>4;
+        //printf("Valor de longitud usuario: %d\n",longitud_usuario);
+        unsigned char longitud_password=* ((char*)puntero_msj+1);
+        //printf("Valor de longitud contrasenia: %d\n",longitud_password);
+        int longitud_total_en_bytes=longitud_usuario+longitud_password+2;
+        //printf("Bytes recibidos: %d, bytes que se deberian recibir: %d\n",bytes_recibidos_totales,longitud_total_en_bytes);
+        if(bytes_recibidos_totales == longitud_total_en_bytes){
+            printf("Se recibieron todos los bytes del mensaje correctamente\n");
+            return 0;
+        }
+        //printf("No se recibieron todos los bytes del mensaje\n");
+        return -1;
+    } else{
+        //son mensajes de input entonces
+        int bytes_recibidos=0;
+        int bytes_recibidos_totales=0;
+        int receive_data_size=2;
+        bool client_socket_still_open=true;
+        void* puntero_msj=buffer_msj->getMensaje();
+        while(receive_data_size > bytes_recibidos && client_socket_still_open==true ){
+            bytes_recibidos=recv(socket_cliente,(void*)  ((char*)puntero_msj + bytes_recibidos_totales),(receive_data_size - bytes_recibidos_totales), MSG_NOSIGNAL);
+            if(bytes_recibidos < 0){
+                //printf("Hubo un error, se recibieron menos de 0 bytes\n");
+                return -1;
+            }
+            else if(bytes_recibidos==0){
+                client_socket_still_open=true;
+            }
+            else{
+                bytes_recibidos_totales+=bytes_recibidos_totales;
+            }
+        }
+        if(bytes_recibidos_totales==receive_data_size){
+            //printf("Se recibieron todos los bytes del mensaje\n");
+            return 0;
+        }
+        //printf("No se recibieron todos los bytes del mensaje\n");
+        return -1;
+    }
+}
+
+int SocketServidor::enviarData(Mensaje* msj, int tamanio_bytes){
+    printf("----------- Funcion: Enviar Data-----------\n");
+    printf(".......... Valor del mensaje a mandar: %d\n",*(unsigned char*)(msj->getMensaje()));
+    int total_bytes_escritos=0;
+    int bytes_escritos=0;
+    bool client_socket_still_open=true;
+    void* puntero_a_msj=msj->getMensaje();
+    printf("Tamanio de bytes a escribir: %d\n",tamanio_bytes);
+    while( (tamanio_bytes > total_bytes_escritos)   && client_socket_still_open==true){
+        printf("Funcion: enviarData. El socket cliente numero: %d envia datos\n",this->client_socket);
+        bytes_escritos=send(this->client_socket, (void*) ((char*)puntero_a_msj +total_bytes_escritos), (tamanio_bytes - total_bytes_escritos), MSG_NOSIGNAL);
+        printf("numero de bytes escritos: %d\n",bytes_escritos);
+        if(bytes_escritos < 0){//error
+            printf("El numero de bytes escritos es menor a cero\n");
+            return bytes_escritos;
+        }
+        else if(bytes_escritos==0){//se cerro el socket
+            printf("ERROR_ SE CERRO EL SOCKET\n");
+            client_socket_still_open=false;
+        }
+        else{
+            total_bytes_escritos += bytes_escritos;
+        }
+    }
+    if(total_bytes_escritos==tamanio_bytes){
+        //se mandaron todos los datos 
+        printf("Funcion: enviarData. Se mandaron todos los bytes que componen el mensaje\n");
+        printf("Valor de la data supuestamente enviada : %d\n",*(unsigned char*)puntero_a_msj);
+        //aca habia una funcion que metia al modelo, no se por que. Asi que la saco
+        return 0;
+    }
+    printf("Funcion: enviarData. No se mandaron todos los bytes que componen el mensaje\n");
+    //llegue aca, significa que no se mandaron todos los bytes del mensaje. Devuelvo 1
+    return 1;
+}
+
+
+
+
+
+
+
+
+
+
+

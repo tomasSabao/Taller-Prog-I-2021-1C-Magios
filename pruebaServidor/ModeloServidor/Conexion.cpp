@@ -26,18 +26,17 @@ void Conexion::setearId(int id)
     this->id=id;
 }
 
-
-int Conexion::getConexion( )
+int Conexion::getConexion()
 {
-    return this->conexion ;
+    return this->conexion;
 }
 
-bool Conexion::getEstado( )
+bool Conexion::getEstado()
 {
-    return this->estado ;
+    return this->estado;
 }
 
-int  Conexion::getId( )
+int  Conexion::getId()
 {
     return this->id;
 }

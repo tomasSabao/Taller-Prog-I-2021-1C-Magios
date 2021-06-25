@@ -7,6 +7,7 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <stdbool.h>
+#include "../Mensaje/Mensaje.h"
 
 //#include "Thread.h"
 
@@ -46,10 +47,11 @@ class SocketServidor
     int enviarDataGeneral(int client_socket, Modelito *modelito);
     int recibirDataGeneral(int client_socket);
     //std::vector<Comando>  returnComandosSocket( );
-
-    int enviarData(Modelito *modelito);
+    int recibirData(Mensaje* buffer_msj,int tamanio,int socket_cliente);
     Comando *getClientComand();
     int cargarComandosSocket(Comando comando);
+    int enviarData(Mensaje* msj, int tamanio_bytes);
+
 
   protected:
     Comando comando;
