@@ -50,31 +50,26 @@ int ModeloServidor::guardarConexion(Conexion* unaConexion)
   return 0;
 }
 
-
 void *ModeloServidor::hello_helperRecieve(void *context)
 {
   while(1)
   {
-
-         ((Tupla *)context)->unModelo->receiveDataGeneral(((Tupla *)context)->idSocket);
-
-        }
-
-        return NULL;
-
+    ((Tupla *)context)->unModelo->receiveDataGeneral(((Tupla *)context)->idSocket);
+  }
+  return NULL;
 }
 
-    /*void *ModeloServidor::hello_helperRecieve2(void *context)
-    {
+/*void *ModeloServidor::hello_helperRecieve2(void *context)
+{
         while(1)
         {
          ((ModeloServidor *)context)->receiveDataGeneral( );
 
         }
         return NULL;
-    }
+}
 
-    void *ModeloServidor::receiveDataGeneral2(int socketdeesethread )
+void *ModeloServidor::receiveDataGeneral2(int socketdeesethread )
 {
     if (!this->colaConexiones.empty())
   {
@@ -91,8 +86,6 @@ void *ModeloServidor::hello_helperRecieve(void *context)
 
  //}
  return NULL;
-
-
 }*/
 
 void *ModeloServidor::hello_helperDesencolar(void *context)
@@ -139,13 +132,14 @@ void *ModeloServidor::receiveDataGeneral(int socketdeesethread)
 {
   if (!this->colaConexiones.empty())
   {
-       //for (int i = 0; i < this->colaConexiones.size(); i++) {
-      int socketDeEsteThread=this->colaConexiones[socketdeesethread-1].getConexion() ;
-      printf("saque  RECIBE el socket de la cola de clientes numero : %d\n", socketDeEsteThread );
-      bool result = this->socketServidor->recibirDataGeneral(socketDeEsteThread );
-      if(result== true){
+      //for (int i = 0; i < this->colaConexiones.size(); i++) {
+      int socketDeEsteThread=this->colaConexiones[socketdeesethread-1].getConexion();
+      printf("saque  RECIBE el socket de la cola de clientes numero : %d\n", socketDeEsteThread);
+      bool result = this->socketServidor->recibirDataGeneral(socketDeEsteThread);
+      if (result == true){
           this->cargarComandos(*this->socketServidor->getClientComand());
-          printf("guarde el comando definitivamente a la coladecomando : %d\n",this->socketServidor->getClientComand()->action );
+          //TODO: aca iria lo del username?
+          printf("guarde el comando definitivamente a la coladecomando : %d\n",this->socketServidor->getClientComand()->action);
       }
   }
 //}
@@ -172,7 +166,6 @@ void *ModeloServidor::receiveDataGeneral(int socketdeesethread)
 
 
 }*/
-
 
 
 Comando  ModeloServidor::login(Comando comando)
@@ -259,9 +252,8 @@ void ModeloServidor::processData(Comando comando)
 
 }
 
-void* ModeloServidor::desencolar( ) //es un vector que tiene clientes
+void* ModeloServidor::desencolar() //es un vector que tiene clientes
 {
-
   pthread_mutex_t colaMutex = PTHREAD_MUTEX_INITIALIZER;
   pthread_mutex_lock(&colaMutex);
 
@@ -269,7 +261,7 @@ void* ModeloServidor::desencolar( ) //es un vector que tiene clientes
   {
      int action = this->colaComando.back().action;
 
-     printf("desencole el camondo de cargarcomando %d\n",  action);
+     printf("desencole el camondo de cargarcomando %d\n", action);
 
      if(this->colaComando.back().tipo==1)
      {
@@ -320,7 +312,7 @@ ModeloServidor::~ModeloServidor()
   //dtor
 }
 
-void *ModeloServidor::manejoCliente( )
+void *ModeloServidor::manejoCliente()
 {
     return NULL;
 }
@@ -405,6 +397,7 @@ int ModeloServidor::bindSocket()
 {
   return this->socketServidor->bindSocket();
 }
+
 int ModeloServidor::escuchar()
 {
   return this->socketServidor->escuchar();

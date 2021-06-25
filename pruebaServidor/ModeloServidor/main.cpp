@@ -203,9 +203,6 @@ int main(int argc , char *argv[])
     cout << "valido usuario2: " << parser.validarJugador(u2, p2) << endl;
     cout << "valido usuario3: " << parser.validarJugador(u3, p3) << endl;
 
-    //if ((parser.validarJugador(u1,p1)) && jugador.status != ESPERANDO_PARTIDA) {
-    //    //OK.
-    //}
 
     int i = 0;
     while (true)
@@ -218,11 +215,19 @@ int main(int argc , char *argv[])
         //thread_create(&hilos[i], NULL,   &handle_client,   modeloServidor);
         //modeloServidor->agregarThread();
 
+
+
         tuplas[i].idSocket=i;
         tuplas[i].unModelo=modeloServidor;
         printf(" socket id %d\n", tuplas[i].idSocket);
         printf("id  %d\n", i);
         int er2 = pthread_create(&hilos[i], NULL, &ModeloServidor::hello_helperRecieve, &tuplas[i]);
+
+        //TODO: login
+        //if (login)
+        //  if ((parser.validarJugador(u1,p1)) && jugador.status != ESPERANDO_PARTIDA) {
+        //        //OK.
+        //  }
 
         printf("mas de un cliente");
     }

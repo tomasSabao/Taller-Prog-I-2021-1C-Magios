@@ -11,7 +11,6 @@
 //#include "Thread.h"
 
 
-
 struct Comando
 {
     int action;
@@ -39,7 +38,7 @@ class SocketServidor
     int bindSocket();
     int escuchar();
     int aceptandoConexiones();
-    int  enviarDataGeneralComando(int client_socket, Comando* comando);
+    int enviarDataGeneralComando(int client_socket, Comando* comando);
     int recibirData();
     int cerrar();
     int getClientSocket();
@@ -59,7 +58,7 @@ class SocketServidor
     struct sockaddr_in server_addr;
     int puerto;
     int client_socket;
-   //  std::vector<Comando> colaComandito;
+    //std::vector<Comando> colaComandito;
     Comando* comandoPuntero;
     // Structs for data transfer
 

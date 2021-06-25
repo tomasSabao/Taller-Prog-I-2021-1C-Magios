@@ -126,10 +126,8 @@ Comando *SocketServidor::getClientComand()
 }
 
 
-
 int SocketServidor::enviarDataGeneralComando(int client_socket, Comando* comando)
 {
-
     int total_bytes_written = 0;
     int bytes_written = 0;
     int send_data_size = sizeof(Comando);

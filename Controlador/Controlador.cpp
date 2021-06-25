@@ -35,7 +35,7 @@ int Controlador::descifrarEvento()
                 case SDLK_DOWN: return 9;//agregado para hacer el descenso en escaleras
                 default :   break;
             }
-        }
+    }
     else if(this->e.type==SDL_KEYUP && this->e.key.repeat==0){
             switch(e.key.keysym.sym){
                 case SDLK_RIGHT: return 51;
@@ -46,7 +46,6 @@ int Controlador::descifrarEvento()
                 case SDLK_DOWN: return 91;//agregados para hacer el descenso en escaleras
                 default: break;
             }
-        }
-
+    }
     return 0;
 }
