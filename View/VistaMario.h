@@ -10,7 +10,7 @@ class VistaMario : public Vista_Jugador
         VistaMario(Modelo_Jugador* jugadore);
         bool  loadMedia(SDL_Renderer*  grendered );
         virtual ~VistaMario();
-
+        char* setSpriteSheet(int i);
     protected:
 
     private:
