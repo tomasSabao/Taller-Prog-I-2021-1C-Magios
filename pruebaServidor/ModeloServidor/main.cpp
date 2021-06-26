@@ -182,27 +182,21 @@ int main(int argc , char *argv[])
 
     pthread_t envio;
     pthread_t recivo;
+    pthread_t proceso;
 
     Tupla unaTupla;
 
     int err = pthread_create(&envio, NULL, &ModeloServidor::hello_helperDesencolar, modeloServidor);
+
+    //voy a agregar un tercer thread, uno que se encargue de procesar los mensajes que le llegan al server
+    int err3=pthread_create(&proceso, NULL, &ModeloServidor::funcionThreadDesencolarYProcesar,modeloServidor);
+
 
     pthread_t hilos[MAX_CLIENTS];
     Tupla tuplas[MAX_CLIENTS];
 
 
     //keep communicating with client
-    char* u1 = "alejandro";
-    char* p1 = "123456";
-    char* u2 = "andrea";
-    char* p2 = "986543";
-    char* u3 = "andrea";
-    char* p3 = "986545";
-
-    cout << "valido usuario1: " << parser.validarJugador(u1, p1) << endl;
-    cout << "valido usuario2: " << parser.validarJugador(u2, p2) << endl;
-    cout << "valido usuario3: " << parser.validarJugador(u3, p3) << endl;
-
 
     int i = 0;
     while (true)
@@ -214,7 +208,6 @@ int main(int argc , char *argv[])
 
         //thread_create(&hilos[i], NULL,   &handle_client,   modeloServidor);
         //modeloServidor->agregarThread();
-
 
 
         tuplas[i].idSocket=i;
@@ -235,6 +228,8 @@ int main(int argc , char *argv[])
 
     pthread_join(envio,NULL);
 	pthread_join(hilos[1],NULL);
+    pthread_join(proceso,NULL);
+
     modeloServidor->closeSocket();
     int commands_count = 0;
     int status = 0;

@@ -16,10 +16,10 @@ class Vista
     public:
         Vista(Modelo* modelo);
         virtual ~Vista();
-        bool init(  );
+        bool init();
 
         void render(int event);
-         //Loads media
+        //Loads media
         bool loadMedia();
         void close();
 
@@ -28,32 +28,30 @@ class Vista
             return this->gWindow;
         }
 
-
-        void  escenario1();
-        void  escenario2( );
+        void escenario1(std::string fondo);
+        void escenario2(std::string fondo);
         SDL_Renderer* getRenderer(){
             return this->gRenderer;
         }
 
         Vista_Jugador* getVistaJugador(int num){
-        return this->vista_jugador[num];}
-
+            return this->vista_jugador[num];
+        }
 
     protected:
 
-
     private:
-    bool iniciar_sdl_video();
-    void cerrar_sdl_video();
+        bool iniciar_sdl_video();
+        void cerrar_sdl_video();
 
-    SDL_Window* gWindow=NULL ;
-    SDL_Renderer*  gRenderer =NULL ;
-     const int SCREEN_WIDTH = 640;
-    const int SCREEN_HEIGHT = 480;
-    Vista_Jugador* vista_jugador[1];
-     std::vector<Vista_Jugador*> personajes;
-    //VistaMono* Vistamono;
-    Modelo* modelo;
+        SDL_Window* gWindow=NULL ;
+        SDL_Renderer*  gRenderer =NULL ;
+        const int SCREEN_WIDTH = 640;
+        const int SCREEN_HEIGHT = 480;
+        Vista_Jugador* vista_jugador[1];
+        std::vector<Vista_Jugador*> personajes;
+        //VistaMono* Vistamono;
+        Modelo* modelo;
 };
 
 #endif // VISTA_H

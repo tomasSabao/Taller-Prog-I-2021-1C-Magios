@@ -4,14 +4,14 @@
 
 extern Parser parser;
 
-VistaFondo::VistaFondo(Modelo_Jugador* jugadore): Vista_Jugador( jugadore)
+VistaFondo::VistaFondo(Modelo_Jugador* jugadore): Vista_Jugador(jugadore)
 {
-   std::vector<std::string> fondos = parser.obtenerFondos();
+		//std::vector<std::string> fondos = parser.obtenerFondos();
 
-   this->anchoProporcion=600;
-   this->altoProporcion =360;
-   //this->path="fondo.png";
-   this->path=fondos.at(0);
+		this->anchoProporcion=600;
+		this->altoProporcion =360;
+		//this->path="fondo.png";
+		//this->path=fondos.at(0);
 }
 
 VistaFondo::~VistaFondo()
@@ -19,11 +19,11 @@ VistaFondo::~VistaFondo()
     //dtor
 }
 
-void VistaFondo::setearFondo(std::string path,int alto, int ancho)
+void VistaFondo::setearFondo(std::string path, int alto, int ancho)
 {
  this->path=path;
  this->anchoProporcion=alto;
-   this->altoProporcion =ancho;
+ this->altoProporcion =ancho;
 }
 bool VistaFondo::loadMedia(SDL_Renderer*  grendered )
 {

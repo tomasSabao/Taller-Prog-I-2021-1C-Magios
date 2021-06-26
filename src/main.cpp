@@ -116,15 +116,16 @@ int main( int argc, char* argv[] )
             quit= controlador.descifrarEvento();
             if(quit==32)
             {
-
-            if (enemigos.find("fuego-2") != enemigos.end()) {
-                modelo->escenario2("fueguito", std::stoi(enemigos["fuego-2"]));
-            }
-            else
-            {
-                modelo->escenario2("fueguito-default", std::stoi(enemigos["fuego-default-2"]));
-            }
-            vista->escenario2();
+                if (enemigos.find("fuego-2") != enemigos.end()) {
+                    modelo->escenario2("fueguito", std::stoi(enemigos["fuego-2"]));
+                }
+                else
+                {
+                    modelo->escenario2("fueguito-default", std::stoi(enemigos["fuego-default-2"]));
+                }
+                
+                //vector<string> fondos = parser.obtenerFondos();
+                vista->escenario2(fondos.at(1));
             }
             mario->traducirTecla(quit);
             mario->mover();

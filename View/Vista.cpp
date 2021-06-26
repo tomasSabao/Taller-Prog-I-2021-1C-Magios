@@ -56,46 +56,44 @@ Vista::~Vista()
 }
 
 
-void  Vista::escenario1( )
+void Vista::escenario1(std::string fondo)
 {
-
   printf("entra a vista escenario 1 %s\n", "sdf");
   for (int i = this->personajes.size(); i <this->modelo->getCantJugadores(); i++) {
-  Modelo_Jugador* jugador=  this->modelo->getModeloJugador(i);
+    Modelo_Jugador* jugador=  this->modelo->getModeloJugador(i);
 
-  printf("%s\n",jugador->getNombre().c_str());
-  personajes.push_back(  ( new FactoryVistaPersonaje( jugador ) )->getVistaPersonaje(jugador->getNombre() ));
-  personajes[i]->loadMedia(this->gRenderer);
+    printf("%s\n",jugador->getNombre().c_str());
+    personajes.push_back(  ( new FactoryVistaPersonaje( jugador ) )->getVistaPersonaje(jugador->getNombre() ));
+    personajes[i]->loadMedia(this->gRenderer);
   }
-
+    personajes[0]->setearFondo(fondo,600,350);
 }
 
-void  Vista::escenario2( )
+void Vista::escenario2(std::string fondo)
 {   //posicion 0 es el fondo siempre
-
-   printf("entra a vista escenario 2 %s\n", "sdf");
+  printf("entra a vista escenario 2 %s\n", "sdf");
   for (int i = this->personajes.size(); i <this->modelo->getCantJugadores(); i++) {
-  Modelo_Jugador* jugador=  this->modelo->getModeloJugador(i);
+    Modelo_Jugador* jugador=  this->modelo->getModeloJugador(i);
 
-  printf("%s\n",jugador->getNombre().c_str());
-  personajes.push_back(  ( new FactoryVistaPersonaje( jugador ) )->getVistaPersonaje(jugador->getNombre() ));
-  personajes[i]->loadMedia(this->gRenderer);
+    printf("%s\n",jugador->getNombre().c_str());
+    personajes.push_back(  ( new FactoryVistaPersonaje( jugador ) )->getVistaPersonaje(jugador->getNombre() ));
+    personajes[i]->loadMedia(this->gRenderer);
   }
 
-  vector<string> fondos = parser.obtenerFondos();
-  personajes[0]->setearFondo((fondos.at(1)),600,350);
-   //personajes[0]->setearFondo("fondo2.png",600,350);
+  //vector<string> fondos = parser.obtenerFondos();
+  //personajes[0]->setearFondo((fondos.at(1)),600,350);
+  personajes[0]->setearFondo(fondo,600,350);
+  //personajes[0]->setearFondo("fondo2.png",600,350);
   personajes[0]->loadMedia(this->gRenderer);
-
 }
 
-bool Vista::init(   )
+bool Vista::init()
 {
     printf("Scope: vista::init\n");
     SDL_Window* auxGWindow=NULL;
     SDL_Renderer*  auxGgRenderer=NULL;
     //Initialization flag
-	bool success = true;
+	  bool success = true;
 
 	//Initialize SDL
 	/*printf("vista::init iniciacion de sdl_video");
