@@ -5,13 +5,14 @@
 #include "Mensaje.h"
 #include <string>
 #include <iostream>
+#include <vector>
 class Decodificador
 {
     public:
         Decodificador();
         virtual ~Decodificador();
 
-
+        //no se usa
         void decodificarMensaje(Mensaje* msj);
 
         void decodificarMensajeDos(void* msj);
@@ -28,10 +29,23 @@ class Decodificador
 
         int obtenerLongitudContrasenia(void* msj);
 
-        int obtenerTecla(void* tecla);
+        //de aca en adelante, funciones a ser usadas para los mensajes de tipo tecla
+        int obtenerTecla(void* msj);
+        char obtenerIdJugador(void* msj);
+        //fin de las funciones de tecla
 
+        std::string obtenerPathDeFondo(void* msj);
 
+        std::vector<int> obtenerPosicionesXPlataformas(void* msj);
+        std::vector<int> obtenerPosicionesYPlataformas(void* msj);
 
+        std::vector<int> obtenerPosicionesXBarriles(void* msj);
+        std::vector<int> obtenerPosicionesYBarriles(void* msj);
+        std::vector<int> obtenerFramesBarriles(void* msj);
+
+        std::vector<int> obtenerPosicionesXFueguitos(void* msj);
+        std::vector<int> obtenerPosicionesYFueguitos(void* msj);
+        std::vector<int> obtenerFramesFueguitos(void* msj);
     protected:
 
     private:

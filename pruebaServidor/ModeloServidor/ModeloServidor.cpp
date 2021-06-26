@@ -404,9 +404,16 @@ int ModeloServidor::desencolarYProcesarMensaje(){
 
 
 int ModeloServidor::procesarMensaje(Mensaje* msj){
+  printf("PRUEBA DEL DECODIFICADOR OBTENER USUARIO\n");
+  int tipo_msj=this->decodificador.obtenerTipo(msj->getMensaje());
+  if(tipo_msj == 1){
+    std::string usuario=this->decodificador.obtenerUsuario(msj->getMensaje());
+    std::cout << "valor de usuario: "<<usuario<<std::endl;
+    std::string contrasenia=this->decodificador.obtenerContrasenia(msj->getMensaje());
+    std::cout<< "valor de contrasenia: "<<contrasenia<<std::endl;
+  }
 
   //lo que voy a hacer aca por ahora es codificar una respuesta de login postivia, mandandole un id
-
   int success= this->codificador.codificarMensajeSalaVaciaAceptacion(&this->buffer_rta_login, '1', MAX_CLIENTS);
   //int success= this->codificador.codificarMensajeSalaLlenaRechazo(msj);
   printf("Valor del mensaje una vez codificado: %d\n",*(unsigned char*)msj->getMensaje());

@@ -43,7 +43,7 @@ int main(int argc , char *argv[])
     int commands_count = 0;
     int status = 0;
     modeloServidor->initializeData(&client_view);
-
+    
 
     //keep communicating with client
 

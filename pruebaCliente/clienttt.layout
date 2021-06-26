@@ -7,14 +7,14 @@
 			<Cursor1 position="1816" topLine="67" />
 		</Cursor>
 	</File>
-	<File name="mensaje/Codificador.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1373" topLine="38" />
-		</Cursor>
-	</File>
-	<File name="ModeloCliente/ModeloCliente.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+	<File name="ModeloCliente/ModeloCliente.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="5396" topLine="230" />
+		</Cursor>
+	</File>
+	<File name="mensaje/Codificador.cpp" open="1" top="1" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="11677" topLine="434" />
 		</Cursor>
 	</File>
 	<File name="main.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
@@ -22,9 +22,9 @@
 			<Cursor1 position="2532" topLine="72" />
 		</Cursor>
 	</File>
-	<File name="ModeloCliente/ModeloCliente.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+	<File name="mensaje/Mensaje.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1977" topLine="51" />
+			<Cursor1 position="0" topLine="14" />
 		</Cursor>
 	</File>
 	<File name="SocketCliente/SocketCliente.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
@@ -32,9 +32,14 @@
 			<Cursor1 position="195" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="mensaje/Mensaje.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="mensaje/Codificador.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="0" topLine="14" />
+			<Cursor1 position="173" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="ModeloCliente/ModeloCliente.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1977" topLine="51" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

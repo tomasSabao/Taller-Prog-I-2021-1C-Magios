@@ -355,3 +355,221 @@ char Codificador::mapearNumeroDeFrame(int numero_frame){
 	char valor=numero_frame;
 	return valor;
 }
+
+
+int Codificador::codificarMensajeInicioJuego(Mensaje* msj){
+	//el mensaje es de un solo byte entonces necesito ese espacio
+	int tipo_mensaje=10;
+	int success=0;
+	if(msj->getTamanio()!=1){
+		success=msj->redimensionarMemoria(1);
+	}
+	if(success==-1){
+		printf("Fallo la redimension de la memoria\n");
+		return success;
+	}
+	//tengo el espacio suficiente para guardar la memoria
+	char mensaje=tipo_mensaje;
+	//necesito hacer el shifteo
+	mensaje=mensaje<<4;
+	//nada mas, con esto basta
+	memcpy(msj->getMensaje(),&mensaje,1);
+	return success;
+}
+
+int Codificador::codificarMensajeDesconexionDeUnJugador(Mensaje* msj,char id_jugador){
+	int tipo_mensaje=12;
+	int success=0;
+	if(msj->getTamanio()!=1){
+		success=msj->redimensionarMemoria(1);
+	}
+	if(success==-1){
+		printf("Fallo la redimension de la memoria\n");
+		return success;
+	}
+	//tengo el espacio para guardar la memoria
+	char mensaje=tipo_mensaje;
+	mensaje=mensaje<<4;
+	mensaje=mensaje | id_jugador;
+
+	memcpy(msj->getMensaje(),&mensaje,1);
+	return success;
+}
+
+int Codificador::codificarMensajeReconexionDeUnJugador(Mensaje* msj,char id_jugador){
+	int tipo_mensaje=13;
+	int success=0;
+	if(msj->getTamanio()!=1){
+		success=msj->redimensionarMemoria(1);
+	}
+	if(success == -1){
+		printf("Fallo la redimension de la memoria\n");
+		return success;
+	}
+	char mensaje=tipo_mensaje;
+	mensaje=mensaje<<4;
+	mensaje=mensaje | id_jugador;
+
+	memcpy(msj->getMensaje(),&mensaje,1);
+	return success;
+}
+
+int Codificador::codificarMensajeAvanceDeNivel(Mensaje* msj, int numero_fueguitos){
+	//necesito 2 bytes de espacio
+	int success=0;
+	if(msj->getTamanio() !=2){
+		success=msj->redimensionarMemoria(2);
+	}
+	//en teoria tengo todo el espacio para mandar el mensaje
+	int tipo_mensaje=6;
+	char tipo_msj=tipo_mensaje;
+	tipo_msj=tipo_msj<<4;
+
+	char fuegos=numero_fueguitos;
+	//entonces lo que falta es copiar
+	void* puntero=msj->getMensaje();
+	//copiamos el tipo
+	memcpy(puntero,&tipo_msj,1);
+	//movemos el puntero
+	puntero=(void*)( (char*)puntero +1);
+	memcpy(puntero,&fuegos,1);
+	return success;
+}
+//esta hardcodeado en 4 barriles, eso es lo que se va a codificar
+//vamos con 17 bytes en lugar 
+int Codificador::codificarMensajeActualizacionPosicionesBarriles(Mensaje* msj, std::vector<int>posiciones_x, std::vector<int>posiciones_y,std::vector<int>frames){
+	int tipo_mensaje=8;
+	int success=0;
+	if(msj->getTamanio() != 17){
+		success=msj->redimensionarMemoria(17);
+	}
+	if(success!=0){
+		printf("Fallo la redimension\n");
+		return success;
+	}
+	//tengo el espacio para escribir el mensaje
+	//necesito un buffer
+	void* puntero=msj->getMensaje();
+	//necesito primero codificar el tipo del mensaje
+	char tipo_msj=tipo_mensaje;
+	tipo_msj=tipo_msj<<4;
+	//escribo el tipo
+	memcpy(puntero,&tipo_msj,1);
+	//muevo el puntero una posicion a la derecha
+	puntero=(void*) ((char*)puntero +1);
+	//ahora tengo que recorrer la totalidad de los vectores
+	for(int i=0;i<4;i++){
+		int posX=posiciones_x[i];
+		int posY=posiciones_y[i];
+		int frame=frames[i];
+		int buffer=0;
+		posX=posX<<22;
+		posY=posY<<12;
+		//ahora queda armar esta parte del mensaje
+		buffer=frame;
+		buffer=buffer | posY;
+		buffer=buffer | posX;
+		//ahora faltaria copiarlo
+		memcpy(puntero,&buffer,4);
+		puntero=(void*)(((char*)puntero)+4);
+	}
+	return 0;
+}
+
+
+//las plataformas son 12 siempre
+int Codificador::codificarMensajeActualizacionPosicionesPlataformas(Mensaje* msj, std::vector<int>posiciones_x, std::vector<int>posiciones_y){
+	char tipo_msj=7;
+	int success=0;
+	//en teoria va a ocupar 49 bytes
+	if(msj->getTamanio() != 49){
+		success=msj->redimensionarMemoria(49);
+	}
+	if(success!=0){
+		return -1;
+	}
+	void* puntero=msj->getMensaje();
+	tipo_msj=tipo_msj<<4;
+	memcpy(puntero,&tipo_msj,1);
+	//ahora tengo que recorrer el vector de posiciones y codearlas 
+	//primero muevo el puntero 
+	puntero=((char*)puntero + 1);
+	int buffer;
+	int posx;
+	int posy;
+	for (int i=0;i<12;i++){
+		//tengo la posicion en x
+		posx=posiciones_x[i];
+		posx=posx<<10;
+		posy=posiciones_y[i];
+		buffer=posx | posy;
+		memcpy(puntero, &buffer, 4);
+		puntero=(void*)( (int* puntero) + 1);
+	}
+	return 0;
+}
+
+
+int Codificador::codificarMensajePathFondo(Mensaje* msj,std::string path_fondo){
+	int success=0;
+	int longitud=path_fondo.length()+2;
+	//necesito el numero de bytes para poder codificar el mensae
+	if(msj->getTamanio() != longitud){
+		success=msj->redimensionarMemoria(longitud);
+	}
+	if(success!=0){
+		printf("Fallo la redimension\n");
+		return -1;
+	}
+	//tengo el espacio, codifico el mensaje
+	void* puntero=msj->getMensaje();
+	char tipo_msj=14;
+	tipo_msj=tipo_msj<<4;
+	memcpy(puntero, &tipo_msj,1);
+	puntero=((char*)puntero + 1);
+	memcpy(puntero,&longitud,4);
+	puntero=((char*)puntero +1);
+	for(int i=0;i<longitud;i++){
+		char letra=path_fondo[i];
+		memcpy(puntero,&letra,1);
+		puntero=( (char*)puntero + 1);
+	}
+	//en teoria tengo todo aca
+	return 0;
+
+}
+
+
+
+int Codificador::codificarMensajeActualizacionPosicionesFueguitos(Mensaje* msj, std::vector<int>posiciones_x, std::vector<int>posiciones_y,std::vector<int> frames){
+	//frames=2 bits, posiciones son de 10 bits cada una 
+	//el numero de fueguitos va a estar dado por el tamanio del vector 
+	int success=0;
+	int numero_fuegos=posiciones_x.size();
+	//la formula de tamanio es entonces 1 byte para el tipo,1 byte para el numero de fuegos
+	//4 bytes para los datos por fueguito
+	//total: 2 + 4 x #numero de fuegos
+	int numero_bytes=2+4*numero_fuegos;
+	if(msj->getTamanio() != numero_bytes){
+		success=msj->redimensionarMemoria(numero_bytes);
+	}
+	if(success!=0){
+		return -1;
+	}
+	char tipo_msj= 11;
+	void* puntero=msj->getMensaje();
+	int buffer;
+	for(int i=0; i <numero_fuegos; i++){
+		int posX=posiciones_x[i];
+		posX=posX<<22;
+		int posY=posiciones_y[i];
+		posY=posY<<12;
+		int frame=frames[i];
+		buffer= posX | posY | frame;
+		//se copia 
+		memcpy(puntero,&buffer,4);
+		//se mueve
+		puntero=(void*) ( (char*)puntero + 4);
+	}
+	return 0;
+}
