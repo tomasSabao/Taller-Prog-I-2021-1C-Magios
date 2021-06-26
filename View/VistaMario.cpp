@@ -14,6 +14,11 @@ VistaMario::~VistaMario()
 {
     //dtor
 }
+char* VistaMario::setSpriteSheet(int i){
+
+char*colores[5] ={"mario_sprite_rojo.png","mario_sprite_celeste.png","mario_sprite_amarillo.png","mario_sprite_verde.png","mario_sprite_gris.png"};
+    return colores[i];
+}
 
  bool VistaMario::loadMedia(SDL_Renderer*  grendered )
 {
@@ -26,7 +31,7 @@ printf("scope: Vista_jugador::load_media\n");
 
     //LTexture  newTexture ;
 	//Load sprite sheet texture
-	if( !gSpriteSheetTextureJugador->loadFromFile( "mario_sprites.png", grendered) )
+	if( !gSpriteSheetTextureJugador->loadFromFile( this->setSpriteSheet(4), grendered) )
 	{
 		printf( "Failed to load walking animation texture!\n" );
 		success = false;
