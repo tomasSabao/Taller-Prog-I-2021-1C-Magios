@@ -177,34 +177,31 @@ char Decodificador::obtenerIdJugador(void* msj){
 	return id_jugador;
 }
 
-//el tipo del mensaje tiene que estar verificado es 7
-std::vector<int> Decodificador::obtenerPosicionesXPlataformas(void* msj){
-	//se tienen siempre
-	std::vector<int> posiciones;
+
+//i entre 1 y 12
+int Decodificador::obtenerPosicionXPlataforma(void*msj, int i){
 	void* puntero=msj;
-	puntero=(void*)((char*)puntero + 1);
-	//TODO
-	for(int i = 0; i<12;i++){
-		int posX=*(int*)puntero;
-		posX=posX>>10;
-		posiciones.push_back(posX);
-		puntero=(void*)((int*)puntero + 1);
+	puntero=(void*) ( (char*)puntero +1);
+	for(int n =0;n<i;n++){
+		puntero=(void*) ((char*)puntero +4);
 	}
-	return posiciones;
+	int posX= *(int*)puntero;
+	posX=posX>>10;
+	printf("Valor x devuelto: %d\n",posX);
+	return posX;
 }
 
-std::vector<int> Decodificador::obtenerPosicionesYPlataformas(void* msj){
-	std::vector<int> posiciones;
+int Decodificador::obtenerPosicionYPlataforma(void* msj, int i){
 	void* puntero=msj;
 	puntero=(void*)( (char*)puntero +1);
-	for(int i=0;i<12;i++){
-		int posY=*(int*)puntero;
-		posY=posY<<10;
-		posY=posY>>10;
-		posiciones.push_back(posY);
-		puntero=(void*)( (int*)puntero + 1);
+	for(int n=0;n<i;n++){
+		puntero=(void*)( (char*)puntero+4);
 	}
-	return posiciones;
+	int posY=*(int*)puntero;
+	posY=posY<<22;
+	posY=posY>>22;
+	printf("Valor y devuelto %d\n",posY);
+	return posY;
 }
 
 
@@ -230,9 +227,10 @@ std::vector<int> Decodificador::obtenerPosicionesXBarriles(void* msj){
 	//salteo el primer byte, es el del tipo
 	puntero=(void*)( (char*)puntero + 1);
 	//se sabe que hay 12 plataformas, eso esta hardcodeado
-	for(int i=0;i<12;i++){
+	for(int i=0;i<4;i++){
 		int buffer=*(int*)puntero;
-		buffer=buffer>>10;
+		buffer=buffer>>12;
+		printf("Valor x de barril: %d\n",buffer);
 		posiciones.push_back(buffer);
 		puntero=(void*)((char*)puntero + 4);
 	}
@@ -246,10 +244,12 @@ std::vector<int> Decodificador::obtenerPosicionesYBarriles(void* msj){
 	//salteo el primer byte que tiene solo el tipo
 	puntero=(void*) ( (char*)puntero +1 );
 	//se sabe que hay 12 plataformas, entonces
-	for(int i=0;i<12;i++){
+	for(int i=0;i<4;i++){
 		int posY=*((int*)puntero);
+		posY=posY>>2;
 		posY=posY<<22;
 		posY=posY>>22;
+		printf("Valor y de los barriles: %d\n",posY);
 		posiciones.push_back(posY);
 		puntero=(void*) ( (char*)puntero + 4);
 	}
@@ -267,13 +267,14 @@ std::vector<int> Decodificador::obtenerPosicionesXFueguitos(void* msj){
 		int buffer=*(int*)puntero;
 		buffer=buffer>>12;
 		//y ahora lo coloco en el vector
+		printf("Valor de la posicion x: %d\n",buffer);
 		posiciones.push_back(buffer);
 		//muevo el puntero
 		puntero=(void*) ((char*)puntero + 4);
 	}
 	return posiciones;
 }
-
+//funciona
 std::vector<int> Decodificador::obtenerPosicionesYFueguitos(void* msj){
 	std::vector<int> posiciones;
 	void* puntero=msj;
@@ -293,7 +294,7 @@ std::vector<int> Decodificador::obtenerPosicionesYFueguitos(void* msj){
 	}
 	return posiciones;
 }
-
+//funciona
 std::vector<int> Decodificador::obtenerFramesFueguitos(void* msj){
 	std::vector<int> posiciones;
 	void* puntero=msj;
@@ -326,6 +327,7 @@ std::vector<int> Decodificador::obtenerFramesBarriles(void* msj){
 		int buffer=*(int*)puntero;
 		buffer=buffer<<30;
 		buffer=buffer>>30;
+		printf("Valor del frame: %d\n",buffer);
 		frames.push_back(buffer);
 		puntero=(void*)( (char*)puntero + 4);
 	}

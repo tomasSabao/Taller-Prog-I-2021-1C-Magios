@@ -37,6 +37,8 @@ class Decodificador
         std::string obtenerPathDeFondo(void* msj);//funciona
 
         std::vector<int> obtenerPosicionesXPlataformas(void* msj);
+        int obtenerPosicionXPlataforma(void*msj, int i);
+        int obtenerPosicionYPlataforma(void*msj, int i);
         std::vector<int> obtenerPosicionesYPlataformas(void* msj);
 
         std::vector<int> obtenerPosicionesXBarriles(void* msj);

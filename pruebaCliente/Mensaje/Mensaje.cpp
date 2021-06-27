@@ -40,6 +40,7 @@ void Mensaje::liberarMemoria(){
 int Mensaje::redimensionarMemoria(int numero_elementos){
 	void* puntero_aux=realloc(this->msj,numero_elementos);
 	if(puntero_aux==NULL){
+		printf("Fallo la redimension de la memoria \n");
 		return -1;
 	}
 	this->tamanio=numero_elementos;

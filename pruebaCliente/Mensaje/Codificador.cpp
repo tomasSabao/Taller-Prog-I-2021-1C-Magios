@@ -463,12 +463,10 @@ int Codificador::codificarMensajeActualizacionPosicionesBarriles(Mensaje* msj, s
 		int posY=posiciones_y[i];
 		int frame=frames[i];
 		int buffer=0;
-		posX=posX<<22;
-		posY=posY<<12;
+		posX=posX<<12;
+		posY=posY<<2;
 		//ahora queda armar esta parte del mensaje
-		buffer=frame;
-		buffer=buffer | posY;
-		buffer=buffer | posX;
+		buffer=frame | posX | posY;
 		//ahora faltaria copiarlo
 		memcpy(puntero,&buffer,4);
 		puntero=(void*)(((char*)puntero)+4);
@@ -479,32 +477,39 @@ int Codificador::codificarMensajeActualizacionPosicionesBarriles(Mensaje* msj, s
 
 //las plataformas son 12 siempre
 int Codificador::codificarMensajeActualizacionPosicionesPlataformas(Mensaje* msj, std::vector<int>posiciones_x, std::vector<int>posiciones_y){
-	char tipo_msj=7;
+	int tipo_mensaje=7;
 	int success=0;
-	//en teoria va a ocupar 49 bytes
-	if(msj->getTamanio() != 49){
-		success=msj->redimensionarMemoria(49);
+	int tamanio=2 + 12*4;
+	if(msj->getTamanio() != tamanio){
+		success=msj->redimensionarMemoria(tamanio);
 	}
 	if(success!=0){
-		return -1;
+		printf("Fallo la redimension\n");
+		return success;
 	}
+	//tengo el espacio para escribir el mensaje
+	//necesito un buffer
 	void* puntero=msj->getMensaje();
+	//necesito primero codificar el tipo del mensaje
+	char tipo_msj=tipo_mensaje;
 	tipo_msj=tipo_msj<<4;
+	//escribo el tipo
 	memcpy(puntero,&tipo_msj,1);
-	//ahora tengo que recorrer el vector de posiciones y codearlas
-	//primero muevo el puntero
-	puntero=((char*)puntero + 1);
-	int buffer;
-	int posx;
-	int posy;
-	for (int i=0;i<12;i++){
-		//tengo la posicion en x
-		posx=posiciones_x[i];
-		posx=posx<<10;
-		posy=posiciones_y[i];
-		buffer=posx | posy;
-		memcpy(puntero, &buffer, 4);
-		puntero=(void*)( ((int*) puntero) + 1);
+	//muevo el puntero una posicion a la derecha
+	puntero=(void*) ((char*)puntero +1);
+	//ahora tengo que recorrer la totalidad de los vectores
+	for(int i=0;i<12;i++){
+		int posX=posiciones_x[i];
+		int posY=posiciones_y[i];
+		//int frame=frames[i];
+		int buffer=0;
+		posX=posX<<10;
+		//posY=posY<<2;
+		//ahora queda armar esta parte del mensaje
+		buffer= posX | posY;
+		//ahora faltaria copiarlo
+		memcpy(puntero,&buffer,4);
+		puntero=(void*)(((char*)puntero)+4);
 	}
 	return 0;
 }
