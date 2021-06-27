@@ -1,5 +1,12 @@
 #include "Decodificador.h"
 
+#define TIPO_TECLA 0
+#define TIPO_LOGIN 1
+#define TIPO_ACEPTACION 2
+#define TIPO_SALA_LLENA 3
+#define TIPO_ERROR_LOGIN 4
+#define TIPO_ACTUALIZAR 5
+
 Decodificador::Decodificador()
 {
     //ctor
@@ -9,10 +16,6 @@ Decodificador::~Decodificador()
 {
     //dtor
 }
-
-
-
-
 
 //faltaria una funcion que decodifique el significado de cada valor asignado a tecla apretada, a su correspondiente
 //int

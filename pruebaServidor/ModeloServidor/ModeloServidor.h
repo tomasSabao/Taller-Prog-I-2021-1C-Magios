@@ -6,6 +6,7 @@
 #include "../Mensaje/Decodificador.h"
 #include "../Mensaje/Mensaje.h"
 #include "../ModeloServidor/Conexion.h"
+#include "../../Modelo/Modelo.h"
 #include <vector>
 using namespace std;
 #include <pthread.h>
@@ -18,7 +19,7 @@ using namespace std;
 class ModeloServidor
 {
     public:
-        ModeloServidor(int port=5050);
+        ModeloServidor(Modelo* modeloJuego, int port=5050);
         virtual ~ModeloServidor();
         void initializeData();
         void processData(Comando comando);
@@ -69,6 +70,7 @@ class ModeloServidor
         std::vector<Conexion> colaConexiones;
         Mensaje buffer_login;
         Mensaje buffer_rta_login;
+        Modelo* modelo_juego;
 
     protected:
         std::vector<Comando> colaComando;

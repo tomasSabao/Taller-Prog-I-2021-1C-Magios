@@ -277,21 +277,24 @@
 	<stdio.h>
 	"../ModeloServidor/ModeloServidor.h"
 
-1624589194 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/ModeloServidor.h
+1624836419 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/ModeloServidor.h
 	"../SocketServidor/SocketServidor.h"
 	"../ModeloServidor/Conexion.h"
 	"../Mensaje/Codificador.h"
 	"../Mensaje/Decodificador.h"
 	"../Mensaje/Mensaje.h"
 	"../ModeloServidor/Conexion.h"
+	"../../Modelo/Modelo.h"
 	<vector>
 	<pthread.h>
 	<stdio.h>
 	"Thread.h"
 
-1624589480 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/ModeloServidor.cpp
+1624836446 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/ModeloServidor.cpp
 	"ModeloServidor.h"
 	"Thread.h"
+	"../../lib/Parser.h"
+	"../../Modelo/Modelo.h"
 
 1624496846 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/lib/jsoncpp.cpp
 	"json/json.h"
@@ -576,7 +579,7 @@
 1624557424 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/VistaBarril.h
 	"Vista_Jugador.h"
 
-1624496846 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/VistaFondo.cpp
+1624678905 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/VistaFondo.cpp
 	"VistaFondo.h"
 	"../lib/Parser.h"
 	<string>
@@ -611,7 +614,7 @@
 1624557502 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/Vista_Plataforma.h
 	"Vista_Jugador.h"
 
-1624496846 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/Vista.cpp
+1624679187 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/Vista.cpp
 	"Vista.h"
 	"../View/VistaMono.h"
 	"../View/VistaFondo.h"
@@ -624,7 +627,7 @@
 	"../lib/Parser.h"
 	"../View/FactoryVistaPersonaje.h"
 
-1624496846 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/Vista.h
+1624679181 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/Vista.h
 	<stdio.h>
 	<string>
 	<SDL2/SDL.h>
@@ -634,13 +637,13 @@
 	"../Modelo/Modelo.h"
 	<vector>
 
-1624557507 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/VistaMario.h
+1624679262 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/VistaMario.h
 	"Vista_Jugador.h"
 
 1624496846 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/FactoryVistaPersonaje.h
 	"../View/Vista.h"
 
-1624496846 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/VistaMario.cpp
+1624679262 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/VistaMario.cpp
 	"VistaMario.h"
 	"../lib/Logger.h"
 
@@ -673,7 +676,7 @@
 	"../Modelo/FactoryPersonaje.h"
 	"../Modelo/Modelo_Plataforma.h"
 
-1624585983 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/main.cpp
+1624836866 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/main.cpp
 	<stdio.h>
 	<iostream>
 	<stdlib.h>
@@ -693,30 +696,33 @@
 	<vector>
 	<pthread.h>
 
-1624588503 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/Mensaje/Mensaje.h
+1624831777 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/Mensaje/Mensaje.h
 	<string.h>
 	<stdlib.h>
+	<stdio.h>
 
-1624588445 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/Mensaje/Codificador.h
+1624820275 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/Mensaje/Codificador.h
 	"Mensaje.h"
 	<stdio.h>
 	<string>
 	<cmath>
 	<map>
 	<iostream>
+	<vector>
 
-1624588476 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/Mensaje/Decodificador.h
+1624833426 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/Mensaje/Decodificador.h
 	<stdio.h>
 	"Mensaje.h"
 	<string>
 	<iostream>
+	<vector>
 
-1624588426 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/Mensaje/Codificador.cpp
+1624831777 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/Mensaje/Codificador.cpp
 	"Codificador.h"
 
-1624588461 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/Mensaje/Decodificador.cpp
+1624833426 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/Mensaje/Decodificador.cpp
 	"Decodificador.h"
 
-1624588489 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/Mensaje/Mensaje.cpp
+1624831777 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/Mensaje/Mensaje.cpp
 	"Mensaje.h"
 

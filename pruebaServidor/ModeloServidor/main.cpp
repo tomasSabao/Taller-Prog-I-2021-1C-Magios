@@ -157,9 +157,11 @@ int main(int argc , char *argv[])
     logger.setNivelLog(nivel_log);
     logger.log("info","Inicio del juego.");
 
-
     //inicializo el modelo.
     Modelo* modelo=new Modelo();
+
+    cout << "Modelo creado" << endl;
+
 
     std::map<std::string, std::string> enemigos = parser.obtenerEnemigos();
     std::vector<std::string> fondos = parser.obtenerFondos();
@@ -175,7 +177,7 @@ int main(int argc , char *argv[])
     int server_socket;
     int client_socket;
 
-    ModeloServidor *modeloServidor = new ModeloServidor(port);
+    ModeloServidor *modeloServidor = new ModeloServidor(modelo, port);
     modeloServidor->CrearSocket(port);
     modeloServidor->bindSocket();
     modeloServidor->escuchar();
@@ -189,12 +191,11 @@ int main(int argc , char *argv[])
     int err = pthread_create(&envio, NULL, &ModeloServidor::hello_helperDesencolar, modeloServidor);
 
     //voy a agregar un tercer thread, uno que se encargue de procesar los mensajes que le llegan al server
-    int err3=pthread_create(&proceso, NULL, &ModeloServidor::funcionThreadDesencolarYProcesar,modeloServidor);
+    int err3=pthread_create(&proceso, NULL, &ModeloServidor::funcionThreadDesencolarYProcesar, modeloServidor);
 
 
     pthread_t hilos[MAX_CLIENTS];
     Tupla tuplas[MAX_CLIENTS];
-
 
     //keep communicating with client
 

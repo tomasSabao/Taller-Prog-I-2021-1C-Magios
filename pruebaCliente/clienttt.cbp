@@ -18,6 +18,9 @@
 				</Compiler>
 				<Linker>
 					<Add option="-lpthread" />
+					<Add option="-lSDL2 -lSDL2_image" />
+					<Add option="-lSDL2_ttf" />
+					<Add option="-ljsoncpp" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -30,12 +33,22 @@
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
+					<Add option="-lpthread" />
+					<Add option="-lSDL2 -lSDL2_image" />
+					<Add option="-lSDL2_ttf" />
+					<Add option="-ljsoncpp" />
 				</Linker>
 			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Linker>
+			<Add option="-lpthread" />
+			<Add option="-lSDL2 -lSDL2_image" />
+			<Add option="-lSDL2_ttf" />
+			<Add option="-ljsoncpp" />
+		</Linker>
 		<Unit filename="../Controlador/Controlador.cpp" />
 		<Unit filename="../Convenciones.md" />
 		<Unit filename="../Modelo/Barril.cpp" />
@@ -116,6 +129,14 @@
 		<Unit filename="../include/Controlador.h" />
 		<Unit filename="../include/FactoryPersonajes.h" />
 		<Unit filename="../include/ModeloPlataformaDerecha.h" />
+		<Unit filename="../lib/Logger.cpp" />
+		<Unit filename="../lib/Logger.h" />
+		<Unit filename="../lib/Parser.cpp" />
+		<Unit filename="../lib/Parser.h" />
+		<Unit filename="../lib/json/json-forwards.h" />
+		<Unit filename="../lib/json/json.h" />
+		<Unit filename="../lib/jsoncpp.cpp" />
+		<Unit filename="../log/test.txt" />
 		<Unit filename="../mario_sprites.png" />
 		<Unit filename="../mario_sprites2.png" />
 		<Unit filename="../mono.png" />
@@ -132,6 +153,8 @@
 		<Unit filename="ModeloCliente/ModeloCliente.h" />
 		<Unit filename="SocketCliente/SocketCliente.cpp" />
 		<Unit filename="SocketCliente/SocketCliente.h" />
+		<Unit filename="default.json" />
+		<Unit filename="example.json" />
 		<Unit filename="main.cpp" />
 		<Extensions />
 	</Project>

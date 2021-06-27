@@ -369,7 +369,7 @@
 	"Vista_Jugador.h"
 	"../Modelo/Modelo_Jugador.h"
 
-1624557507 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/VistaMario.h
+1624679262 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/VistaMario.h
 	"Vista_Jugador.h"
 
 1624555848 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/VistaFueguito.h
@@ -393,7 +393,7 @@
 1624557404 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/VistaFondoDos.h
 	"Vista_Jugador.h"
 
-1624496846 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/Vista.cpp
+1624679187 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/Vista.cpp
 	"Vista.h"
 	"../View/VistaMono.h"
 	"../View/VistaFondo.h"

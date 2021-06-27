@@ -1,8 +1,20 @@
 #include "ModeloServidor.h"
 #include "Thread.h"
+#include "../../lib/Parser.h"
+#include "../../Modelo/Modelo.h"
 
 
-ModeloServidor::ModeloServidor(int port)
+#define TIPO_TECLA 0
+#define TIPO_LOGIN 1
+#define TIPO_ACEPTACION 2
+#define TIPO_SALA_LLENA 3
+#define TIPO_ERROR_LOGIN 4
+#define TIPO_ACTUALIZAR 5
+
+extern Parser parser;
+
+
+ModeloServidor::ModeloServidor(Modelo* modeloJuego, int port)
 {
     Modelito m;
     this->modelo = m;
@@ -17,7 +29,10 @@ ModeloServidor::ModeloServidor(int port)
     //this->colaComando=NULL;
     this->buffer_rta_login.asignarMemoria(1,1);
     this->buffer_login.asignarMemoria(34,1);
+    this->modelo_juego = modeloJuego;
+
 }
+
 
 int ModeloServidor::getNumeroThread()
 {
@@ -185,6 +200,22 @@ int ModeloServidor::procesarMensaje(Mensaje* msj)
     Mensaje* msj_aux=new Mensaje();
     msj_aux->asignarMemoria(1,1);
     memcpy(msj_aux->getMensaje(),this->buffer_rta_login.getMensaje(),1);
+    if (this->decodificador.obtenerTipo(msj) == TIPO_LOGIN) {
+      std::string username = this->decodificador.obtenerUsuario(msj);
+      std::string password = this->decodificador.obtenerContrasenia(msj);
+      //TODO: ver si ya esta conectado ese jugador.
+      if (parser.validarJugador(username,password)) {
+        //ver si ese jugador ya esta conectado.
+        int id = 5;
+        this->modelo_juego->agregarJugador(username, id);
+      }
+    } else if (this->decodificador.obtenerTipo(msj) == TIPO_TECLA) {
+      int id = this->decodificador.obtenerIdJugador(msj);
+      int tecla = this->decodificador.obtenerTecla(msj);
+    }
+
+    //this->decodificador.decodificarMensajeDos(this->buffer_rta_login.getMensaje());
+
     printf("Valor de copia: %d\n",*(unsigned char*)msj->getMensaje());
     this->encolarMensajeAEnviar(msj_aux);
     //this->decodificador.decodificarMensajeDos(this->buffer_rta_login.getMensaje());

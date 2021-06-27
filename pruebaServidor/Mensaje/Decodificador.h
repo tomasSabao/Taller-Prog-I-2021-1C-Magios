@@ -6,6 +6,8 @@
 #include <string>
 #include <iostream>
 #include <vector>
+
+
 class Decodificador
 {
     public:
