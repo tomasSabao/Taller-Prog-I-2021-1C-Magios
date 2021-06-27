@@ -474,7 +474,7 @@
 1624554633 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/Barril.h
 	"Modelo_Jugador.h"
 
-1624555480 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/FactoryPersonaje.cpp
+1624837038 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/FactoryPersonaje.cpp
 	"FactoryPersonaje.h"
 	"../Modelo/Mario.h"
 	"../Modelo/Mono.h"
@@ -667,7 +667,7 @@
 1624496846 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/VistaPlataformaDerecha.cpp
 	"VistaPlataformaDerecha.h"
 
-1624566706 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo.cpp
+1624837024 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo.cpp
 	<random>
 	<iostream>
 	<math.h>
@@ -676,7 +676,7 @@
 	"../Modelo/FactoryPersonaje.h"
 	"../Modelo/Modelo_Plataforma.h"
 
-1624836866 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/main.cpp
+1624837003 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/main.cpp
 	<stdio.h>
 	<iostream>
 	<stdlib.h>
