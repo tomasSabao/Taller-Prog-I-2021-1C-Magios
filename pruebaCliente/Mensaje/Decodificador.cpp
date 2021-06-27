@@ -69,7 +69,7 @@ void Decodificador::decodificarMensajeDos(void* msj){
 	}
 	if(tipo_msj==5){
 		printf("Se decodifico tipo de mensaje de actualizacion de posiciones\n");
-		//saco las cosas 
+		//saco las cosas
 		char numero_jugadores=contenedor<<4;
 		numero_jugadores=numero_jugadores>>4;
 		printf("Actualizacion. Numero de jugadores: %d\n",numero_jugadores);
@@ -102,7 +102,7 @@ void Decodificador::decodificarMensajeDos(void* msj){
 			//TODO: FUNCIONES QUE LE PASEN ESTOS VALORES AL CLIENTE
 			return;
 		}
-		
+
 	}
 }
 
@@ -118,4 +118,216 @@ char Decodificador::mapearIdJugador(int id_jugador){
 		return '3';
 	}
 	return '4';
+}
+
+
+int Decodificador::obtenerTipo(void* msj){
+	unsigned char tipo_msj=* (char*)msj;
+	tipo_msj=tipo_msj>>4;
+	return tipo_msj;
+}
+
+
+
+//asumiendo que el tipo de msj es login
+std::string Decodificador::obtenerUsuario(void* msj){
+	void* puntero=msj;
+	//el usuario va a estar dos char a derecha
+	unsigned char longitud_usuario=*(char*)msj;
+	longitud_usuario=longitud_usuario<<4;
+	longitud_usuario=longitud_usuario>>4;
+	puntero=(void*)((char*)puntero +2 );
+	//unsigned char longitud_contrasenia=*(char* puntero);
+	std::string usuario="";
+	for(int i=0; i<longitud_usuario;i++){
+		char letra=*((char*)puntero +i);
+		usuario+=letra;
+	}
+	return usuario;
+}
+//se asume obviamente que el mensaje es del tipo login
+std::string Decodificador::obtenerContrasenia(void* msj){
+	void* puntero=msj;
+	unsigned char longitud_usuario=*(char*)msj;
+	longitud_usuario=longitud_usuario<<4;
+	longitud_usuario=longitud_usuario>>4;
+	puntero=((char*)puntero  +2);
+	unsigned char longitud_contrasenia=*(char*)msj;
+	puntero=  (void*)((char*)puntero+longitud_usuario);
+	//ahora que esta movido el puntero
+	std::string contrasenia="";
+	for(int i=0;i<longitud_contrasenia;i++){
+		char letra=*( (char*)puntero + i);
+		contrasenia+=letra;
+	}
+	return contrasenia;
+}
+
+//se asume que el tipo de mensaje recibido es del tipo tecla
+int Decodificador::obtenerTecla(void* msj){
+	char tecla=*(char*)msj;
+	tecla=tecla<<4;
+	tecla=tecla>>4;
+	return tecla;
+}
+
+char Decodificador::obtenerIdJugador(void* msj){
+	void* puntero=(void*)((char*)msj+1);
+	char id_jugador=*(char*)puntero;
+	return id_jugador;
+}
+
+//el tipo del mensaje tiene que estar verificado es 7
+std::vector<int> Decodificador::obtenerPosicionesXPlataformas(void* msj){
+	//se tienen siempre
+	std::vector<int> posiciones;
+	void* puntero=msj;
+	puntero=(void*)((char*)puntero + 1);
+	//TODO
+	for(int i = 0; i<12;i++){
+		int posX=*(int*)puntero;
+		posX=posX>>10;
+		posiciones.push_back(posX);
+		puntero=(void*)((int*)puntero + 1);
+	}
+	return posiciones;
+}
+
+std::vector<int> Decodificador::obtenerPosicionesYPlataformas(void* msj){
+	std::vector<int> posiciones;
+	void* puntero=msj;
+	puntero=(void*)( (char*)puntero +1);
+	for(int i=0;i<12;i++){
+		int posY=*(int*)puntero;
+		posY=posY<<10;
+		posY=posY>>10;
+		posiciones.push_back(posY);
+		puntero=(void*)( (int*)puntero + 1);
+	}
+	return posiciones;
+}
+
+
+//el tipo del mensaje es un mensaje de seteo de path de fondo
+std::string Decodificador::obtenerPathDeFondo(void* msj){
+	std::string path="";
+	void* puntero=msj;
+	puntero=(void*)( (char*)puntero +1);
+	int longitud_path=*(char*)puntero;
+	puntero=(void*)((char*)puntero +1 );
+	for (int i=0; i<longitud_path;i++){
+		char letra=*(char*)(puntero);
+		path+=letra;
+		puntero=(void*)( (char*)puntero + 1);
+	}
+	return path;
+}
+
+//el mensaje enviado tiene que ser de actualizacion de plataformas
+std::vector<int> Decodificador::obtenerPosicionesXBarriles(void* msj){
+	std::vector<int>posiciones;
+	void* puntero=msj;
+	//salteo el primer byte, es el del tipo
+	puntero=(void*)( (char*)puntero + 1);
+	//se sabe que hay 12 plataformas, eso esta hardcodeado
+	for(int i=0;i<12;i++){
+		int buffer=*(int*)puntero;
+		buffer=buffer>>10;
+		posiciones.push_back(buffer);
+		puntero=(void*)((char*)puntero + 4);
+	}
+	return posiciones;
+}
+
+
+std::vector<int> Decodificador::obtenerPosicionesYBarriles(void* msj){
+	std::vector<int>posiciones;
+	void* puntero=msj;
+	//salteo el primer byte que tiene solo el tipo
+	puntero=(void*) ( (char*)puntero +1 );
+	//se sabe que hay 12 plataformas, entonces
+	for(int i=0;i<12;i++){
+		int posY=*((int*)puntero);
+		posY=posY<<22;
+		posY=posY>>22;
+		posiciones.push_back(posY);
+		puntero=(void*) ( (char*)puntero + 4);
+	}
+	return posiciones;
+}
+
+//funciona
+std::vector<int> Decodificador::obtenerPosicionesXFueguitos(void* msj){
+	std::vector<int> posiciones;
+	void* puntero=msj;
+	puntero=(void*)( (char*)puntero +1);
+	int num_fuegos=*(char*)(puntero);
+	puntero=(void*)( (char*)puntero +1);
+	for (int i=0; i < num_fuegos;i++){
+		int buffer=*(int*)puntero;
+		buffer=buffer>>12;
+		//y ahora lo coloco en el vector
+		posiciones.push_back(buffer);
+		//muevo el puntero
+		puntero=(void*) ((char*)puntero + 4);
+	}
+	return posiciones;
+}
+
+std::vector<int> Decodificador::obtenerPosicionesYFueguitos(void* msj){
+	std::vector<int> posiciones;
+	void* puntero=msj;
+	puntero=(void*)( (char*)puntero +1);
+	int num_fuegos=*(char*)(puntero);
+	printf("Numero de fuegos: %d\n",num_fuegos);
+	puntero=(void*)( (char*)puntero +1);
+	for (int i=0; i < num_fuegos;i++){
+		int buffer=*(int*)puntero;
+		buffer=buffer>>2;
+		buffer=buffer<<22;
+		buffer=buffer>>22;
+		//y ahora lo coloco en el vector
+		posiciones.push_back(buffer);
+		//muevo el puntero
+		puntero=(void*) ((char*)puntero + 4);
+	}
+	return posiciones;
+}
+
+std::vector<int> Decodificador::obtenerFramesFueguitos(void* msj){
+	std::vector<int> posiciones;
+	void* puntero=msj;
+	puntero=(void*)( (char*)puntero +1);
+	int num_fuegos=*(char*)(puntero);
+	printf("Numero de fuegos: %d\n",num_fuegos);
+	puntero=(void*)( (char*)puntero +1);
+	for (int i=0; i < num_fuegos;i++){
+		unsigned int buffer=*(int*)puntero;
+		buffer=buffer<<30;
+		buffer=buffer>>30;
+		printf("Valor del frame: %d\n",buffer);
+		//y ahora lo coloco en el vector
+		posiciones.push_back(buffer);
+		//muevo el puntero
+		puntero=(void*) ((char*)puntero + 4);
+	}
+	return posiciones;
+
+}
+
+
+std::vector<int> Decodificador::obtenerFramesBarriles(void* msj){
+	std::vector<int> frames;
+	void* puntero=msj;
+	puntero=(void*)( (char*)puntero + 1);
+	int numero_barriles=4;
+	puntero=(void*)( (char*)puntero + 1);
+	for(int i=0; i<numero_barriles;i++){
+		int buffer=*(int*)puntero;
+		buffer=buffer<<30;
+		buffer=buffer>>30;
+		frames.push_back(buffer);
+		puntero=(void*)( (char*)puntero + 4);
+	}
+	return frames;
 }
