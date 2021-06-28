@@ -152,6 +152,7 @@ int main(int argc , char *argv[])
     string cli_log = (argc > ARG_POS_LOG) ? argv[ARG_POS_LOG] : "";
     int port = stoi(argv[ARG_POS_PORT]);
 
+
     parser.obtenerJson(archivo_configuracion);
     string nivel_log = ((cli_log == "error") || (cli_log == "debug") || (cli_log == "info")) ? cli_log : parser.obtenerNivelLog();
     logger.setNivelLog(nivel_log);

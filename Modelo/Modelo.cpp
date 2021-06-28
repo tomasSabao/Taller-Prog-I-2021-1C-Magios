@@ -21,6 +21,7 @@ Modelo::Modelo()
     //this->mono=new Mono();
     //this->modelosPersonajes=std::vector<Modelo_Jugador*>();
     this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("fondo"));
+
     //this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("jugador",300,50));
     //this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("jugador",500,20));
     this->modelosPersonajes.push_back( ( new FactoryPersonaje() )->getPersonaje("mono",500,12));

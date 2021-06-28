@@ -25,7 +25,7 @@ Modelo_Jugador* FactoryPersonaje::getPersonaje(string nombre, int posX, int posY
 {
   if(nombre=="mono")
   {
-      return new Mono(posX,posY);
+    return new Mono(posX,posY);
 
   }else if(nombre=="fuegopiso")
   {

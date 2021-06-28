@@ -103,12 +103,12 @@ void Parser::verificarJson()
   {
 
     //ver que tipos de enemigos existen.
-    if (this->config["configuration"]["game"]["enemies"][i]["type"].asString().compare("fuego-" + to_string(i + 1)))
+    if (this->config["configuration"]["game"]["enemies"][i]["type"].asString() != "fuego-" + to_string(i + 1))
     {
       logger.log("error", "Dentro de configuration->game->enemies, el tipo de enemigo de nivel " + to_string(i + 1) + " invalida");
       logger.log("error", "Se configura por default un enemigo para el nivel " + to_string(i + 1));
 
-      cerr << "Tipo de enemigo invalido" << endl;
+      cerr << "Tipo de enemigo invalido: " << endl;
       cout << "Se configura por default un enemigo" << endl;
       this->config["configuration"]["game"]["enemies"][i]["type"] = "fuego-default-" + to_string(i + 1);
     }

@@ -153,9 +153,10 @@
 	<stdbool.h>
 	"../Mensaje/Mensaje.h"
 
-1624667202 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaCliente/Mensaje/Mensaje.h
+1624831777 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaCliente/Mensaje/Mensaje.h
 	<string.h>
 	<stdlib.h>
+	<stdio.h>
 
 1624674235 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaCliente/ModeloCliente/ModeloCliente.h
 	"../SocketCliente/SocketCliente.h"
@@ -167,19 +168,21 @@
 	"../Mensaje/Decodificador.h"
 	<string>
 
-1624667159 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaCliente/Mensaje/Codificador.h
+1624820275 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaCliente/Mensaje/Codificador.h
 	"Mensaje.h"
 	<stdio.h>
 	<string>
 	<cmath>
 	<map>
 	<iostream>
+	<vector>
 
-1624667182 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaCliente/Mensaje/Decodificador.h
+1624831777 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaCliente/Mensaje/Decodificador.h
 	<stdio.h>
 	"Mensaje.h"
 	<string>
 	<iostream>
+	<vector>
 
 1624667611 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaCliente/SocketCliente/SocketCliente.cpp
 	"SocketCliente.h"
@@ -442,7 +445,7 @@
 1624496846 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/VistaFueguitoDefault.cpp
 	"VistaFueguitoDefault.h"
 
-1624496846 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/VistaMario.cpp
+1624679262 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/VistaMario.cpp
 	"VistaMario.h"
 	"../lib/Logger.h"
 
