@@ -243,7 +243,7 @@ int SocketServidor::recibirDataGeneral(int client_socket)
 
     while ((receive_data_size > bytes_receive) && client_socket_still_open)
     {
-          printf("esperandno hata recibir unmensaje desde el socket cliente ");
+        printf("esperandno hata recibir unmensaje desde el socket cliente ");
         bytes_receive = recv(client_socket, (&comandito + total_bytes_receive), (receive_data_size - total_bytes_receive), MSG_NOSIGNAL);
         printf("error de recibir dato de cliente si es menor a cero = (%d ) \n", bytes_receive);
         //printf("que numero de comando recibe del cliente= (%d ) \n",  this->comando->action);

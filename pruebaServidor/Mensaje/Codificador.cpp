@@ -583,3 +583,13 @@ int Codificador::codificarMensajeActualizacionPosicionesFueguitos(Mensaje* msj, 
 	}
 	return 0;
 }
+
+int Codificador::codificarMensajeLoginRepetido(Mensaje* msj) {
+	char tipo_msj = 15;
+	tipo_msj = tipo_msj<<4;
+	if (msj->getTamanio() != 1) {
+		msj->redimensionarMemoria(1);
+	}
+	memcpy(msj->getMensaje(), &tipo_msj, 1);
+	return 0;
+}

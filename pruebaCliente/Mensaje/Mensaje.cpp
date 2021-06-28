@@ -46,3 +46,13 @@ int Mensaje::redimensionarMemoria(int numero_elementos){
 	this->tamanio=numero_elementos;
 	return 0;
 }
+
+void Mensaje::resetearMemoria(){
+	char c=0;
+	int num_bytes=this->tamanio;
+	void* aux = this->msj;
+	for (int i=0;i<num_bytes;i++){
+		memcpy(aux, &c, 1);
+		aux = (void*) ((char*)aux+1);
+	}
+}

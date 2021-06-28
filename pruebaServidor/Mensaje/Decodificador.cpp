@@ -4,7 +4,7 @@
 #define TIPO_LOGIN 1
 #define TIPO_ACEPTACION 2
 #define TIPO_SALA_LLENA 3
-#define TIPO_ERROR_LOGIN 4
+#define TIPO__ERROR_LOGIN 4
 #define TIPO_ACTUALIZAR 5
 
 Decodificador::Decodificador()
@@ -131,7 +131,6 @@ int Decodificador::obtenerTipo(void* msj){
 }
 
 
-
 //asumiendo que el tipo de msj es login
 std::string Decodificador::obtenerUsuario(void* msj){
 	void* puntero=msj;
@@ -148,21 +147,25 @@ std::string Decodificador::obtenerUsuario(void* msj){
 	}
 	return usuario;
 }
+
 //se asume obviamente que el mensaje es del tipo login
 std::string Decodificador::obtenerContrasenia(void* msj){
 	void* puntero=msj;
 	unsigned char longitud_usuario=*(char*)msj;
 	longitud_usuario=longitud_usuario<<4;
 	longitud_usuario=longitud_usuario>>4;
-	puntero=((char*)puntero  +2);
-	unsigned char longitud_contrasenia=*(char*)msj;
+	puntero=((char*)puntero  +1);
+	unsigned char longitud_contrasenia=*(char*)puntero;
 	puntero=  (void*)((char*)puntero+longitud_usuario);
+	puntero=(void*)((char*)puntero  +1);
+	
 	//ahora que esta movido el puntero
 	std::string contrasenia="";
 	for(int i=0;i<longitud_contrasenia;i++){
 		char letra=*( (char*)puntero + i);
 		contrasenia+=letra;
 	}
+	std::cout << "Decodificador.obtenerPWD: " << contrasenia.length() << std::endl;
 	return contrasenia;
 }
 

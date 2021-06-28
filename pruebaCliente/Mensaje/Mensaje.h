@@ -22,6 +22,8 @@ class Mensaje
 
         void liberarMemoria();
 
+        void resetearMemoria();
+
     protected:
 
     private:
