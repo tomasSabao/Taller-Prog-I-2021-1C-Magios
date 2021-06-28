@@ -3,14 +3,15 @@
 
 ModeloCliente::ModeloCliente()
 {
-    Modelito m;
-    m.positionX=0;
-    m.positionY=0;
+
+    Modelo_Jugador * mj = new Modelo_Jugador("",0,0);
+    Modelo m;
 
     Comando co;
     co.action=0;
     co.password=0;
     this->modelo = &(m);
+    this->modelo_jugador = mj;
     this->estaConectado=false;
     this->unComando=&(co);
     this->activo;
@@ -263,7 +264,7 @@ void* ModeloCliente::recibirDatosUsuario()
 
 void ModeloCliente::ImprimirModeloActualizado()
 {
-    printf("Receive data: pos(X,Y) = (%d,%d)\n\n", this->modelo->positionX, this->modelo->positionY);
+    printf("Receive data: pos(X,Y) = (%d,%d)\n\n", this->modelo_jugador->getPosicionX(), this->modelo_jugador->getPosicionY());
 }
 
 int ModeloCliente::receiveData()

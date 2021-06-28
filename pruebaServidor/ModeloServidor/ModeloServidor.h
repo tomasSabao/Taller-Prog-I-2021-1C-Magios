@@ -41,8 +41,8 @@ class ModeloServidor
         void* desencolar();
         int guardarCliente(int clienteSocket);
         int socketAceptando(SocketServidor* unSocket);
-        void send_message(int clients, Modelito* modelito);
-        int sendDataGeneral(int cliente, Modelito* modelito);
+        void send_message(int clients, Modelo* modelito);
+        int sendDataGeneral(int cliente, Modelo* modelito);
         int sendDataGeneralComando(int cliente, Comando* comando);
         void *manejoCliente();
         static void * hello_helperRecieve(void *context);
@@ -74,14 +74,15 @@ class ModeloServidor
 
     protected:
         std::vector<Comando> colaComando;
-        std::vector<Modelito> colaModelo;
+        std::vector<Modelo> colaModelo;
         std::vector<int> colaSocketCliente;
         std::vector<pthread_t*> colaThread;
         //void* receiveDataGeneral;
         //std::vector< Thread*> colaThread;
         int client_socket;//este es el cliente que fue ya aceptado por el servidor
         Comando* comando;
-        Modelito modelo;
+        Modelo modelo;
+        Modelo_Jugador* modelo_jugador;
         int numeroThread;
         int cantidadJugadoresActuales;
         int positionX;

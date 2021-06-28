@@ -16,10 +16,21 @@ extern Parser parser;
 
 ModeloServidor::ModeloServidor(Modelo* modeloJuego, int port)
 {
-    Modelito m;
-    this->modelo = m;
-    this->modelo.positionX=0;
-    this->modelo.positionY=0;
+    int cantidad_jugadores = modeloJuego->getCantJugadores();
+
+    if (cantidad_jugadores > 0)
+    {
+      // necesito modelo_jugador para hacer cambios
+      //el ultimo o el primero?
+      this->modelo_jugador = modeloJuego->getModeloJugador(cantidad_jugadores-1);
+    } else {
+      this->modelo_jugador = new Modelo_Jugador("",0,0);
+    }
+    
+    //Modelo m;
+    //this->modelo = m;
+    //this->modelo.positionX=0;
+    //this->modelo.positionY=0;
     this->cantidadJugadoresActuales=0;
     this->id=0;
     /*this->CrearSocket(port);
@@ -410,21 +421,24 @@ Comando ModeloServidor::login(Comando comando)
 
 void ModeloServidor::processData(Comando comando)
 {
+//decodificador ->gettecla()
   switch (comando.action)
   {
-  case 1: //derecha
-    printf("muevo a eje y inicial: %d\n", this->modelo.positionY);
-    this->modelo.positionY = this->modelo.positionY + 1;
-    printf("muevo a eje y siguiente: %d\n", this->modelo.positionY);
+  case 1: //arriba
+    printf("muevo a eje y inicial: %d\n", this->modelo_jugador->getPosicionY());
+    this->modelo_jugador->setPosicionX(this->modelo_jugador->getPosicionY() + this->modelo_jugador->getVelocidadX());
+    printf("muevo a eje y siguiente: %d\n", this->modelo_jugador->getPosicionY());
     break;
   case 3: //izquierda
-    this->modelo.positionY = this->modelo.positionY - 1;
+    this->modelo_jugador->setPosicionX(this->modelo_jugador->getPosicionX() - this->modelo_jugador->getVelocidadX());
     break;
   case 2:
-    this->modelo.positionX = this->modelo.positionX + 1;
+  //arriba
+   this->modelo_jugador->setPosicionY(this->modelo_jugador->getPosicionY() + this->modelo_jugador->getVelocidadY());
     break;
   case 4:
-    this->modelo.positionX = this->modelo.positionX - 1;
+  //abajo
+   this->modelo_jugador->setPosicionY(this->modelo_jugador->getPosicionY() + this->modelo_jugador->getVelocidadY());
     break;
   }
 
@@ -497,20 +511,19 @@ void *ModeloServidor::manejoCliente()
 
 void ModeloServidor::initializeData()
 {
-  this->modelo.positionX = 0;
-  this->modelo.positionY = 0;
-
-  // this->View.positionX=0;
+  this->modelo_jugador->setPosicionX(0);
+  this->modelo_jugador->setPosicionY(0);
+  //this->View.positionX=0;
 }
 
 int ModeloServidor::getPosicionX()
 {
-  return this->modelo.positionX;
+  return this->modelo_jugador->getPosicionX();
 }
 
 int ModeloServidor::getPosicionY()
 {
-  return this->modelo.positionY;
+  return this->modelo_jugador->getPosicionY();
 }
 
 int ModeloServidor::getAction()
@@ -532,7 +545,7 @@ int ModeloServidor::cargarComandos(Comando comando)
 
 void ModeloServidor::imprimirComandos()
 {
-  printf("muevo derecha: %d\n", this->modelo.positionX);
+  printf("muevo derecha: %d\n", this->modelo_jugador->getPosicionX());
 
   pthread_mutex_t colaMutex = PTHREAD_MUTEX_INITIALIZER;
   for (int i = 0; i < this->colaComando.size(); i++)
@@ -559,7 +572,7 @@ int ModeloServidor::getCliente()
   return this->client_socket;
 }
 
-int ModeloServidor::sendDataGeneral(int cliente, Modelito *modelito)
+int ModeloServidor::sendDataGeneral(int cliente, Modelo *modelito)
 {
   int result = this->socketServidor->enviarDataGeneral(cliente, modelito);
   return result;

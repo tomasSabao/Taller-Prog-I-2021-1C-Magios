@@ -84,7 +84,8 @@ class ModeloCliente
 
 
     protected:
-        Modelito* modelo;
+        Modelo* modelo;
+        Modelo_Jugador* modelo_jugador;
         int positionX;
         int positionY;
         int action;

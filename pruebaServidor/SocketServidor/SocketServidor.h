@@ -8,6 +8,7 @@
 #include <unistd.h>
 #include <stdbool.h>
 #include "../Mensaje/Mensaje.h"
+#include "../../Modelo/Modelo.h"
 
 //#include "Thread.h"
 
@@ -20,14 +21,14 @@ struct Comando
     int password;
 };
 
-struct Modelito
+/*struct Modelo
 {
     int positionX;
     int positionY;
-};
+};*/
 
 typedef struct Comando Comando;
-typedef struct Modelito Modelito;
+//typedef struct Modelo Modelo;
 
 
 class SocketServidor
@@ -44,7 +45,7 @@ class SocketServidor
     int cerrar();
     int getClientSocket();
     int getSocket();
-    int enviarDataGeneral(int client_socket, Modelito *modelito);
+    int enviarDataGeneral(int client_socket, Modelo *modelito);
     int recibirDataGeneral(int client_socket);
     //std::vector<Comando>  returnComandosSocket( );
     int recibirData(Mensaje* buffer_msj,int tamanio,int socket_cliente);

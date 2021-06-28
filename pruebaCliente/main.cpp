@@ -22,7 +22,7 @@ using namespace std;
 int main(int argc , char *argv[])
 {
     Comando command;
-    Modelito model;
+    Modelo model;
     int port = atoi(argv[ARG_POS_PORT]);
     char* host = argv[ARG_POS_HOST];
 

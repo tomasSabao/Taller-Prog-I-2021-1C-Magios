@@ -173,12 +173,12 @@ int SocketServidor::enviarDataGeneralComando(int client_socket, Comando* comando
     }
 }
 
-int SocketServidor::enviarDataGeneral(int client_socket, Modelito *modelito)
+int SocketServidor::enviarDataGeneral(int client_socket, Modelo *modelito)
 {
 
     int total_bytes_written = 0;
     int bytes_written = 0;
-    int send_data_size = sizeof(Modelito);
+    int send_data_size = sizeof(Modelo);
     bool client_socket_still_open = true;
 
     // Send

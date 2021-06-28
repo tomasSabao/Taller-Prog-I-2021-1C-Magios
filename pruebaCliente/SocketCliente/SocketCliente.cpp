@@ -192,11 +192,11 @@ int SocketCliente::recibirDataComando()
 
 int SocketCliente::recibirData()
 {
-    Modelito model;
+    Modelo model;
 
     int total_bytes_receive = 0;
     int bytes_receive = 0;
-    int receive_data_size = sizeof(Modelito);
+    int receive_data_size = sizeof(Modelo);
     bool client_socket_still_open = true;
 
     // The recv() call are used to receive messages from a socket.
