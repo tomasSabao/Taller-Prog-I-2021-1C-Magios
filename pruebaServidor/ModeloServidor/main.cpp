@@ -175,7 +175,7 @@ int main(int argc , char *argv[])
     int server_socket;
     int client_socket;
 
-    ModeloServidor *modeloServidor = new ModeloServidor(modelo, port);
+    ModeloServidor *modeloServidor = new ModeloServidor(modelo, cantidad_jugadores, port);
     modeloServidor->CrearSocket(port);
     modeloServidor->bindSocket();
     modeloServidor->escuchar();
@@ -208,18 +208,11 @@ int main(int argc , char *argv[])
         //thread_create(&hilos[i], NULL,   &handle_client,   modeloServidor);
         //modeloServidor->agregarThread();
 
-
         tuplas[i].idSocket=i;
         tuplas[i].unModelo=modeloServidor;
         printf(" socket id %d\n", tuplas[i].idSocket);
         printf("id  %d\n", i);
-        int er2 = pthread_create(&hilos[i], NULL, &ModeloServidor::hello_helperRecieve, &tuplas[i]);
-
-        //TODO: login
-        //if (login)
-        //  if ((parser.validarJugador(u1,p1)) && jugador.status != ESPERANDO_PARTIDA) {
-        //        //OK.
-        //  }
+        int er2 = pthread_create(&hilos[i], NULL, &ModeloServidor::funcionThreadRecibir, &tuplas[i]);
 
         printf("mas de un cliente");
     }

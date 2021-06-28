@@ -256,7 +256,7 @@
 
 1624587236 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/Conexion.h
 
-1624588235 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/SocketServidor/SocketServidor.cpp
+1624843768 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/SocketServidor/SocketServidor.cpp
 	"SocketServidor.h"
 
 1624588626 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/SocketServidor/SocketServidor.h
@@ -277,7 +277,7 @@
 	<stdio.h>
 	"../ModeloServidor/ModeloServidor.h"
 
-1624836419 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/ModeloServidor.h
+1624849461 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/ModeloServidor.h
 	"../SocketServidor/SocketServidor.h"
 	"../ModeloServidor/Conexion.h"
 	"../Mensaje/Codificador.h"
@@ -290,11 +290,14 @@
 	<stdio.h>
 	"Thread.h"
 
-1624836446 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/ModeloServidor.cpp
+1624845766 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/ModeloServidor.cpp
 	"ModeloServidor.h"
 	"Thread.h"
 	"../../lib/Parser.h"
+	"../../lib/Logger.h"
 	"../../Modelo/Modelo.h"
+	<stdlib.h>
+	<stdio.h>
 
 1624496846 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/lib/jsoncpp.cpp
 	"json/json.h"
@@ -403,7 +406,7 @@
 	<iostream>
 	<fstream>
 
-1624838671 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/lib/Parser.cpp
+1624849393 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/lib/Parser.cpp
 	<stdio.h>
 	<iostream>
 	<fstream>
@@ -676,7 +679,7 @@
 	"../Modelo/FactoryPersonaje.h"
 	"../Modelo/Modelo_Plataforma.h"
 
-1624838206 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/main.cpp
+1624843626 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/main.cpp
 	<stdio.h>
 	<iostream>
 	<stdlib.h>
@@ -696,12 +699,12 @@
 	<vector>
 	<pthread.h>
 
-1624831777 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/Mensaje/Mensaje.h
+1624845727 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/Mensaje/Mensaje.h
 	<string.h>
 	<stdlib.h>
 	<stdio.h>
 
-1624820275 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/Mensaje/Codificador.h
+1624841789 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/Mensaje/Codificador.h
 	"Mensaje.h"
 	<stdio.h>
 	<string>
@@ -717,12 +720,12 @@
 	<iostream>
 	<vector>
 
-1624831777 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/Mensaje/Codificador.cpp
+1624842027 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/Mensaje/Codificador.cpp
 	"Codificador.h"
 
-1624833426 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/Mensaje/Decodificador.cpp
+1624846765 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/Mensaje/Decodificador.cpp
 	"Decodificador.h"
 
-1624831777 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/Mensaje/Mensaje.cpp
+1624845723 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/Mensaje/Mensaje.cpp
 	"Mensaje.h"
 

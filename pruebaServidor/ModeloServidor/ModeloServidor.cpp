@@ -1,8 +1,10 @@
 #include "ModeloServidor.h"
 #include "Thread.h"
 #include "../../lib/Parser.h"
+#include "../../lib/Logger.h"
 #include "../../Modelo/Modelo.h"
-
+#include <stdlib.h>
+#include <stdio.h>
 
 #define TIPO_TECLA 0
 #define TIPO_LOGIN 1
@@ -12,9 +14,9 @@
 #define TIPO_ACTUALIZAR 5
 
 extern Parser parser;
+extern Logger logger;
 
-
-ModeloServidor::ModeloServidor(Modelo* modeloJuego, int port)
+ModeloServidor::ModeloServidor(Modelo* modeloJuego, int cant_jugadores, int port)
 {
     int cantidad_jugadores = modeloJuego->getCantJugadores();
 
@@ -41,7 +43,11 @@ ModeloServidor::ModeloServidor(Modelo* modeloJuego, int port)
     this->buffer_rta_login.asignarMemoria(1,1);
     this->buffer_login.asignarMemoria(34,1);
     this->modelo_juego = modeloJuego;
-
+    this->idMap[1]='1';
+    this->idMap[2]='2';
+    this->idMap[3]='3';
+    this->idMap[4]='4';
+    this->cantidadJugadoresMax=cant_jugadores;
 }
 
 
@@ -78,6 +84,7 @@ int ModeloServidor::guardarConexion(Conexion* unaConexion)
   return 0;
 }
 
+//No mas
 void *ModeloServidor::hello_helperRecieve(void *context)
 {
   while(1)
@@ -100,6 +107,7 @@ void* ModeloServidor::recibirDataGeneral2(int socket_del_thread){
     //printf("Saque RECIBE el socket de la cola de clientes numero: %d\n",socketDeEsteThread);
     //TODO:logica que especifique el tamaño del mensaje a recibir segun el estado del servidor
     //por ahora se hardcodea a un mensaje de recepcion de login positivo
+    this->buffer_login.resetearMemoria();
     bool resultado= this->socketServidor->recibirData(&this->buffer_login,-1,socketDeEsteThread);
     if(resultado == 0){
       printf("Se recibio un mensaje, se procede a encolarlo en la cola de mensajes\n");
@@ -201,39 +209,54 @@ int ModeloServidor::desencolarYProcesarMensaje()
 int ModeloServidor::procesarMensaje(Mensaje* msj)
 {
   //lo que voy a hacer aca por ahora es codificar una respuesta de login postivia, mandandole un id
-
-  int success= this->codificador.codificarMensajeSalaVaciaAceptacion(&this->buffer_rta_login, '1', MAX_CLIENTS);
   //int success= this->codificador.codificarMensajeSalaLlenaRechazo(msj);
-  printf("Valor del mensaje una vez codificado: %d\n",*(unsigned char*)msj->getMensaje());
-  if(success==0){
-    //se codifico correctamente el menstaje, vamos a encolarlo
-    //necesito una copia
-    Mensaje* msj_aux=new Mensaje();
-    msj_aux->asignarMemoria(1,1);
-    memcpy(msj_aux->getMensaje(),this->buffer_rta_login.getMensaje(),1);
-    if (this->decodificador.obtenerTipo(msj) == TIPO_LOGIN) {
-      std::string username = this->decodificador.obtenerUsuario(msj);
-      std::string password = this->decodificador.obtenerContrasenia(msj);
-      //TODO: ver si ya esta conectado ese jugador.
+
+  Mensaje* msj_aux = new Mensaje();
+  msj_aux->asignarMemoria(1,1);
+  cout << "Servidor->procesarMensaje, tipo mensaje: " << this->decodificador.obtenerTipo(msj->getMensaje()) << endl;
+  if (this->decodificador.obtenerTipo(msj->getMensaje()) == TIPO_LOGIN) {
+    if (this->cantidadJugadoresActuales < this->cantidadJugadoresMax){
+      std::string username = this->decodificador.obtenerUsuario(msj->getMensaje());
+      std::string password = this->decodificador.obtenerContrasenia(msj->getMensaje());
+
+      cout << "Servidor->procesarMensaje, username: " << username << endl;
+      cout << "Servidor->procesarMensaje, password: " << password << endl;
+
       if (parser.validarJugador(username,password)) {
-        //ver si ese jugador ya esta conectado.
-        int id = 5;
-        this->modelo_juego->agregarJugador(username, id);
+        if (!this->usernameConectados[username]){
+          char id_actual = this->idMap[++this->cantidadJugadoresActuales];
+          this->modelo_juego->agregarJugador(username, this->cantidadJugadoresActuales);
+          this->usernameConectados[username]=true;
+          this->codificador.codificarMensajeSalaVaciaAceptacion(msj_aux,id_actual,this->cantidadJugadoresMax);
+          cout << "se agrego el jugador: " << id_actual << endl;
+          logger.log("info", "se agrego un nuevo jugador con id: "+id_actual);
+        } else {
+          this->codificador.codificarMensajeLoginRepetido(msj_aux);
+          cout << "No se agrego, jugador ya conectado" << endl;
+          logger.log("info", "no se pudo agregar jugador ya que esta conectado con mismas credenciales");
+        }
+      } else {
+        this->codificador.codificarMensajeErrorUsuarioContraseniaRechazo(msj_aux);
+        cout << "No se agrego por credenciales invalidas" << endl;
+        logger.log("info", "no se puduo agregar un nuevo jugador por credenciales invalidas");
       }
-    } else if (this->decodificador.obtenerTipo(msj) == TIPO_TECLA) {
-      int id = this->decodificador.obtenerIdJugador(msj);
-      int tecla = this->decodificador.obtenerTecla(msj);
+    } else {
+      this->codificador.codificarMensajeSalaLlenaRechazo(msj_aux);
+      cout << "no se agrego el jugador, sala llena" << endl;
+      logger.log("info", "no se pudo agregar un nuevo jugador ya que la sala esta llena");
     }
+  } else if (this->decodificador.obtenerTipo(msj->getMensaje()) == TIPO_TECLA) {
+      int id = this->decodificador.obtenerIdJugador(msj->getMensaje());
+      int tecla = this->decodificador.obtenerTecla(msj->getMensaje());
+      //TODO" mandarle a clientes las posiciones actualizadas.
 
-    //this->decodificador.decodificarMensajeDos(this->buffer_rta_login.getMensaje());
-
-    printf("Valor de copia: %d\n",*(unsigned char*)msj->getMensaje());
-    this->encolarMensajeAEnviar(msj_aux);
-    //this->decodificador.decodificarMensajeDos(this->buffer_rta_login.getMensaje());
-    return 0;
+      cout << "Servidor->procesarMensaje, ENTRO EN TIPO TECLA" << endl;
   }
-  printf("El mensaje no fue procesado correctamente\n");
-  return 1;
+
+  //printf("Valor de copia: %d\n",*(unsigned char*)msj->getMensaje());
+  this->encolarMensajeAEnviar(msj_aux);
+  //this->decodificador.decodificarMensajeDos(this->buffer_rta_login.getMensaje());
+  return 0;
 }
 
 int ModeloServidor::desencolarYEnviarMensaje()

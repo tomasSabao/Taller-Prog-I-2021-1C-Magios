@@ -192,6 +192,7 @@ void Parser::verificarJson()
       this->config = obtenerJsonPorDefecto();
       return;
     }
+    //TODO: chequear que no haya 2 usernames iguales
   }
   catch (exception &err)
   {
@@ -200,7 +201,6 @@ void Parser::verificarJson()
     this->config = obtenerJsonPorDefecto();
     return;
   }
-
   cout << "Finalizan los chequeos del archivo de configuracion dado por el user" << endl;
 }
 
@@ -279,13 +279,32 @@ bool Parser::validarJugador(string user, string password)
 {
   for (int i = 0; i < this->config["configuration"]["users"].size(); i++)
   {
-    if ((this->config["configuration"]["users"][i]["username"].asString() == user) && (this->config["configuration"]["users"][i]["password"].asString() == password))
+    cout << "user: " << user << endl;
+    cout << "pwd: " << password << endl;
+
+    cout << "userJSON: " << this->config["configuration"]["users"][i]["username"].asString() << endl;
+    cout << "pwdJSON: " << this->config["configuration"]["users"][i]["password"].asString() << endl;
+
+    if (this->config["configuration"]["users"][i]["username"].asString() == user)
     {
+      cout << "paso username" << endl;
+      if (this->config["configuration"]["users"][i]["password"].asString() == password){
+
+        return true;
+      }
+      cout << "password: " << password.size() << endl;
+      cout << "passwordJSON: " << this->config["configuration"]["users"][i]["password"].asString().size() << endl;
+
       //Json::Value aux;
       //this->config["configuration"]["users"].removeIndex(i, &aux);
       //aux.clear();
-      return true;
+      //return true;
     }
+    cout << "no paso username" << endl;
+    
+    cout << "username: " << user.size() << endl;
+    cout << "usernameJSON: " << this->config["configuration"]["users"][i]["username"].asString().size() << endl;
+
   }
   return false;
 }

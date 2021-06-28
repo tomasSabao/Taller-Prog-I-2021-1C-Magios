@@ -49,6 +49,8 @@ class Codificador
         int codificarMensajeActualizacionPosicionesPlataformas(Mensaje* msj, std::vector<int>posiciones_x, std::vector<int>posiciones_y);
         int codificarMensajeActualizacionPosicionesBarriles(Mensaje* msj, std::vector<int>posiciones_x, std::vector<int>posiciones_y,std::vector<int>frames);
         int codificarMensajePathFondo(Mensaje* msj,std::string path);//funciona
+        int codificarMensajeLoginRepetido(Mensaje* msj);//15
+
     protected:
 
     private:

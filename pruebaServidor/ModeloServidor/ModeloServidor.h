@@ -19,7 +19,7 @@ using namespace std;
 class ModeloServidor
 {
     public:
-        ModeloServidor(Modelo* modeloJuego, int port=5050);
+        ModeloServidor(Modelo* modeloJuego,int cant_jugadores, int port=5050);
         virtual ~ModeloServidor();
         void initializeData();
         void processData(Comando comando);
@@ -71,6 +71,9 @@ class ModeloServidor
         Mensaje buffer_login;
         Mensaje buffer_rta_login;
         Modelo* modelo_juego;
+        std::map<char, bool> idConectados;
+        std::map<std::string, bool>usernameConectados;
+        std::map<int, char> idMap;
 
     protected:
         std::vector<Comando> colaComando;
@@ -85,6 +88,7 @@ class ModeloServidor
         Modelo_Jugador* modelo_jugador;
         int numeroThread;
         int cantidadJugadoresActuales;
+        int cantidadJugadoresMax;
         int positionX;
         int positionY;
         int action;
