@@ -160,9 +160,6 @@ int main(int argc , char *argv[])
     //inicializo el modelo.
     Modelo* modelo=new Modelo();
 
-    cout << "Modelo creado" << endl;
-
-
     std::map<std::string, std::string> enemigos = parser.obtenerEnemigos();
     std::vector<std::string> fondos = parser.obtenerFondos();
     if (enemigos.find("fuego-1") != enemigos.end()) {

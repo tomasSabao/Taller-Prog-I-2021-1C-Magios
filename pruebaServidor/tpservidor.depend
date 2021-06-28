@@ -468,7 +468,7 @@
 1624554392 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo_Plataforma.h
 	"Modelo_Jugador.h"
 
-1624554771 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/Barril.cpp
+1624837341 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/Barril.cpp
 	"Barril.h"
 
 1624554633 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/Barril.h
@@ -523,28 +523,28 @@
 1624554373 /home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/FondoDos.h
 	"Modelo_Jugador.h"
 
-1624555532 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/Fondo.cpp
+1624837339 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/Fondo.cpp
 	"Fondo.h"
 
-1624555547 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/FondoDos.cpp
+1624837348 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/FondoDos.cpp
 	"FondoDos.h"
 
-1624555565 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/FuegoPiso.cpp
+1624837352 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/FuegoPiso.cpp
 	"FuegoPiso.h"
 
-1624555570 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/Fueguito.cpp
+1624837357 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/Fueguito.cpp
 	"Fueguito.h"
 
-1624555581 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/FueguitoDefault.cpp
+1624837371 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/FueguitoDefault.cpp
 	"FueguitoDefault.h"
 
 1624554835 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/Mario.cpp
 	"Mario.h"
 
-1624555599 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/ModeloPlataformaDerecha.cpp
+1624837395 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/ModeloPlataformaDerecha.cpp
 	"ModeloPlataformaDerecha.h"
 
-1624555701 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/Mono.cpp
+1624837400 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/Mono.cpp
 	"Mono.h"
 
 1624496846 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/Vista_Jugador.cpp
@@ -558,7 +558,7 @@
 1624496846 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/VistaMono.cpp
 	"VistaMono.h"
 
-1624555829 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo_Plataforma.cpp
+1624837391 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo_Plataforma.cpp
 	"Modelo_Plataforma.h"
 
 1624496846 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/VistaFueguito.cpp
@@ -667,7 +667,7 @@
 1624496846 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/View/VistaPlataformaDerecha.cpp
 	"VistaPlataformaDerecha.h"
 
-1624837024 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo.cpp
+1624837843 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo.cpp
 	<random>
 	<iostream>
 	<math.h>
@@ -676,7 +676,7 @@
 	"../Modelo/FactoryPersonaje.h"
 	"../Modelo/Modelo_Plataforma.h"
 
-1624837003 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/main.cpp
+1624838206 source:/home/ntowers/Desktop/taller/tp/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/main.cpp
 	<stdio.h>
 	<iostream>
 	<stdlib.h>
