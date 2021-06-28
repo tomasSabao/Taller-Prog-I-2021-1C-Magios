@@ -7,7 +7,7 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <stdbool.h>
-#include "../Mensaje/Mensaje.h"
+#include "../../Mensaje/Mensaje.h"
 #include "../../Modelo/Modelo.h"
 
 

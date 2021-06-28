@@ -1,5 +1,4 @@
 #include "ModeloServidor.h"
-#include "Thread.h"
 #include "../../lib/Parser.h"
 #include "../../lib/Logger.h"
 #include "../../Modelo/Modelo.h"
@@ -28,7 +27,7 @@ ModeloServidor::ModeloServidor(Modelo* modeloJuego, int cant_jugadores, int port
     } else {
       this->modelo_jugador = new Modelo_Jugador("",0,0);
     }
-    
+
     //Modelo m;
     //this->modelo = m;
     //this->modelo.positionX=0;
@@ -213,14 +212,10 @@ int ModeloServidor::procesarMensaje(Mensaje* msj)
 
   Mensaje* msj_aux = new Mensaje();
   msj_aux->asignarMemoria(1,1);
-  cout << "Servidor->procesarMensaje, tipo mensaje: " << this->decodificador.obtenerTipo(msj->getMensaje()) << endl;
   if (this->decodificador.obtenerTipo(msj->getMensaje()) == TIPO_LOGIN) {
     if (this->cantidadJugadoresActuales < this->cantidadJugadoresMax){
       std::string username = this->decodificador.obtenerUsuario(msj->getMensaje());
       std::string password = this->decodificador.obtenerContrasenia(msj->getMensaje());
-
-      cout << "Servidor->procesarMensaje, username: " << username << endl;
-      cout << "Servidor->procesarMensaje, password: " << password << endl;
 
       if (parser.validarJugador(username,password)) {
         if (!this->usernameConectados[username]){
@@ -228,8 +223,8 @@ int ModeloServidor::procesarMensaje(Mensaje* msj)
           this->modelo_juego->agregarJugador(username, this->cantidadJugadoresActuales);
           this->usernameConectados[username]=true;
           this->codificador.codificarMensajeSalaVaciaAceptacion(msj_aux,id_actual,this->cantidadJugadoresMax);
-          cout << "se agrego el jugador: " << id_actual << endl;
-          logger.log("info", "se agrego un nuevo jugador con id: "+id_actual);
+          printf("se agrego el jugador: %c \n", id_actual);
+          logger.log("info", "se agrego un nuevo jugador con id: " + id_actual);
         } else {
           this->codificador.codificarMensajeLoginRepetido(msj_aux);
           cout << "No se agrego, jugador ya conectado" << endl;
@@ -249,8 +244,6 @@ int ModeloServidor::procesarMensaje(Mensaje* msj)
       int id = this->decodificador.obtenerIdJugador(msj->getMensaje());
       int tecla = this->decodificador.obtenerTecla(msj->getMensaje());
       //TODO" mandarle a clientes las posiciones actualizadas.
-
-      cout << "Servidor->procesarMensaje, ENTRO EN TIPO TECLA" << endl;
   }
 
   //printf("Valor de copia: %d\n",*(unsigned char*)msj->getMensaje());

@@ -8,7 +8,6 @@
 #include <stdbool.h>
 #include "../ModeloServidor/ModeloServidor.h"
 #include "../ModeloServidor/Conexion.h"
-#include "../Thread/Thread.h"
 #include "../../Modelo/Modelo.h"
 #include "../../Modelo/LTexture.h"
 #include "../../lib/Logger.h"

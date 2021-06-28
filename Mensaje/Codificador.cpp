@@ -12,7 +12,6 @@ Codificador::~Codificador()
 
 
 
-
 int Codificador::codificarMensajeTeclaDos(Mensaje* msj,int tecla_apretada,char id_jugador){
 	int success=0;
 	if(msj->getTamanio()!=2){
@@ -216,6 +215,7 @@ int Codificador::codificarMensajeSalaVaciaAceptacion(Mensaje* msj, char id_jugad
 	char char_id=this->mapearIdJugador(id_jugador);
 	char numero_max=this->mapearNumeroMaxJugadores(numero_max_jugadores);
 	numero_max=numero_max<<2;
+	//TODO: error en numero max
 	printf("Valor de numero max: %d\n",numero_max);
 	resultado=resultado | char_id;
 	resultado=resultado | numero_max;
@@ -581,5 +581,15 @@ int Codificador::codificarMensajeActualizacionPosicionesFueguitos(Mensaje* msj, 
 		//se mueve
 		puntero=(void*) ( (char*)puntero + 4);
 	}
+	return 0;
+}
+
+int Codificador::codificarMensajeLoginRepetido(Mensaje* msj) {
+	char tipo_msj = 15;
+	tipo_msj = tipo_msj<<4;
+	if (msj->getTamanio() != 1) {
+		msj->redimensionarMemoria(1);
+	}
+	memcpy(msj->getMensaje(), &tipo_msj, 1);
 	return 0;
 }

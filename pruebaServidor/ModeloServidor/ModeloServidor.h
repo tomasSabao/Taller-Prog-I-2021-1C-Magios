@@ -2,9 +2,9 @@
 #define MODELOSERVIDOR_H
 #include "../SocketServidor/SocketServidor.h"
 #include "../ModeloServidor/Conexion.h"
-#include "../Mensaje/Codificador.h"
-#include "../Mensaje/Decodificador.h"
-#include "../Mensaje/Mensaje.h"
+#include "../../Mensaje/Codificador.h"
+#include "../../Mensaje/Decodificador.h"
+#include "../../Mensaje/Mensaje.h"
 #include "../ModeloServidor/Conexion.h"
 #include "../../Modelo/Modelo.h"
 #include <vector>
@@ -12,7 +12,7 @@ using namespace std;
 #include <pthread.h>
 #include <stdio.h>
 #define MAX_CLIENTS 4
-#include "Thread.h"
+
 // Structs for data transfer
 
 

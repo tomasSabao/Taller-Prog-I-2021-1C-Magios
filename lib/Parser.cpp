@@ -279,32 +279,16 @@ bool Parser::validarJugador(string user, string password)
 {
   for (int i = 0; i < this->config["configuration"]["users"].size(); i++)
   {
-    cout << "user: " << user << endl;
-    cout << "pwd: " << password << endl;
-
-    cout << "userJSON: " << this->config["configuration"]["users"][i]["username"].asString() << endl;
-    cout << "pwdJSON: " << this->config["configuration"]["users"][i]["password"].asString() << endl;
-
     if (this->config["configuration"]["users"][i]["username"].asString() == user)
     {
-      cout << "paso username" << endl;
       if (this->config["configuration"]["users"][i]["password"].asString() == password){
-
         return true;
       }
-      cout << "password: " << password.size() << endl;
-      cout << "passwordJSON: " << this->config["configuration"]["users"][i]["password"].asString().size() << endl;
-
       //Json::Value aux;
       //this->config["configuration"]["users"].removeIndex(i, &aux);
       //aux.clear();
       //return true;
     }
-    cout << "no paso username" << endl;
-    
-    cout << "username: " << user.size() << endl;
-    cout << "usernameJSON: " << this->config["configuration"]["users"][i]["username"].asString().size() << endl;
-
   }
   return false;
 }

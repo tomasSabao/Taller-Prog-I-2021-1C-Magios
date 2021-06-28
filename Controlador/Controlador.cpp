@@ -1,10 +1,9 @@
 #include "../include/Controlador.h"
-#include "../Modelo/Modelo.h"
 
 
-Controlador::Controlador(Modelo * modelo )
+Controlador::Controlador()
 {
-    this->jugador=modelo->getModeloJugador(0);
+    //this->jugador=modelo->getModeloJugador(0);
     this->current_key_states=SDL_GetKeyboardState(NULL);
     //ctor
 }

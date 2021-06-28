@@ -4,7 +4,7 @@
 #define TIPO_LOGIN 1
 #define TIPO_ACEPTACION 2
 #define TIPO_SALA_LLENA 3
-#define TIPO__ERROR_LOGIN 4
+#define TIPO_ERROR_LOGIN 4
 #define TIPO_ACTUALIZAR 5
 
 Decodificador::Decodificador()
@@ -165,7 +165,6 @@ std::string Decodificador::obtenerContrasenia(void* msj){
 		char letra=*( (char*)puntero + i);
 		contrasenia+=letra;
 	}
-	std::cout << "Decodificador.obtenerPWD: " << contrasenia.length() << std::endl;
 	return contrasenia;
 }
 

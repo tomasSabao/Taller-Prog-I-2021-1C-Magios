@@ -1,12 +1,13 @@
 #ifndef CONTROLADOR_H
 #define CONTROLADOR_H
-#include "../Modelo/Modelo.h"
 #include <SDL2/SDL.h>
+#include <string>
+#include "../Modelo/Modelo_Jugador.h"
 
 class Controlador
 {
     public:
-        Controlador(Modelo* modelo);
+        Controlador();
         int desencolarEvento();
         int descifrarEvento();
 

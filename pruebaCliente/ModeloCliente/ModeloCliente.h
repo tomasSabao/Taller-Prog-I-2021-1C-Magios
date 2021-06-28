@@ -4,9 +4,9 @@
 #include <vector>
 #include <pthread.h>
 #include <iostream>
-#include "../Mensaje/Mensaje.h"
-#include "../Mensaje/Codificador.h"
-#include "../Mensaje/Decodificador.h"
+#include "../../Mensaje/Mensaje.h"
+#include "../../Mensaje/Codificador.h"
+#include "../../Mensaje/Decodificador.h"
 #include <string>
 
 using namespace std;

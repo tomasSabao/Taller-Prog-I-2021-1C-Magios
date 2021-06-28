@@ -40,6 +40,7 @@ Vista::Vista(Modelo* modelo)
 
 
     for (int i = 0; i <this->modelo->getCantJugadores(); i++) {
+      //TODO: sacar this->modelo para separar Vista de Modelo.
       Modelo_Jugador* jugador=  this->modelo->getModeloJugador(i);
       printf("%s\n",jugador->getNombre().c_str());
 
@@ -60,6 +61,7 @@ void Vista::escenario1(std::string fondo)
 {
   printf("entra a vista escenario 1 %s\n", "sdf");
   for (int i = this->personajes.size(); i <this->modelo->getCantJugadores(); i++) {
+    //TODO: sacar this->modelo para separar Vista de Modelo.
     Modelo_Jugador* jugador=  this->modelo->getModeloJugador(i);
 
     printf("%s\n",jugador->getNombre().c_str());
@@ -73,6 +75,7 @@ void Vista::escenario2(std::string fondo)
 {   //posicion 0 es el fondo siempre
   printf("entra a vista escenario 2 %s\n", "sdf");
   for (int i = this->personajes.size(); i <this->modelo->getCantJugadores(); i++) {
+    //TODO: sacar this->modelo para separar Vista de Modelo.
     Modelo_Jugador* jugador=  this->modelo->getModeloJugador(i);
 
     printf("%s\n",jugador->getNombre().c_str());
