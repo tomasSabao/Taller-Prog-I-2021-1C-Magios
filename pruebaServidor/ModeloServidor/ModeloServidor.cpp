@@ -117,7 +117,7 @@ void* ModeloServidor::recibirDataGeneral2(int socket_del_thread){
       this->encolarMensaje(unMensaje);
     }
     else{
-      //printf("No se recibio mensaje, no se encola nada\n");
+      printf("No se recibio mensaje, no se encola nada\n");
     }
   }
   else{
@@ -243,6 +243,7 @@ int ModeloServidor::procesarMensaje(Mensaje* msj)
   } else if (this->decodificador.obtenerTipo(msj->getMensaje()) == TIPO_TECLA) {
       int id = this->decodificador.obtenerIdJugador(msj->getMensaje());
       int tecla = this->decodificador.obtenerTecla(msj->getMensaje());
+      printf("%d",tecla);
       //TODO" mandarle a clientes las posiciones actualizadas.
   }
 

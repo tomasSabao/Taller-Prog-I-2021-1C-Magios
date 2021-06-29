@@ -131,6 +131,74 @@ int Decodificador::obtenerTipo(void* msj){
 }
 
 
+char Decodificador::conseguirTipoTecla(int tecla_apretada){
+	char tecla=12;
+	//supongo que el tipo tecla va a ser 0000
+	//el codigo seria, en binario: 0000xxxx, donde xxxx va a ser la id del jugador
+	//veamos los distintos casos
+	if(tecla_apretada==0){
+		tecla=5;
+		return tecla;
+	}
+
+	if(tecla_apretada==1){
+		tecla=4;
+		return tecla;
+	}
+
+	if(tecla_apretada==2){
+		tecla=6;
+		return tecla;
+	}
+
+	if(tecla_apretada==3){
+		tecla=2;
+		return tecla;
+	}
+
+	if(tecla_apretada==4){
+		tecla=8;
+		return tecla;
+	}
+
+	if(tecla_apretada==5){
+		tecla=9;
+		return tecla;
+	}
+
+	if(tecla_apretada==6){
+		tecla=51;
+		return tecla;
+	}
+
+	if(tecla_apretada==7){
+		tecla=41;
+		return tecla;
+	}
+
+	if(tecla_apretada==8){
+		tecla=61;
+		return tecla;
+	}
+
+	if(tecla_apretada==9){
+		tecla=32;
+		return tecla;
+	}
+
+	if(tecla_apretada==10){
+		tecla=81;
+		return tecla;
+	}
+
+	if(tecla_apretada==11){
+		tecla=91;
+		return tecla;
+	}
+	return tecla;
+}
+
+
 //asumiendo que el tipo de msj es login
 std::string Decodificador::obtenerUsuario(void* msj){
 	void* puntero=msj;

@@ -97,12 +97,12 @@
 
 1622912977 /home/yuscu/Documentos/juegosdl/servidorfinal/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/Conexion.h
 
-1623034177 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/Conexion.cpp
+1624838858 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/Conexion.cpp
 	"Conexion.h"
 
-1623034177 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/Conexion.h
+1624838858 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/Conexion.h
 
-1623213070 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/main.cpp
+1624928524 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/main.cpp
 	<stdio.h>
 	<iostream>
 	<stdlib.h>
@@ -113,18 +113,27 @@
 	<stdbool.h>
 	"../ModeloServidor/ModeloServidor.h"
 	"../ModeloServidor/Conexion.h"
-	"../Thread/Thread.h"
+	"../../Modelo/Modelo.h"
+	"../../Modelo/LTexture.h"
+	"../../lib/Logger.h"
+	"../../lib/Parser.h"
 	"../SocketServidor/SocketServidor.h"
 	<vector>
 	<pthread.h>
 
-1623213161 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/ModeloServidor.h
+1624928524 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/ModeloServidor.h
 	"../SocketServidor/SocketServidor.h"
+	"../ModeloServidor/Conexion.h"
+	"../../Mensaje/Codificador.h"
+	"../../Mensaje/Decodificador.h"
+	"../../Mensaje/Mensaje.h"
+	"../ModeloServidor/Conexion.h"
+	"../../Modelo/Modelo.h"
 	<vector>
 	<pthread.h>
 	<stdio.h>
 
-1623213189 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/pruebaServidor/SocketServidor/SocketServidor.h
+1624928524 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/pruebaServidor/SocketServidor/SocketServidor.h
 	<sys/socket.h>
 	<stdio.h>
 	<stdlib.h>
@@ -132,15 +141,22 @@
 	<arpa/inet.h>
 	<unistd.h>
 	<stdbool.h>
+	"../../Mensaje/Mensaje.h"
+	"../../Modelo/Modelo.h"
 
 1623005827 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/pruebaServidor/Thread/Thread.h
 	<pthread.h>
 	<stdio.h>
 
-1623213313 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/ModeloServidor.cpp
+1624933157 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/pruebaServidor/ModeloServidor/ModeloServidor.cpp
 	"ModeloServidor.h"
+	"../../lib/Parser.h"
+	"../../lib/Logger.h"
+	"../../Modelo/Modelo.h"
+	<stdlib.h>
+	<stdio.h>
 
-1623214187 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/pruebaServidor/SocketServidor/SocketServidor.cpp
+1624854583 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/pruebaServidor/SocketServidor/SocketServidor.cpp
 	"SocketServidor.h"
 
 1623005827 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/pruebaServidor/Thread/Thread.cpp
@@ -1215,5 +1231,415 @@
 	"Decodificador.h"
 
 1624920171 source:/home/tomas/Escritorio/Taller_de_programacion_1/ultimate_version/Taller-Prog-I-2021-1C-Magios/Mensaje/Mensaje.cpp
+	"Mensaje.h"
+
+1624928524 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/Controlador/Controlador.cpp
+	"../include/Controlador.h"
+
+1624928524 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/include/Controlador.h
+	<SDL2/SDL.h>
+	<string>
+	"../Modelo/Modelo_Jugador.h"
+
+1624838858 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo_Jugador.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_image.h>
+	"../Modelo/LTexture.h"
+	"../Modelo/Rectangulo.h"
+
+1624495762 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/LTexture.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_image.h>
+	<iostream>
+	<stdlib.h>
+	<stdio.h>
+
+1624504582 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Rectangulo.h
+
+1624495762 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/lib/jsoncpp.cpp
+	"json/json.h"
+	<json/config.h>
+	<clocale>
+	"json_tool.h"
+	<json/assertions.h>
+	<json/reader.h>
+	<json/value.h>
+	<algorithm>
+	<cassert>
+	<cstring>
+	<iostream>
+	<istream>
+	<limits>
+	<memory>
+	<set>
+	<sstream>
+	<utility>
+	<cstdio>
+	<json/assertions.h>
+	<json/value.h>
+	<json/writer.h>
+	<algorithm>
+	<cassert>
+	<cmath>
+	<cstddef>
+	<cstring>
+	<iostream>
+	<sstream>
+	<utility>
+	<stdarg.h>
+	"json_valueiterator.inl"
+	"json_tool.h"
+	<json/writer.h>
+	<algorithm>
+	<cassert>
+	<cctype>
+	<cstring>
+	<iomanip>
+	<memory>
+	<set>
+	<sstream>
+	<utility>
+	<cmath>
+	<cstdio>
+	<cmath>
+	<cstdio>
+	<float.h>
+	<float.h>
+	<ieeefp.h>
+
+1624495762 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/lib/json/json.h
+	<cstring>
+	<memory>
+	<cstddef>
+	<cstdint>
+	<istream>
+	<memory>
+	<ostream>
+	<sstream>
+	<string>
+	<type_traits>
+	"allocator.h"
+	"version.h"
+	"config.h"
+	"forwards.h"
+	"forwards.h"
+	<array>
+	<exception>
+	<map>
+	<memory>
+	<string>
+	<vector>
+	"json_features.h"
+	"value.h"
+	<deque>
+	<iosfwd>
+	<istream>
+	<stack>
+	<string>
+	"value.h"
+	<ostream>
+	<string>
+	<vector>
+	<cstdlib>
+	<sstream>
+	"config.h"
+
+1624495762 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/lib/Logger.cpp
+	<stdio.h>
+	<iostream>
+	<fstream>
+	<string>
+	<map>
+	<new>
+	<ctime>
+	<cstdlib>
+	<chrono>
+	"Logger.h"
+
+1624495762 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/lib/Logger.h
+	<stdio.h>
+	<string>
+	<ctime>
+	<iostream>
+	<fstream>
+
+1624928524 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/lib/Parser.cpp
+	<stdio.h>
+	<iostream>
+	<fstream>
+	<string>
+	<map>
+	<cstdlib>
+	<sstream>
+	"../jsoncpp/json/json.h"
+	"Parser.h"
+	"Logger.h"
+
+1624504582 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/lib/Parser.h
+	<stdio.h>
+	<string>
+	<ctime>
+	<iostream>
+	<fstream>
+	<map>
+	"../jsoncpp/json/json.h"
+
+1624841597 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Barril.cpp
+	"Barril.h"
+
+1624838858 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Barril.h
+	"Modelo_Jugador.h"
+
+1624838815 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Colisionador.cpp
+	"Colisionador.h"
+
+1624504582 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Colisionador.h
+	"../Modelo/Modelo_Jugador.h"
+	"../Modelo/Modelo_Plataforma.h"
+	"../Modelo/Rectangulo.h"
+	<map>
+	<vector>
+
+1624838858 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo_Plataforma.h
+	"Modelo_Jugador.h"
+
+1624841597 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/FactoryPersonaje.cpp
+	"FactoryPersonaje.h"
+	"../Modelo/Mario.h"
+	"../Modelo/Mono.h"
+	"../Modelo/FuegoPiso.h"
+	"../Modelo/Barril.h"
+	"../Modelo/Modelo_Jugador.h"
+	"../Modelo/Modelo_Plataforma.h"
+	"../Modelo/ModeloPlataformaDerecha.h"
+	"../Modelo/FondoDos.h"
+
+1624495762 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/FactoryPersonaje.h
+	"../Modelo/Modelo.h"
+
+1624838858 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo.h
+	"../Modelo/Modelo_Jugador.h"
+	"../Modelo/Mono.h"
+	"../Modelo/Fondo.h"
+	"../Modelo/Fueguito.h"
+	"../Modelo/FueguitoDefault.h"
+	"../Modelo/FuegoPiso.h"
+	"../Modelo/Colisionador.h"
+	"../Modelo/Rectangulo.h"
+	<vector>
+
+1624838858 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Mono.h
+	"Modelo_Jugador.h"
+
+1624838858 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Fondo.h
+	"Modelo_Jugador.h"
+
+1624838858 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Fueguito.h
+	"Modelo_Jugador.h"
+
+1624838858 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/FueguitoDefault.h
+	"Modelo_Jugador.h"
+
+1624838858 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/FuegoPiso.h
+	"Modelo_Jugador.h"
+
+1624838858 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Mario.h
+	"Modelo_Jugador.h"
+
+1624838858 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/ModeloPlataformaDerecha.h
+	"Modelo_Jugador.h"
+
+1624838858 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/FondoDos.h
+	"Modelo_Jugador.h"
+
+1624841597 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Fondo.cpp
+	"Fondo.h"
+
+1624841597 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/FondoDos.cpp
+	"FondoDos.h"
+
+1624841597 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/FuegoPiso.cpp
+	"FuegoPiso.h"
+
+1624841597 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Fueguito.cpp
+	"Fueguito.h"
+
+1624841597 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/FueguitoDefault.cpp
+	"FueguitoDefault.h"
+
+1624495762 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/LTexture.cpp
+	"LTexture.h"
+	"../View/Vista_Jugador.h"
+
+1624504582 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/View/Vista_Jugador.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_image.h>
+	"../Modelo/Modelo_Jugador.h"
+
+1624838858 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Mario.cpp
+	"Mario.h"
+
+1624841597 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo.cpp
+	<random>
+	<iostream>
+	<math.h>
+	"../Modelo/Modelo.h"
+	"../Modelo/Mario.h"
+	"../Modelo/FactoryPersonaje.h"
+	"../Modelo/Modelo_Plataforma.h"
+
+1624838858 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo_Jugador.cpp
+	"../Modelo/Modelo_Jugador.h"
+	"../lib/Logger.h"
+
+1624841597 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Modelo_Plataforma.cpp
+	"Modelo_Plataforma.h"
+
+1624841597 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/ModeloPlataformaDerecha.cpp
+	"ModeloPlataformaDerecha.h"
+
+1624841597 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Mono.cpp
+	"Mono.h"
+
+1624504582 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/Modelo/Rectangulo.cpp
+	"Rectangulo.h"
+
+1624495762 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/View/FactoryVistaPersonaje.cpp
+	"FactoryVistaPersonaje.h"
+	"../View/VistaFondo.h"
+	"../View/VistaMario.h"
+	"../View/VistaMono.h"
+	"../View/VistaFueguito.h"
+	"../View/VistaFueguitoDefault.h"
+	"../View/VistaFuegoPiso.h"
+	"../View/VistaBarril.h"
+	"../View/Vista_Jugador.h"
+	"../View/Vista_Plataforma.h"
+	"../View/VistaPlataformaDerecha.h"
+	"../View/VistaFondoDos.h"
+
+1624495762 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/View/FactoryVistaPersonaje.h
+	"../View/Vista.h"
+
+1624838858 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/View/Vista.h
+	<stdio.h>
+	<string>
+	<SDL2/SDL.h>
+	<SDL2/SDL_image.h>
+	"../View/Vista_Jugador.h"
+	"../View/VistaMono.h"
+	"../Modelo/Modelo.h"
+	<vector>
+
+1624838858 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaMono.h
+	"Vista_Jugador.h"
+	"../Modelo/Modelo_Jugador.h"
+
+1624838858 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaFondo.h
+	"Vista_Jugador.h"
+	"../Modelo/Modelo_Jugador.h"
+
+1624838858 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaMario.h
+	"Vista_Jugador.h"
+
+1624838858 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaFueguito.h
+	"Vista_Jugador.h"
+
+1624838858 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaFueguitoDefault.h
+	"Vista_Jugador.h"
+
+1624838858 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaFuegoPiso.h
+	"Vista_Jugador.h"
+
+1624838858 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaBarril.h
+	"Vista_Jugador.h"
+
+1624838858 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/View/Vista_Plataforma.h
+	"Vista_Jugador.h"
+
+1624838858 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaPlataformaDerecha.h
+	"Vista_Jugador.h"
+
+1624838858 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaFondoDos.h
+	"Vista_Jugador.h"
+
+1624928524 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/View/Vista.cpp
+	"Vista.h"
+	"../View/VistaMono.h"
+	"../View/VistaFondo.h"
+	"../View/VistaFueguito.h"
+	"../View/VistaFueguitoDefault.h"
+	"../View/VistaFuegoPiso.h"
+	"../View/VistaMario.h"
+	"../View/VistaBarril.h"
+	"../lib/Logger.h"
+	"../lib/Parser.h"
+	"../View/FactoryVistaPersonaje.h"
+
+1624495762 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/View/Vista_Jugador.cpp
+	"../View/Vista_Jugador.h"
+	"../View/VistaMono.h"
+
+1624495762 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/View/Vista_Plataforma.cpp
+	"Vista_Plataforma.h"
+
+1624495762 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaBarril.cpp
+	"VistaBarril.h"
+
+1624838858 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaFondo.cpp
+	"VistaFondo.h"
+	"../lib/Parser.h"
+	<string>
+
+1624495762 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaFondoDos.cpp
+	"VistaFondoDos.h"
+
+1624495762 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaFuegoPiso.cpp
+	"VistaFuegoPiso.h"
+
+1624495762 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaFueguito.cpp
+	"VistaFueguito.h"
+
+1624495762 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaFueguitoDefault.cpp
+	"VistaFueguitoDefault.h"
+
+1624838858 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaMario.cpp
+	"VistaMario.h"
+	"../lib/Logger.h"
+
+1624495762 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaMono.cpp
+	"VistaMono.h"
+
+1624495762 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/View/VistaPlataformaDerecha.cpp
+	"VistaPlataformaDerecha.h"
+
+1624928524 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/Mensaje/Mensaje.h
+	<string.h>
+	<stdlib.h>
+	<stdio.h>
+
+1624928524 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/Mensaje/Codificador.h
+	"Mensaje.h"
+	<stdio.h>
+	<string>
+	<cmath>
+	<map>
+	<iostream>
+	<vector>
+
+1624936178 /home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/Mensaje/Decodificador.h
+	<stdio.h>
+	"Mensaje.h"
+	<string>
+	<iostream>
+	<vector>
+
+1624928524 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/Mensaje/Codificador.cpp
+	"Codificador.h"
+
+1624936278 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/Mensaje/Decodificador.cpp
+	"Decodificador.h"
+
+1624928524 source:/home/marco/Desktop/Taller-Prog-I-2021-1C-Magios/Mensaje/Mensaje.cpp
 	"Mensaje.h"
 

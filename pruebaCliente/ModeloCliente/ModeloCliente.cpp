@@ -374,6 +374,7 @@ void* ModeloCliente::recibirDataGeneral2()
 {
     printf("-----Thread: recibir mensaje -------\n");
     if (this->estaConectadoAlServidor==true){
+
         //El cliente esta conectado al servidor, por lo que va a recibir mensajes de actualizacion de posiciones
         //TODO
     } else {
@@ -693,6 +694,7 @@ void ModeloCliente::funcionReceptoraInput(){
         return;
     }
     if(this->estaConectadoAlServidor == false  && this->esperandoRespuestaLogin==true){
+        printf("%s","Caso 2");
         return;
     }
     this->recibirInputJuego();
@@ -701,8 +703,17 @@ void ModeloCliente::funcionReceptoraInput(){
 void ModeloCliente::recibirInputJuego(){
     printf("funcion recibir input juego\n");
 
-    int quit=7; //creo que este valor no causa problemas en el juego
-    while(quit != 1){
+    int quit=5; //creo que este valor no causa problemas en el juego
+    int tecla;
+    
+    Mensaje* msj=new Mensaje();
+    msj->asignarMemoria(1,1);
+    puts("se seteo tecla");
+
+    this->codificador.codificarMensajeTeclaDos(msj,quit,this->indentificadorCliente);
+    this->encolarMensajeAEnviar(msj);
+
+    /*while(quit != 1){
         while(this->controlador.desencolarEvento() != 0){
             quit=this->controlador.descifrarEvento();
             //y ahora hay que armar el mensaje y enviarlo
@@ -711,6 +722,6 @@ void ModeloCliente::recibirInputJuego(){
             this->codificador.codificarMensajeTeclaDos(msj,quit,this->indentificadorCliente);
             this->encolarMensajeAEnviar(msj);
         }
-    }
+    }*/
     return;
 }

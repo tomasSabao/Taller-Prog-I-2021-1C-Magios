@@ -26,7 +26,7 @@ class Decodificador
         std::string obtenerUsuario(void* msj);
 
         std::string obtenerContrasenia(void* msj);
-
+        char conseguirTipoTecla(int tecla_apretada);
         int obtenerLongitudUsuario(void* msj);
 
         int obtenerLongitudContrasenia(void* msj);
