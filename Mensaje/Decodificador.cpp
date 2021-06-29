@@ -338,3 +338,42 @@ std::vector<int> Decodificador::obtenerFramesBarriles(void* msj){
 	}
 	return frames;
 }
+
+
+
+char Decodificador::obtenerIdAsignadoLogin(void* msj){
+	unsigned char rta=*(char*)msj;
+	rta=rta<<6;
+	rta=rta>>6;
+	if(rta==0){
+		return '1';
+	}
+	if(rta==1){
+		return '2';
+	}
+	if(rta==2){
+		return '3';
+	}
+	if(rta==3){
+		return '4';
+	}
+}
+
+int Decodificador::obtenerMaximoNumeroJugadores(void* msj){
+	void* puntero=msj;
+	unsigned char rta=*(char*)puntero;
+	rta=rta<<4;
+	rta=rta>>6;
+	if(rta==0){
+		return 1;
+	}
+	if(rta==1){
+		return 2;
+	}
+	if(rta==2){
+		return 3;
+	}
+	if(rta==3){
+		return 4;
+	}
+}

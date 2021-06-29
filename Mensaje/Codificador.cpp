@@ -200,6 +200,8 @@ char Codificador::conseguirTipoTecla(int tecla_apretada){
 
 //en teoria el id del jugador es un valor en 2 bits nomas. Voy a necesitar 2 bytes para el msj
 int Codificador::codificarMensajeSalaVaciaAceptacion(Mensaje* msj, char id_jugador, int numero_max_jugadores){
+	printf("------------------------------------Valor de numero maximo: %d\n",numero_max_jugadores);
+	printf("------------------------------------Valor de id jugador: %c\n",id_jugador);
 	int success=0;
 	if(msj->getTamanio() != 1){
 		success=msj->redimensionarMemoria(1);
@@ -210,20 +212,38 @@ int Codificador::codificarMensajeSalaVaciaAceptacion(Mensaje* msj, char id_jugad
 	//en este punto tengo el espacio suficiente para mandar el mensaje
 	char resultado=0;
 	//se pone el tipo de mensaje
-	char aux=1<<5;
-	resultado=resultado | aux;
+	char tipo_msj=2;
+	tipo_msj=tipo_msj<<4;
+	resultado=resultado | tipo_msj;
 	char char_id=this->mapearIdJugador(id_jugador);
 	char numero_max=this->mapearNumeroMaxJugadores(numero_max_jugadores);
+
 	numero_max=numero_max<<2;
 	//TODO: error en numero max
-	printf("Valor de numero max: %d\n",numero_max);
+	printf("Valor de numero max: %c\n",numero_max);
 	resultado=resultado | char_id;
 	resultado=resultado | numero_max;
-	printf("valor del mensaje: %d\n",resultado);
+	//printf("valor del mensaje: %d\n",resultado);
 	//ahora falta copiar el contenido al mensaje
 	void* puntero_a_msj=msj->getMensaje();
 	memcpy(puntero_a_msj,&resultado,sizeof(char));
 	return success;
+	
+	/*
+	char tipo_msj=2;
+	tipo_msj=tipo_msj<<4;
+	char num_jugadores=numero_max_jugadores;
+	if(msj->getTamanio() != 3){
+		msj->redimensionarMemoria(3);
+	}
+	void* puntero=msj->getMensaje();
+	memcpy(puntero,&tipo_msj,1);
+	puntero=(void*)( (char*)puntero +1);
+	memcpy(puntero,&num_jugadores,1);
+	puntero=(void*)( (char*)puntero +1);
+	memcpy(puntero,&id_jugador,1);
+	return 0;
+	*/
 }
 
 int Codificador::codificarMensajeSalaLlenaRechazo(Mensaje* msj){
@@ -593,3 +613,7 @@ int Codificador::codificarMensajeLoginRepetido(Mensaje* msj) {
 	memcpy(msj->getMensaje(), &tipo_msj, 1);
 	return 0;
 }
+
+
+
+

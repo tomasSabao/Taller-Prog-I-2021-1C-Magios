@@ -109,7 +109,8 @@ void* ModeloCliente::funcionParaThread(void* context)
 {
   while(1)
   {
-      ((ModeloCliente *)context)->recibirUsuarioContrasenia();
+      //((ModeloCliente *)context)->recibirUsuarioContrasenia();
+    ((ModeloCliente *)context)->funcionReceptoraInput();
   }
   return NULL;
 }
@@ -325,6 +326,10 @@ bool ModeloCliente::getEstaConectado()
 
 int ModeloCliente::recibirUsuarioContrasenia()
 {
+    if(this->esperandoRespuestaLogin==true){
+        printf("Esperando respuesta...\n");
+        return 0;
+    }
     int success=0;
     std::string usuario="";
     std::string contrasenia="";
@@ -355,7 +360,7 @@ int ModeloCliente::recibirUsuarioContrasenia()
     //meter el mensaje en la cola de mensajes a enviar
     this->encolarMensajeAEnviar(&this->envio_msj_login);
     printf("Fin de funcion usuario contrasenia\n");
-
+    this->esperandoRespuestaLogin=true;
     return success;
 }
 
@@ -416,10 +421,85 @@ void ModeloCliente::encolarMensajeAEnviar(Mensaje* msj)
 
 int ModeloCliente::procesarMensaje(Mensaje* msj)
 {
-    //TODO: el procesamiento de las vistas en base al mensaje
-    //por ahora el procesamiento del mensaje consiste solo en su decodificacion
-    printf("Se procesa el mensaje de la cola\n");
-    this->decodificador.decodificarMensajeDos(msj->getMensaje());
+    //TODO: logica de respuesta
+    int tipo_msj=this->decodificador.obtenerTipo(msj->getMensaje());
+    printf("Tipo de mensaje: %d \n");
+    //este es el caso de la aceptacion del servidor
+    if(tipo_msj == 2){
+        char id=this->decodificador.obtenerIdAsignadoLogin(msj->getMensaje());
+        int num_jugadores=this->decodificador.obtenerMaximoNumeroJugadores(msj->getMensaje());
+        
+        printf("Numero maximo de jugadores: %d\n",num_jugadores);
+        printf("Id asignada: %c\n",id);
+        this->estaConectadoAlServidor=true;
+        //this->indentificadorCliente=id;
+        this->esperandoRespuestaLogin=false;
+        printf("Se conecto el jugador\n");
+        return 0;
+    }
+    //caso sala llena
+    if(tipo_msj==3){
+        printf("Sala llena, no se puede conectar al juego\n");
+        this->esperandoRespuestaLogin=false;
+        return 1;
+    }
+    //caso usuario contrasenia invalidos
+    if(tipo_msj == 4){
+        printf("Usuario/Contrasenia invalidos\n");
+        this->esperandoRespuestaLogin=false;
+        return 1;
+    }
+    if(tipo_msj == 6 ){
+        printf("Se recibio un mensaje de avance de nivel\n");
+        //TODO: logica del nivel
+    }
+    if(tipo_msj == 7){
+        printf("Se recibio un mensaje de actualizacion de plataformas\n");
+        return 0;
+    }
+    if(tipo_msj == 8){
+        printf("Se recibio un mensaje de actualizacion de barriles\n");
+        return 0;
+        //TODO: logica
+    }
+    if(tipo_msj == 10){
+        printf("Se va a iniciar el juego\n");
+        return 0;
+        //TODO: logica de inicio de juego
+    }
+    if(tipo_msj == 11){
+        printf("Se recibio un mensaje de actualizacion de los fueguitos\n");
+        return 0;
+        //TODO: logica de actualizacion
+    }
+    //caso desconexion de un jugador
+    if(tipo_msj == 12){
+        char id=*(char*)(msj->getMensaje());
+        id=id<<4;
+        id=id>>4;
+        this->desconectarJugador(id);
+        //funcion de cambio de sprite
+        return 0;
+    }
+    //caso de reconexion de un jugador
+    if(tipo_msj == 13){
+        char id=*(char*)(msj->getMensaje());
+        id=id<<4;
+        id=id>>4;
+        this->conectarJugador(id);
+    }
+    //caso que se recibio el path de un fondo
+    if(tipo_msj == 14){
+        printf("Se recibio un path a un fondo\n");
+        std::string path=this->decodificador.obtenerPathDeFondo(msj->getMensaje());
+        //TODO: hacer algo con el path de fondo
+        return 0;
+    }
+    if(tipo_msj == 15){
+        printf("Credenciales repetidas. No se puede conectar\n");
+        this->esperandoRespuestaLogin=false;
+        return 0;
+    }
     return 0;
 }
 
@@ -492,4 +572,145 @@ void* ModeloCliente::funcionThreadRecibir(void* contexto)
         ((ModeloCliente*)contexto)->recibirDataGeneral2();
     }
     return NULL;
+}
+
+
+
+void ModeloCliente::desconectarJugador(char id_jugador){
+    this->idConectados[id_jugador]=false;
+}
+
+void ModeloCliente::conectarJugador(char id_jugador){
+    this->idConectados[id_jugador]=true;
+}
+
+void ModeloCliente::cambiarPosX(char id_jugador,int pos){
+    this->posXJugadores[id_jugador]=pos;
+}
+
+void ModeloCliente::cambiarPosY(char id_jugador,int pos){
+    this->posYJugadores[id_jugador]=pos;
+}
+
+void ModeloCliente::cambiarFrameJugador(char id_jugador,int frame){
+    this->frameJugadores[id_jugador]=frame;
+}
+
+void ModeloCliente::setNumeroFueguitos(int numero){
+    this->num_fueguitos=numero;
+}
+
+void ModeloCliente::setNumeroBarriles(int numero){
+    this->num_barriles=numero;
+}
+
+void ModeloCliente::setNumeroPlataformas(int numero){
+    this->num_plataformas=numero;
+}
+
+void ModeloCliente::eliminarFueguitos(){
+    while(this->posXFueguitos.size()!=0){
+        this->posXFueguitos.pop_back();
+    }
+    while(this->posYFueguitos.size()!=0){
+        this->posYFueguitos.pop_back();
+    }
+    while(this->frameFueguitos.size()!=0){
+        this->frameFueguitos.pop_back();
+    }
+}
+
+void ModeloCliente::eliminarPlataformas(){
+    while(this->posXPlataformas.size()!=0){
+        this->posXPlataformas.pop_back();
+    }
+    while(this->posYPlataformas.size()!=0){
+        this->posYPlataformas.pop_back();
+    }
+}
+
+void ModeloCliente::eliminarBarriles(){
+    while(this->posXBarriles.size() !=0){
+        this->posXBarriles.pop_back();
+    }
+    while(this->posYBarriles.size() !=0){
+        this->posYBarriles.pop_back();
+    }
+    while(this->frameBarriles.size() != 0){
+        this->frameBarriles.pop_back();
+    }
+}
+
+
+void ModeloCliente::cambiarPosXFueguitos(std::vector<int>posiciones){
+    for(int i=0; i<this->num_fueguitos;i++){
+        this->posXFueguitos[i]=posiciones[i];
+    }
+}
+
+void ModeloCliente::cambiarPosYFueguitos(std::vector<int>posiciones){
+    for(int i=0; i<this->num_fueguitos;i++){
+        this->posYFueguitos[i]=posiciones[i];
+    }
+}
+
+void ModeloCliente::cambiarFramesFueguitos(std::vector<int>posiciones){
+    for(int i=0; i<this->num_fueguitos;i++){
+        this->frameFueguitos[i]=posiciones[i];
+    }
+}
+
+void ModeloCliente::cambiarPosXBarriles(std::vector<int>posiciones){
+    for(int i=0; i<this->num_fueguitos;i++){
+        this->posXBarriles[i]=posiciones[i];
+    }
+}
+
+void ModeloCliente::cambiarPosYBarriles(std::vector<int>posiciones){
+    for(int i=0; i<this->num_fueguitos;i++){
+        this->posYBarriles[i]=posiciones[i];
+    }
+}
+
+void ModeloCliente::cambiarFrameBarriles(std::vector<int>posiciones){
+    for(int i=0; i<this->num_fueguitos;i++){
+        this->frameBarriles[i]=posiciones[i];
+    }
+}
+
+void ModeloCliente::cambiarPosicionXPlataforma(int plataforma_a_cambiar,int posicion){
+    this->posXPlataformas[plataforma_a_cambiar]=posicion;
+}
+
+void ModeloCliente::cambiarPosicionYPlataforma(int plataforma_a_cambiar,int posicion){
+    this->posYPlataformas[plataforma_a_cambiar]=posicion;
+}
+
+
+void ModeloCliente::funcionReceptoraInput(){
+    if(this->estaConectadoAlServidor == false && this->esperandoRespuestaLogin==false){
+        this->recibirUsuarioContrasenia();
+        return;
+    }
+    if(this->estaConectadoAlServidor == false  && this->esperandoRespuestaLogin==true){
+        return;
+    }
+    this->recibirInputJuego();
+}
+
+void ModeloCliente::recibirInputJuego(){
+    printf("funcion recibir input juego\n");
+
+    int quit=7; //creo que este valor no causa problemas en el juego
+    while(quit != 1){
+        while(this->controlador.desencolarEvento() != 0){
+            quit=this->controlador.descifrarEvento();
+            //y ahora hay que armar el mensaje y enviarlo
+            Mensaje* msj=new Mensaje();
+            msj->asignarMemoria(1,1);
+            this->codificador.codificarMensajeTeclaDos(msj,quit,this->indentificadorCliente);
+            this->encolarMensajeAEnviar(msj);
+        }
+    }
+    return;
 }

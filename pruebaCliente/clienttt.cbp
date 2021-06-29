@@ -51,6 +51,12 @@
 		</Linker>
 		<Unit filename="../Controlador/Controlador.cpp" />
 		<Unit filename="../Convenciones.md" />
+		<Unit filename="../Mensaje/Codificador.cpp" />
+		<Unit filename="../Mensaje/Codificador.h" />
+		<Unit filename="../Mensaje/Decodificador.cpp" />
+		<Unit filename="../Mensaje/Decodificador.h" />
+		<Unit filename="../Mensaje/Mensaje.cpp" />
+		<Unit filename="../Mensaje/Mensaje.h" />
 		<Unit filename="../Modelo/Barril.cpp" />
 		<Unit filename="../Modelo/Barril.h" />
 		<Unit filename="../Modelo/BloqueGenerico.h" />
@@ -143,12 +149,6 @@
 		<Unit filename="../plataforma.png" />
 		<Unit filename="../posiciones_mario_en_png" />
 		<Unit filename="../total.png" />
-		<Unit filename="Mensaje/Codificador.cpp" />
-		<Unit filename="Mensaje/Codificador.h" />
-		<Unit filename="Mensaje/Decodificador.cpp" />
-		<Unit filename="Mensaje/Decodificador.h" />
-		<Unit filename="Mensaje/Mensaje.cpp" />
-		<Unit filename="Mensaje/Mensaje.h" />
 		<Unit filename="ModeloCliente/ModeloCliente.cpp" />
 		<Unit filename="ModeloCliente/ModeloCliente.h" />
 		<Unit filename="SocketCliente/SocketCliente.cpp" />
@@ -156,6 +156,9 @@
 		<Unit filename="default.json" />
 		<Unit filename="example.json" />
 		<Unit filename="main.cpp" />
-		<Extensions />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

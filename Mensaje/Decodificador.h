@@ -50,6 +50,9 @@ class Decodificador
         std::vector<int> obtenerPosicionesXFueguitos(void* msj);
         std::vector<int> obtenerPosicionesYFueguitos(void* msj);
         std::vector<int> obtenerFramesFueguitos(void* msj);
+
+        char obtenerIdAsignadoLogin(void* msj);
+        int obtenerMaximoNumeroJugadores(void* msj);
     protected:
 
     private:

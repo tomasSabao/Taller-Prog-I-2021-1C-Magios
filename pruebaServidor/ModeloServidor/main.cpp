@@ -185,7 +185,7 @@ int main(int argc , char *argv[])
 
     Tupla unaTupla;
 
-    int err = pthread_create(&envio, NULL, &ModeloServidor::hello_helperDesencolar, modeloServidor);
+    int err = pthread_create(&envio, NULL, &ModeloServidor::funcionThreadDesencolarYEnviar, modeloServidor);
 
     //voy a agregar un tercer thread, uno que se encargue de procesar los mensajes que le llegan al server
     int err3=pthread_create(&proceso, NULL, &ModeloServidor::funcionThreadDesencolarYProcesar, modeloServidor);

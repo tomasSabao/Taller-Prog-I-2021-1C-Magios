@@ -8,6 +8,8 @@
 #include "../../Mensaje/Codificador.h"
 #include "../../Mensaje/Decodificador.h"
 #include <string>
+#include <map>
+#include "../../include/Controlador.h"
 
 using namespace std;
 // Structs for data transfer
@@ -37,7 +39,7 @@ class ModeloCliente
         void* hiloLogin();
         // Structs for data transfer
         int skt; //este es el cliente que fue ya aceptado por el servidor
-        
+
         //nuevas funciones realizadas con la libreria mensaje
         //enviarMensaje reemplaza a enviarData
         int enviarMensaje(void* msj, int tamanio_msj);
@@ -78,10 +80,45 @@ class ModeloCliente
         bool getEstaConectadoServidor();
         void manejadora();
 
+        void funcionReceptoraInput();
+
+        void recibirInputJuego();
+
+
+        //funciones que se usan para el juego
+        void desconectarJugador(char id_jugador);
+        void conectarJugador(char id_jugador);
+        void cambiarPosX(char id_jugador,int pos);
+        void cambiarPosY(char id_jugador,int pos);
+        void cambiarFrameJugador(char id_jugador,int frame);
+
+        void setNumeroFueguitos(int numero);
+        void setNumeroBarriles(int numero);
+        void setNumeroPlataformas(int numero);
+
+        void eliminarFueguitos();
+        void eliminarPlataformas();
+        void eliminarBarriles();
+
+        void cambiarPosXFueguitos(std::vector<int>posicionesX);
+        void cambiarPosYFueguitos(std::vector<int>posicionesY);
+        void cambiarFramesFueguitos(std::vector<int>frames);
+
+        void cambiarPosXBarriles(std::vector<int>posicionesX);
+        void cambiarPosYBarriles(std::vector<int>posicionesY);
+        void cambiarFrameBarriles(std::vector<int>frames);
+
+        void cambiarPosicionXPlataforma(int plataforma_a_cambiar,int posicion);
+        void cambiarPosicionYPlataforma(int plataforma_a_cambiar,int posicion);
+
+
+
         bool estaConectado=false;
 
+        bool esperandoRespuestaLogin=false;
 
-
+        Controlador controlador;
+        bool inicioJuego=false;
 
     protected:
         Modelo* modelo;
@@ -94,8 +131,9 @@ class ModeloCliente
         Comando* unComando;
         bool activo;
         int indentificadorCliente;
+        char idCliente;
         int contador;
-        
+
         std::vector<Mensaje*> colaMensajes;
         std::vector<Mensaje*> colaMensajesAProcesar;
         //agregamos los codificadores, decodificadores y dos tipos de mensaje
@@ -106,6 +144,31 @@ class ModeloCliente
         Mensaje envio_msj_tecla;
         Mensaje recibo_msj_actualizacion;
         bool estaConectadoAlServidor=false;
+
+
+        //valores para el juego
+        std::map<char,bool>idConectados;
+        std::map<char,int>posXJugadores;
+        std::map<char,int>posYJugadores;
+        std::map<char,int>frameJugadores;
+
+        std::map<char,std::string>path_sprites_jugadores;
+
+        std::vector<int>posXFueguitos;
+        std::vector<int>posYFueguitos;
+        std::vector<int>frameFueguitos;
+
+        std::vector<int>posXPlataformas;
+        std::vector<int>posYPlataformas;
+
+        std::vector<int>posXBarriles;
+        std::vector<int>posYBarriles;
+        std::vector<int>frameBarriles;
+
+        int nivel=0;
+        int num_fueguitos;
+        int num_barriles;
+        int num_plataformas;
 
     private:
 };
